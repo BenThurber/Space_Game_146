@@ -44,23 +44,41 @@ public class MainScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		final float BACKGROUND_IMAGE_SCALE_FACTOR = 0.5326f;
+		final int WINDOW_X = 320;
+		final int WINDOW_Y = 100;
+		final int WINDOW_WIDTH = 767;
+		final int WINDOW_HEIGHT = 832;
+		
+		final float BG_IMAGE_SCALE_FACTOR = 0.5326f;
+		final int BG_IMAGE_LABEL_X = 0;
+		final int BG_IMAGE_LABEL_Y = -85;
+		final int BG_IMAGE_LABEL_WIDTH = WINDOW_WIDTH;
+		final int BG_IMAGE_LABEL_HEIGHT = 895;
+		
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.getContentPane().setForeground(Color.BLACK);
-		frame.setBounds(320, 100, 767, 832);
+		frame.setBounds(WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
+		JLabel backgroundImageLabel = new JLabel("");
 		ImageIcon unscaledBackgroundImage = new ImageIcon("/Users/Ben/Desktop/SENG201/Project/Space_Game_146/Graphics/MainWindow/Main_Screen_Background.png");
-		ImageIcon backgroundImage = scaledImageIcon(unscaledBackgroundImage, BACKGROUND_IMAGE_SCALE_FACTOR);
-		lblNewLabel.setIcon(backgroundImage);
+		ImageIcon backgroundImage = scaledImageIcon(unscaledBackgroundImage, BG_IMAGE_SCALE_FACTOR);
+		backgroundImageLabel.setIcon(backgroundImage);
 		// Label should be 22 shorter than window to fit perfectly in it
 		//lblNewLabel.setBounds(0, -85, 767, 895);
-		lblNewLabel.setBounds(0, -85, 767, 895);
-		frame.getContentPane().add(lblNewLabel);
+		backgroundImageLabel.setBounds(BG_IMAGE_LABEL_X, BG_IMAGE_LABEL_Y, BG_IMAGE_LABEL_WIDTH, BG_IMAGE_LABEL_HEIGHT);
+		frame.getContentPane().add(backgroundImageLabel);
+		
+		JLabel flashingLightsGIFLabel = new JLabel("");
+		ImageIcon unscaledLightsGIF = new ImageIcon("/Users/Ben/Desktop/SENG201/Project/Space_Game_146/Graphics/MainWindow/Lights GIF/Centre-Light-scaled_slightly_larger.gif");
+		flashingLightsGIFLabel.setIcon(unscaledLightsGIF);
+		//flashingLightsGIFLabel.setBounds(326, 240, 124, 39);
+		flashingLightsGIFLabel.setBounds(326, 240, 124, 39);
+		frame.getContentPane().add(flashingLightsGIFLabel);
+		
 		
 		
 
