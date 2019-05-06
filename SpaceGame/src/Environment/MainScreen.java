@@ -45,23 +45,32 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setForeground(Color.BLACK);
+		frame.getContentPane().setBackground(Color.BLACK);
+		frame.getContentPane().setForeground(Color.BLACK);
 		frame.setBounds(320, 100, 767, 832);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		//lblNewLabel.setIcon(new ImageIcon("/Users/Ben/Desktop/SENG201/Project/Space_Game_146/Graphics/MainWindow/Main_Screen_Background half size.png"));
+		ImageIcon unscaledBackgroundImage = new ImageIcon("/Users/Ben/Desktop/SENG201/Project/Space_Game_146/Graphics/MainWindow/Main_Screen_Background.png");
+		ImageIcon backgroundImage = scaledImageIcon(unscaledBackgroundImage, 767, 895);
+		lblNewLabel.setIcon(backgroundImage);
 		// Label should be 22 shorter than window to fit perfectly in it
 		//lblNewLabel.setBounds(0, -85, 767, 895);
-		// Set width to 767 and export as PNG
 		lblNewLabel.setBounds(0, -85, 767, 895);
 		frame.getContentPane().add(lblNewLabel);
 		
-		//ImageIcon backgroundImage = new ImageIcon("/Users/Ben/Desktop/SENG201/Project/Space_Game_146/Graphics/MainWindow/Cropped half size.png");
-		//backgroundImage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		
-		//Image newImage = backgroundImage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 
+	}
+	
+	/**
+	 * Takes an ImageIcon and width and height and scales the image.
+	 */
+	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, int width, int height) {
+		Image image = unscaledImageIcon.getImage();
+		Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
+		unscaledImageIcon = new ImageIcon(newimg);
+		return unscaledImageIcon;
 	}
 }
