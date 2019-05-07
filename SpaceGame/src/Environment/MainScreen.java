@@ -21,6 +21,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainScreen {
 
@@ -147,7 +149,7 @@ public class MainScreen {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setForeground(new Color(74, 170, 1));
 		comboBox.setBackground(new Color(74, 170, 1));
-		comboBox.setBounds(164, 53, 146, 27);
+		comboBox.setBounds(160, 53, 146, 27);
 		panelCrewMemberOne.add(comboBox);
 		
 		JLabel label_3 = new JLabel("2/2");
@@ -173,6 +175,15 @@ public class MainScreen {
 		lblHealth.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblHealth.setBounds(265, 27, 61, 16);
 		panelCrewMemberOne.add(lblHealth);
+		
+		JButton btnGo = new JButton("Go");
+		btnGo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnGo.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnGo.setBounds(310, 54, 23, 23);
+		panelCrewMemberOne.add(btnGo);
 		
 		
 		backgroundImageLabel.setIcon(backgroundImage);
