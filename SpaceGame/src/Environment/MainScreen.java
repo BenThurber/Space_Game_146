@@ -110,80 +110,293 @@ public class MainScreen {
 		progressBarSheildLvl.setBounds(603, 518, 146, 20);
 		frame.getContentPane().add(progressBarSheildLvl);
 		
-		JPanel panelCrewMemberOne = new JPanel();
-		panelCrewMemberOne.setBackground(new Color(0, 0, 0, 0));
-		panelCrewMemberOne.setBounds(0, 604, 374, 86);
-		frame.getContentPane().add(panelCrewMemberOne);
-		panelCrewMemberOne.setLayout(null);
+		JPanel panelCrewMember1 = new JPanel();
+		panelCrewMember1.setBackground(new Color(0, 0, 0, 0));
+		panelCrewMember1.setBounds(0, 604, 374, 86);
+		frame.getContentPane().add(panelCrewMember1);
+		panelCrewMember1.setLayout(null);
 		
-		JLabel lblName = new JLabel("Name:");
-		lblName.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		lblName.setBounds(6, 6, 47, 16);
-		panelCrewMemberOne.add(lblName);
+		JLabel lblNameHeading1 = new JLabel("Name:");
+		lblNameHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNameHeading1.setBounds(6, 6, 47, 16);
+		panelCrewMember1.add(lblNameHeading1);
 		
-		JLabel label = new JLabel("<Name>");
-		label.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		label.setBounds(54, 6, 215, 16);
-		panelCrewMemberOne.add(label);
+		JLabel lblName1 = new JLabel("<Name>");
+		lblName1.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblName1.setBounds(54, 6, 215, 16);
+		panelCrewMember1.add(lblName1);
 		
-		JLabel lblSpecialization = new JLabel("Type:");
-		lblSpecialization.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		lblSpecialization.setBounds(71, 27, 47, 16);
-		panelCrewMemberOne.add(lblSpecialization);
+		JLabel lblTypeHeading1 = new JLabel("Type:");
+		lblTypeHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblTypeHeading1.setBounds(71, 27, 47, 16);
+		panelCrewMember1.add(lblTypeHeading1);
 		
-		JLabel lblCommunications = new JLabel("Communicatons");
-		lblCommunications.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCommunications.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		lblCommunications.setBounds(118, 27, 117, 16);
-		panelCrewMemberOne.add(lblCommunications);
+		JLabel lblType1 = new JLabel("<Type>");
+		lblType1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblType1.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblType1.setBounds(118, 27, 117, 16);
+		panelCrewMember1.add(lblType1);
 		
-		JLabel lblNewLabel = new JLabel("Image");
-		lblNewLabel.setBounds(6, 27, 53, 53);
-		panelCrewMemberOne.add(lblNewLabel);
+		JLabel lblCrewAvatarImage1 = new JLabel("<Image>");
+		lblCrewAvatarImage1.setBounds(6, 27, 53, 53);
+		panelCrewMember1.add(lblCrewAvatarImage1);
 		
-		JLabel lblNextAction = new JLabel("Next Action:");
-		lblNextAction.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		lblNextAction.setBounds(71, 57, 88, 16);
-		panelCrewMemberOne.add(lblNextAction);
+		JLabel lblNextActionHeading1 = new JLabel("Next Action:");
+		lblNextActionHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNextActionHeading1.setBounds(71, 57, 88, 16);
+		panelCrewMember1.add(lblNextActionHeading1);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setForeground(new Color(74, 170, 1));
-		comboBox.setBackground(new Color(74, 170, 1));
-		comboBox.setBounds(160, 53, 146, 27);
-		panelCrewMemberOne.add(comboBox);
+		JComboBox comboBoxNextAction1 = new JComboBox();
+		comboBoxNextAction1.setForeground(new Color(74, 170, 1));
+		comboBoxNextAction1.setBackground(new Color(74, 170, 1));
+		comboBoxNextAction1.setBounds(160, 53, 146, 27);
+		panelCrewMember1.add(comboBoxNextAction1);
 		
-		JLabel label_3 = new JLabel("2/2");
-		label_3.setBounds(345, 57, 23, 16);
-		panelCrewMemberOne.add(label_3);
+		JLabel lblRemainingActions1 = new JLabel("2/2");
+		lblRemainingActions1.setBounds(345, 57, 23, 16);
+		panelCrewMember1.add(lblRemainingActions1);
 		
-		JLabel lblStanimaLevel = new JLabel("100%");
-		lblStanimaLevel.setBounds(335, 6, 33, 16);
-		panelCrewMemberOne.add(lblStanimaLevel);
+		JLabel lblStanimaLevel1 = new JLabel("100%");
+		lblStanimaLevel1.setBounds(335, 6, 33, 16);
+		panelCrewMember1.add(lblStanimaLevel1);
 		
-		JLabel lblHealthLevel = new JLabel("100%");
-		lblHealthLevel.setBounds(335, 27, 33, 16);
-		panelCrewMemberOne.add(lblHealthLevel);
+		JLabel lblHealthLevel1 = new JLabel("100%");
+		lblHealthLevel1.setBounds(335, 27, 33, 16);
+		panelCrewMember1.add(lblHealthLevel1);
 		
-		JLabel lblStanima = new JLabel("Stanima:");
-		lblStanima.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		lblStanima.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblStanima.setBounds(265, 6, 61, 16);
-		panelCrewMemberOne.add(lblStanima);
+		JLabel lblStanimaHeading1 = new JLabel("Stanima:");
+		lblStanimaHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblStanimaHeading1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblStanimaHeading1.setBounds(265, 6, 61, 16);
+		panelCrewMember1.add(lblStanimaHeading1);
 		
-		JLabel lblHealth = new JLabel("Health:");
-		lblHealth.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		lblHealth.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblHealth.setBounds(265, 27, 61, 16);
-		panelCrewMemberOne.add(lblHealth);
+		JLabel lblHealthHeading1 = new JLabel("Health:");
+		lblHealthHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblHealthHeading1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblHealthHeading1.setBounds(265, 27, 61, 16);
+		panelCrewMember1.add(lblHealthHeading1);
 		
-		JButton btnGo = new JButton("Go");
-		btnGo.addActionListener(new ActionListener() {
+		JButton btnExecuteNextAction1 = new JButton("Go");
+		btnExecuteNextAction1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGo.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		btnGo.setBounds(310, 54, 23, 23);
-		panelCrewMemberOne.add(btnGo);
+		btnExecuteNextAction1.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnExecuteNextAction1.setBounds(310, 54, 23, 23);
+		panelCrewMember1.add(btnExecuteNextAction1);
+		
+		JPanel panelCrewMember2 = new JPanel();
+		panelCrewMember2.setLayout(null);
+		panelCrewMember2.setBackground(new Color(0, 0, 0, 0));
+		panelCrewMember2.setBounds(390, 604, 374, 86);
+		frame.getContentPane().add(panelCrewMember2);
+		
+		JLabel lblNameHeading2 = new JLabel("Name:");
+		lblNameHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNameHeading2.setBounds(6, 6, 47, 16);
+		panelCrewMember2.add(lblNameHeading2);
+		
+		JLabel lblName2 = new JLabel("<Name>");
+		lblName2.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblName2.setBounds(54, 6, 215, 16);
+		panelCrewMember2.add(lblName2);
+		
+		JLabel lblTypeHeading2 = new JLabel("Type:");
+		lblTypeHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblTypeHeading2.setBounds(71, 27, 47, 16);
+		panelCrewMember2.add(lblTypeHeading2);
+		
+		JLabel lblType2 = new JLabel("<Type>");
+		lblType2.setHorizontalAlignment(SwingConstants.LEFT);
+		lblType2.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblType2.setBounds(118, 27, 117, 16);
+		panelCrewMember2.add(lblType2);
+		
+		JLabel lblCrewAvatarImage2 = new JLabel("<Image>");
+		lblCrewAvatarImage2.setBounds(6, 27, 53, 53);
+		panelCrewMember2.add(lblCrewAvatarImage2);
+		
+		JLabel lblNextActionHeading2 = new JLabel("Next Action:");
+		lblNextActionHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNextActionHeading2.setBounds(71, 57, 88, 16);
+		panelCrewMember2.add(lblNextActionHeading2);
+		
+		JComboBox comboBoxNextAction2 = new JComboBox();
+		comboBoxNextAction2.setForeground(new Color(74, 170, 1));
+		comboBoxNextAction2.setBackground(new Color(74, 170, 1));
+		comboBoxNextAction2.setBounds(160, 53, 146, 27);
+		panelCrewMember2.add(comboBoxNextAction2);
+		
+		JLabel lblRemainingActions2 = new JLabel("2/2");
+		lblRemainingActions2.setBounds(345, 57, 23, 16);
+		panelCrewMember2.add(lblRemainingActions2);
+		
+		JLabel lblStanimaLevel2 = new JLabel("100%");
+		lblStanimaLevel2.setBounds(335, 6, 33, 16);
+		panelCrewMember2.add(lblStanimaLevel2);
+		
+		JLabel lblHealthLevel2 = new JLabel("100%");
+		lblHealthLevel2.setBounds(335, 27, 33, 16);
+		panelCrewMember2.add(lblHealthLevel2);
+		
+		JLabel lblStanimaHeading2 = new JLabel("Stanima:");
+		lblStanimaHeading2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblStanimaHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblStanimaHeading2.setBounds(265, 6, 61, 16);
+		panelCrewMember2.add(lblStanimaHeading2);
+		
+		JLabel lblHealthHeading2 = new JLabel("Health:");
+		lblHealthHeading2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblHealthHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblHealthHeading2.setBounds(265, 27, 61, 16);
+		panelCrewMember2.add(lblHealthHeading2);
+		
+		JButton btnExecuteNextAction2 = new JButton("Go");
+		btnExecuteNextAction2.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnExecuteNextAction2.setBounds(310, 54, 23, 23);
+		panelCrewMember2.add(btnExecuteNextAction2);
+		
+		JPanel panelCrewMember3 = new JPanel();
+		panelCrewMember3.setLayout(null);
+		panelCrewMember3.setBackground(new Color(0, 0, 0, 0));
+		panelCrewMember3.setBounds(0, 705, 374, 86);
+		frame.getContentPane().add(panelCrewMember3);
+		
+		JLabel lblNameHeading3 = new JLabel("Name:");
+		lblNameHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNameHeading3.setBounds(6, 6, 47, 16);
+		panelCrewMember3.add(lblNameHeading3);
+		
+		JLabel lblName3 = new JLabel("<Name>");
+		lblName3.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblName3.setBounds(54, 6, 215, 16);
+		panelCrewMember3.add(lblName3);
+		
+		JLabel lblTypeHeading3 = new JLabel("Type:");
+		lblTypeHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblTypeHeading3.setBounds(71, 27, 47, 16);
+		panelCrewMember3.add(lblTypeHeading3);
+		
+		JLabel lblType3 = new JLabel("<Type>");
+		lblType3.setHorizontalAlignment(SwingConstants.LEFT);
+		lblType3.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblType3.setBounds(118, 27, 117, 16);
+		panelCrewMember3.add(lblType3);
+		
+		JLabel lblCrewAvatarImage3 = new JLabel("<Image>");
+		lblCrewAvatarImage3.setBounds(6, 27, 53, 53);
+		panelCrewMember3.add(lblCrewAvatarImage3);
+		
+		JLabel lblNextActionHeading3 = new JLabel("Next Action:");
+		lblNextActionHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNextActionHeading3.setBounds(71, 57, 88, 16);
+		panelCrewMember3.add(lblNextActionHeading3);
+		
+		JComboBox comboBoxNextAction3 = new JComboBox();
+		comboBoxNextAction3.setForeground(new Color(74, 170, 1));
+		comboBoxNextAction3.setBackground(new Color(74, 170, 1));
+		comboBoxNextAction3.setBounds(160, 53, 146, 27);
+		panelCrewMember3.add(comboBoxNextAction3);
+		
+		JLabel lblRemainingActions3 = new JLabel("2/2");
+		lblRemainingActions3.setBounds(345, 57, 23, 16);
+		panelCrewMember3.add(lblRemainingActions3);
+		
+		JLabel lblStanimaLevel3 = new JLabel("100%");
+		lblStanimaLevel3.setBounds(335, 6, 33, 16);
+		panelCrewMember3.add(lblStanimaLevel3);
+		
+		JLabel lblHealthLevel3 = new JLabel("100%");
+		lblHealthLevel3.setBounds(335, 27, 33, 16);
+		panelCrewMember3.add(lblHealthLevel3);
+		
+		JLabel lblStanimaHeading3 = new JLabel("Stanima:");
+		lblStanimaHeading3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblStanimaHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblStanimaHeading3.setBounds(265, 6, 61, 16);
+		panelCrewMember3.add(lblStanimaHeading3);
+		
+		JLabel lblHealthHeading3 = new JLabel("Health:");
+		lblHealthHeading3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblHealthHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblHealthHeading3.setBounds(265, 27, 61, 16);
+		panelCrewMember3.add(lblHealthHeading3);
+		
+		JButton btnExecuteNextAction3 = new JButton("Go");
+		btnExecuteNextAction3.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnExecuteNextAction3.setBounds(310, 54, 23, 23);
+		panelCrewMember3.add(btnExecuteNextAction3);
+		
+		JPanel panelCrewMember4 = new JPanel();
+		panelCrewMember4.setLayout(null);
+		panelCrewMember4.setBackground(new Color(0, 0, 0, 0));
+		panelCrewMember4.setBounds(390, 705, 374, 86);
+		frame.getContentPane().add(panelCrewMember4);
+		
+		JLabel lblNameHeading4 = new JLabel("Name:");
+		lblNameHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNameHeading4.setBounds(6, 6, 47, 16);
+		panelCrewMember4.add(lblNameHeading4);
+		
+		JLabel lblName4 = new JLabel("<Name>");
+		lblName4.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblName4.setBounds(54, 6, 215, 16);
+		panelCrewMember4.add(lblName4);
+		
+		JLabel lblTypeHeading4 = new JLabel("Type:");
+		lblTypeHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblTypeHeading4.setBounds(71, 27, 47, 16);
+		panelCrewMember4.add(lblTypeHeading4);
+		
+		JLabel lblType4 = new JLabel("<Type>");
+		lblType4.setHorizontalAlignment(SwingConstants.LEFT);
+		lblType4.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblType4.setBounds(118, 27, 117, 16);
+		panelCrewMember4.add(lblType4);
+		
+		JLabel lblCrewAvatarImage4 = new JLabel("<Image>");
+		lblCrewAvatarImage4.setBounds(6, 27, 53, 53);
+		panelCrewMember4.add(lblCrewAvatarImage4);
+		
+		JLabel lblNextActionHeading4 = new JLabel("Next Action:");
+		lblNextActionHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNextActionHeading4.setBounds(71, 57, 88, 16);
+		panelCrewMember4.add(lblNextActionHeading4);
+		
+		JComboBox comboBoxNextAction4 = new JComboBox();
+		comboBoxNextAction4.setForeground(new Color(74, 170, 1));
+		comboBoxNextAction4.setBackground(new Color(74, 170, 1));
+		comboBoxNextAction4.setBounds(160, 53, 146, 27);
+		panelCrewMember4.add(comboBoxNextAction4);
+		
+		JLabel lblRemainingActions4 = new JLabel("2/2");
+		lblRemainingActions4.setBounds(345, 57, 23, 16);
+		panelCrewMember4.add(lblRemainingActions4);
+		
+		JLabel lblStanimaLevel4 = new JLabel("100%");
+		lblStanimaLevel4.setBounds(335, 6, 33, 16);
+		panelCrewMember4.add(lblStanimaLevel4);
+		
+		JLabel lblHealthLevel4 = new JLabel("100%");
+		lblHealthLevel4.setBounds(335, 27, 33, 16);
+		panelCrewMember4.add(lblHealthLevel4);
+		
+		JLabel lblStanimaHeading4 = new JLabel("Stanima:");
+		lblStanimaHeading4.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblStanimaHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblStanimaHeading4.setBounds(265, 6, 61, 16);
+		panelCrewMember4.add(lblStanimaHeading4);
+		
+		JLabel lblHealthHeading4 = new JLabel("Health:");
+		lblHealthHeading4.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblHealthHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblHealthHeading4.setBounds(265, 27, 61, 16);
+		panelCrewMember4.add(lblHealthHeading4);
+		
+		JButton btnExecuteNextAction4 = new JButton("Go");
+		btnExecuteNextAction4.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnExecuteNextAction4.setBounds(310, 54, 23, 23);
+		panelCrewMember4.add(btnExecuteNextAction4);
 		
 		
 		backgroundImageLabel.setIcon(backgroundImage);
