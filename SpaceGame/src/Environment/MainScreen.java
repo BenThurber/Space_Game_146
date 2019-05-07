@@ -77,7 +77,7 @@ public class MainScreen {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel backgroundImageLabel = new JLabel("");
-		ImageIcon unscaledBackgroundImage = new ImageIcon("/Users/Ben/Desktop/SENG201/Project/Space_Game_146/Graphics/MainWindow/Main_Screen_Background.png");
+		ImageIcon unscaledBackgroundImage = new ImageIcon(MainScreen.class.getResource("/Images/Main_Screen_Background.png"));
 		ImageIcon backgroundImage = scaledImageIcon(unscaledBackgroundImage, BG_IMAGE_SCALE_FACTOR);
 		
 		JLabel lblShipName = new JLabel("USS Enterprise".toUpperCase());
@@ -406,7 +406,7 @@ public class MainScreen {
 		frame.getContentPane().add(backgroundImageLabel);
 		
 		JLabel flashingLightsGIFLabel = new JLabel("");
-		ImageIcon unscaledLightsGIF = new ImageIcon("/Users/Ben/Desktop/SENG201/Project/Space_Game_146/Graphics/MainWindow/Lights GIF/Centre-Light-scaled_slightly_larger.gif");
+		ImageIcon unscaledLightsGIF = new ImageIcon(MainScreen.class.getResource("/Images/Centre-Light-scaled_slightly_larger.gif"));
 		flashingLightsGIFLabel.setIcon(unscaledLightsGIF);
 		//flashingLightsGIFLabel.setBounds(326, 240, 124, 39);
 		flashingLightsGIFLabel.setBounds(326, 240, 124, 39);
@@ -423,10 +423,6 @@ public class MainScreen {
 		JButton btnNewButton = new JButton("Start Next Day");
 		btnNewButton.setBounds(567, 562, 146, 29);
 		frame.getContentPane().add(btnNewButton);
-		
-		JLabel label_1 = new JLabel("2");
-		label_1.setBounds(366, 615, 23, 16);
-		frame.getContentPane().add(label_1);
 		
 		
 		
