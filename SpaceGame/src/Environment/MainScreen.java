@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
+
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
@@ -22,6 +24,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
 import java.awt.event.ActionEvent;
 
 public class MainScreen {
@@ -75,6 +79,11 @@ public class MainScreen {
 		frame.setBounds(WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+
+		
+		Font fontTrebuchet = LoadEmbededFont("/Fonts/Trebuchet");
+		Font fontLucidaGrande = LoadEmbededFont("/Fonts/LucidaGrande.ttc");
+		
 		
 		JLabel backgroundImageLabel = new JLabel("");
 		ImageIcon unscaledBackgroundImage = new ImageIcon(MainScreen.class.getResource("/Images/Main_Screen_Background.png"));
@@ -91,17 +100,17 @@ public class MainScreen {
 		
 		
 		JLabel lblLocation = new JLabel("Unknown");
-		lblLocation.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
+		lblLocation.setFont(fontTrebuchet.deriveFont(Font.PLAIN, 22));
 		lblLocation.setBounds(86, 448, 129, 16);
 		frame.getContentPane().add(lblLocation);
 		
 		JLabel lblActiveCrew = new JLabel("0");
-		lblActiveCrew.setFont(new Font("Trebuchet MS", Font.PLAIN, 30));
+		lblActiveCrew.setFont(fontTrebuchet.deriveFont(Font.PLAIN, 30));
 		lblActiveCrew.setBounds(657, 456, 34, 26);
 		frame.getContentPane().add(lblActiveCrew);
 		
 		JLabel lblSheildLevel = new JLabel("100%");
-		lblSheildLevel.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 16));
+		lblSheildLevel.setFont(fontTrebuchet.deriveFont(Font.BOLD | Font.ITALIC, 16));
 		lblSheildLevel.setBounds(553, 518, 43, 16);
 		frame.getContentPane().add(lblSheildLevel);
 		
@@ -117,23 +126,23 @@ public class MainScreen {
 		panelCrewMember1.setLayout(null);
 		
 		JLabel lblNameHeading1 = new JLabel("Name:");
-		lblNameHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNameHeading1.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblNameHeading1.setBounds(6, 6, 47, 16);
 		panelCrewMember1.add(lblNameHeading1);
 		
 		JLabel lblName1 = new JLabel("<Name>");
-		lblName1.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblName1.setFont(fontLucidaGrande.deriveFont(Font.PLAIN, 13));
 		lblName1.setBounds(54, 6, 215, 16);
 		panelCrewMember1.add(lblName1);
 		
 		JLabel lblTypeHeading1 = new JLabel("Type:");
-		lblTypeHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblTypeHeading1.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblTypeHeading1.setBounds(71, 27, 47, 16);
 		panelCrewMember1.add(lblTypeHeading1);
 		
 		JLabel lblType1 = new JLabel("<Type>");
 		lblType1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblType1.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblType1.setFont(fontLucidaGrande.deriveFont(Font.PLAIN, 13));
 		lblType1.setBounds(118, 27, 117, 16);
 		panelCrewMember1.add(lblType1);
 		
@@ -142,7 +151,7 @@ public class MainScreen {
 		panelCrewMember1.add(lblCrewAvatarImage1);
 		
 		JLabel lblNextActionHeading1 = new JLabel("Next Action:");
-		lblNextActionHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNextActionHeading1.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblNextActionHeading1.setBounds(71, 57, 88, 16);
 		panelCrewMember1.add(lblNextActionHeading1);
 		
@@ -165,13 +174,13 @@ public class MainScreen {
 		panelCrewMember1.add(lblHealthLevel1);
 		
 		JLabel lblStanimaHeading1 = new JLabel("Stanima:");
-		lblStanimaHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblStanimaHeading1.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblStanimaHeading1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblStanimaHeading1.setBounds(265, 6, 61, 16);
 		panelCrewMember1.add(lblStanimaHeading1);
 		
 		JLabel lblHealthHeading1 = new JLabel("Health:");
-		lblHealthHeading1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblHealthHeading1.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblHealthHeading1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblHealthHeading1.setBounds(265, 27, 61, 16);
 		panelCrewMember1.add(lblHealthHeading1);
@@ -181,7 +190,7 @@ public class MainScreen {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnExecuteNextAction1.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnExecuteNextAction1.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 9));
 		btnExecuteNextAction1.setBounds(310, 54, 23, 23);
 		panelCrewMember1.add(btnExecuteNextAction1);
 		
@@ -192,23 +201,23 @@ public class MainScreen {
 		frame.getContentPane().add(panelCrewMember2);
 		
 		JLabel lblNameHeading2 = new JLabel("Name:");
-		lblNameHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNameHeading2.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblNameHeading2.setBounds(6, 6, 47, 16);
 		panelCrewMember2.add(lblNameHeading2);
 		
 		JLabel lblName2 = new JLabel("<Name>");
-		lblName2.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblName2.setFont(fontLucidaGrande.deriveFont(Font.PLAIN, 13));
 		lblName2.setBounds(54, 6, 215, 16);
 		panelCrewMember2.add(lblName2);
 		
 		JLabel lblTypeHeading2 = new JLabel("Type:");
-		lblTypeHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblTypeHeading2.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblTypeHeading2.setBounds(71, 27, 47, 16);
 		panelCrewMember2.add(lblTypeHeading2);
 		
 		JLabel lblType2 = new JLabel("<Type>");
 		lblType2.setHorizontalAlignment(SwingConstants.LEFT);
-		lblType2.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblType2.setFont(fontLucidaGrande.deriveFont(Font.PLAIN, 13));
 		lblType2.setBounds(118, 27, 117, 16);
 		panelCrewMember2.add(lblType2);
 		
@@ -217,7 +226,7 @@ public class MainScreen {
 		panelCrewMember2.add(lblCrewAvatarImage2);
 		
 		JLabel lblNextActionHeading2 = new JLabel("Next Action:");
-		lblNextActionHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNextActionHeading2.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblNextActionHeading2.setBounds(71, 57, 88, 16);
 		panelCrewMember2.add(lblNextActionHeading2);
 		
@@ -241,18 +250,18 @@ public class MainScreen {
 		
 		JLabel lblStanimaHeading2 = new JLabel("Stanima:");
 		lblStanimaHeading2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblStanimaHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblStanimaHeading2.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblStanimaHeading2.setBounds(265, 6, 61, 16);
 		panelCrewMember2.add(lblStanimaHeading2);
 		
 		JLabel lblHealthHeading2 = new JLabel("Health:");
 		lblHealthHeading2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblHealthHeading2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblHealthHeading2.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblHealthHeading2.setBounds(265, 27, 61, 16);
 		panelCrewMember2.add(lblHealthHeading2);
 		
 		JButton btnExecuteNextAction2 = new JButton("Go");
-		btnExecuteNextAction2.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnExecuteNextAction2.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 9));
 		btnExecuteNextAction2.setBounds(310, 54, 23, 23);
 		panelCrewMember2.add(btnExecuteNextAction2);
 		
@@ -263,23 +272,23 @@ public class MainScreen {
 		frame.getContentPane().add(panelCrewMember3);
 		
 		JLabel lblNameHeading3 = new JLabel("Name:");
-		lblNameHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNameHeading3.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblNameHeading3.setBounds(6, 6, 47, 16);
 		panelCrewMember3.add(lblNameHeading3);
 		
 		JLabel lblName3 = new JLabel("<Name>");
-		lblName3.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblName3.setFont(fontLucidaGrande.deriveFont(Font.PLAIN, 13));
 		lblName3.setBounds(54, 6, 215, 16);
 		panelCrewMember3.add(lblName3);
 		
 		JLabel lblTypeHeading3 = new JLabel("Type:");
-		lblTypeHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblTypeHeading3.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblTypeHeading3.setBounds(71, 27, 47, 16);
 		panelCrewMember3.add(lblTypeHeading3);
 		
 		JLabel lblType3 = new JLabel("<Type>");
 		lblType3.setHorizontalAlignment(SwingConstants.LEFT);
-		lblType3.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblType3.setFont(fontLucidaGrande.deriveFont(Font.PLAIN, 13));
 		lblType3.setBounds(118, 27, 117, 16);
 		panelCrewMember3.add(lblType3);
 		
@@ -288,7 +297,7 @@ public class MainScreen {
 		panelCrewMember3.add(lblCrewAvatarImage3);
 		
 		JLabel lblNextActionHeading3 = new JLabel("Next Action:");
-		lblNextActionHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNextActionHeading3.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblNextActionHeading3.setBounds(71, 57, 88, 16);
 		panelCrewMember3.add(lblNextActionHeading3);
 		
@@ -312,18 +321,18 @@ public class MainScreen {
 		
 		JLabel lblStanimaHeading3 = new JLabel("Stanima:");
 		lblStanimaHeading3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblStanimaHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblStanimaHeading3.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblStanimaHeading3.setBounds(265, 6, 61, 16);
 		panelCrewMember3.add(lblStanimaHeading3);
 		
 		JLabel lblHealthHeading3 = new JLabel("Health:");
 		lblHealthHeading3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblHealthHeading3.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblHealthHeading3.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblHealthHeading3.setBounds(265, 27, 61, 16);
 		panelCrewMember3.add(lblHealthHeading3);
 		
 		JButton btnExecuteNextAction3 = new JButton("Go");
-		btnExecuteNextAction3.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnExecuteNextAction3.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 9));
 		btnExecuteNextAction3.setBounds(310, 54, 23, 23);
 		panelCrewMember3.add(btnExecuteNextAction3);
 		
@@ -334,23 +343,23 @@ public class MainScreen {
 		frame.getContentPane().add(panelCrewMember4);
 		
 		JLabel lblNameHeading4 = new JLabel("Name:");
-		lblNameHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNameHeading4.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblNameHeading4.setBounds(6, 6, 47, 16);
 		panelCrewMember4.add(lblNameHeading4);
 		
 		JLabel lblName4 = new JLabel("<Name>");
-		lblName4.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblName4.setFont(fontLucidaGrande.deriveFont(Font.PLAIN, 13));
 		lblName4.setBounds(54, 6, 215, 16);
 		panelCrewMember4.add(lblName4);
 		
 		JLabel lblTypeHeading4 = new JLabel("Type:");
-		lblTypeHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblTypeHeading4.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblTypeHeading4.setBounds(71, 27, 47, 16);
 		panelCrewMember4.add(lblTypeHeading4);
 		
 		JLabel lblType4 = new JLabel("<Type>");
 		lblType4.setHorizontalAlignment(SwingConstants.LEFT);
-		lblType4.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblType4.setFont(fontLucidaGrande.deriveFont(Font.PLAIN, 13));
 		lblType4.setBounds(118, 27, 117, 16);
 		panelCrewMember4.add(lblType4);
 		
@@ -359,7 +368,7 @@ public class MainScreen {
 		panelCrewMember4.add(lblCrewAvatarImage4);
 		
 		JLabel lblNextActionHeading4 = new JLabel("Next Action:");
-		lblNextActionHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNextActionHeading4.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblNextActionHeading4.setBounds(71, 57, 88, 16);
 		panelCrewMember4.add(lblNextActionHeading4);
 		
@@ -383,18 +392,18 @@ public class MainScreen {
 		
 		JLabel lblStanimaHeading4 = new JLabel("Stanima:");
 		lblStanimaHeading4.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblStanimaHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblStanimaHeading4.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblStanimaHeading4.setBounds(265, 6, 61, 16);
 		panelCrewMember4.add(lblStanimaHeading4);
 		
 		JLabel lblHealthHeading4 = new JLabel("Health:");
 		lblHealthHeading4.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblHealthHeading4.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblHealthHeading4.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 13));
 		lblHealthHeading4.setBounds(265, 27, 61, 16);
 		panelCrewMember4.add(lblHealthHeading4);
 		
 		JButton btnExecuteNextAction4 = new JButton("Go");
-		btnExecuteNextAction4.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		btnExecuteNextAction4.setFont(fontLucidaGrande.deriveFont(Font.BOLD, 9));
 		btnExecuteNextAction4.setBounds(310, 54, 23, 23);
 		panelCrewMember4.add(btnExecuteNextAction4);
 		
@@ -445,5 +454,17 @@ public class MainScreen {
 		Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
 		unscaledImageIcon = new ImageIcon(newimg);
 		return unscaledImageIcon;
+	}
+	
+	private Font LoadEmbededFont(String directory) {
+		InputStream is = MainScreen.class.getResourceAsStream(directory);
+		Font fontNewFont;
+		try {
+			fontNewFont = Font.createFont(Font.TRUETYPE_FONT, is);
+		} catch (FontFormatException | IOException e1) {
+			//Load Generic Font
+			fontNewFont = new Font("Arial", Font.PLAIN, 10);
+		}
+		return fontNewFont;
 	}
 }
