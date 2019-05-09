@@ -82,10 +82,13 @@ public class MainScreen {
 		ImageIcon unscaledBackgroundImage = new ImageIcon(MainScreen.class.getResource("/Images/Main_Screen_Background.png"));
 		ImageIcon backgroundImage = scaledImageIcon(unscaledBackgroundImage, BG_IMAGE_SCALE_FACTOR);
 		
+		ImageIcon unscaledimgExecuteNextAction = new ImageIcon(MainScreen.class.getResource("/Images/Go.png"));
+		ImageIcon imgExecuteNextAction = scaledImageIcon(unscaledimgExecuteNextAction, GO_BUTTON_SCALE_FACTOR);
+		
 		JLabel lblShipName = new JLabel("USS Enterprise".toUpperCase());
 		lblShipName.setHorizontalAlignment(SwingConstants.CENTER);
 		// Sets text size based on length of ship name
-		int shipNameFontSize = Math.min(50 * 11 / (10 + lblShipName.getText().length()), 32);
+		int shipNameFontSize = Math.min(50 * 13 / (10 + (int)(1.9*lblShipName.getText().length())), 32);
 		lblShipName.setFont(new Font("Dialog", Font.BOLD, shipNameFontSize));
 		lblShipName.setForeground(BG_BLUE);
 		lblShipName.setBounds(286, 365, 194, 39);
@@ -208,9 +211,7 @@ public class MainScreen {
 		panelCrewMember1.add(lblStanimaHeading1);
 		
 		JButton btnExecuteNextAction1 = new JButton("");
-		ImageIcon unscaledimgExecuteNextAction1 = new ImageIcon(MainScreen.class.getResource("/Images/Go.png"));
-		ImageIcon imgExecuteNextAction1 = scaledImageIcon(unscaledimgExecuteNextAction1, GO_BUTTON_SCALE_FACTOR);
-		btnExecuteNextAction1.setIcon(imgExecuteNextAction1);
+		btnExecuteNextAction1.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -304,6 +305,7 @@ public class MainScreen {
 		panelCrewMember2.add(lblHealthHeading2);
 		
 		JButton btnExecuteNextAction2 = new JButton("Go");
+		btnExecuteNextAction2.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction2.setFont(new Font("Dialog", Font.PLAIN, 9));
 		btnExecuteNextAction2.setBounds(310, 54, 23, 23);
 		panelCrewMember2.add(btnExecuteNextAction2);
@@ -386,7 +388,7 @@ public class MainScreen {
 		panelCrewMember3.add(lblHealthHeading3);
 		
 		JButton btnExecuteNextAction3 = new JButton("Go");
-		btnExecuteNextAction3.setFont(new Font("Dialog", Font.PLAIN, 9));
+		btnExecuteNextAction3.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction3.setBounds(310, 54, 23, 23);
 		panelCrewMember3.add(btnExecuteNextAction3);
 		
@@ -468,6 +470,7 @@ public class MainScreen {
 		panelCrewMember4.add(lblHealthHeading4);
 		
 		JButton btnExecuteNextAction4 = new JButton("Go");
+		btnExecuteNextAction4.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction4.setFont(new Font("Dialog", Font.PLAIN, 9));
 		btnExecuteNextAction4.setBounds(310, 54, 23, 23);
 		panelCrewMember4.add(btnExecuteNextAction4);
