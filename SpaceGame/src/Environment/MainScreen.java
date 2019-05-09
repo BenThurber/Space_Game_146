@@ -66,6 +66,8 @@ public class MainScreen {
 		final int BG_IMAGE_LABEL_WIDTH = WINDOW_WIDTH;
 		final int BG_IMAGE_LABEL_HEIGHT = 895;
 		
+		final float GO_BUTTON_SCALE_FACTOR = 0.35f;
+		
 		final Color BG_BLUE = new Color(17, 152, 234);
 		
 		
@@ -205,8 +207,10 @@ public class MainScreen {
 		lblStanimaHeading1.setBounds(259, 6, 64, 16);
 		panelCrewMember1.add(lblStanimaHeading1);
 		
-		JButton btnExecuteNextAction1 = new JButton("Go");
-		btnExecuteNextAction1.setIcon(null);
+		JButton btnExecuteNextAction1 = new JButton("");
+		ImageIcon unscaledimgExecuteNextAction1 = new ImageIcon(MainScreen.class.getResource("/Images/Go.png"));
+		ImageIcon imgExecuteNextAction1 = scaledImageIcon(unscaledimgExecuteNextAction1, GO_BUTTON_SCALE_FACTOR);
+		btnExecuteNextAction1.setIcon(imgExecuteNextAction1);
 		btnExecuteNextAction1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
