@@ -110,6 +110,27 @@ public class MainScreen {
 		progressBarSheildLvl.setBounds(603, 518, 146, 20);
 		frame.getContentPane().add(progressBarSheildLvl);
 		
+		JButton btnNextPlanet = new JButton("");
+		btnNextPlanet.setOpaque(false);
+		btnNextPlanet.setContentAreaFilled(false);
+		btnNextPlanet.setBorderPainted(false);
+		btnNextPlanet.setBounds(385, 562, 186, 29);
+		frame.getContentPane().add(btnNextPlanet);
+		
+		JButton btnVisitOutpost = new JButton("");
+		btnVisitOutpost.setOpaque(false);
+		btnVisitOutpost.setContentAreaFilled(false);
+		btnVisitOutpost.setBorderPainted(false);
+		btnVisitOutpost.setBounds(210, 562, 175, 29);
+		frame.getContentPane().add(btnVisitOutpost);
+		
+		JButton btnNextDay = new JButton("");
+		btnNextDay.setOpaque(false);
+		btnNextDay.setContentAreaFilled(false);
+		btnNextDay.setBorderPainted(false);
+		btnNextDay.setBounds(570, 562, 140, 29);
+		frame.getContentPane().add(btnNextDay);
+		
 		JPanel panelCrewMember1 = new JPanel();
 		panelCrewMember1.setBackground(new Color(0, 0, 0, 0));
 		panelCrewMember1.setBounds(0, 604, 374, 86);
@@ -411,18 +432,6 @@ public class MainScreen {
 		//flashingLightsGIFLabel.setBounds(326, 240, 124, 39);
 		flashingLightsGIFLabel.setBounds(326, 240, 124, 39);
 		frame.getContentPane().add(flashingLightsGIFLabel);
-		
-		JButton btnVisitOutpost = new JButton("Visit Space Outpost");
-		btnVisitOutpost.setBounds(210, 562, 175, 29);
-		frame.getContentPane().add(btnVisitOutpost);
-		
-		JButton btnNextPlanet = new JButton("Warp to Next Planet");
-		btnNextPlanet.setBounds(385, 562, 186, 29);
-		frame.getContentPane().add(btnNextPlanet);
-		
-		JButton btnNewButton = new JButton("Start Next Day");
-		btnNewButton.setBounds(567, 562, 146, 29);
-		frame.getContentPane().add(btnNewButton);
 		
 		
 		
