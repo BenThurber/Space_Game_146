@@ -26,7 +26,7 @@ import java.awt.event.ActionEvent;
 
 public class MainScreen {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -85,7 +85,7 @@ public class MainScreen {
 		ImageIcon unscaledimgExecuteNextAction = new ImageIcon(MainScreen.class.getResource("/Images/Go.png"));
 		ImageIcon imgExecuteNextAction = scaledImageIcon(unscaledimgExecuteNextAction, GO_BUTTON_SCALE_FACTOR);
 		
-		JLabel lblShipName = new JLabel("USS Enterprise".toUpperCase());
+		JLabel lblShipName = new JLabel("USS Enterprise");
 		lblShipName.setHorizontalAlignment(SwingConstants.CENTER);
 		// Sets text size based on length of ship name
 		int shipNameFontSize = Math.min(50 * 13 / (10 + (int)(1.9*lblShipName.getText().length())), 32);
@@ -304,7 +304,7 @@ public class MainScreen {
 		lblHealthHeading2.setBounds(259, 27, 64, 16);
 		panelCrewMember2.add(lblHealthHeading2);
 		
-		JButton btnExecuteNextAction2 = new JButton("Go");
+		JButton btnExecuteNextAction2 = new JButton("");
 		btnExecuteNextAction2.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction2.setFont(new Font("Dialog", Font.PLAIN, 9));
 		btnExecuteNextAction2.setBounds(310, 54, 23, 23);
@@ -387,7 +387,7 @@ public class MainScreen {
 		lblHealthHeading3.setBounds(262, 27, 61, 16);
 		panelCrewMember3.add(lblHealthHeading3);
 		
-		JButton btnExecuteNextAction3 = new JButton("Go");
+		JButton btnExecuteNextAction3 = new JButton("");
 		btnExecuteNextAction3.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction3.setBounds(310, 54, 23, 23);
 		panelCrewMember3.add(btnExecuteNextAction3);
@@ -469,7 +469,7 @@ public class MainScreen {
 		lblHealthHeading4.setBounds(259, 27, 64, 16);
 		panelCrewMember4.add(lblHealthHeading4);
 		
-		JButton btnExecuteNextAction4 = new JButton("Go");
+		JButton btnExecuteNextAction4 = new JButton("");
 		btnExecuteNextAction4.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction4.setFont(new Font("Dialog", Font.PLAIN, 9));
 		btnExecuteNextAction4.setBounds(310, 54, 23, 23);
@@ -511,4 +511,8 @@ public class MainScreen {
 		unscaledImageIcon = new ImageIcon(newimg);
 		return unscaledImageIcon;
 	}
+	
+//	public void setShipName(String name) {
+//		lblShipName
+//	}
 }
