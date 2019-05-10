@@ -25,12 +25,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MainScreen {
-
+	
+	// Variable environment can be used to get attributes to update labels and such
 	GameEnvironment environment;
 	JFrame frame;
 	
 	/**
 	 * Create the application.
+	 * @wbp.parser.constructor
 	 */
 	public MainScreen(GameEnvironment environment) {
 		this.environment = environment;
@@ -98,19 +100,19 @@ public class MainScreen {
 		frame.getContentPane().add(lblShipName);
 		
 		
-		JLabel lblLocation = new JLabel("Unknown");
+		JLabel lblLocation = new JLabel(environment.getLocation());
 		lblLocation.setForeground(Color.BLACK);
 		lblLocation.setFont(new Font("Dialog", Font.PLAIN, 18));
 		lblLocation.setBounds(86, 448, 129, 16);
 		frame.getContentPane().add(lblLocation);
 		
-		JLabel lblShipParts = new JLabel("0/0");
+		JLabel lblShipParts = new JLabel(String.valueOf(environment.getShipPartsFound()) + '/' + String.valueOf(environment.getShipPartsTotalMissing()));
 		lblShipParts.setForeground(Color.BLACK);
 		lblShipParts.setFont(new Font("Dialog", Font.PLAIN, 30));
 		lblShipParts.setBounds(642, 448, 68, 34);
 		frame.getContentPane().add(lblShipParts);
 		
-		JLabel lblSheildLevel = new JLabel("100%");
+		JLabel lblSheildLevel = new JLabel(String.valueOf(environment.getSheildLevel()) + '%');
 		lblSheildLevel.setForeground(Color.BLACK);
 		lblSheildLevel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblSheildLevel.setBounds(549, 520, 49, 16);
@@ -118,11 +120,16 @@ public class MainScreen {
 		
 		JProgressBar progressBarSheildLvl = new JProgressBar();
 		progressBarSheildLvl.setForeground(new Color(0, 191, 255));
-		progressBarSheildLvl.setValue(100);
+		progressBarSheildLvl.setValue(environment.getSheildLevel());
 		progressBarSheildLvl.setBounds(603, 518, 146, 20);
 		frame.getContentPane().add(progressBarSheildLvl);
 		
 		JButton btnNextPlanet = new JButton("");
+		btnNextPlanet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.moveToNextPlanet();
+			}
+		});
 		btnNextPlanet.setOpaque(false);
 		btnNextPlanet.setContentAreaFilled(false);
 		btnNextPlanet.setBorderPainted(false);
@@ -130,6 +137,11 @@ public class MainScreen {
 		frame.getContentPane().add(btnNextPlanet);
 		
 		JButton btnVisitOutpost = new JButton("");
+		btnVisitOutpost.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.visitSpaceOutpost();
+			}
+		});
 		btnVisitOutpost.setOpaque(false);
 		btnVisitOutpost.setContentAreaFilled(false);
 		btnVisitOutpost.setBorderPainted(false);
@@ -137,6 +149,11 @@ public class MainScreen {
 		frame.getContentPane().add(btnVisitOutpost);
 		
 		JButton btnNextDay = new JButton("");
+		btnNextDay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.startNextDay();
+			}
+		});
 		btnNextDay.setOpaque(false);
 		btnNextDay.setContentAreaFilled(false);
 		btnNextDay.setBorderPainted(false);
