@@ -26,30 +26,33 @@ import java.awt.event.ActionEvent;
 
 public class MainScreen {
 
+	GameEnvironment environment;
 	JFrame frame;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainScreen window = new MainScreen();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
 	 */
+	public MainScreen(GameEnvironment environment) {
+		this.environment = environment;
+		initialize();
+	}
+	// Just for testing?
 	public MainScreen() {
 		initialize();
 	}
+
+
+
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		MainScreen window = new MainScreen();
+//		window.frame.setVisible(true);
+//		
+//	}
+
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -85,7 +88,7 @@ public class MainScreen {
 		ImageIcon unscaledimgExecuteNextAction = new ImageIcon(MainScreen.class.getResource("/Images/Go.png"));
 		ImageIcon imgExecuteNextAction = scaledImageIcon(unscaledimgExecuteNextAction, GO_BUTTON_SCALE_FACTOR);
 		
-		JLabel lblShipName = new JLabel("USS Enterprise");
+		JLabel lblShipName = new JLabel(environment.getShipName());
 		lblShipName.setHorizontalAlignment(SwingConstants.CENTER);
 		// Sets text size based on length of ship name
 		int shipNameFontSize = Math.min(50 * 13 / (10 + (int)(1.9*lblShipName.getText().length())), 32);
@@ -101,11 +104,11 @@ public class MainScreen {
 		lblLocation.setBounds(86, 448, 129, 16);
 		frame.getContentPane().add(lblLocation);
 		
-		JLabel lblActiveCrew = new JLabel("0/0");
-		lblActiveCrew.setForeground(Color.BLACK);
-		lblActiveCrew.setFont(new Font("Dialog", Font.PLAIN, 30));
-		lblActiveCrew.setBounds(642, 448, 68, 34);
-		frame.getContentPane().add(lblActiveCrew);
+		JLabel lblShipParts = new JLabel("0/0");
+		lblShipParts.setForeground(Color.BLACK);
+		lblShipParts.setFont(new Font("Dialog", Font.PLAIN, 30));
+		lblShipParts.setBounds(642, 448, 68, 34);
+		frame.getContentPane().add(lblShipParts);
 		
 		JLabel lblSheildLevel = new JLabel("100%");
 		lblSheildLevel.setForeground(Color.BLACK);
@@ -512,7 +515,32 @@ public class MainScreen {
 		return unscaledImageIcon;
 	}
 	
+	
 //	public void setShipName(String name) {
-//		lblShipName
+//		lblShipName.setText(name);
 //	}
+//	
+//	public String getShipName() {
+//		return lblShipName.getText();
+//	}
+//	
+//	public void setLocation(String location) {
+//		lblLocation.setText(location);
+//	}
+//	
+//	public String getLocation() {
+//		return lblLocation.getText();
+//	}
+//	
+////	public void setShipParts() {
+////		try:
+////			String[] numeratorDenominator = lblShipParts.getText().split("/");
+////			if (numeratorDenominator[0] < numeratorDenominator[1]) {
+////				
+////			}
+////	}
+//	public void setShipParts(String fractionOfParts) {
+//		lblShipParts.setText(fractionOfParts);
+//	}
+
 }
