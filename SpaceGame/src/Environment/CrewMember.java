@@ -9,12 +9,14 @@ public class CrewMember {
 	private final Set<String> SPECIALIZATIONS = new HashSet<String>(Arrays.asList(
 		     new String[] {"engineer", "scientist", "doctor", "navigator", "captain", "communications", "security"}
 		));
+	private final int MAX_ACTIONS = 2;
 	
 	private String name;
 	private String specialization;
 	private int health = 100;
 	private int stamina = 100;
 	private boolean isAlive = true;
+	private int numActions = MAX_ACTIONS;
 	// Integer to identify where CrewMember belongs in the array in Crew and where it goes in the GUI
 	private int crewMemberID;
 	
@@ -90,7 +92,19 @@ public class CrewMember {
 			throw new IllegalArgumentException("CrewMember has an invalid specialization.");
 		}
 	}
-
+	
+	public int getNumActions() {
+		return numActions;
+	}
+	/**Resets number of actions to MAX_ACTIONS*/
+	public void setNumActionsReset() {
+		this.numActions = MAX_ACTIONS;
+	}
+	/**Remove one Action (min 0)*/
+	public void setNumActionsDecrement() {
+		this.numActions = Math.max(this.numActions-1, 0);
+	}
+	
 	public int getCrewMemberID() {
 		return crewMemberID;
 	}
