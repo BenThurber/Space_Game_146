@@ -13,7 +13,9 @@ public class Crew {
 	private CrewMember[] members = new CrewMember[MAX_CREW_MEMBERS];
 	//private List<CrewMember> members = Arrays.asList(new CrewMember[MAX_CREW_MEMBERS]);
 	
-	/**Adds a crew member to the members array.  Can accept either a CrewMember object, or name and specialization*/
+	/**Adds a crew member to the members array.  Can accept either a CrewMember object, 
+	 * or name and specialization.  Sets the CrewMember crewMemberID to the index in 
+	 * the array that its in.*/
 	public void addCrewMember(CrewMember newCrewMember) {
 		int crewListPosition = nextCrewMemberArrayIndex(members);
 		members[crewListPosition] = newCrewMember;
@@ -33,7 +35,11 @@ public class Crew {
 		throw new ArrayIndexOutOfBoundsException("Ship is at capacity.  Max Capacity: " + MAX_CREW_MEMBERS);
 	}
 	
-	public void killCrewMember(int cremMemberID) {
-		
+	public CrewMember getCrewMember(int crewMemberID) {
+		return members[crewMemberID];
 	}
+//	
+//	public void killCrewMember(int cremMemberID) {
+//		
+//	}
 }

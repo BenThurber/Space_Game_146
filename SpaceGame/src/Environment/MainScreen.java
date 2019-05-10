@@ -90,7 +90,7 @@ public class MainScreen {
 		ImageIcon unscaledimgExecuteNextAction = new ImageIcon(MainScreen.class.getResource("/Images/Go.png"));
 		ImageIcon imgExecuteNextAction = scaledImageIcon(unscaledimgExecuteNextAction, GO_BUTTON_SCALE_FACTOR);
 		
-		JLabel lblShipName = new JLabel(environment.getShipName());
+		JLabel lblShipName = new JLabel(environment.ship.getShipName());
 		lblShipName.setHorizontalAlignment(SwingConstants.CENTER);
 		// Sets text size based on length of ship name
 		int shipNameFontSize = Math.min(50 * 13 / (10 + (int)(1.9*lblShipName.getText().length())), 32);
@@ -100,19 +100,19 @@ public class MainScreen {
 		frame.getContentPane().add(lblShipName);
 		
 		
-		JLabel lblLocation = new JLabel(environment.getLocation());
+		JLabel lblLocation = new JLabel(environment.ship.getLocation());
 		lblLocation.setForeground(Color.BLACK);
 		lblLocation.setFont(new Font("Dialog", Font.PLAIN, 18));
 		lblLocation.setBounds(86, 448, 129, 16);
 		frame.getContentPane().add(lblLocation);
 		
-		JLabel lblShipParts = new JLabel(String.valueOf(environment.getShipPartsFound()) + '/' + String.valueOf(environment.getShipPartsTotalMissing()));
+		JLabel lblShipParts = new JLabel(String.valueOf(environment.ship.getShipPartsFound()) + '/' + String.valueOf(environment.ship.getShipPartsTotalMissing()));
 		lblShipParts.setForeground(Color.BLACK);
 		lblShipParts.setFont(new Font("Dialog", Font.PLAIN, 30));
 		lblShipParts.setBounds(642, 448, 68, 34);
 		frame.getContentPane().add(lblShipParts);
 		
-		JLabel lblSheildLevel = new JLabel(String.valueOf(environment.getSheildLevel()) + '%');
+		JLabel lblSheildLevel = new JLabel(String.valueOf(environment.ship.getSheildLevel()) + '%');
 		lblSheildLevel.setForeground(Color.BLACK);
 		lblSheildLevel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblSheildLevel.setBounds(549, 520, 49, 16);
@@ -120,21 +120,34 @@ public class MainScreen {
 		
 		JProgressBar progressBarSheildLvl = new JProgressBar();
 		progressBarSheildLvl.setForeground(new Color(0, 191, 255));
-		progressBarSheildLvl.setValue(environment.getSheildLevel());
+		progressBarSheildLvl.setValue(environment.ship.getSheildLevel());
 		progressBarSheildLvl.setBounds(603, 518, 146, 20);
 		frame.getContentPane().add(progressBarSheildLvl);
 		
 		JButton btnNextPlanet = new JButton("");
-		btnNextPlanet.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				environment.moveToNextPlanet();
-			}
-		});
 		btnNextPlanet.setOpaque(false);
 		btnNextPlanet.setContentAreaFilled(false);
 		btnNextPlanet.setBorderPainted(false);
 		btnNextPlanet.setBounds(385, 562, 186, 29);
 		frame.getContentPane().add(btnNextPlanet);
+		btnNextPlanet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.moveToNextPlanet();
+			}
+		});
+		
+		JButton btnViewInventory = new JButton("");
+		btnViewInventory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.viewInventory();
+			}
+		});
+		btnViewInventory.setOpaque(false);
+		btnViewInventory.setContentAreaFilled(false);
+		btnViewInventory.setBorderPainted(false);
+		btnViewInventory.setBounds(294, 492, 175, 29);
+		frame.getContentPane().add(btnViewInventory);
+		
 		
 		JButton btnVisitOutpost = new JButton("");
 		btnVisitOutpost.addActionListener(new ActionListener() {

@@ -35,7 +35,7 @@ public class CrewMember {
 		
 	}
 	
-	/**Crew member eats and increases some amount of stamina.*/
+	/**Crew member eats and increases some amount of stamina and health.*/
 	public void eat() {
 		
 	}
