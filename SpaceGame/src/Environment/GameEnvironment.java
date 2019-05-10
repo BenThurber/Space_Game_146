@@ -3,7 +3,9 @@ package Environment;
 import java.awt.EventQueue;
 
 public class GameEnvironment {
-
+	
+	public Ship ship = new Ship();
+	
 	private String shipName = "";
 	private String location = "";
 	private int shipPartsFound = 0;
@@ -55,7 +57,7 @@ public class GameEnvironment {
 		return sheildLevel;
 	}
 	public void setSheildLevel(int sheildLevel) {
-		this.sheildLevel = sheildLevel;
+		this.sheildLevel = Math.max(Math.min(sheildLevel, 100), 0);
 	}
 	
 	public String getLocation() {
