@@ -13,7 +13,6 @@ public class CrewMember {
 	private String name;
 	private String specialization;
 	private int health = 100;
-	private int hunger = 0;
 	private int stamina = 100;
 	private boolean isAlive = true;
 	// Integer to identify where CrewMember belongs in the array in Crew and where it goes in the GUI
@@ -36,7 +35,7 @@ public class CrewMember {
 		
 	}
 	
-	/**Crew member eats and decreases some amount of hunger.*/
+	/**Crew member eats and increases some amount of stamina.*/
 	public void eat() {
 		
 	}
@@ -49,22 +48,22 @@ public class CrewMember {
 	public int getHealth() {
 		return health;
 	}
+	/**Sets health.  If dropped to 0 CrewMember dies.*/
 	public void setHealth(int health) {
-		this.health = health;
+		this.health = Math.max(Math.min(health, 100), 0);
+		if (this.health == 0) {
+			this.kill();
+		}
 	}
-
-	public int getHunger() {
-		return hunger;
-	}
-	public void setHunger(int hunger) {
-		this.hunger = hunger;
-	}
-
 	public int getStamina() {
 		return stamina;
 	}
+	/**Sets stamina.  If dropped to 0 CrewMember dies.*/
 	public void setStamina(int stamina) {
-		this.stamina = stamina;
+		this.stamina = Math.max(Math.min(stamina, 100), 0);
+		if (this.stamina == 0) {
+			this.kill();
+		}
 	}
 
 	public String getName() {
@@ -98,8 +97,6 @@ public class CrewMember {
 	public void setCrewMemberID(int crewMemberID) {
 		this.crewMemberID = crewMemberID;
 	}
-	
-	
 	
 	
 	
