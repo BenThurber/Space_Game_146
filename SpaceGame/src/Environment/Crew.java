@@ -12,19 +12,29 @@ public class Crew {
 	private CrewMember[] members = new CrewMember[MAX_CREW_MEMBERS];
 	//private List<CrewMember> members = Arrays.asList(new CrewMember[MAX_CREW_MEMBERS]);
 	
+	public Crew() {
+	}
 	/**Construct new Crew from List (ArrayList)*/
 	public Crew(List<CrewMember> members) {
-		addNewCrewMembersList(members);
+		addNewCrewMembers(members);
 	}
 	/**Construct new Crew from primitive array*/
 	public Crew(CrewMember[] members) {
+		addNewCrewMembers(members);
+	}
+	
+	/**Adds a List of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
+	 * the array that its in.*/
+	public void addNewCrewMembers(CrewMember[] members) {
 		List<CrewMember> membersList = new ArrayList<CrewMember>(MAX_CREW_MEMBERS);
 		for (CrewMember member: members) {
 			membersList.add(member);
 		}
-		addNewCrewMembersList(membersList);
+		addNewCrewMembers(membersList);
 	}
-	private void addNewCrewMembersList(List<CrewMember> members) {
+	/**Adds a primitive array of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
+	 * the array that its in.*/
+	public void addNewCrewMembers(List<CrewMember> members) {
 		CrewMember nextMember;
 		for (int i=0; i < MAX_CREW_MEMBERS; i++) {
 			try {
@@ -33,10 +43,9 @@ public class Crew {
 				nextMember = null;
 			}
 			this.members[i] = nextMember;
+			this.members[i].setCrewMemberID(i);
 		}
 	}
-	
-
 		
 	/**Adds a CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
 	 * the array that its in.*/

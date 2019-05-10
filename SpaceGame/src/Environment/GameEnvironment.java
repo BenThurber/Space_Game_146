@@ -1,11 +1,11 @@
 package Environment;
 
-import java.awt.EventQueue;
-
 public class GameEnvironment {
 	
+	private CrewMember[] testMembers = {new CrewMember("John", "Security"), new CrewMember("Cortana", "Scientist"), new CrewMember("Arbiter", "Security"), new CrewMember("Johnson", "Security")};
+	
 	public Ship ship = new Ship();
-	public Crew crew = new Crew();
+	private Crew crew = new Crew(testMembers);
 	
 	
 	public void visitSpaceOutpost() {
