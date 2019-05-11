@@ -16,6 +16,8 @@ import java.awt.Font;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
+import javax.swing.ComboBoxModel;
+
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -59,7 +61,7 @@ public class MainScreen {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		final int WINDOW_X = 320;
 		final int WINDOW_Y = 100;
 		final int WINDOW_WIDTH = 767;
@@ -106,13 +108,13 @@ public class MainScreen {
 		lblLocation.setBounds(86, 448, 129, 16);
 		frame.getContentPane().add(lblLocation);
 		
-		JLabel lblShipParts = new JLabel(String.valueOf(environment.ship.getShipPartsFound()) + '/' + String.valueOf(environment.ship.getShipPartsTotalMissing()));
+		JLabel lblShipParts = new JLabel(String.valueOf(environment.ship.getShipPartsFound()) + "/" + String.valueOf(environment.ship.getShipPartsTotalMissing()));
 		lblShipParts.setForeground(Color.BLACK);
 		lblShipParts.setFont(new Font("Dialog", Font.PLAIN, 30));
 		lblShipParts.setBounds(642, 448, 68, 34);
 		frame.getContentPane().add(lblShipParts);
 		
-		JLabel lblSheildLevel = new JLabel(String.valueOf(environment.ship.getSheildLevel()) + '%');
+		JLabel lblSheildLevel = new JLabel(String.valueOf(environment.ship.getSheildLevel()) + "%");
 		lblSheildLevel.setForeground(Color.BLACK);
 		lblSheildLevel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblSheildLevel.setBounds(549, 520, 49, 16);
@@ -174,6 +176,8 @@ public class MainScreen {
 		frame.getContentPane().add(btnNextDay);
 		
 		JPanel panelCrewMember1 = new JPanel();
+		final int CREW_MEMBER_1_ID = 0;
+		CrewMember crewMember1 = environment.crew.getCrewMember(CREW_MEMBER_1_ID);
 		panelCrewMember1.setBackground(new Color(0, 0, 0, 0));
 		panelCrewMember1.setBounds(0, 604, 374, 86);
 		frame.getContentPane().add(panelCrewMember1);
@@ -185,7 +189,7 @@ public class MainScreen {
 		lblNameHeading1.setBounds(6, 6, 47, 16);
 		panelCrewMember1.add(lblNameHeading1);
 		
-		JLabel lblName1 = new JLabel("<Name>");
+		JLabel lblName1 = new JLabel(crewMember1.getName());
 		lblName1.setForeground(Color.BLACK);
 		lblName1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblName1.setBounds(54, 6, 215, 16);
@@ -197,7 +201,7 @@ public class MainScreen {
 		lblTypeHeading1.setBounds(71, 27, 47, 16);
 		panelCrewMember1.add(lblTypeHeading1);
 		
-		JLabel lblType1 = new JLabel("<Type>");
+		JLabel lblType1 = new JLabel(crewMember1.getSpecialization());
 		lblType1.setForeground(Color.BLACK);
 		lblType1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType1.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -215,23 +219,22 @@ public class MainScreen {
 		lblNextActionHeading1.setBounds(71, 57, 88, 16);
 		panelCrewMember1.add(lblNextActionHeading1);
 		
-		JComboBox comboBoxNextAction1 = new JComboBox();
-		comboBoxNextAction1.setForeground(new Color(74, 170, 1));
-		comboBoxNextAction1.setBackground(new Color(74, 170, 1));
+		JComboBox comboBoxNextAction1 = new JComboBox(crewMember1.getActions());
 		comboBoxNextAction1.setBounds(160, 53, 146, 27);
 		panelCrewMember1.add(comboBoxNextAction1);
 		
-		JLabel lblRemainingActions1 = new JLabel("2/2");
+		JLabel lblRemainingActions1 = new JLabel(String.valueOf((crewMember1.getNumActions()) + "/" + crewMember1.MAX_ACTIONS));
+		lblRemainingActions1.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRemainingActions1.setForeground(Color.BLACK);
 		lblRemainingActions1.setBounds(345, 57, 23, 16);
 		panelCrewMember1.add(lblRemainingActions1);
 		
-		JLabel lblStanimaLevel1 = new JLabel("100%");
+		JLabel lblStanimaLevel1 = new JLabel(String.valueOf(crewMember1.getStamina()) + "%");
 		lblStanimaLevel1.setForeground(Color.BLACK);
 		lblStanimaLevel1.setBounds(332, 6, 36, 16);
 		panelCrewMember1.add(lblStanimaLevel1);
 		
-		JLabel lblHealthLevel1 = new JLabel("100%");
+		JLabel lblHealthLevel1 = new JLabel(String.valueOf(crewMember1.getHealth()) + "%");
 		lblHealthLevel1.setForeground(Color.BLACK);
 		lblHealthLevel1.setBounds(332, 27, 36, 16);
 		panelCrewMember1.add(lblHealthLevel1);
@@ -261,6 +264,8 @@ public class MainScreen {
 		panelCrewMember1.add(btnExecuteNextAction1);
 		
 		JPanel panelCrewMember2 = new JPanel();
+		final int CREW_MEMBER_2_ID = 1;
+		CrewMember crewMember2 = environment.crew.getCrewMember(CREW_MEMBER_2_ID);
 		panelCrewMember2.setLayout(null);
 		panelCrewMember2.setBackground(new Color(0, 0, 0, 0));
 		panelCrewMember2.setBounds(390, 604, 374, 86);
@@ -272,7 +277,7 @@ public class MainScreen {
 		lblNameHeading2.setBounds(6, 6, 47, 16);
 		panelCrewMember2.add(lblNameHeading2);
 		
-		JLabel lblName2 = new JLabel("<Name>");
+		JLabel lblName2 = new JLabel(crewMember2.getName());
 		lblName2.setForeground(Color.BLACK);
 		lblName2.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblName2.setBounds(54, 6, 215, 16);
@@ -284,7 +289,7 @@ public class MainScreen {
 		lblTypeHeading2.setBounds(71, 27, 47, 16);
 		panelCrewMember2.add(lblTypeHeading2);
 		
-		JLabel lblType2 = new JLabel("<Type>");
+		JLabel lblType2 = new JLabel(crewMember2.getSpecialization());
 		lblType2.setForeground(Color.BLACK);
 		lblType2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType2.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -302,23 +307,22 @@ public class MainScreen {
 		lblNextActionHeading2.setBounds(71, 57, 88, 16);
 		panelCrewMember2.add(lblNextActionHeading2);
 		
-		JComboBox comboBoxNextAction2 = new JComboBox();
-		comboBoxNextAction2.setForeground(new Color(74, 170, 1));
-		comboBoxNextAction2.setBackground(new Color(74, 170, 1));
+		JComboBox comboBoxNextAction2 = new JComboBox(crewMember2.getActions());
 		comboBoxNextAction2.setBounds(160, 53, 146, 27);
 		panelCrewMember2.add(comboBoxNextAction2);
 		
-		JLabel lblRemainingActions2 = new JLabel("2/2");
+		JLabel lblRemainingActions2 = new JLabel(String.valueOf((crewMember2.getNumActions()) + "/" + crewMember2.MAX_ACTIONS));
+		lblRemainingActions2.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRemainingActions2.setForeground(Color.BLACK);
 		lblRemainingActions2.setBounds(345, 57, 23, 16);
 		panelCrewMember2.add(lblRemainingActions2);
 		
-		JLabel lblStanimaLevel2 = new JLabel("100%");
+		JLabel lblStanimaLevel2 = new JLabel(String.valueOf(crewMember2.getStamina()) + "%");
 		lblStanimaLevel2.setForeground(Color.BLACK);
 		lblStanimaLevel2.setBounds(332, 6, 36, 16);
 		panelCrewMember2.add(lblStanimaLevel2);
 		
-		JLabel lblHealthLevel2 = new JLabel("100%");
+		JLabel lblHealthLevel2 = new JLabel(String.valueOf(crewMember2.getHealth()) + "%");
 		lblHealthLevel2.setForeground(Color.BLACK);
 		lblHealthLevel2.setBounds(332, 27, 36, 16);
 		panelCrewMember2.add(lblHealthLevel2);
@@ -344,6 +348,8 @@ public class MainScreen {
 		panelCrewMember2.add(btnExecuteNextAction2);
 		
 		JPanel panelCrewMember3 = new JPanel();
+		final int CREW_MEMBER_3_ID = 2;
+		CrewMember crewMember3= environment.crew.getCrewMember(CREW_MEMBER_3_ID);
 		panelCrewMember3.setLayout(null);
 		panelCrewMember3.setBackground(new Color(0, 0, 0, 0));
 		panelCrewMember3.setBounds(0, 705, 374, 86);
@@ -355,7 +361,7 @@ public class MainScreen {
 		lblNameHeading3.setBounds(6, 6, 47, 16);
 		panelCrewMember3.add(lblNameHeading3);
 		
-		JLabel lblName3 = new JLabel("<Name>");
+		JLabel lblName3 = new JLabel(crewMember3.getName());
 		lblName3.setForeground(Color.BLACK);
 		lblName3.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblName3.setBounds(54, 6, 215, 16);
@@ -367,7 +373,7 @@ public class MainScreen {
 		lblTypeHeading3.setBounds(71, 27, 47, 16);
 		panelCrewMember3.add(lblTypeHeading3);
 		
-		JLabel lblType3 = new JLabel("<Type>");
+		JLabel lblType3 = new JLabel(crewMember3.getSpecialization());
 		lblType3.setForeground(Color.BLACK);
 		lblType3.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType3.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -385,23 +391,22 @@ public class MainScreen {
 		lblNextActionHeading3.setBounds(71, 57, 88, 16);
 		panelCrewMember3.add(lblNextActionHeading3);
 		
-		JComboBox comboBoxNextAction3 = new JComboBox();
-		comboBoxNextAction3.setForeground(new Color(74, 170, 1));
-		comboBoxNextAction3.setBackground(new Color(74, 170, 1));
+		JComboBox comboBoxNextAction3 = new JComboBox(crewMember3.getActions());
 		comboBoxNextAction3.setBounds(160, 53, 146, 27);
 		panelCrewMember3.add(comboBoxNextAction3);
 		
-		JLabel lblRemainingActions3 = new JLabel("2/2");
+		JLabel lblRemainingActions3 = new JLabel(String.valueOf((crewMember3.getNumActions()) + "/" + crewMember3.MAX_ACTIONS));
+		lblRemainingActions3.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRemainingActions3.setForeground(Color.BLACK);
 		lblRemainingActions3.setBounds(345, 57, 23, 16);
 		panelCrewMember3.add(lblRemainingActions3);
 		
-		JLabel lblStanimaLevel3 = new JLabel("100%");
+		JLabel lblStanimaLevel3 = new JLabel(String.valueOf(crewMember3.getStamina()) + "%");
 		lblStanimaLevel3.setForeground(Color.BLACK);
 		lblStanimaLevel3.setBounds(332, 6, 36, 16);
 		panelCrewMember3.add(lblStanimaLevel3);
 		
-		JLabel lblHealthLevel3 = new JLabel("100%");
+		JLabel lblHealthLevel3 = new JLabel(String.valueOf(crewMember3.getHealth()) + "%");
 		lblHealthLevel3.setForeground(Color.BLACK);
 		lblHealthLevel3.setBounds(332, 27, 36, 16);
 		panelCrewMember3.add(lblHealthLevel3);
@@ -426,6 +431,8 @@ public class MainScreen {
 		panelCrewMember3.add(btnExecuteNextAction3);
 		
 		JPanel panelCrewMember4 = new JPanel();
+		final int CREW_MEMBER_4_ID = 3;
+		CrewMember crewMember4 = environment.crew.getCrewMember(CREW_MEMBER_4_ID);
 		panelCrewMember4.setLayout(null);
 		panelCrewMember4.setBackground(new Color(0, 0, 0, 0));
 		panelCrewMember4.setBounds(390, 705, 374, 86);
@@ -437,7 +444,7 @@ public class MainScreen {
 		lblNameHeading4.setBounds(6, 6, 47, 16);
 		panelCrewMember4.add(lblNameHeading4);
 		
-		JLabel lblName4 = new JLabel("<Name>");
+		JLabel lblName4 = new JLabel(crewMember4.getName());
 		lblName4.setForeground(Color.BLACK);
 		lblName4.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblName4.setBounds(54, 6, 215, 16);
@@ -449,7 +456,7 @@ public class MainScreen {
 		lblTypeHeading4.setBounds(71, 27, 47, 16);
 		panelCrewMember4.add(lblTypeHeading4);
 		
-		JLabel lblType4 = new JLabel("<Type>");
+		JLabel lblType4 = new JLabel(crewMember4.getSpecialization());
 		lblType4.setForeground(Color.BLACK);
 		lblType4.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType4.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -467,23 +474,22 @@ public class MainScreen {
 		lblNextActionHeading4.setBounds(71, 57, 88, 16);
 		panelCrewMember4.add(lblNextActionHeading4);
 		
-		JComboBox comboBoxNextAction4 = new JComboBox();
-		comboBoxNextAction4.setForeground(new Color(74, 170, 1));
-		comboBoxNextAction4.setBackground(new Color(74, 170, 1));
+		JComboBox comboBoxNextAction4 = new JComboBox(crewMember4.getActions());
 		comboBoxNextAction4.setBounds(160, 53, 146, 27);
 		panelCrewMember4.add(comboBoxNextAction4);
 		
-		JLabel lblRemainingActions4 = new JLabel("2/2");
+		JLabel lblRemainingActions4 = new JLabel(String.valueOf((crewMember4.getNumActions()) + "/" + crewMember4.MAX_ACTIONS));
+		lblRemainingActions4.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRemainingActions4.setForeground(Color.BLACK);
 		lblRemainingActions4.setBounds(345, 57, 23, 16);
 		panelCrewMember4.add(lblRemainingActions4);
 		
-		JLabel lblStanimaLevel4 = new JLabel("100%");
+		JLabel lblStanimaLevel4 = new JLabel(String.valueOf(crewMember4.getStamina()) + "%");
 		lblStanimaLevel4.setForeground(Color.BLACK);
 		lblStanimaLevel4.setBounds(332, 6, 36, 16);
 		panelCrewMember4.add(lblStanimaLevel4);
 		
-		JLabel lblHealthLevel4 = new JLabel("100%");
+		JLabel lblHealthLevel4 = new JLabel(String.valueOf(crewMember4.getHealth()) + "%");
 		lblHealthLevel4.setForeground(Color.BLACK);
 		lblHealthLevel4.setBounds(332, 27, 36, 16);
 		panelCrewMember4.add(lblHealthLevel4);
@@ -546,31 +552,5 @@ public class MainScreen {
 	}
 	
 	
-//	public void setShipName(String name) {
-//		lblShipName.setText(name);
-//	}
-//	
-//	public String getShipName() {
-//		return lblShipName.getText();
-//	}
-//	
-//	public void setLocation(String location) {
-//		lblLocation.setText(location);
-//	}
-//	
-//	public String getLocation() {
-//		return lblLocation.getText();
-//	}
-//	
-////	public void setShipParts() {
-////		try:
-////			String[] numeratorDenominator = lblShipParts.getText().split("/");
-////			if (numeratorDenominator[0] < numeratorDenominator[1]) {
-////				
-////			}
-////	}
-//	public void setShipParts(String fractionOfParts) {
-//		lblShipParts.setText(fractionOfParts);
-//	}
 
 }

@@ -1,15 +1,18 @@
 package Environment;
 
 import java.util.Set;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
 public class CrewMember {
 	
-	private final Set<String> SPECIALIZATIONS = new HashSet<String>(Arrays.asList(
-		     new String[] {"engineer", "scientist", "doctor", "navigator", "captain", "communications", "security"}
-		));
-	private final int MAX_ACTIONS = 2;
+	public final Set<String> SPECIALIZATIONS = new HashSet<String>(Arrays.asList(
+		     new String[] {"engineer", "scientist", "doctor", "navigator", "captain", "communications", "security"}));
+	
+	public final String[] ACTIONS = new String[] {"eat", "pilot ship", "repair sheilds", "search planet", "sleep"};
+	
+	public final int MAX_ACTIONS = 2;
 	
 	private String name;
 	private String specialization;
@@ -51,9 +54,9 @@ public class CrewMember {
 		return health;
 	}
 	/**Sets health.  If dropped to 0 CrewMember dies.*/
-	public void setHealth(int health) {
-		this.health = Math.max(Math.min(health, 100), 0);
-		if (this.health == 0) {
+	public void addHealth(int addedHealth) {
+		this.health = Math.max(Math.min(this.health + addedHealth, 100), 0);
+		if (this.health <= 0) {
 			this.kill();
 		}
 	}
@@ -61,9 +64,9 @@ public class CrewMember {
 		return stamina;
 	}
 	/**Sets stamina.  If dropped to 0 CrewMember dies.*/
-	public void setStamina(int stamina) {
-		this.stamina = Math.max(Math.min(stamina, 100), 0);
-		if (this.stamina == 0) {
+	public void addStamina(int addedStamina) {
+		this.stamina = Math.max(Math.min(this.stamina + addedStamina, 100), 0);
+		if (this.stamina <= 0) {
 			this.kill();
 		}
 	}
@@ -101,7 +104,7 @@ public class CrewMember {
 		this.numActions = MAX_ACTIONS;
 	}
 	/**Remove one Action (min 0)*/
-	public void setNumActionsDecrement() {
+	public void decrementNumActions() {
 		this.numActions = Math.max(this.numActions-1, 0);
 	}
 	
@@ -110,6 +113,14 @@ public class CrewMember {
 	}
 	public void setCrewMemberID(int crewMemberID) {
 		this.crewMemberID = crewMemberID;
+	}
+	
+	public String[] getActions() {
+		String[] actions = new String[ACTIONS.length];
+		for (int i=0; i < ACTIONS.length; i++) {
+			actions[i] = Misc.capitalize(ACTIONS[i]);
+		}
+		return actions;
 	}
 	
 	
