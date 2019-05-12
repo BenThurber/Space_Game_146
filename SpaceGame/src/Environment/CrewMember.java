@@ -125,7 +125,7 @@ public class CrewMember {
 	}
 	/**Hacky.  This should be fixed with subclasses of CrewMember and inheritance*/
 	private void setAvatarImage(String specialization) {
-		avatarImage = "/Images/Avatars/" + specialization + ".png";
+		avatarImage = "/Images/Avatars/" + specialization.toLowerCase() + ".png";
 	}
 	
 	public int getNumActions() {

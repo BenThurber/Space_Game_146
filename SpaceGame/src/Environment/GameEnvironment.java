@@ -2,7 +2,7 @@ package Environment;
 
 public class GameEnvironment {
 	
-	private static CrewMember[] testMembers = {new CrewMember("John", "Security"), new CrewMember("Cortana", "Scientist"), new CrewMember("Arbiter", "Navigator"), new CrewMember("Keys", "Captain")};
+	private static CrewMember[] testMembers = {new CrewMember("John", "Scientist"), new CrewMember("Cortana", "Communications"), new CrewMember("Arbiter", "Navigator"), new CrewMember("Keys", "Captain")};
 	
 	public static Ship ship = new Ship();
 	public static Crew crew = new Crew(testMembers);
