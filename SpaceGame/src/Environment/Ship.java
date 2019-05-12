@@ -2,7 +2,7 @@ package Environment;
 
 public class Ship {
 	
-	private String shipName = "";
+	private String name = "";
 	private String location = "";
 	private int shipPartsFound = 0;
 	private int shipPartsTotalMissing = 0;
@@ -10,11 +10,11 @@ public class Ship {
 	//private int maxCrewCapacity;  Should we?
 	
 	
-	public String getShipName() {
-		return shipName;
+	public String getName() {
+		return name;
 	}
-	public void setShipName(String newshipName) {
-		this.shipName = newshipName;
+	public void setName(String newshipName) {
+		this.name = newshipName;
 	}
 	
 	public int getShipPartsFound() {
@@ -34,8 +34,8 @@ public class Ship {
 	public int getSheildLevel() {
 		return sheildLevel;
 	}
-	public void setSheildLevel(int sheildLevel) {
-		this.sheildLevel = Math.max(Math.min(sheildLevel, 100), 0);
+	public void addToSheildLevel(int addedSheildEnergy) {
+		this.sheildLevel = Math.max(Math.min(this.sheildLevel + addedSheildEnergy, 100), 0);
 	}
 	
 	public String getLocation() {

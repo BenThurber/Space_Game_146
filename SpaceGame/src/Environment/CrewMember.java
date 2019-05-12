@@ -24,6 +24,7 @@ public class CrewMember {
 	private int numActions = MAX_ACTIONS;
 	// Integer to identify where CrewMember belongs in the array in Crew and where it goes in the GUI
 	private int crewMemberID;
+	private String avatarImage;
 	
 	
 	public CrewMember(String name, String specialization, int cremMemberID) {
@@ -112,10 +113,19 @@ public class CrewMember {
 	}
 	public void setSpecialization(String specialization) {
 		if (SPECIALIZATIONS.contains(specialization.toLowerCase())) {
-			this.specialization = specialization;
+			this.specialization = Misc.capitalize(specialization);
+			setAvatarImage(this.specialization);
 		} else {
 			throw new IllegalArgumentException("CrewMember has an invalid specialization.");
 		}
+	}
+	
+	public String getAvatarImage() {
+		return avatarImage;
+	}
+	/**Hacky.  This should be fixed with subclasses of CrewMember and inheritance*/
+	private void setAvatarImage(String specialization) {
+		avatarImage = "/Images/Avatars/" + specialization + ".png";
 	}
 	
 	public int getNumActions() {
@@ -136,6 +146,10 @@ public class CrewMember {
 	public void setCrewMemberID(int crewMemberID) {
 		this.crewMemberID = crewMemberID;
 	}
+	
+	
+	
+	
 	
 //	public String[] getActions() {
 //		

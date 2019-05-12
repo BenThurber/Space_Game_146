@@ -76,6 +76,8 @@ public class MainScreen {
 		final int BG_IMAGE_LABEL_WIDTH = WINDOW_WIDTH;
 		final int BG_IMAGE_LABEL_HEIGHT = 895;
 		
+		final int AVATAR_IMG_SIZE = 53;
+		
 		final float GO_BUTTON_SCALE_FACTOR = 0.35f;
 		
 //		final int HEALTH_BAR_GREEN_LVL = (100 * 2/3);
@@ -98,7 +100,7 @@ public class MainScreen {
 		ImageIcon unscaledimgExecuteNextAction = new ImageIcon(MainScreen.class.getResource("/Images/Go.png"));
 		ImageIcon imgExecuteNextAction = scaledImageIcon(unscaledimgExecuteNextAction, GO_BUTTON_SCALE_FACTOR);
 		
-		JLabel lblShipName = new JLabel(environment.ship.getShipName());
+		JLabel lblShipName = new JLabel(environment.ship.getName());
 		lblShipName.setHorizontalAlignment(SwingConstants.CENTER);
 		// Sets text size based on length of ship name
 		int shipNameFontSize = Math.min(50 * 13 / (10 + (int)(1.9*lblShipName.getText().length())), 32);
@@ -222,7 +224,10 @@ public class MainScreen {
 		lblType1.setBounds(118, 27, 117, 16);
 		panelCrewMember1.add(lblType1);
 		
-		JLabel lblCrewAvatarImage1 = new JLabel("<Image>");
+		JLabel lblCrewAvatarImage1 = new JLabel("");
+		ImageIcon unscaledAvatarImg1 = new ImageIcon(MainScreen.class.getResource(crewMember1.getAvatarImage()));
+		ImageIcon avatarImg1 = scaledImageIcon(unscaledAvatarImg1, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
+		lblCrewAvatarImage1.setIcon(avatarImg1);
 		lblCrewAvatarImage1.setForeground(Color.BLACK);
 		lblCrewAvatarImage1.setBounds(6, 27, 53, 53);
 		panelCrewMember1.add(lblCrewAvatarImage1);
@@ -320,7 +325,10 @@ public class MainScreen {
 		lblType2.setBounds(118, 27, 117, 16);
 		panelCrewMember2.add(lblType2);
 		
-		JLabel lblCrewAvatarImage2 = new JLabel("<Image>");
+		JLabel lblCrewAvatarImage2 = new JLabel("");
+		ImageIcon unscaledAvatarImg2 = new ImageIcon(MainScreen.class.getResource(crewMember2.getAvatarImage()));
+		ImageIcon avatarImg2 = scaledImageIcon(unscaledAvatarImg2, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
+		lblCrewAvatarImage2.setIcon(avatarImg2);
 		lblCrewAvatarImage2.setForeground(Color.BLACK);
 		lblCrewAvatarImage2.setBounds(6, 27, 53, 53);
 		panelCrewMember2.add(lblCrewAvatarImage2);
@@ -413,7 +421,10 @@ public class MainScreen {
 		lblType3.setBounds(118, 27, 117, 16);
 		panelCrewMember3.add(lblType3);
 		
-		JLabel lblCrewAvatarImage3 = new JLabel("<Image>");
+		JLabel lblCrewAvatarImage3 = new JLabel("");
+		ImageIcon unscaledAvatarImg3 = new ImageIcon(MainScreen.class.getResource(crewMember3.getAvatarImage()));
+		ImageIcon avatarImg3 = scaledImageIcon(unscaledAvatarImg3, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
+		lblCrewAvatarImage3.setIcon(avatarImg3);
 		lblCrewAvatarImage3.setForeground(Color.BLACK);
 		lblCrewAvatarImage3.setBounds(6, 27, 53, 53);
 		panelCrewMember3.add(lblCrewAvatarImage3);
@@ -505,7 +516,10 @@ public class MainScreen {
 		lblType4.setBounds(118, 27, 117, 16);
 		panelCrewMember4.add(lblType4);
 		
-		JLabel lblCrewAvatarImage4 = new JLabel("<Image>");
+		JLabel lblCrewAvatarImage4 = new JLabel("");
+		ImageIcon unscaledAvatarImg4 = new ImageIcon(MainScreen.class.getResource(crewMember4.getAvatarImage()));
+		ImageIcon avatarImg4 = scaledImageIcon(unscaledAvatarImg4, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
+		lblCrewAvatarImage4.setIcon(avatarImg4);
 		lblCrewAvatarImage4.setForeground(Color.BLACK);
 		lblCrewAvatarImage4.setBounds(6, 27, 53, 53);
 		panelCrewMember4.add(lblCrewAvatarImage4);
