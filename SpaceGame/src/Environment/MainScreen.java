@@ -24,6 +24,9 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.awt.event.ActionEvent;
 
 public class MainScreen {
@@ -74,6 +77,9 @@ public class MainScreen {
 		final int BG_IMAGE_LABEL_HEIGHT = 895;
 		
 		final float GO_BUTTON_SCALE_FACTOR = 0.35f;
+		
+//		final int HEALTH_BAR_GREEN_LVL = (100 * 2/3);
+//		final int HEALTH_BAR_YELLOW_LVL = (100 * 1/3);
 		
 		final Color BG_BLUE = new Color(17, 152, 234);
 		
@@ -183,6 +189,14 @@ public class MainScreen {
 		frame.getContentPane().add(panelCrewMember1);
 		panelCrewMember1.setLayout(null);
 		
+		JProgressBar progressBarHealth1 = new JProgressBar();
+		progressBarHealth1.setToolTipText("Health Level");
+		progressBarHealth1.setBackground(Color.BLACK);
+		progressBarHealth1.setValue(crewMember1.getHealth());
+		progressBarHealth1.setForeground(progressBarColor(progressBarHealth1.getValue()));
+		progressBarHealth1.setBounds(6, 75, 53, 8);
+		panelCrewMember1.add(progressBarHealth1);
+		
 		JLabel lblNameHeading1 = new JLabel("Name:");
 		lblNameHeading1.setForeground(Color.BLACK);
 		lblNameHeading1.setFont(new Font("Dialog", Font.BOLD, 12));
@@ -219,7 +233,7 @@ public class MainScreen {
 		lblNextActionHeading1.setBounds(71, 57, 88, 16);
 		panelCrewMember1.add(lblNextActionHeading1);
 		
-		JComboBox comboBoxNextAction1 = new JComboBox(crewMember1.getActions());
+		JComboBox comboBoxNextAction1 = new JComboBox(convertCollectionForComboBox(crewMember1.ACTIONS, true));
 		comboBoxNextAction1.setBounds(160, 53, 146, 27);
 		panelCrewMember1.add(comboBoxNextAction1);
 		
@@ -234,7 +248,7 @@ public class MainScreen {
 		lblStanimaLevel1.setBounds(332, 6, 36, 16);
 		panelCrewMember1.add(lblStanimaLevel1);
 		
-		JLabel lblHealthLevel1 = new JLabel(String.valueOf(crewMember1.getHealth()) + "%");
+		JLabel lblHealthLevel1 = new JLabel(String.valueOf(crewMember1.getHunger()) + "%");
 		lblHealthLevel1.setForeground(Color.BLACK);
 		lblHealthLevel1.setBounds(332, 27, 36, 16);
 		panelCrewMember1.add(lblHealthLevel1);
@@ -250,10 +264,11 @@ public class MainScreen {
 		btnExecuteNextAction1.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		
-		JLabel lblHealthHeading1 = new JLabel("Health:");
+		JLabel lblHealthHeading1 = new JLabel("Hunger:");
 		lblHealthHeading1.setForeground(Color.BLACK);
 		lblHealthHeading1.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblHealthHeading1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -263,6 +278,7 @@ public class MainScreen {
 		btnExecuteNextAction1.setBounds(310, 54, 23, 23);
 		panelCrewMember1.add(btnExecuteNextAction1);
 		
+		
 		JPanel panelCrewMember2 = new JPanel();
 		final int CREW_MEMBER_2_ID = 1;
 		CrewMember crewMember2 = environment.crew.getCrewMember(CREW_MEMBER_2_ID);
@@ -270,6 +286,14 @@ public class MainScreen {
 		panelCrewMember2.setBackground(new Color(0, 0, 0, 0));
 		panelCrewMember2.setBounds(390, 604, 374, 86);
 		frame.getContentPane().add(panelCrewMember2);
+		
+		JProgressBar progressBarHealth2 = new JProgressBar();
+		progressBarHealth2.setToolTipText("Health Level");
+		progressBarHealth2.setBackground(Color.BLACK);
+		progressBarHealth2.setValue(crewMember2.getHealth());
+		progressBarHealth2.setForeground(progressBarColor(progressBarHealth2.getValue()));
+		progressBarHealth2.setBounds(6, 75, 53, 8);
+		panelCrewMember2.add(progressBarHealth2);
 		
 		JLabel lblNameHeading2 = new JLabel("Name:");
 		lblNameHeading2.setForeground(Color.BLACK);
@@ -307,7 +331,7 @@ public class MainScreen {
 		lblNextActionHeading2.setBounds(71, 57, 88, 16);
 		panelCrewMember2.add(lblNextActionHeading2);
 		
-		JComboBox comboBoxNextAction2 = new JComboBox(crewMember2.getActions());
+		JComboBox comboBoxNextAction2 = new JComboBox(convertCollectionForComboBox(crewMember2.ACTIONS, true));
 		comboBoxNextAction2.setBounds(160, 53, 146, 27);
 		panelCrewMember2.add(comboBoxNextAction2);
 		
@@ -322,7 +346,7 @@ public class MainScreen {
 		lblStanimaLevel2.setBounds(332, 6, 36, 16);
 		panelCrewMember2.add(lblStanimaLevel2);
 		
-		JLabel lblHealthLevel2 = new JLabel(String.valueOf(crewMember2.getHealth()) + "%");
+		JLabel lblHealthLevel2 = new JLabel(String.valueOf(crewMember2.getHunger()) + "%");
 		lblHealthLevel2.setForeground(Color.BLACK);
 		lblHealthLevel2.setBounds(332, 27, 36, 16);
 		panelCrewMember2.add(lblHealthLevel2);
@@ -334,7 +358,7 @@ public class MainScreen {
 		lblStanimaHeading2.setBounds(259, 6, 64, 16);
 		panelCrewMember2.add(lblStanimaHeading2);
 		
-		JLabel lblHealthHeading2 = new JLabel("Health:");
+		JLabel lblHealthHeading2 = new JLabel("Hunger:");
 		lblHealthHeading2.setForeground(Color.BLACK);
 		lblHealthHeading2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblHealthHeading2.setFont(new Font("Dialog", Font.BOLD, 12));
@@ -347,6 +371,7 @@ public class MainScreen {
 		btnExecuteNextAction2.setBounds(310, 54, 23, 23);
 		panelCrewMember2.add(btnExecuteNextAction2);
 		
+		
 		JPanel panelCrewMember3 = new JPanel();
 		final int CREW_MEMBER_3_ID = 2;
 		CrewMember crewMember3= environment.crew.getCrewMember(CREW_MEMBER_3_ID);
@@ -354,6 +379,14 @@ public class MainScreen {
 		panelCrewMember3.setBackground(new Color(0, 0, 0, 0));
 		panelCrewMember3.setBounds(0, 705, 374, 86);
 		frame.getContentPane().add(panelCrewMember3);
+		
+		JProgressBar progressBarHealth3 = new JProgressBar();
+		progressBarHealth3.setToolTipText("Health Level");
+		progressBarHealth3.setBackground(Color.BLACK);
+		progressBarHealth3.setValue(crewMember3.getHealth());
+		progressBarHealth3.setForeground(progressBarColor(progressBarHealth3.getValue()));
+		progressBarHealth3.setBounds(6, 75, 53, 8);
+		panelCrewMember3.add(progressBarHealth3);
 		
 		JLabel lblNameHeading3 = new JLabel("Name:");
 		lblNameHeading3.setForeground(Color.BLACK);
@@ -391,7 +424,7 @@ public class MainScreen {
 		lblNextActionHeading3.setBounds(71, 57, 88, 16);
 		panelCrewMember3.add(lblNextActionHeading3);
 		
-		JComboBox comboBoxNextAction3 = new JComboBox(crewMember3.getActions());
+		JComboBox comboBoxNextAction3 = new JComboBox(convertCollectionForComboBox(crewMember3.ACTIONS, true));
 		comboBoxNextAction3.setBounds(160, 53, 146, 27);
 		panelCrewMember3.add(comboBoxNextAction3);
 		
@@ -406,7 +439,7 @@ public class MainScreen {
 		lblStanimaLevel3.setBounds(332, 6, 36, 16);
 		panelCrewMember3.add(lblStanimaLevel3);
 		
-		JLabel lblHealthLevel3 = new JLabel(String.valueOf(crewMember3.getHealth()) + "%");
+		JLabel lblHealthLevel3 = new JLabel(String.valueOf(crewMember3.getHunger()) + "%");
 		lblHealthLevel3.setForeground(Color.BLACK);
 		lblHealthLevel3.setBounds(332, 27, 36, 16);
 		panelCrewMember3.add(lblHealthLevel3);
@@ -418,7 +451,7 @@ public class MainScreen {
 		lblStanimaHeading3.setBounds(259, 6, 64, 16);
 		panelCrewMember3.add(lblStanimaHeading3);
 		
-		JLabel lblHealthHeading3 = new JLabel("Health:");
+		JLabel lblHealthHeading3 = new JLabel("Hunger:");
 		lblHealthHeading3.setForeground(Color.BLACK);
 		lblHealthHeading3.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblHealthHeading3.setFont(new Font("Dialog", Font.BOLD, 12));
@@ -430,6 +463,7 @@ public class MainScreen {
 		btnExecuteNextAction3.setBounds(310, 54, 23, 23);
 		panelCrewMember3.add(btnExecuteNextAction3);
 		
+		
 		JPanel panelCrewMember4 = new JPanel();
 		final int CREW_MEMBER_4_ID = 3;
 		CrewMember crewMember4 = environment.crew.getCrewMember(CREW_MEMBER_4_ID);
@@ -437,6 +471,14 @@ public class MainScreen {
 		panelCrewMember4.setBackground(new Color(0, 0, 0, 0));
 		panelCrewMember4.setBounds(390, 705, 374, 86);
 		frame.getContentPane().add(panelCrewMember4);
+		
+		JProgressBar progressBarHealth4 = new JProgressBar();
+		progressBarHealth4.setToolTipText("Health Level");
+		progressBarHealth4.setBackground(Color.BLACK);
+		progressBarHealth4.setValue(crewMember4.getHealth());
+		progressBarHealth4.setForeground(progressBarColor(progressBarHealth4.getValue()));
+		progressBarHealth4.setBounds(6, 75, 53, 8);
+		panelCrewMember4.add(progressBarHealth4);
 		
 		JLabel lblNameHeading4 = new JLabel("Name:");
 		lblNameHeading4.setForeground(Color.BLACK);
@@ -474,7 +516,7 @@ public class MainScreen {
 		lblNextActionHeading4.setBounds(71, 57, 88, 16);
 		panelCrewMember4.add(lblNextActionHeading4);
 		
-		JComboBox comboBoxNextAction4 = new JComboBox(crewMember4.getActions());
+		JComboBox comboBoxNextAction4 = new JComboBox(convertCollectionForComboBox(crewMember4.ACTIONS, true));
 		comboBoxNextAction4.setBounds(160, 53, 146, 27);
 		panelCrewMember4.add(comboBoxNextAction4);
 		
@@ -489,7 +531,7 @@ public class MainScreen {
 		lblStanimaLevel4.setBounds(332, 6, 36, 16);
 		panelCrewMember4.add(lblStanimaLevel4);
 		
-		JLabel lblHealthLevel4 = new JLabel(String.valueOf(crewMember4.getHealth()) + "%");
+		JLabel lblHealthLevel4 = new JLabel(String.valueOf(crewMember4.getHunger()) + "%");
 		lblHealthLevel4.setForeground(Color.BLACK);
 		lblHealthLevel4.setBounds(332, 27, 36, 16);
 		panelCrewMember4.add(lblHealthLevel4);
@@ -501,7 +543,7 @@ public class MainScreen {
 		lblStanimaHeading4.setBounds(259, 6, 64, 16);
 		panelCrewMember4.add(lblStanimaHeading4);
 		
-		JLabel lblHealthHeading4 = new JLabel("Health:");
+		JLabel lblHealthHeading4 = new JLabel("Hunger:");
 		lblHealthHeading4.setForeground(Color.BLACK);
 		lblHealthHeading4.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblHealthHeading4.setFont(new Font("Dialog", Font.BOLD, 12));
@@ -513,6 +555,7 @@ public class MainScreen {
 		btnExecuteNextAction4.setFont(new Font("Dialog", Font.PLAIN, 9));
 		btnExecuteNextAction4.setBounds(310, 54, 23, 23);
 		panelCrewMember4.add(btnExecuteNextAction4);
+		
 		
 		
 		backgroundImageLabel.setIcon(backgroundImage);
@@ -551,6 +594,26 @@ public class MainScreen {
 		return unscaledImageIcon;
 	}
 	
-	
+	private Color progressBarColor(int healthBarLevel) {
+		if (healthBarLevel >= (100 * 2/3)) {
+			return Color.GREEN;
+		} else if ((healthBarLevel >= (100 * 1/3) && healthBarLevel < (100 * 2/3))) {
+			return Color.YELLOW;
+		} else {
+			return Color.RED;
+		}
+	}
 
+	/** Converts a set into a primitive array that can be used by a comboBox.  Boolean capitalize capitalized the first letter of each word.*/
+	private String[] convertCollectionForComboBox(Set<String> set, boolean capitalize) {
+		String[] comboBoxArray = new String[set.size() + 1];
+		comboBoxArray[0] = "";
+		int i = 1;
+		for (String str: set) {
+			if (capitalize) comboBoxArray[i] = Misc.capitalize(str);
+			else comboBoxArray[i] = str;
+			i++;
+		}
+		return comboBoxArray;
+	}
 }

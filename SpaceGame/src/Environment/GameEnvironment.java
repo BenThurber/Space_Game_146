@@ -35,9 +35,10 @@ public class GameEnvironment {
 	public static void main(String[] args) {
 		GameEnvironment environment = new GameEnvironment();
 		// Test code
-		testMembers[0].addHealth(-1);
-		testMembers[3].addHealth(-50);
-		testMembers[2].addStamina(-10);
+		testMembers[0].addHunger(+22);
+		testMembers[3].addHealth(-69);
+		testMembers[0].addHealth(-37);
+		testMembers[2].addStamina(-14);
 		testMembers[1].decrementNumActions();
 		testMembers[1].decrementNumActions();
 		testMembers[1].decrementNumActions();

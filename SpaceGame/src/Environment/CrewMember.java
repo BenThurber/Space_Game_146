@@ -10,13 +10,15 @@ public class CrewMember {
 	public final Set<String> SPECIALIZATIONS = new HashSet<String>(Arrays.asList(
 		     new String[] {"engineer", "scientist", "doctor", "navigator", "captain", "communications", "security"}));
 	
-	public final String[] ACTIONS = new String[] {"eat", "pilot ship", "repair sheilds", "search planet", "sleep"};
+	public final Set<String> ACTIONS = new HashSet<String>(Arrays.asList(
+			new String[] {"eat", "pilot ship", "repair sheilds", "search planet", "sleep"}));
 	
 	public final int MAX_ACTIONS = 2;
 	
 	private String name;
 	private String specialization;
 	private int health = 100;
+	private int hunger = 0;
 	private int stamina = 100;
 	private boolean isAlive = true;
 	private int numActions = MAX_ACTIONS;
@@ -35,9 +37,13 @@ public class CrewMember {
 		this.setCrewMemberID(0);
 	}
 	
+	
+	
+	
+	
 	/**Crew member sleeps and regains some amount of stamina (health?)*/
 	public void sleep() {
-		
+		this.addStamina(50);
 	}
 	
 	/**Crew member eats and increases some amount of stamina and health.*/
@@ -49,21 +55,37 @@ public class CrewMember {
 	public void useMedicalItem() {
 		
 	}
+	
+	
+	
+	
 
 	public int getHealth() {
 		return health;
 	}
-	/**Sets health.  If dropped to 0 CrewMember dies.*/
+	/**Adds/subtracts health.  If dropped to 0 CrewMember dies.*/
 	public void addHealth(int addedHealth) {
 		this.health = Math.max(Math.min(this.health + addedHealth, 100), 0);
 		if (this.health <= 0) {
 			this.kill();
 		}
 	}
+	
+	public int getHunger() {
+		return hunger;
+	}
+	/**Adds/subtracts hunger.  If raised to 100 CrewMember dies.*/
+	public void addHunger(int addedHunger) {
+		this.hunger = Math.max(Math.min(this.hunger + addedHunger, 100), 0);
+		if (this.hunger >= 100) {
+			this.kill();
+		}
+	}
+	
 	public int getStamina() {
 		return stamina;
 	}
-	/**Sets stamina.  If dropped to 0 CrewMember dies.*/
+	/**Adds/subtracts stamina.  If dropped to 0 CrewMember dies.*/
 	public void addStamina(int addedStamina) {
 		this.stamina = Math.max(Math.min(this.stamina + addedStamina, 100), 0);
 		if (this.stamina <= 0) {
@@ -115,13 +137,15 @@ public class CrewMember {
 		this.crewMemberID = crewMemberID;
 	}
 	
-	public String[] getActions() {
-		String[] actions = new String[ACTIONS.length];
-		for (int i=0; i < ACTIONS.length; i++) {
-			actions[i] = Misc.capitalize(ACTIONS[i]);
-		}
-		return actions;
-	}
+//	public String[] getActions() {
+//		
+//		String[] actions = new String[ACTIONS.length + 1];
+//		actions[0] = "";
+//		for (int i=0; i < ACTIONS.length; i++) {
+//			actions[i+1] = Misc.capitalize(ACTIONS[i]);
+//		}
+//		return actions;
+//	}
 	
 	
 	
