@@ -211,17 +211,17 @@ public class MainScreen {
 		lblName1.setBounds(54, 6, 215, 16);
 		panelCrewMember1.add(lblName1);
 		
-		JLabel lblTypeHeading1 = new JLabel("Type:");
+		JLabel lblTypeHeading1 = new JLabel("Specialty:");
 		lblTypeHeading1.setForeground(Color.BLACK);
 		lblTypeHeading1.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblTypeHeading1.setBounds(71, 27, 47, 16);
+		lblTypeHeading1.setBounds(71, 27, 70, 16);
 		panelCrewMember1.add(lblTypeHeading1);
 		
 		JLabel lblType1 = new JLabel(crewMember1.getSpecialization());
 		lblType1.setForeground(Color.BLACK);
 		lblType1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType1.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblType1.setBounds(118, 27, 117, 16);
+		lblType1.setBounds(143, 27, 117, 16);
 		panelCrewMember1.add(lblType1);
 		
 		JLabel lblCrewAvatarImage1 = new JLabel("");
@@ -312,17 +312,17 @@ public class MainScreen {
 		lblName2.setBounds(54, 6, 215, 16);
 		panelCrewMember2.add(lblName2);
 		
-		JLabel lblTypeHeading2 = new JLabel("Type:");
+		JLabel lblTypeHeading2 = new JLabel("Specialty:");
 		lblTypeHeading2.setForeground(Color.BLACK);
 		lblTypeHeading2.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblTypeHeading2.setBounds(71, 27, 47, 16);
+		lblTypeHeading2.setBounds(71, 27, 70, 16);;
 		panelCrewMember2.add(lblTypeHeading2);
 		
 		JLabel lblType2 = new JLabel(crewMember2.getSpecialization());
 		lblType2.setForeground(Color.BLACK);
 		lblType2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType2.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblType2.setBounds(118, 27, 117, 16);
+		lblType2.setBounds(143, 27, 117, 16);
 		panelCrewMember2.add(lblType2);
 		
 		JLabel lblCrewAvatarImage2 = new JLabel("");
@@ -408,17 +408,17 @@ public class MainScreen {
 		lblName3.setBounds(54, 6, 215, 16);
 		panelCrewMember3.add(lblName3);
 		
-		JLabel lblTypeHeading3 = new JLabel("Type:");
+		JLabel lblTypeHeading3 = new JLabel("Specialty:");
 		lblTypeHeading3.setForeground(Color.BLACK);
 		lblTypeHeading3.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblTypeHeading3.setBounds(71, 27, 47, 16);
+		lblTypeHeading3.setBounds(71, 27, 70, 16);;
 		panelCrewMember3.add(lblTypeHeading3);
 		
 		JLabel lblType3 = new JLabel(crewMember3.getSpecialization());
 		lblType3.setForeground(Color.BLACK);
 		lblType3.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType3.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblType3.setBounds(118, 27, 117, 16);
+		lblType3.setBounds(143, 27, 117, 16);
 		panelCrewMember3.add(lblType3);
 		
 		JLabel lblCrewAvatarImage3 = new JLabel("");
@@ -503,17 +503,17 @@ public class MainScreen {
 		lblName4.setBounds(54, 6, 215, 16);
 		panelCrewMember4.add(lblName4);
 		
-		JLabel lblTypeHeading4 = new JLabel("Type:");
+		JLabel lblTypeHeading4 = new JLabel("Specialty:");
 		lblTypeHeading4.setForeground(Color.BLACK);
 		lblTypeHeading4.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblTypeHeading4.setBounds(71, 27, 47, 16);
+		lblTypeHeading4.setBounds(71, 27, 70, 16);;
 		panelCrewMember4.add(lblTypeHeading4);
 		
 		JLabel lblType4 = new JLabel(crewMember4.getSpecialization());
 		lblType4.setForeground(Color.BLACK);
 		lblType4.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType4.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblType4.setBounds(118, 27, 117, 16);
+		lblType4.setBounds(143, 27, 117, 16);
 		panelCrewMember4.add(lblType4);
 		
 		JLabel lblCrewAvatarImage4 = new JLabel("");
