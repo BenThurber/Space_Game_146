@@ -91,7 +91,8 @@ public class MainScreen {
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.BLACK);
-		frame.getContentPane().setForeground(Color.BLACK);
+		//frame.getContentPane().setBackground(Color.BLACK);
+		//frame.getContentPane().setForeground(Color.BLACK);
 		frame.setBounds(WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -189,7 +190,7 @@ public class MainScreen {
 		JPanel panelCrewMember1 = new JPanel();
 		final int CREW_MEMBER_1_ID = 0;
 		CrewMember crewMember1 = environment.crew.getCrewMember(CREW_MEMBER_1_ID);
-		panelCrewMember1.setBackground(new Color(0, 0, 0, 0));
+		panelCrewMember1.setBackground(new Color(74, 170, 1));
 		panelCrewMember1.setBounds(0, 604, 374, 86);
 		frame.getContentPane().add(panelCrewMember1);
 		panelCrewMember1.setLayout(null);
@@ -294,7 +295,7 @@ public class MainScreen {
 		final int CREW_MEMBER_2_ID = 1;
 		CrewMember crewMember2 = environment.crew.getCrewMember(CREW_MEMBER_2_ID);
 		panelCrewMember2.setLayout(null);
-		panelCrewMember2.setBackground(new Color(0, 0, 0, 0));
+		panelCrewMember2.setBackground(new Color(74, 170, 1));
 		panelCrewMember2.setBounds(390, 604, 374, 86);
 		frame.getContentPane().add(panelCrewMember2);
 		if (!crewMember2.isAlive()) {
@@ -393,7 +394,7 @@ public class MainScreen {
 		final int CREW_MEMBER_3_ID = 2;
 		CrewMember crewMember3= environment.crew.getCrewMember(CREW_MEMBER_3_ID);
 		panelCrewMember3.setLayout(null);
-		panelCrewMember3.setBackground(new Color(0, 0, 0, 0));
+		panelCrewMember3.setBackground(new Color(74, 170, 1));
 		panelCrewMember3.setBounds(0, 705, 374, 86);
 		frame.getContentPane().add(panelCrewMember3);
 		if (!crewMember3.isAlive()) {
@@ -491,7 +492,7 @@ public class MainScreen {
 		final int CREW_MEMBER_4_ID = 3;
 		CrewMember crewMember4 = environment.crew.getCrewMember(CREW_MEMBER_4_ID);
 		panelCrewMember4.setLayout(null);
-		panelCrewMember4.setBackground(new Color(0, 0, 0, 0));
+		panelCrewMember4.setBackground(new Color(74, 170, 1));
 		panelCrewMember4.setBounds(390, 705, 374, 86);
 		frame.getContentPane().add(panelCrewMember4);
 		if (!crewMember4.isAlive()) {

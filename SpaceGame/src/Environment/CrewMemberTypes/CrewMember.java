@@ -61,7 +61,7 @@ public class CrewMember {
 	}
 	
 	public void repairSheilds(Ship ship) {
-		ship.addToSheildLevel(50);
+		ship.addToSheildLevel(20);
 	}
 	
 	
