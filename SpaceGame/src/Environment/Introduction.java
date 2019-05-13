@@ -22,27 +22,22 @@ public class Introduction {
 	private JFrame frmMeteorMadness;
 	private JLabel lblHowManyDays;
 	private JButton btnConfirm;
+	
+	static GameEnvironment environment;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Introduction window = new Introduction();
-					window.frmMeteorMadness.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		Introduction window = new Introduction(environment);
+		window.frmMeteorMadness.setVisible(true);
 	}
 
 	/**
 	 * Create the application.
 	 */
-	public Introduction() {
+	public Introduction(GameEnvironment environment) {
+		this.environment = environment;
 		initialize();
 	}
 

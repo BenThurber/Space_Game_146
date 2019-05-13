@@ -15,6 +15,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
+
+import Environment.CrewMemberTypes.CrewMember;
+
 import javax.swing.BoxLayout;
 import javax.swing.ComboBoxModel;
 

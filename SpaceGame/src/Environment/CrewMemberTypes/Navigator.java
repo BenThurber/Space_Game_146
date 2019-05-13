@@ -1,4 +1,4 @@
-package Environment;
+package Environment.CrewMemberTypes;
 
 public class Navigator extends CrewMember {
 	

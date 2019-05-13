@@ -1,11 +1,17 @@
 package Environment;
 
+import Environment.CrewMemberTypes.Captain;
+import Environment.CrewMemberTypes.Communicator;
+import Environment.CrewMemberTypes.CrewMember;
+import Environment.CrewMemberTypes.Engineer;
+import Environment.CrewMemberTypes.Scientist;
+
 public class GameEnvironment {
 	
-	private static CrewMember[] testMembers = {new CrewMember("John", "Scientist"), new CrewMember("Cortana", "Communications"), new CrewMember("Arbiter", "Engineer"), new CrewMember("Keys", "Captain")};
+	private static CrewMember[] testMembers = {new Scientist("John"), new Communicator("Cortana"), new Engineer("Arbiter"), new Captain("Keys")};
 	
-	public static Ship ship = new Ship();
-	public static Crew crew = new Crew(testMembers);
+	public Ship ship = new Ship();
+	public Crew crew = new Crew(testMembers);
 	
 	private MainScreen window;
 	
@@ -26,6 +32,8 @@ public class GameEnvironment {
 	
 	
 	public void launchMainWindow() {
+		//Introduction introduction = new Introduction(this);
+		
 		window = new MainScreen(this);
 		window.frame.setVisible(true);
 	}

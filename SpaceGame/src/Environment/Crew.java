@@ -3,6 +3,8 @@ package Environment;
 import java.util.ArrayList;
 import java.util.List;
 
+import Environment.CrewMemberTypes.CrewMember;
+
 /**Container class for CrewMember objects.*/
 public class Crew {
 	
@@ -54,12 +56,12 @@ public class Crew {
 		members[crewListPosition] = newCrewMember;
 		members[crewListPosition].setCrewMemberID(crewListPosition);
 	}
-	/**Adds a new CrewMember to the members array from name, specialization.  Sets the CrewMember 
-	 * crewMemberID to the index in the array that its in.*/
-	public void addCrewMember(String name, String specialization) {
-		int crewListPosition = nextCrewMemberArrayIndex(members);
-		members[crewListPosition] = new CrewMember(name, specialization, crewListPosition);
-	}
+//	/**Adds a new CrewMember to the members array from name, specialization.  Sets the CrewMember 
+//	 * crewMemberID to the index in the array that its in.*/
+//	public void addCrewMember(String name, String specialization) {
+//		int crewListPosition = nextCrewMemberArrayIndex(members);
+//		members[crewListPosition] = new CrewMember(name, crewListPosition);
+//	}
 	/**Helper method that finds the next empty array slot that is either null or contains a dead CrewMwmber.*/
 	private int nextCrewMemberArrayIndex(CrewMember[] members) {
 		for (int crewListPosition=0; crewListPosition < MAX_CREW_MEMBERS; crewListPosition++) {
@@ -75,6 +77,13 @@ public class Crew {
 	public CrewMember getCrewMember(int crewMemberID) {
 		return members[crewMemberID];
 	}
+//	public CrewMember getCrewMember(int crewMemberID) {
+//		try:
+//			return members[crewMemberID];
+//		catch ArrayIndexOutOfBoundsException() {
+//			new CrewMember
+//		}
+//	}
 	
 	/**Return an ArrayList of CrewMembers with a given name*/
 	public ArrayList<CrewMember> getCrewMembersByName(String name) {

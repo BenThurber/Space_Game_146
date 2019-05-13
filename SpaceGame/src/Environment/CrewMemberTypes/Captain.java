@@ -1,4 +1,4 @@
-package Environment;
+package Environment.CrewMemberTypes;
 
 public class Captain extends CrewMember {
 	
