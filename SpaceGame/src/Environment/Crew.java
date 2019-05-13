@@ -28,7 +28,7 @@ public class Crew {
 	/**Adds a List of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
 	 * the array that its in.*/
 	public void addNewCrewMembers(CrewMember[] members) {
-		List<CrewMember> membersList = new ArrayList<CrewMember>(MAX_CREW_MEMBERS);
+		List<CrewMember> membersList = new ArrayList<CrewMember>(members.length);
 		for (CrewMember member: members) {
 			membersList.add(member);
 		}
@@ -38,7 +38,7 @@ public class Crew {
 	 * the array that its in.*/
 	public void addNewCrewMembers(List<CrewMember> members) {
 		CrewMember nextMember;
-		for (int i=0; i < MAX_CREW_MEMBERS; i++) {
+		for (int i=0; i < members.size(); i++) {
 			try {
 				nextMember = members.get(i);
 			} catch(java.lang.IndexOutOfBoundsException e1) {
@@ -56,12 +56,17 @@ public class Crew {
 		members[crewListPosition] = newCrewMember;
 		members[crewListPosition].setCrewMemberID(crewListPosition);
 	}
-//	/**Adds a new CrewMember to the members array from name, specialization.  Sets the CrewMember 
-//	 * crewMemberID to the index in the array that its in.*/
-//	public void addCrewMember(String name, String specialization) {
-//		int crewListPosition = nextCrewMemberArrayIndex(members);
-//		members[crewListPosition] = new CrewMember(name, crewListPosition);
-//	}
+	
+	public int getNumCrewMembers() {
+		int num = 0;
+		for (CrewMember member: members) {
+			if (member != null || member.isAlive()) {
+				num++;
+			}
+		}
+		return num;
+	}
+	
 	/**Helper method that finds the next empty array slot that is either null or contains a dead CrewMwmber.*/
 	private int nextCrewMemberArrayIndex(CrewMember[] members) {
 		for (int crewListPosition=0; crewListPosition < MAX_CREW_MEMBERS; crewListPosition++) {
@@ -74,16 +79,22 @@ public class Crew {
 	
 	
 	
+	/**Gets a crew member by crewMemberID.  If array is null or array out of bounds, returns a dead crew member*/
 	public CrewMember getCrewMember(int crewMemberID) {
-		return members[crewMemberID];
+		if (members[crewMemberID] == null) {
+			CrewMember deadCrewMember = new CrewMember("Dead Crew Member", crewMemberID);
+			deadCrewMember.kill();
+			return deadCrewMember;
+		}
+		try {
+			return members[crewMemberID];
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
+			CrewMember deadCrewMember = new CrewMember("Dead Crew Member", crewMemberID);
+			deadCrewMember.kill();
+			return deadCrewMember;
+		}
 	}
-//	public CrewMember getCrewMember(int crewMemberID) {
-//		try:
-//			return members[crewMemberID];
-//		catch ArrayIndexOutOfBoundsException() {
-//			new CrewMember
-//		}
-//	}
 	
 	/**Return an ArrayList of CrewMembers with a given name*/
 	public ArrayList<CrewMember> getCrewMembersByName(String name) {

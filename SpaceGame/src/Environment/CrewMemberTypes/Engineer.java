@@ -1,5 +1,7 @@
 package Environment.CrewMemberTypes;
 
+import Environment.Ship;
+
 public class Engineer extends CrewMember {
 	
 	public final String specialization = "engineer";
@@ -21,6 +23,10 @@ public class Engineer extends CrewMember {
 	
 	public String getAvatarImage() {
 		return avatarImage;
+	}
+	
+	public void repairSheilds(Ship ship) {
+		ship.addToSheildLevel(75);
 	}
 
 }

@@ -7,7 +7,6 @@ public class Ship {
 	private int shipPartsFound = 0;
 	private int shipPartsTotalMissing = 0;
 	private int sheildLevel = 100;
-	//private int maxCrewCapacity;  Should we?
 	
 	
 	public String getName() {

@@ -14,7 +14,7 @@ public class CrewMember {
 //		     new String[] {"engineer", "scientist", "doctor", "navigator", "captain", "communications", "security"}));
 	
 	public final Set<String> ACTIONS = new HashSet<String>(Arrays.asList(
-			new String[] {"eat", "pilot ship", "repair sheilds", "search planet", "sleep"}));
+			new String[] {"eat", "pilot ship", "repair sheilds", "search planet", "sleep", "use medical item"}));
 	
 	public final int MAX_ACTIONS = 2;
 	
@@ -52,6 +52,7 @@ public class CrewMember {
 	/**Crew member eats and increases some amount of stamina and health.*/
 	public void eat() {
 		this.addHunger(-50);
+		System.out.println(this.name + " ate food.  Hunger: " + this.getHunger());
 	}
 	
 	/**Crew member eats and regains some amount of health.*/
@@ -60,7 +61,7 @@ public class CrewMember {
 	}
 	
 	public void repairSheilds(Ship ship) {
-		
+		ship.addToSheildLevel(50);
 	}
 	
 	

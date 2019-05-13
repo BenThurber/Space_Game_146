@@ -8,7 +8,7 @@ import Environment.CrewMemberTypes.Scientist;
 
 public class GameEnvironment {
 	
-	private static CrewMember[] testMembers = {new Scientist("John"), new Communicator("Cortana"), new Engineer("Arbiter"), new Captain("Keys")};
+	private static CrewMember[] testMembers = {new Scientist("John"), new Communicator("Cortana"), new Captain("Keys")};
 	
 	public Ship ship = new Ship();
 	public Crew crew = new Crew(testMembers);
@@ -29,6 +29,28 @@ public class GameEnvironment {
 		System.out.println("Viewing Inventory");
 	}
 	
+	
+	public void executeCrewMemberAction(CrewMember member, String task) {
+		switch (task.toLowerCase()) {
+		case "sleep":
+			member.sleep();
+			break;
+		case "eat":
+			member.eat();
+			break;
+		case "use medical item":
+			member.useMedicalItem();
+			break;
+		case "repair sheilds":
+			member.repairSheilds(ship);
+			break;
+		case "search planet":
+			break;
+		case "pilot ship":
+			break;
+		}
+		window.initialize();  //Refresh the window?
+	}
 	
 	
 	public void launchMainWindow() {
@@ -55,8 +77,8 @@ public class GameEnvironment {
 		ship.setShipPartsTotalMissing(5);
 		ship.setShipPartsFound(1);
 		
-		testMembers[0].addHunger(+22);
-		testMembers[3].addHealth(-69);
+		testMembers[0].addHunger(+65);
+		//testMembers[3].addHealth(-69);
 		testMembers[0].addHealth(-37);
 		testMembers[2].addStamina(-14);
 		testMembers[1].decrementNumActions();
