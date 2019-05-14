@@ -71,10 +71,13 @@ public class CrewMember {
 	}
 	
 	/**Crew member eats and regains some amount of health.*/
-	public void useMedicalItem() {
+	public void useMedicalItem(int healthIncrease) {
 		if (this.decrementNumActions()) {
 			this.addHealth(HEALTH_LVL_INCREASE_MED_ITEM);
 		}
+	}
+	public void useMedicalItem() {
+		useMedicalItem(HEALTH_LVL_INCREASE_MED_ITEM);
 	}
 	
 	protected void repairSheilds(Ship ship, int amount) {
