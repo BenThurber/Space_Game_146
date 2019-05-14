@@ -27,7 +27,7 @@ public class GameEnvironment {
 	public void moveToNextPlanet() {
 		System.out.println("Moving to Next Planet");
 		currentPlanet = new Planet();
-		ship.setLocation(currentPlanet.getLocationFormatted());
+		ship.setLocation(currentPlanet);
 		// Do asteroid belt
 		window.update();
 	}

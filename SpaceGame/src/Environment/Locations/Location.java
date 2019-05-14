@@ -25,7 +25,7 @@ public class Location {
 	}
 	
 	public String getLocationFormatted() {
-		return type;
+		return name;
 	}
 	
 }
