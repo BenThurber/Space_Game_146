@@ -384,6 +384,11 @@ public class MainScreen {
 		panelCrewMember2.add(lblHealthHeading2);
 		
 		JButton btnExecuteNextAction2 = new JButton("");
+		btnExecuteNextAction2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.executeCrewMemberAction(crewMember2, comboBoxNextAction2.getSelectedItem().toString());
+			}
+		});
 		btnExecuteNextAction2.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction2.setFont(new Font("Dialog", Font.PLAIN, 9));
 		btnExecuteNextAction2.setBounds(310, 54, 23, 23);
@@ -483,6 +488,11 @@ public class MainScreen {
 		panelCrewMember3.add(lblHealthHeading3);
 		
 		JButton btnExecuteNextAction3 = new JButton("");
+		btnExecuteNextAction3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.executeCrewMemberAction(crewMember3, comboBoxNextAction3.getSelectedItem().toString());
+			}
+		});
 		btnExecuteNextAction3.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction3.setBounds(310, 54, 23, 23);
 		panelCrewMember3.add(btnExecuteNextAction3);
@@ -581,6 +591,11 @@ public class MainScreen {
 		panelCrewMember4.add(lblHealthHeading4);
 		
 		JButton btnExecuteNextAction4 = new JButton("");
+		btnExecuteNextAction4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.executeCrewMemberAction(crewMember4, comboBoxNextAction4.getSelectedItem().toString());
+			}
+		});
 		btnExecuteNextAction4.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction4.setFont(new Font("Dialog", Font.PLAIN, 9));
 		btnExecuteNextAction4.setBounds(310, 54, 23, 23);

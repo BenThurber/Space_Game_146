@@ -8,7 +8,7 @@ import Environment.CrewMemberTypes.Scientist;
 
 public class GameEnvironment {
 	
-	private static CrewMember[] testMembers = {new Scientist("John"), new Communicator("Cortana"), new Captain("Keys")};
+	private static CrewMember[] testMembers = {new Scientist("John"), new Communicator("Cortana"), new Captain("Keys"), new Engineer("Arbiter")};
 	
 	public Ship ship = new Ship();
 	public Crew crew = new Crew(testMembers);

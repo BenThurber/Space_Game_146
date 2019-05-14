@@ -7,6 +7,8 @@ public class Engineer extends CrewMember {
 	public final String specialization = "engineer";
 	private final String avatarImage = "/Images/Avatars/engineer.png";
 	
+	private final int SHEILD_REPAIR_AMOUNT = 50;
+	
 	public Engineer(String name, int cremMemberID) {
 		super(name, cremMemberID);
 		// TODO Auto-generated constructor stub
@@ -26,7 +28,7 @@ public class Engineer extends CrewMember {
 	}
 	
 	public void repairSheilds(Ship ship) {
-		ship.addToSheildLevel(75);
+		super.repairSheilds(ship, SHEILD_REPAIR_AMOUNT);
 	}
 
 }

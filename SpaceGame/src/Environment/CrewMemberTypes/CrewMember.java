@@ -18,6 +18,12 @@ public class CrewMember {
 	
 	public final int MAX_ACTIONS = 2;
 	
+	//Amounts by which stats increase with their respective actions
+	private final int HUNGER_LVL_DECREASE_EAT = -50;
+	private final int STANIMA_LVL_INCREASE_SLEEP = 50;
+	private final int HEALTH_LVL_INCREASE_MED_ITEM = 50;
+	private final int SHEILD_REPAIR_AMOUNT = 20;
+	
 	public final String specialization = "none";
 	private final String avatarImage = "/Images/Avatars/captain.png";  //Just use captain image...
 	
@@ -46,27 +52,40 @@ public class CrewMember {
 	
 	/**Crew member sleeps and regains some amount of stamina (health?)*/
 	public void sleep() {
-		this.addStamina(50);
+		if (this.decrementNumActions()) {
+			this.addStamina(STANIMA_LVL_INCREASE_SLEEP);
+		}
 	}
 	
 	/**Crew member eats and increases some amount of stamina and health.*/
 	public void eat() {
-		this.addHunger(-50);
+		if (this.decrementNumActions()) {
+			this.addHunger(HUNGER_LVL_DECREASE_EAT);
+		}
+		//Test code
 		System.out.println(this.name + " ate food.  Hunger: " + this.getHunger());
 	}
 	
 	/**Crew member eats and regains some amount of health.*/
 	public void useMedicalItem() {
-		this.addHealth(50);
+		if (this.decrementNumActions()) {
+			this.addHealth(HEALTH_LVL_INCREASE_MED_ITEM);
+		}
 	}
 	
+	public void repairSheilds(Ship ship, int amount) {
+		if (this.decrementNumActions()) {
+			ship.addToSheildLevel(amount);
+			System.out.println(ship.getSheildLevel());
+		}
+	}
 	public void repairSheilds(Ship ship) {
-		ship.addToSheildLevel(20);
+		repairSheilds(ship, SHEILD_REPAIR_AMOUNT);
 	}
 	
 	
 	
-
+	
 	public int getHealth() {
 		return health;
 	}
@@ -137,9 +156,16 @@ public class CrewMember {
 	public void setNumActionsReset() {
 		this.numActions = MAX_ACTIONS;
 	}
-	/**Remove one Action (min 0)*/
-	public void decrementNumActions() {
-		this.numActions = Math.max(this.numActions-1, 0);
+	/**Remove one Action (min 0)  Returns true if there was an action remaining when the method was called.*/
+	public boolean decrementNumActions() {
+		boolean actionsRemaining;
+		if (this.numActions > 0) {
+			actionsRemaining = true;
+			this.numActions = Math.max(this.numActions-1, 0);
+		} else {
+			actionsRemaining = false;
+		}
+		return actionsRemaining;
 	}
 	
 	public int getCrewMemberID() {
