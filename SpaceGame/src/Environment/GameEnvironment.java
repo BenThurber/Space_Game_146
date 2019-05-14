@@ -49,7 +49,7 @@ public class GameEnvironment {
 		case "pilot ship":
 			break;
 		}
-		window.initialize();  //Refresh the window?
+		window.update();  //Refresh the window?
 	}
 	
 	
@@ -77,13 +77,11 @@ public class GameEnvironment {
 		ship.setShipPartsTotalMissing(5);
 		ship.setShipPartsFound(1);
 		
-		testMembers[0].addHunger(+65);
-		//testMembers[3].addHealth(-69);
-		testMembers[0].addHealth(-37);
-		testMembers[2].addStamina(-14);
-		testMembers[1].decrementNumActions();
-		testMembers[1].decrementNumActions();
-		testMembers[1].decrementNumActions();
-		testMembers[0].decrementNumActions();
+		for (int i=0; i < 4; i++) {
+			System.out.println(i);
+			testMembers[i].addHunger(+65);
+			testMembers[i].addHealth(-69);
+			testMembers[i].addStamina(-14);
+		}
 	}
 }

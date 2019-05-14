@@ -38,6 +38,51 @@ public class MainScreen {
 	GameEnvironment environment;
 	JFrame frame;
 	
+	// Ship Related Variables
+	private JLabel lblLocation = new JLabel("Unknown");
+	private JLabel lblShipParts = new JLabel("0/0");
+	private JLabel lblSheildLevel = new JLabel("100%");
+	private JProgressBar progressBarSheildLvl = new JProgressBar();
+	
+	// CrewMember1 Variables
+	private final int CREW_MEMBER_1_ID = 0;
+	private CrewMember crewMember1;
+	private JPanel panelCrewMember1 = new JPanel();
+	private JProgressBar progressBarHealth1 = new JProgressBar();
+	private JLabel lblRemainingActions1 = new JLabel("0/0");
+	private JLabel lblStanimaLevel1 = new JLabel("0%");
+	private JLabel lblHungerLevel1 = new JLabel("0%");
+	
+	// CrewMember2 Variables
+	private final int CREW_MEMBER_2_ID = 1;
+	private CrewMember crewMember2;
+	private JPanel panelCrewMember2 = new JPanel();
+	private JProgressBar progressBarHealth2 = new JProgressBar();
+	private JLabel lblRemainingActions2 = new JLabel("0/0");
+	private JLabel lblStanimaLevel2 = new JLabel("0%");
+	private JLabel lblHungerLevel2 = new JLabel("0%");
+	
+	// CrewMember3 Variables
+	private final int CREW_MEMBER_3_ID = 2;
+	private CrewMember crewMember3;
+	private JPanel panelCrewMember3 = new JPanel();
+	private JProgressBar progressBarHealth3 = new JProgressBar();
+	private JLabel lblRemainingActions3 = new JLabel("0/0");
+	private JLabel lblStanimaLevel3 = new JLabel("0%");
+	private JLabel lblHungerLevel3 = new JLabel("0%");
+	
+	// CrewMember4 Variables
+	private final int CREW_MEMBER_4_ID = 3;
+	private CrewMember crewMember4;
+	private JPanel panelCrewMember4 = new JPanel();
+	private JProgressBar progressBarHealth4 = new JProgressBar();
+	private JLabel lblRemainingActions4 = new JLabel("0/0");
+	private JLabel lblStanimaLevel4 = new JLabel("0%");
+	private JLabel lblHungerLevel4 = new JLabel("0%");
+	
+	
+	
+	
 	/**
 	 * Create the application.
 	 * @wbp.parser.constructor
@@ -46,24 +91,70 @@ public class MainScreen {
 		this.environment = environment;
 		initialize();
 	}
-	// Just for testing?
-	public MainScreen() {
-		initialize();
+	
+	
+	public void update() {
+		updateShipAtributes();
+		System.out.println("Updated Ship");
+		updateCrewMember1();
+		System.out.println("Updated CrewMember1");
+		updateCrewMember2();
+		System.out.println("Updated CrewMember2");
+		updateCrewMember3();
+		System.out.println("Updated CrewMember3");
+		updateCrewMember4();
+		System.out.println("Updated CrewMember4\n");
 	}
-
-
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		MainScreen window = new MainScreen();
-//		window.frame.setVisible(true);
-//		
-//	}
-
-
-
+	
+	
+	private void updateShipAtributes() {
+		lblLocation.setText(environment.ship.getLocation());
+		lblShipParts.setText(String.valueOf(environment.ship.getShipPartsFound()) + "/" + String.valueOf(environment.ship.getShipPartsTotalMissing()));
+		lblSheildLevel.setText(String.valueOf(environment.ship.getSheildLevel()) + "%");
+		progressBarSheildLvl.setValue(environment.ship.getSheildLevel());
+	}
+	private void updateCrewMember1() {
+		crewMember1 = environment.crew.getCrewMember(CREW_MEMBER_1_ID);
+		panelCrewMember1.setVisible(crewMember1.isAlive());
+		
+		progressBarHealth1.setValue(crewMember1.getHealth());
+		progressBarHealth1.setForeground(progressBarColor(progressBarHealth1.getValue()));
+		lblRemainingActions1.setText(String.valueOf((crewMember1.getNumActions()) + "/" + crewMember1.MAX_ACTIONS));
+		lblStanimaLevel1.setText(String.valueOf(crewMember1.getStamina()) + "%");
+		lblHungerLevel1.setText(String.valueOf(crewMember1.getHunger()) + "%");
+	}
+	private void updateCrewMember2() {
+		crewMember2 = environment.crew.getCrewMember(CREW_MEMBER_2_ID);
+		panelCrewMember2.setVisible(crewMember2.isAlive());
+		
+		progressBarHealth2.setValue(crewMember2.getHealth());
+		progressBarHealth2.setForeground(progressBarColor(progressBarHealth2.getValue()));
+		lblRemainingActions2.setText(String.valueOf((crewMember2.getNumActions()) + "/" + crewMember2.MAX_ACTIONS));
+		lblStanimaLevel2.setText(String.valueOf(crewMember2.getStamina()) + "%");
+		lblHungerLevel2.setText(String.valueOf(crewMember2.getHunger()) + "%");
+	}
+	private void updateCrewMember3() {
+		crewMember3 = environment.crew.getCrewMember(CREW_MEMBER_3_ID);
+		panelCrewMember3.setVisible(crewMember3.isAlive());
+		
+		progressBarHealth3.setValue(crewMember3.getHealth());
+		progressBarHealth3.setForeground(progressBarColor(progressBarHealth3.getValue()));
+		lblRemainingActions3.setText(String.valueOf((crewMember3.getNumActions()) + "/" + crewMember3.MAX_ACTIONS));
+		lblStanimaLevel3.setText(String.valueOf(crewMember3.getStamina()) + "%");
+		lblHungerLevel3.setText(String.valueOf(crewMember3.getHunger()) + "%");
+	}
+	private void updateCrewMember4() {
+		crewMember4 = environment.crew.getCrewMember(CREW_MEMBER_4_ID);
+		panelCrewMember4.setVisible(crewMember4.isAlive());
+		
+		progressBarHealth4.setValue(crewMember4.getHealth());
+		progressBarHealth4.setForeground(progressBarColor(progressBarHealth4.getValue()));
+		lblRemainingActions4.setText(String.valueOf((crewMember4.getNumActions()) + "/" + crewMember4.MAX_ACTIONS));
+		lblStanimaLevel4.setText(String.valueOf(crewMember4.getStamina()) + "%");
+		lblHungerLevel4.setText(String.valueOf(crewMember4.getHunger()) + "%");
+	}
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -89,10 +180,11 @@ public class MainScreen {
 		final Color BG_BLUE = new Color(17, 152, 234);
 		
 		
+		update();
+		
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.BLACK);
-		//frame.getContentPane().setBackground(Color.BLACK);
-		//frame.getContentPane().setForeground(Color.BLACK);
 		frame.setBounds(WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -114,27 +206,26 @@ public class MainScreen {
 		frame.getContentPane().add(lblShipName);
 		
 		
-		JLabel lblLocation = new JLabel(environment.ship.getLocation());
+		
 		lblLocation.setForeground(Color.BLACK);
 		lblLocation.setFont(new Font("Dialog", Font.PLAIN, 18));
 		lblLocation.setBounds(86, 448, 129, 16);
 		frame.getContentPane().add(lblLocation);
 		
-		JLabel lblShipParts = new JLabel(String.valueOf(environment.ship.getShipPartsFound()) + "/" + String.valueOf(environment.ship.getShipPartsTotalMissing()));
+		
 		lblShipParts.setForeground(Color.BLACK);
 		lblShipParts.setFont(new Font("Dialog", Font.PLAIN, 30));
 		lblShipParts.setBounds(642, 448, 68, 34);
 		frame.getContentPane().add(lblShipParts);
 		
-		JLabel lblSheildLevel = new JLabel(String.valueOf(environment.ship.getSheildLevel()) + "%");
+		
 		lblSheildLevel.setForeground(Color.BLACK);
 		lblSheildLevel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblSheildLevel.setBounds(549, 520, 49, 16);
 		frame.getContentPane().add(lblSheildLevel);
 		
-		JProgressBar progressBarSheildLvl = new JProgressBar();
+		
 		progressBarSheildLvl.setForeground(new Color(0, 191, 255));
-		progressBarSheildLvl.setValue(environment.ship.getSheildLevel());
 		progressBarSheildLvl.setBounds(603, 518, 146, 20);
 		frame.getContentPane().add(progressBarSheildLvl);
 		
@@ -187,22 +278,16 @@ public class MainScreen {
 		btnNextDay.setBounds(570, 562, 140, 29);
 		frame.getContentPane().add(btnNextDay);
 		
-		JPanel panelCrewMember1 = new JPanel();
-		final int CREW_MEMBER_1_ID = 0;
-		CrewMember crewMember1 = environment.crew.getCrewMember(CREW_MEMBER_1_ID);
+		
+		
 		panelCrewMember1.setBackground(new Color(74, 170, 1));
 		panelCrewMember1.setBounds(0, 604, 374, 86);
 		frame.getContentPane().add(panelCrewMember1);
 		panelCrewMember1.setLayout(null);
-		if (!crewMember1.isAlive()) {
-			panelCrewMember1.setVisible(false);
-		}
 		
-		JProgressBar progressBarHealth1 = new JProgressBar();
+		
 		progressBarHealth1.setToolTipText("Health Level");
 		progressBarHealth1.setBackground(Color.BLACK);
-		progressBarHealth1.setValue(crewMember1.getHealth());
-		progressBarHealth1.setForeground(progressBarColor(progressBarHealth1.getValue()));
 		progressBarHealth1.setBounds(6, 75, 53, 8);
 		panelCrewMember1.add(progressBarHealth1);
 		
@@ -249,18 +334,18 @@ public class MainScreen {
 		comboBoxNextAction1.setBounds(160, 53, 146, 27);
 		panelCrewMember1.add(comboBoxNextAction1);
 		
-		JLabel lblRemainingActions1 = new JLabel(String.valueOf((crewMember1.getNumActions()) + "/" + crewMember1.MAX_ACTIONS));
+		
 		lblRemainingActions1.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRemainingActions1.setForeground(Color.BLACK);
 		lblRemainingActions1.setBounds(345, 57, 23, 16);
 		panelCrewMember1.add(lblRemainingActions1);
 		
-		JLabel lblStanimaLevel1 = new JLabel(String.valueOf(crewMember1.getStamina()) + "%");
+		
 		lblStanimaLevel1.setForeground(Color.BLACK);
 		lblStanimaLevel1.setBounds(332, 6, 36, 16);
 		panelCrewMember1.add(lblStanimaLevel1);
 		
-		JLabel lblHungerLevel1 = new JLabel(String.valueOf(crewMember1.getHunger()) + "%");
+		
 		lblHungerLevel1.setForeground(Color.BLACK);
 		lblHungerLevel1.setBounds(332, 27, 36, 16);
 		panelCrewMember1.add(lblHungerLevel1);
@@ -291,22 +376,16 @@ public class MainScreen {
 		panelCrewMember1.add(btnExecuteNextAction1);
 		
 		
-		JPanel panelCrewMember2 = new JPanel();
-		final int CREW_MEMBER_2_ID = 1;
-		CrewMember crewMember2 = environment.crew.getCrewMember(CREW_MEMBER_2_ID);
+		
 		panelCrewMember2.setLayout(null);
 		panelCrewMember2.setBackground(new Color(74, 170, 1));
 		panelCrewMember2.setBounds(390, 604, 374, 86);
 		frame.getContentPane().add(panelCrewMember2);
-		if (!crewMember2.isAlive()) {
-			panelCrewMember2.setVisible(false);
-		}
 		
-		JProgressBar progressBarHealth2 = new JProgressBar();
+		
 		progressBarHealth2.setToolTipText("Health Level");
 		progressBarHealth2.setBackground(Color.BLACK);
-		progressBarHealth2.setValue(crewMember2.getHealth());
-		progressBarHealth2.setForeground(progressBarColor(progressBarHealth2.getValue()));
+		
 		progressBarHealth2.setBounds(6, 75, 53, 8);
 		panelCrewMember2.add(progressBarHealth2);
 		
@@ -353,18 +432,18 @@ public class MainScreen {
 		comboBoxNextAction2.setBounds(160, 53, 146, 27);
 		panelCrewMember2.add(comboBoxNextAction2);
 		
-		JLabel lblRemainingActions2 = new JLabel(String.valueOf((crewMember2.getNumActions()) + "/" + crewMember2.MAX_ACTIONS));
+		
 		lblRemainingActions2.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRemainingActions2.setForeground(Color.BLACK);
 		lblRemainingActions2.setBounds(345, 57, 23, 16);
 		panelCrewMember2.add(lblRemainingActions2);
 		
-		JLabel lblStanimaLevel2 = new JLabel(String.valueOf(crewMember2.getStamina()) + "%");
+		
 		lblStanimaLevel2.setForeground(Color.BLACK);
 		lblStanimaLevel2.setBounds(332, 6, 36, 16);
 		panelCrewMember2.add(lblStanimaLevel2);
 		
-		JLabel lblHungerLevel2 = new JLabel(String.valueOf(crewMember2.getHunger()) + "%");
+		
 		lblHungerLevel2.setForeground(Color.BLACK);
 		lblHungerLevel2.setBounds(332, 27, 36, 16);
 		panelCrewMember2.add(lblHungerLevel2);
@@ -395,22 +474,15 @@ public class MainScreen {
 		panelCrewMember2.add(btnExecuteNextAction2);
 		
 		
-		JPanel panelCrewMember3 = new JPanel();
-		final int CREW_MEMBER_3_ID = 2;
-		CrewMember crewMember3= environment.crew.getCrewMember(CREW_MEMBER_3_ID);
+		
 		panelCrewMember3.setLayout(null);
 		panelCrewMember3.setBackground(new Color(74, 170, 1));
 		panelCrewMember3.setBounds(0, 705, 374, 86);
 		frame.getContentPane().add(panelCrewMember3);
-		if (!crewMember3.isAlive()) {
-			panelCrewMember3.setVisible(false);
-		}
 		
-		JProgressBar progressBarHealth3 = new JProgressBar();
 		progressBarHealth3.setToolTipText("Health Level");
 		progressBarHealth3.setBackground(Color.BLACK);
-		progressBarHealth3.setValue(crewMember3.getHealth());
-		progressBarHealth3.setForeground(progressBarColor(progressBarHealth3.getValue()));
+		
 		progressBarHealth3.setBounds(6, 75, 53, 8);
 		panelCrewMember3.add(progressBarHealth3);
 		
@@ -457,18 +529,18 @@ public class MainScreen {
 		comboBoxNextAction3.setBounds(160, 53, 146, 27);
 		panelCrewMember3.add(comboBoxNextAction3);
 		
-		JLabel lblRemainingActions3 = new JLabel(String.valueOf((crewMember3.getNumActions()) + "/" + crewMember3.MAX_ACTIONS));
+		
 		lblRemainingActions3.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRemainingActions3.setForeground(Color.BLACK);
 		lblRemainingActions3.setBounds(345, 57, 23, 16);
 		panelCrewMember3.add(lblRemainingActions3);
 		
-		JLabel lblStanimaLevel3 = new JLabel(String.valueOf(crewMember3.getStamina()) + "%");
+		
 		lblStanimaLevel3.setForeground(Color.BLACK);
 		lblStanimaLevel3.setBounds(332, 6, 36, 16);
 		panelCrewMember3.add(lblStanimaLevel3);
 		
-		JLabel lblHungerLevel3 = new JLabel(String.valueOf(crewMember3.getHunger()) + "%");
+		
 		lblHungerLevel3.setForeground(Color.BLACK);
 		lblHungerLevel3.setBounds(332, 27, 36, 16);
 		panelCrewMember3.add(lblHungerLevel3);
@@ -498,22 +570,17 @@ public class MainScreen {
 		panelCrewMember3.add(btnExecuteNextAction3);
 		
 		
-		JPanel panelCrewMember4 = new JPanel();
-		final int CREW_MEMBER_4_ID = 3;
-		CrewMember crewMember4 = environment.crew.getCrewMember(CREW_MEMBER_4_ID);
+		
 		panelCrewMember4.setLayout(null);
 		panelCrewMember4.setBackground(new Color(74, 170, 1));
 		panelCrewMember4.setBounds(390, 705, 374, 86);
 		frame.getContentPane().add(panelCrewMember4);
-		if (!crewMember4.isAlive()) {
-			panelCrewMember4.setVisible(false);
-		}
 		
-		JProgressBar progressBarHealth4 = new JProgressBar();
+		
 		progressBarHealth4.setToolTipText("Health Level");
 		progressBarHealth4.setBackground(Color.BLACK);
-		progressBarHealth4.setValue(crewMember4.getHealth());
-		progressBarHealth4.setForeground(progressBarColor(progressBarHealth4.getValue()));
+		
+		
 		progressBarHealth4.setBounds(6, 75, 53, 8);
 		panelCrewMember4.add(progressBarHealth4);
 		
@@ -560,18 +627,17 @@ public class MainScreen {
 		comboBoxNextAction4.setBounds(160, 53, 146, 27);
 		panelCrewMember4.add(comboBoxNextAction4);
 		
-		JLabel lblRemainingActions4 = new JLabel(String.valueOf((crewMember4.getNumActions()) + "/" + crewMember4.MAX_ACTIONS));
 		lblRemainingActions4.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRemainingActions4.setForeground(Color.BLACK);
 		lblRemainingActions4.setBounds(345, 57, 23, 16);
 		panelCrewMember4.add(lblRemainingActions4);
 		
-		JLabel lblStanimaLevel4 = new JLabel(String.valueOf(crewMember4.getStamina()) + "%");
+		
 		lblStanimaLevel4.setForeground(Color.BLACK);
 		lblStanimaLevel4.setBounds(332, 6, 36, 16);
 		panelCrewMember4.add(lblStanimaLevel4);
 		
-		JLabel lblHungerLevel4 = new JLabel(String.valueOf(crewMember4.getHunger()) + "%");
+		
 		lblHungerLevel4.setForeground(Color.BLACK);
 		lblHungerLevel4.setBounds(332, 27, 36, 16);
 		panelCrewMember4.add(lblHungerLevel4);
@@ -617,8 +683,6 @@ public class MainScreen {
 		frame.getContentPane().add(flashingLightsGIFLabel);
 		
 		
-		
-
 	}
 	
 	/**
@@ -662,3 +726,16 @@ public class MainScreen {
 		return comboBoxArray;
 	}
 }
+
+
+
+
+
+///**
+// * Launch the application.
+// */
+//public static void main(String[] args) {
+//	MainScreen window = new MainScreen();
+//	window.frame.setVisible(true);
+//	
+//}

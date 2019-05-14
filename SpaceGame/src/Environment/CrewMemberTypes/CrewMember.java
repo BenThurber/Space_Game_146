@@ -19,7 +19,7 @@ public class CrewMember {
 	public final int MAX_ACTIONS = 2;
 	
 	//Amounts by which stats increase with their respective actions
-	private final int HUNGER_LVL_DECREASE_EAT = -50;
+	private final int HUNGER_LVL_INCREASE_EAT = -50;
 	private final int STANIMA_LVL_INCREASE_SLEEP = 50;
 	private final int HEALTH_LVL_INCREASE_MED_ITEM = 50;
 	private final int SHEILD_REPAIR_AMOUNT = 20;
@@ -51,19 +51,23 @@ public class CrewMember {
 	
 	
 	/**Crew member sleeps and regains some amount of stamina (health?)*/
-	public void sleep() {
+	protected void sleep(int stanimaIncrease) {
 		if (this.decrementNumActions()) {
-			this.addStamina(STANIMA_LVL_INCREASE_SLEEP);
+			this.addStamina(stanimaIncrease);
 		}
+	}
+	public void sleep() {
+		sleep(STANIMA_LVL_INCREASE_SLEEP);
 	}
 	
 	/**Crew member eats and increases some amount of stamina and health.*/
-	public void eat() {
+	protected void eat(int hungerIncrease) {
 		if (this.decrementNumActions()) {
-			this.addHunger(HUNGER_LVL_DECREASE_EAT);
+			this.addHunger(hungerIncrease);
 		}
-		//Test code
-		System.out.println(this.name + " ate food.  Hunger: " + this.getHunger());
+	}
+	public void eat() {
+		eat(HUNGER_LVL_INCREASE_EAT);
 	}
 	
 	/**Crew member eats and regains some amount of health.*/
@@ -73,7 +77,7 @@ public class CrewMember {
 		}
 	}
 	
-	public void repairSheilds(Ship ship, int amount) {
+	protected void repairSheilds(Ship ship, int amount) {
 		if (this.decrementNumActions()) {
 			ship.addToSheildLevel(amount);
 			System.out.println(ship.getSheildLevel());
