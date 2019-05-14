@@ -28,6 +28,7 @@ public class Captain extends CrewMember {
 		return avatarImage;
 	}
 	
+	// Override physical stats
 	public void sleep() {
 		super.sleep(STANIMA_LVL_INCREASE_SLEEP);
 	}
