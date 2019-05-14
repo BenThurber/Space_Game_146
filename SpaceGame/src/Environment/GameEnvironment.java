@@ -7,6 +7,8 @@ import Environment.CrewMemberTypes.Communicator;
 import Environment.CrewMemberTypes.CrewMember;
 import Environment.CrewMemberTypes.Engineer;
 import Environment.CrewMemberTypes.Scientist;
+import Environment.Locations.Location;
+import Environment.Locations.Planet;
 
 public class GameEnvironment {
 	
@@ -25,7 +27,7 @@ public class GameEnvironment {
 	public void moveToNextPlanet() {
 		System.out.println("Moving to Next Planet");
 		currentPlanet = new Planet();
-		ship.setLocation(currentPlanet.getName());
+		ship.setLocation(currentPlanet.getLocationFormatted());
 		// Do asteroid belt
 		window.update();
 	}

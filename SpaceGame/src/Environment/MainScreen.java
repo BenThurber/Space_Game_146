@@ -209,7 +209,7 @@ public class MainScreen {
 		
 		lblLocation.setForeground(Color.BLACK);
 		lblLocation.setFont(new Font("Dialog", Font.PLAIN, 18));
-		lblLocation.setBounds(86, 448, 129, 16);
+		lblLocation.setBounds(103, 446, 124, 47);
 		frame.getContentPane().add(lblLocation);
 		
 		

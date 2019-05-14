@@ -1,12 +1,19 @@
 package Environment;
 
+import Environment.Locations.Location;
+
 public class Ship {
 	
 	private String name = "";
-	private String location = "";
+	private Location location = new Location();
 	private int shipPartsFound = 0;
 	private int shipPartsTotalMissing = 0;
 	private int sheildLevel = 100;
+	
+	
+	public Ship() {
+		
+	}
 	
 	
 	public String getName() {
@@ -37,10 +44,13 @@ public class Ship {
 		this.sheildLevel = Math.max(Math.min(this.sheildLevel + addedSheildEnergy, 100), 0);
 	}
 	
-	public String getLocation() {
+	public Location getLocation() {
 		return location;
 	}
-	public void setLocation(String location) {
+	public void setLocation(Location location) {
 		this.location = location;
+	}
+	public void setLocation(String location) {
+		this.location = new Location(location);
 	}
 }

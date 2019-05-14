@@ -1,4 +1,4 @@
-package Environment;
+package Environment.Locations;
 
 import java.util.Random;
 
@@ -16,7 +16,8 @@ public class Planet extends Location {
 	                                 "Abbuna", "Yoborth", "Novis", "Zoitera", 
 	                                 "Ziaruta", "Gnoduthea", "Zeron 0Y0", "Coria GB"};
 	
-	private String name;
+	public final String type = "Planet";
+	
 	
 	// When a new planet is instantiated, it generates random attributes; name, image, etc.
 	public Planet() {
@@ -38,7 +39,13 @@ public class Planet extends Location {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getType() {
+		return type;
+	}
 	
-	
+	public String getLocationFormatted() {
+		return String.format("<html><div style='text-align: left;'>%s<br/>%s</div></html>", this.getType(), this.getName());
+	}
 
 }
