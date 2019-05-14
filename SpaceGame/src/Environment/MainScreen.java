@@ -361,7 +361,7 @@ public class MainScreen {
 		btnExecuteNextAction1.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.executeCrewMemberAction(crewMember1, comboBoxNextAction1.getSelectedItem().toString());
+				environment.executeCrewMemberAction(crewMember1, comboBoxNextAction1);
 			}
 		});
 		
@@ -465,7 +465,7 @@ public class MainScreen {
 		JButton btnExecuteNextAction2 = new JButton("");
 		btnExecuteNextAction2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.executeCrewMemberAction(crewMember2, comboBoxNextAction2.getSelectedItem().toString());
+				environment.executeCrewMemberAction(crewMember2, comboBoxNextAction2);
 			}
 		});
 		btnExecuteNextAction2.setIcon(imgExecuteNextAction);
@@ -562,7 +562,7 @@ public class MainScreen {
 		JButton btnExecuteNextAction3 = new JButton("");
 		btnExecuteNextAction3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.executeCrewMemberAction(crewMember3, comboBoxNextAction3.getSelectedItem().toString());
+				environment.executeCrewMemberAction(crewMember3, comboBoxNextAction3);
 			}
 		});
 		btnExecuteNextAction3.setIcon(imgExecuteNextAction);
@@ -659,7 +659,7 @@ public class MainScreen {
 		JButton btnExecuteNextAction4 = new JButton("");
 		btnExecuteNextAction4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.executeCrewMemberAction(crewMember4, comboBoxNextAction4.getSelectedItem().toString());
+				environment.executeCrewMemberAction(crewMember4, comboBoxNextAction4);
 			}
 		});
 		btnExecuteNextAction4.setIcon(imgExecuteNextAction);

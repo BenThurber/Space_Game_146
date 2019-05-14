@@ -1,5 +1,7 @@
 package Environment;
 
+import javax.swing.JComboBox;
+
 import Environment.CrewMemberTypes.Captain;
 import Environment.CrewMemberTypes.Communicator;
 import Environment.CrewMemberTypes.CrewMember;
@@ -51,6 +53,10 @@ public class GameEnvironment {
 		}
 		window.update();  //Refresh the window?
 	}
+	public void executeCrewMemberAction(CrewMember member, JComboBox crewMemberComboBox) {
+		executeCrewMemberAction(member, crewMemberComboBox.getSelectedItem().toString());
+		crewMemberComboBox.setSelectedIndex(0);
+	}
 	
 	
 	public void launchMainWindow() {
@@ -78,7 +84,6 @@ public class GameEnvironment {
 		ship.setShipPartsFound(1);
 		
 		for (int i=0; i < 4; i++) {
-			System.out.println(i);
 			testMembers[i].addHunger(+65);
 			testMembers[i].addHealth(-69);
 			testMembers[i].addStamina(-14);
