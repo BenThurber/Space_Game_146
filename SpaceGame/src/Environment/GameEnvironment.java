@@ -13,7 +13,12 @@ import Environment.Locations.SpaceOutpost;
 
 public class GameEnvironment {
 	
-	private static CrewMember[] testMembers = {new Scientist("John"), new Communicator("Cortana"), new Captain("Keys"), new Engineer("Arbiter")};
+	private CrewMember[] testMembers = {new Scientist("John"), new Communicator("Cortana"), new Captain("Keys"), new Engineer("Arbiter")};
+	
+	private int totalDays = 0;
+	private int currentDay = 0;
+	private int shipPartsFound = 0;
+	private int shipPartsTotalMissing = 0;
 	
 	public Ship ship = new Ship();
 	public Crew crew = new Crew(testMembers);
@@ -37,7 +42,11 @@ public class GameEnvironment {
 	}
 	public void startNextDay() {
 		System.out.println("Starting Next Day");
-		MessageBox newDayMsg = new MessageBox("A new day has begun");
+		incrementCurrentDay();
+		MessageBox newDayMsg = new MessageBox(String.format("A new day has begun.\n\nDay %d of %d", getCurrentDay(), getTotalDays()));
+		crew.resetCrewForNewDay();
+		// Implement random event here
+		window.update();
 	}
 	public void viewInventory() {
 		System.out.println("Viewing Inventory");
@@ -92,13 +101,47 @@ public class GameEnvironment {
 		ship.setName("UNSC Dawn");
 		ship.addToSheildLevel(-32);
 		//ship.setLocation("Installation 04");
-		ship.setShipPartsTotalMissing(5);
-		ship.setShipPartsFound(1);
+		setDays(5);
 		
 		for (int i=0; i < 4; i++) {
 			testMembers[i].addHunger(+65);
 			testMembers[i].addHealth(-69);
 			testMembers[i].addStamina(-14);
 		}
+	}
+	
+	
+	public int getTotalDays() {
+		return totalDays;
+	}
+	/**Sets total and remaining days and the number of ship parts to be found (2/3 * Days)*/
+	public void setDays(int days) {
+		totalDays = days;
+		currentDay = 1;
+		setShipParts(2*days/3);
+	}
+	public int getCurrentDay() {
+		return currentDay;
+	}
+	public void setCurrentDay(int numDays) {
+		this.currentDay = Math.max(numDays, 0);
+	}
+	public void incrementCurrentDay() {
+		currentDay = Math.min(currentDay+1, totalDays);
+	}
+	
+	public int getShipPartsFound() {
+		return shipPartsFound;
+	}
+	public void incrementShipPartsFound() {
+		this.shipPartsFound++;
+	}
+	
+	public int getShipPartsTotalMissing() {
+		return shipPartsTotalMissing;
+	}
+	public void setShipParts(int shipPartsTotal) {
+		shipPartsTotalMissing = shipPartsTotal;
+		shipPartsFound = 0;
 	}
 }

@@ -10,6 +10,6 @@ public class Misc {
 	}
 	
 	public static String formatWithHTML(String message, String align) {
-		return String.format("<html><div align=\"%s\">%s</div></html>", align.toLowerCase(), message);
+		return String.format("<html><div align=\"%s\">%s</div></html>", align.toLowerCase(), message.replace("\n", "<br>"));
 	}
 }

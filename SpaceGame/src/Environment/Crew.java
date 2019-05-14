@@ -2,6 +2,7 @@ package Environment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import Environment.CrewMemberTypes.CrewMember;
 
@@ -9,6 +10,8 @@ import Environment.CrewMemberTypes.CrewMember;
 public class Crew {
 	
 	final int MAX_CREW_MEMBERS = 4;
+	final int HUNGER_INCREASE_PER_DAY = 20;
+	final int RANDOM_RANGE = 3;
 	
 	// Fixed length list to store crew members
 	private CrewMember[] members = new CrewMember[MAX_CREW_MEMBERS];
@@ -115,6 +118,16 @@ public class Crew {
 			}
 		}
 		return matchingCrew;
+	}
+	public void resetCrewForNewDay() {
+		Random rand = new Random();
+		for (CrewMember member: members) {
+			// Reset Actions
+			member.setNumActionsReset();
+			// Add Hunger
+			member.addHunger(HUNGER_INCREASE_PER_DAY + rand.nextInt(RANDOM_RANGE + 1 - RANDOM_RANGE) + RANDOM_RANGE);
+			//Add space plague affects
+		}
 	}
 //	private ArrayList<CrewMember> filterCrewByString(String)
 //	

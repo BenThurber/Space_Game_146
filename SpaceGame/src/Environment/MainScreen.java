@@ -109,7 +109,7 @@ public class MainScreen {
 	
 	private void updateShipAtributes() {
 		lblLocation.setText(environment.ship.getLocation().getLocationFormatted());
-		lblShipParts.setText(String.valueOf(environment.ship.getShipPartsFound()) + "/" + String.valueOf(environment.ship.getShipPartsTotalMissing()));
+		lblShipParts.setText(String.valueOf(environment.getShipPartsFound()) + "/" + String.valueOf(environment.getShipPartsTotalMissing()));
 		lblSheildLevel.setText(String.valueOf(environment.ship.getSheildLevel()) + "%");
 		progressBarSheildLvl.setValue(environment.ship.getSheildLevel());
 	}
