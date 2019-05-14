@@ -8,8 +8,8 @@ public class Location {
 	public Location() {
 	}
 
-	public Location(String location) {
-		name = location;
+	public Location(String name) {
+		this.name = name;
 	}
 
 	public String getName() {

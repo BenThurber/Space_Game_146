@@ -25,7 +25,7 @@ public class Planet extends Location {
 		this.name = names[rand.nextInt(names.length)];
 	}
 	public Planet(String name) {
-		this.name = name;
+		super(name);
 	}
 	
 	

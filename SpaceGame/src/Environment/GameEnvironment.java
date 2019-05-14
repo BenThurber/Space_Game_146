@@ -9,6 +9,7 @@ import Environment.CrewMemberTypes.Engineer;
 import Environment.CrewMemberTypes.Scientist;
 import Environment.Locations.Location;
 import Environment.Locations.Planet;
+import Environment.Locations.SpaceOutpost;
 
 public class GameEnvironment {
 	
@@ -16,18 +17,21 @@ public class GameEnvironment {
 	
 	public Ship ship = new Ship();
 	public Crew crew = new Crew(testMembers);
-	public Location currentPlanet = new Location();
+	public Location currentLocation = new Location();
 	
 	private MainScreen window;
 	
 	
 	public void visitSpaceOutpost() {
 		System.out.println("Visiting Space Outpost");
+		currentLocation = new SpaceOutpost();
+		ship.setLocation(currentLocation);
+		window.update();
 	}
 	public void moveToNextPlanet() {
 		System.out.println("Moving to Next Planet");
-		currentPlanet = new Planet();
-		ship.setLocation(currentPlanet);
+		currentLocation = new Planet();
+		ship.setLocation(currentLocation);
 		// Do asteroid belt
 		window.update();
 	}
