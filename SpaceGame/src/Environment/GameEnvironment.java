@@ -14,6 +14,7 @@ public class GameEnvironment {
 	
 	public Ship ship = new Ship();
 	public Crew crew = new Crew(testMembers);
+	public Location currentPlanet = new Location();
 	
 	private MainScreen window;
 	
@@ -23,6 +24,10 @@ public class GameEnvironment {
 	}
 	public void moveToNextPlanet() {
 		System.out.println("Moving to Next Planet");
+		currentPlanet = new Planet();
+		ship.setLocation(currentPlanet.getName());
+		// Do asteroid belt
+		window.update();
 	}
 	public void startNextDay() {
 		System.out.println("Starting Next Day");
@@ -79,7 +84,7 @@ public class GameEnvironment {
 		// Test code
 		ship.setName("UNSC Dawn");
 		ship.addToSheildLevel(-32);
-		ship.setLocation("Installation 04");
+		//ship.setLocation("Installation 04");
 		ship.setShipPartsTotalMissing(5);
 		ship.setShipPartsFound(1);
 		
