@@ -37,6 +37,7 @@ public class GameEnvironment {
 	}
 	public void startNextDay() {
 		System.out.println("Starting Next Day");
+		MessageBox newDayMsg = new MessageBox("A new day has begun");
 	}
 	public void viewInventory() {
 		System.out.println("Viewing Inventory");
