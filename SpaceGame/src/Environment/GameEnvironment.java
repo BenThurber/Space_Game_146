@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Environment.CrewMemberTypes.Captain;
 import Environment.CrewMemberTypes.Communicator;
 import Environment.CrewMemberTypes.CrewMember;
+import Environment.CrewMemberTypes.Doctor;
 import Environment.CrewMemberTypes.Engineer;
 import Environment.CrewMemberTypes.Navigator;
 import Environment.CrewMemberTypes.Scientist;
@@ -19,7 +20,9 @@ public class GameEnvironment {
 	private final String NEXT_DAY_NESSAGE = "Day %d of %d\n\nA new day has begun.  Your Crew have new actions that they can perfom.";
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
 	
-	private CrewMember[] testMembers = {new Scientist("John"), new Communicator("Cortana"), new Captain("Keys"), new Navigator("Arbiter")};
+	private final int MAX_NUM_PATIENTS_HEALED = 2;
+	
+	private CrewMember[] testMembers = {new Scientist("John"), new Navigator("Cortana"), new Navigator("Keys"), new Navigator("Arbiter")};
 	
 	private int totalDays = 0;
 	private int currentDay = 0;
@@ -77,7 +80,19 @@ public class GameEnvironment {
 			member.eat();
 			break;
 		case "use medical item":
-			member.useMedicalItem();
+			if (member.getSpecialization().equals("doctor")) {
+				if(member.getNumActions() > 0) {
+					ArrayList<CrewMember> membersToBeHealed = crewMembersWithAction(crew, window, "use medical item", MAX_NUM_PATIENTS_HEALED, new Doctor("blank"), false);
+					//System.out.println(membersToBeHealed);
+					for (CrewMember healedMember: membersToBeHealed) {
+						//System.out.println(healedMember);
+						healedMember.receiveHealingFromDoctor();
+					}
+					member.decrementNumActions();
+				}
+			} else {
+				member.useMedicalItem();
+			}
 			break;
 		case "repair sheilds":
 			member.repairSheilds(ship);
@@ -90,11 +105,11 @@ public class GameEnvironment {
 		}
 		window.update();  //Refresh the window?
 	}
-	/**Takes a Crew, MainScreen, Action string, numMembersRequired, and Subclass of CrewMember (to determine preferred type).  
+	/**Takes a Crew, MainScreen, Action string, numMembersRequired, and Subclass of CrewMember (to determine special type).  
 	 * Returns an ArrayList of CrewMembers (Captain, Scientist, Navigator, etc.) with a remaining action and who's action JComboBox 
 	 * has the desired action selected. The ArrayList will be less than or equal in size to numMembersRequired.
-	 * If there are more CrewMembers than fit, it chooses the preferred type of crew member first.*/
-	private ArrayList<CrewMember> crewMembersWithAction(Crew crew, MainScreen window, String action, int numMembersRequired, CrewMember preferredMemberType) {
+	 * If there are more CrewMembers than fit, it chooses the special type of crew member first.*/
+	private ArrayList<CrewMember> crewMembersWithAction(Crew crew, MainScreen window, String action, int numMembersRequired, CrewMember specialMemberType, boolean favorSpecialType) {
 		//Build an ArrayList of all crew members that have action selected on their JComboBox
 		action = action.toLowerCase();
 		ArrayList<CrewMember> matchingCrewMembers = new ArrayList<CrewMember>(crew.MAX_CREW_MEMBERS);
@@ -107,31 +122,29 @@ public class GameEnvironment {
 		// If ArrayList not larger than numMembersRequired return.  Otherwise filter out until right size
 		if (matchingCrewMembers.size() <= numMembersRequired) return matchingCrewMembers;
 		
-		//Build a new ArrayList by adding just crew members that are of preferred type
-		ArrayList<CrewMember> preferredCrewMembers = new ArrayList<CrewMember>(numMembersRequired);
+		//Build a new ArrayList by adding just crew members that are (or NOT) of special type
+		ArrayList<CrewMember> filteredCrewMembers = new ArrayList<CrewMember>(numMembersRequired);
 		for (CrewMember member: matchingCrewMembers) {
-			// If member is preferred type and don't over-fill the ArrayList
-			if (member.getSpecialization().equals(preferredMemberType.getSpecialization()) && preferredCrewMembers.size() < numMembersRequired) {
-				preferredCrewMembers.add(member);
+			// First Expression is NOT (favorSpecialType XOR isSpecialType). If member is special type (negate if !favorSpecialType) and don't over-fill the ArrayList
+			if (!(favorSpecialType ^ member.getSpecialization().equals(specialMemberType.getSpecialization())) && filteredCrewMembers.size() < numMembersRequired) {
+				filteredCrewMembers.add(member);
 			}
 		}
-		// If array list is full of preferred crew members return.  Otherwise start adding ones that are not preferred to fill the list.
-		if (preferredCrewMembers.size() <= numMembersRequired) return preferredCrewMembers;
+		// If array list is full of special crew members return.  Otherwise start adding ones that are not special to fill the list.
+		if (filteredCrewMembers.size() >= numMembersRequired) return filteredCrewMembers;
 		
-		//Add crew members that are not preferred to fill the list then return
+		//Add crew members that are not special to fill the list then return
 		for (CrewMember member: matchingCrewMembers) {
-			// If member is NOT preferred type
-			if (!member.getSpecialization().equals(preferredMemberType.getSpecialization())) {
-				preferredCrewMembers.add(member);
+			// If member is NOT special type (or IS special type if NOT favorSpecialType)
+			if (!(favorSpecialType ^ !member.getSpecialization().equals(specialMemberType.getSpecialization())) && filteredCrewMembers.size() < numMembersRequired) {
+				filteredCrewMembers.add(member);
 			}
 		}
-		return preferredCrewMembers;
+		return filteredCrewMembers;
 	}
-	//private boolean haveRequiredCrewMembersForAction(Crew crew, MainScreen window, String action, int numCrewMembersRequired)
-//	public void executeCrewMemberAction(CrewMember member, JComboBox crewMemberComboBox) {
-//		executeCrewMemberAction(member, crewMemberComboBox.getSelectedItem().toString());
-//		crewMemberComboBox.setSelectedIndex(0);
-//	}
+	private ArrayList<CrewMember> crewMembersWithAction(Crew crew, MainScreen window, String action, int numMembersRequired, CrewMember specialMemberType) {
+		return crewMembersWithAction(crew, window, action, numMembersRequired, specialMemberType, true);
+	}
 	
 	
 	public void launchMainWindow() {

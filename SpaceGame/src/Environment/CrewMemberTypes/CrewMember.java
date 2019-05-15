@@ -71,13 +71,20 @@ public class CrewMember {
 	}
 	
 	/**Crew member eats and regains some amount of health.*/
-	public void useMedicalItem(int healthIncrease) {
+	protected void useMedicalItem(int healthIncrease) {
 		if (this.decrementNumActions()) {
 			this.addHealth(healthIncrease);
 		}
 	}
 	public void useMedicalItem() {
 		useMedicalItem(HEALTH_LVL_INCREASE_MED_ITEM);
+	}
+	protected void receiveHealingFromDoctor(int healthIncrease) {
+		this.addHealth(healthIncrease);
+	}
+	public void receiveHealingFromDoctor() {
+		//Implement remove space plague?
+		this.addHealth(HEALTH_LVL_INCREASE_MED_ITEM);
 	}
 	
 	protected void repairSheilds(Ship ship, int amount) {
