@@ -90,6 +90,10 @@ public class CrewMember {
 		repairSheilds(ship, SHEILD_REPAIR_AMOUNT);
 	}
 	
+	public void pilotShip() {
+		decrementNumActions();
+		
+	}
 	
 	
 	
@@ -181,6 +185,7 @@ public class CrewMember {
 	public void setCrewMemberID(int crewMemberID) {
 		this.crewMemberID = crewMemberID;
 	}
+
 	
 	
 	

@@ -52,6 +52,7 @@ public class MainScreen {
 	private JLabel lblRemainingActions1 = new JLabel("0/0");
 	private JLabel lblStanimaLevel1 = new JLabel("0%");
 	private JLabel lblHungerLevel1 = new JLabel("0%");
+	private JComboBox comboBoxNextAction1 = new JComboBox();
 	
 	// CrewMember2 Variables
 	private final int CREW_MEMBER_2_ID = 1;
@@ -61,6 +62,7 @@ public class MainScreen {
 	private JLabel lblRemainingActions2 = new JLabel("0/0");
 	private JLabel lblStanimaLevel2 = new JLabel("0%");
 	private JLabel lblHungerLevel2 = new JLabel("0%");
+	private JComboBox comboBoxNextAction2 = new JComboBox();
 	
 	// CrewMember3 Variables
 	private final int CREW_MEMBER_3_ID = 2;
@@ -70,6 +72,7 @@ public class MainScreen {
 	private JLabel lblRemainingActions3 = new JLabel("0/0");
 	private JLabel lblStanimaLevel3 = new JLabel("0%");
 	private JLabel lblHungerLevel3 = new JLabel("0%");
+	private JComboBox comboBoxNextAction3 = new JComboBox();
 	
 	// CrewMember4 Variables
 	private final int CREW_MEMBER_4_ID = 3;
@@ -79,6 +82,7 @@ public class MainScreen {
 	private JLabel lblRemainingActions4 = new JLabel("0/0");
 	private JLabel lblStanimaLevel4 = new JLabel("0%");
 	private JLabel lblHungerLevel4 = new JLabel("0%");
+	private JComboBox comboBoxNextAction4 = new JComboBox();
 	
 	
 	
@@ -330,7 +334,7 @@ public class MainScreen {
 		lblNextActionHeading1.setBounds(71, 57, 88, 16);
 		panelCrewMember1.add(lblNextActionHeading1);
 		
-		JComboBox comboBoxNextAction1 = new JComboBox(convertCollectionForComboBox(crewMember1.ACTIONS, true));
+		comboBoxNextAction1 = new JComboBox(convertCollectionForComboBox(crewMember1.ACTIONS, true));
 		comboBoxNextAction1.setBounds(160, 53, 146, 27);
 		panelCrewMember1.add(comboBoxNextAction1);
 		
@@ -361,7 +365,8 @@ public class MainScreen {
 		btnExecuteNextAction1.setIcon(imgExecuteNextAction);
 		btnExecuteNextAction1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.executeCrewMemberAction(crewMember1, comboBoxNextAction1);
+				environment.executeCrewMemberAction(crewMember1, comboBoxNextAction1.getSelectedItem().toString());
+				comboBoxNextAction1.setSelectedIndex(0);
 			}
 		});
 		
@@ -428,7 +433,7 @@ public class MainScreen {
 		lblNextActionHeading2.setBounds(71, 57, 88, 16);
 		panelCrewMember2.add(lblNextActionHeading2);
 		
-		JComboBox comboBoxNextAction2 = new JComboBox(convertCollectionForComboBox(crewMember2.ACTIONS, true));
+		comboBoxNextAction2 = new JComboBox(convertCollectionForComboBox(crewMember2.ACTIONS, true));
 		comboBoxNextAction2.setBounds(160, 53, 146, 27);
 		panelCrewMember2.add(comboBoxNextAction2);
 		
@@ -465,7 +470,8 @@ public class MainScreen {
 		JButton btnExecuteNextAction2 = new JButton("");
 		btnExecuteNextAction2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.executeCrewMemberAction(crewMember2, comboBoxNextAction2);
+				environment.executeCrewMemberAction(crewMember2, comboBoxNextAction2.getSelectedItem().toString());
+				comboBoxNextAction2.setSelectedIndex(0);
 			}
 		});
 		btnExecuteNextAction2.setIcon(imgExecuteNextAction);
@@ -525,7 +531,7 @@ public class MainScreen {
 		lblNextActionHeading3.setBounds(71, 57, 88, 16);
 		panelCrewMember3.add(lblNextActionHeading3);
 		
-		JComboBox comboBoxNextAction3 = new JComboBox(convertCollectionForComboBox(crewMember3.ACTIONS, true));
+		comboBoxNextAction3 = new JComboBox(convertCollectionForComboBox(crewMember3.ACTIONS, true));
 		comboBoxNextAction3.setBounds(160, 53, 146, 27);
 		panelCrewMember3.add(comboBoxNextAction3);
 		
@@ -562,7 +568,8 @@ public class MainScreen {
 		JButton btnExecuteNextAction3 = new JButton("");
 		btnExecuteNextAction3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.executeCrewMemberAction(crewMember3, comboBoxNextAction3);
+				environment.executeCrewMemberAction(crewMember3, comboBoxNextAction3.getSelectedItem().toString());
+				comboBoxNextAction3.setSelectedIndex(0);
 			}
 		});
 		btnExecuteNextAction3.setIcon(imgExecuteNextAction);
@@ -623,7 +630,7 @@ public class MainScreen {
 		lblNextActionHeading4.setBounds(71, 57, 88, 16);
 		panelCrewMember4.add(lblNextActionHeading4);
 		
-		JComboBox comboBoxNextAction4 = new JComboBox(convertCollectionForComboBox(crewMember4.ACTIONS, true));
+		comboBoxNextAction4 = new JComboBox(convertCollectionForComboBox(crewMember4.ACTIONS, true));
 		comboBoxNextAction4.setBounds(160, 53, 146, 27);
 		panelCrewMember4.add(comboBoxNextAction4);
 		
@@ -659,7 +666,8 @@ public class MainScreen {
 		JButton btnExecuteNextAction4 = new JButton("");
 		btnExecuteNextAction4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.executeCrewMemberAction(crewMember4, comboBoxNextAction4);
+				environment.executeCrewMemberAction(crewMember4, comboBoxNextAction4.getSelectedItem().toString());
+				comboBoxNextAction4.setSelectedIndex(0);
 			}
 		});
 		btnExecuteNextAction4.setIcon(imgExecuteNextAction);
@@ -724,6 +732,31 @@ public class MainScreen {
 			i++;
 		}
 		return comboBoxArray;
+	}
+	
+	public String getSelectedNextAction(int crewMemberID) {
+		JComboBox comboBox;
+		switch (crewMemberID) {
+		case 0:
+			comboBox = comboBoxNextAction1;
+			break;
+		case 1:
+			comboBox = comboBoxNextAction2;
+			break;
+		case 2:
+			comboBox = comboBoxNextAction3;
+			break;
+		case 3:
+			comboBox = comboBoxNextAction4;
+			break;
+		default:
+			comboBox = comboBoxNextAction1;
+			break;
+		}
+		return comboBox.getSelectedItem().toString().toLowerCase();
+	}
+	public String getSelectedNextAction(CrewMember crewMember) {
+		return getSelectedNextAction(crewMember.getCrewMemberID());
 	}
 }
 

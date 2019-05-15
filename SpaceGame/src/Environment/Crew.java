@@ -119,6 +119,8 @@ public class Crew {
 		}
 		return matchingCrew;
 	}
+	
+	
 	public void resetCrewForNewDay() {
 		Random rand = new Random();
 		for (CrewMember member: members) {
