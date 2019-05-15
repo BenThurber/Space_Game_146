@@ -758,6 +758,33 @@ public class MainScreen {
 	public String getSelectedNextAction(CrewMember crewMember) {
 		return getSelectedNextAction(crewMember.getCrewMemberID());
 	}
+	public void clearComboBoxes(int crewMemberID) {
+		JComboBox comboBox;
+		switch (crewMemberID) {
+		case 0:
+			comboBox = comboBoxNextAction1;
+			break;
+		case 1:
+			comboBox = comboBoxNextAction2;
+			break;
+		case 2:
+			comboBox = comboBoxNextAction3;
+			break;
+		case 3:
+			comboBox = comboBoxNextAction4;
+			break;
+		default:
+			comboBox = comboBoxNextAction1;
+			break;
+		}
+		comboBox.setSelectedIndex(0);
+	}
+	public void clearComboBoxes() {
+		comboBoxNextAction1.setSelectedIndex(0);
+		comboBoxNextAction2.setSelectedIndex(0);
+		comboBoxNextAction3.setSelectedIndex(0);
+		comboBoxNextAction4.setSelectedIndex(0);
+	}
 }
 
 

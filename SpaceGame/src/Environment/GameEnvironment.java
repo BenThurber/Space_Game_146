@@ -22,7 +22,7 @@ public class GameEnvironment {
 	
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
-	private CrewMember[] testMembers = {new Scientist("John"), new Navigator("Cortana"), new Navigator("Keys"), new Navigator("Arbiter")};
+	private CrewMember[] testMembers = {new Scientist("John"), new Doctor("Cortana"), new Doctor("Keys"), new Doctor("Arbiter")};
 	
 	private int totalDays = 0;
 	private int currentDay = 0;
@@ -52,6 +52,7 @@ public class GameEnvironment {
 		System.out.println("Moving to Next Planet");
 		for (CrewMember member: membersWithAction) {
 			executeCrewMemberAction(member, "pilot ship");
+			window.clearComboBoxes(member.getCrewMemberID());
 		}
 		currentLocation = new Planet();
 		ship.setLocation(currentLocation);
@@ -64,6 +65,7 @@ public class GameEnvironment {
 		MessageBox newDayMsg = new MessageBox(String.format(NEXT_DAY_NESSAGE, getCurrentDay(), getTotalDays()));
 		crew.resetCrewForNewDay();
 		// Implement random event here
+		window.clearComboBoxes();
 		window.update();
 	}
 	public void viewInventory() {
@@ -83,10 +85,9 @@ public class GameEnvironment {
 			if (member.getSpecialization().equals("doctor")) {
 				if(member.getNumActions() > 0) {
 					ArrayList<CrewMember> membersToBeHealed = crewMembersWithAction(crew, window, "use medical item", MAX_NUM_PATIENTS_HEALED, new Doctor("blank"), false);
-					//System.out.println(membersToBeHealed);
 					for (CrewMember healedMember: membersToBeHealed) {
-						//System.out.println(healedMember);
 						healedMember.receiveHealingFromDoctor();
+						window.clearComboBoxes(healedMember.getCrewMemberID());
 					}
 					member.decrementNumActions();
 				}
