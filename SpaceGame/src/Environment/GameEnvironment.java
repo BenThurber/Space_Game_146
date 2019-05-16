@@ -12,6 +12,7 @@ import Environment.CrewMemberTypes.Scientist;
 import Environment.Locations.Location;
 import Environment.Locations.Planet;
 import Environment.Locations.SpaceOutpost;
+import Events.RandomEventGenerator;
 
 public class GameEnvironment {
 	
@@ -28,6 +29,8 @@ public class GameEnvironment {
 	private int currentDay = 0;
 	private int shipPartsFound = 0;
 	private int shipPartsTotalMissing = 0;
+	
+	//private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(SpacePlague);
 	
 	public Ship ship = new Ship();
 	public Crew crew = new Crew(testMembers);

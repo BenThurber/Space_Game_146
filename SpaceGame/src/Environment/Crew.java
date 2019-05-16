@@ -11,6 +11,7 @@ public class Crew {
 	
 	final int MAX_CREW_MEMBERS = 4;
 	final int HUNGER_INCREASE_PER_DAY = 20;
+	final int STAMINA_INCREASE_PER_DAY = -20;
 	final int RANDOM_RANGE = 3;
 	
 	// Fixed length list to store crew members
@@ -122,12 +123,14 @@ public class Crew {
 	
 	
 	public void resetCrewForNewDay() {
-		Random rand = new Random();
 		for (CrewMember member: members) {
+			System.out.println(Misc.numberPlusMinusRandom(STAMINA_INCREASE_PER_DAY, RANDOM_RANGE));
 			// Reset Actions
 			member.setNumActionsReset();
 			// Add Hunger
-			member.addHunger(HUNGER_INCREASE_PER_DAY + rand.nextInt(RANDOM_RANGE + 1 - RANDOM_RANGE) + RANDOM_RANGE);
+			member.addHunger(Misc.numberPlusMinusRandom(HUNGER_INCREASE_PER_DAY, RANDOM_RANGE));
+			// Decrease Stamina
+			member.addStamina(Misc.numberPlusMinusRandom(STAMINA_INCREASE_PER_DAY, RANDOM_RANGE));
 			//Add space plague affects
 		}
 	}
