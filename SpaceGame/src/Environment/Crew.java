@@ -12,6 +12,7 @@ public class Crew {
 	final int MAX_CREW_MEMBERS = 4;
 	final int HUNGER_INCREASE_PER_DAY = 20;
 	final int STAMINA_INCREASE_PER_DAY = -20;
+	final int PLAGUE_HEALTH_INCREASE_PER_DAY = -50;
 	final int RANDOM_RANGE = 3;
 	
 	// Fixed length list to store crew members
@@ -131,6 +132,9 @@ public class Crew {
 			// Decrease Stamina
 			member.addStamina(Misc.numberPlusMinusRandom(STAMINA_INCREASE_PER_DAY, RANDOM_RANGE));
 			//Add space plague affects
+			if (member.hasSpacePlague()) {
+				member.addHealth(Misc.numberPlusMinusRandom(PLAGUE_HEALTH_INCREASE_PER_DAY, RANDOM_RANGE));
+			}
 		}
 	}
 	

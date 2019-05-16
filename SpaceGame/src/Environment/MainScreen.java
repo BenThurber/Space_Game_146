@@ -51,7 +51,7 @@ public class MainScreen {
 	
 	private final float GO_BUTTON_SCALE_FACTOR = 0.35f;
 	
-	private final Color BG_BLUE = new Color(17, 152, 234);
+	private final Color TOP_BAR_BLUE = new Color(17, 152, 234);
 	
 	
 	
@@ -150,7 +150,7 @@ public class MainScreen {
 		panelCrewMember1.setVisible(crewMember1.isAlive());
 		
 		progressBarHealth1.setValue(crewMember1.getHealth());
-		progressBarHealth1.setForeground(progressBarColor(progressBarHealth1.getValue()));
+		progressBarHealth1.setForeground(progressBarColor(progressBarHealth1.getValue(), crewMember1));
 		lblRemainingActions1.setText(String.valueOf((crewMember1.getNumActions()) + "/" + crewMember1.MAX_ACTIONS));
 		lblStanimaLevel1.setText(String.valueOf(crewMember1.getStamina()) + "%");
 		lblHungerLevel1.setText(String.valueOf(crewMember1.getHunger()) + "%");
@@ -160,7 +160,7 @@ public class MainScreen {
 		panelCrewMember2.setVisible(crewMember2.isAlive());
 		
 		progressBarHealth2.setValue(crewMember2.getHealth());
-		progressBarHealth2.setForeground(progressBarColor(progressBarHealth2.getValue()));
+		progressBarHealth2.setForeground(progressBarColor(progressBarHealth2.getValue(), crewMember2));
 		lblRemainingActions2.setText(String.valueOf((crewMember2.getNumActions()) + "/" + crewMember2.MAX_ACTIONS));
 		lblStanimaLevel2.setText(String.valueOf(crewMember2.getStamina()) + "%");
 		lblHungerLevel2.setText(String.valueOf(crewMember2.getHunger()) + "%");
@@ -170,7 +170,7 @@ public class MainScreen {
 		panelCrewMember3.setVisible(crewMember3.isAlive());
 		
 		progressBarHealth3.setValue(crewMember3.getHealth());
-		progressBarHealth3.setForeground(progressBarColor(progressBarHealth3.getValue()));
+		progressBarHealth3.setForeground(progressBarColor(progressBarHealth3.getValue(), crewMember3));
 		lblRemainingActions3.setText(String.valueOf((crewMember3.getNumActions()) + "/" + crewMember3.MAX_ACTIONS));
 		lblStanimaLevel3.setText(String.valueOf(crewMember3.getStamina()) + "%");
 		lblHungerLevel3.setText(String.valueOf(crewMember3.getHunger()) + "%");
@@ -180,7 +180,7 @@ public class MainScreen {
 		panelCrewMember4.setVisible(crewMember4.isAlive());
 		
 		progressBarHealth4.setValue(crewMember4.getHealth());
-		progressBarHealth4.setForeground(progressBarColor(progressBarHealth4.getValue()));
+		progressBarHealth4.setForeground(progressBarColor(progressBarHealth4.getValue(), crewMember4));
 		lblRemainingActions4.setText(String.valueOf((crewMember4.getNumActions()) + "/" + crewMember4.MAX_ACTIONS));
 		lblStanimaLevel4.setText(String.valueOf(crewMember4.getStamina()) + "%");
 		lblHungerLevel4.setText(String.valueOf(crewMember4.getHunger()) + "%");
@@ -214,7 +214,7 @@ public class MainScreen {
 		// Sets text size based on length of ship name
 		int shipNameFontSize = Math.min(50 * 13 / (10 + (int)(1.9*lblShipName.getText().length())), 32);
 		lblShipName.setFont(new Font("Dialog", Font.BOLD, shipNameFontSize));
-		lblShipName.setForeground(BG_BLUE);
+		lblShipName.setForeground(TOP_BAR_BLUE);
 		lblShipName.setBounds(286, 365, 194, 39);
 		frame.getContentPane().add(lblShipName);
 		
@@ -735,14 +735,18 @@ public class MainScreen {
 		return unscaledImageIcon;
 	}
 	
-	private Color progressBarColor(int healthBarLevel) {
-		if (healthBarLevel >= (100 * 2/3)) {
-			return Color.GREEN;
+	private Color progressBarColor(int healthBarLevel, CrewMember member) {
+		Color barColor;
+		if (member.hasSpacePlague()) {
+			barColor = Color.MAGENTA;
+		} else if (healthBarLevel >= (100 * 2/3)) {
+			barColor = Color.GREEN;
 		} else if ((healthBarLevel >= (100 * 1/3) && healthBarLevel < (100 * 2/3))) {
-			return Color.YELLOW;
+			barColor = Color.YELLOW;
 		} else {
-			return Color.RED;
+			barColor = Color.RED;
 		}
+		return barColor;
 	}
 
 	/** Converts a set into a primitive array that can be used by a comboBox.  Boolean capitalize capitalized the first letter of each word.*/

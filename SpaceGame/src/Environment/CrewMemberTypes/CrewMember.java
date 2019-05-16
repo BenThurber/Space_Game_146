@@ -86,7 +86,11 @@ public class CrewMember {
 		useMedicalItem(HEALTH_LVL_INCREASE_MED_ITEM);
 	}
 	protected void receiveHealingFromDoctor(int healthIncrease) {
-		this.addHealth(healthIncrease);
+		if (this.hasSpacePlague()) {
+			this.setHasSpacePlague(false);
+		} else {
+			this.addHealth(healthIncrease);
+		}
 	}
 	public void receiveHealingFromDoctor() {
 		//Implement remove space plague?

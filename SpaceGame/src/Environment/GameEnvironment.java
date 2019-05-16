@@ -10,14 +10,14 @@ import Environment.CrewMemberTypes.Doctor;
 import Environment.CrewMemberTypes.Engineer;
 import Environment.CrewMemberTypes.Navigator;
 import Environment.CrewMemberTypes.Scientist;
+import Environment.Events.AlienPirates;
+import Environment.Events.AsteroidBelt;
+import Environment.Events.Event;
+import Environment.Events.RandomEventGenerator;
+import Environment.Events.SpacePlague;
 import Environment.Locations.Location;
 import Environment.Locations.Planet;
 import Environment.Locations.SpaceOutpost;
-import Events.AlienPirates;
-import Events.AsteroidBelt;
-import Events.Event;
-import Events.RandomEventGenerator;
-import Events.SpacePlague;
 
 public class GameEnvironment {
 	
