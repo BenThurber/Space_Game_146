@@ -18,10 +18,10 @@ public class Planet extends Location {
 	
 	public final String type = "Planet";
 	
-	private boolean containsShipPart;
-	private boolean containsFood;
-	private boolean containsMedicalItem;
-	private boolean containsMoney;
+	private boolean containsShipPart = false;
+	private boolean containsFood = false;
+	private boolean containsMedicalItem = false;
+	private boolean containsMoney = false;
 	
 	
 	
@@ -35,9 +35,9 @@ public class Planet extends Location {
 		containsMoney = rand.nextBoolean();
 	}
 	public Planet(String name) {
-		super(name);
+		this();
+		this.name = name;
 	}
-	
 	
 	public String getType() {
 		return type;
@@ -46,5 +46,21 @@ public class Planet extends Location {
 	public String getLocationFormatted() {
 		return String.format("<html><div style='text-align: left;'>%s<br/>%s</div></html>", this.getType(), this.getName());
 	}
+	
+	
+	public boolean isContainsShipPart() {
+		return containsShipPart;
+	}
+	public boolean isContainsFood() {
+		return containsFood;
+	}
+	public boolean isContainsMedicalItem() {
+		return containsMedicalItem;
+	}
+	public boolean isContainsMoney() {
+		return containsMoney;
+	}
+	
+	
 
 }

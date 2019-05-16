@@ -51,7 +51,7 @@ public class GameEnvironment {
 		System.out.println(membersWithAction);
 		System.out.println("Moving to Next Planet");
 		for (CrewMember member: membersWithAction) {
-			executeCrewMemberAction(member, "pilot ship");
+			member.pilotShip();
 			window.clearComboBoxes(member.getCrewMemberID());
 		}
 		currentLocation = new Planet();
@@ -84,7 +84,7 @@ public class GameEnvironment {
 		case "use medical item":
 			if (member.getSpecialization().equals("doctor")) {
 				if(member.getNumActions() > 0) {
-					ArrayList<CrewMember> membersToBeHealed = crewMembersWithAction(crew, window, "use medical item", MAX_NUM_PATIENTS_HEALED, new Doctor("blank"), false);
+					ArrayList<CrewMember> membersToBeHealed = crewMembersWithAction(crew, window, "use medical item", MAX_NUM_PATIENTS_HEALED, new Doctor("blank"), false, false);
 					for (CrewMember healedMember: membersToBeHealed) {
 						healedMember.receiveHealingFromDoctor();
 						window.clearComboBoxes(healedMember.getCrewMemberID());
@@ -99,24 +99,28 @@ public class GameEnvironment {
 			member.repairSheilds(ship);
 			break;
 		case "search planet":
+			if (currentLocation.getType().equals("Planet")) {
+				member.searchPlanet((Planet) currentLocation);
+			}
 			break;
 		case "pilot ship":
-			member.pilotShip();
+			moveToNextPlanet();
 			break;
 		}
 		window.update();  //Refresh the window?
 	}
 	/**Takes a Crew, MainScreen, Action string, numMembersRequired, and Subclass of CrewMember (to determine special type).  
 	 * Returns an ArrayList of CrewMembers (Captain, Scientist, Navigator, etc.) with a remaining action and who's action JComboBox 
-	 * has the desired action selected. The ArrayList will be less than or equal in size to numMembersRequired.
+	 * has the desired action selected. The ArrayList will be less than or equal in size to numMembersRequired.  
+	 * If needRemainingAction then the CrewMembers in the list will all have an action remaining.
 	 * If there are more CrewMembers than fit, it chooses the special type of crew member first.*/
-	private ArrayList<CrewMember> crewMembersWithAction(Crew crew, MainScreen window, String action, int numMembersRequired, CrewMember specialMemberType, boolean favorSpecialType) {
+	private ArrayList<CrewMember> crewMembersWithAction(Crew crew, MainScreen window, String action, int numMembersRequired, CrewMember specialMemberType, boolean favorSpecialType, boolean needRemainingAction) {
 		//Build an ArrayList of all crew members that have action selected on their JComboBox
 		action = action.toLowerCase();
 		ArrayList<CrewMember> matchingCrewMembers = new ArrayList<CrewMember>(crew.MAX_CREW_MEMBERS);
 		for (int iD=0; iD < crew.MAX_CREW_MEMBERS; iD++) {
 			// If CrewMember is alive, has an action, and has the correct JComboBox item selected
-			if (crew.getCrewMember(iD).isAlive() && crew.getCrewMember(iD).getNumActions() > 0 && window.getSelectedNextAction(iD).equals(action)) {
+			if (crew.getCrewMember(iD).isAlive() && (crew.getCrewMember(iD).getNumActions() > 0 || !needRemainingAction) && window.getSelectedNextAction(iD).equals(action)) {
 				matchingCrewMembers.add(crew.getCrewMember(iD));
 			}
 		}
@@ -144,7 +148,7 @@ public class GameEnvironment {
 		return filteredCrewMembers;
 	}
 	private ArrayList<CrewMember> crewMembersWithAction(Crew crew, MainScreen window, String action, int numMembersRequired, CrewMember specialMemberType) {
-		return crewMembersWithAction(crew, window, action, numMembersRequired, specialMemberType, true);
+		return crewMembersWithAction(crew, window, action, numMembersRequired, specialMemberType, true, true);
 	}
 	
 	

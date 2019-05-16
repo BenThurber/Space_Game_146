@@ -3,10 +3,12 @@ package Environment.CrewMemberTypes;
 import java.util.Set;
 
 import Environment.Ship;
+import Environment.Locations.Planet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Random;
 
 public class CrewMember {
 	
@@ -23,6 +25,9 @@ public class CrewMember {
 	private final int STANIMA_LVL_INCREASE_SLEEP = 50;
 	private final int HEALTH_LVL_INCREASE_MED_ITEM = 50;
 	private final int SHEILD_REPAIR_AMOUNT = 20;
+	
+	// Percent chance of finding an item on a planet
+	private final int FIND_ITEM_SUCSESS_RATE = 50;
 	
 	public final String specialization = "none";
 	private final String avatarImage = "/Images/Avatars/captain.png";  //Just use captain image...
@@ -99,7 +104,16 @@ public class CrewMember {
 	
 	public void pilotShip() {
 		decrementNumActions();
-		
+	}
+	
+	public void searchPlanet(Planet planet) {
+		if (this.decrementNumActions()) {
+			Random rand = new Random();
+			System.out.println("Searching Planet: " + planet.getName());
+			if (planet.isContainsFood() && FIND_ITEM_SUCSESS_RATE > rand.nextInt(100)) {
+				System.out.println("Found Something");
+			}
+		}
 	}
 	
 	

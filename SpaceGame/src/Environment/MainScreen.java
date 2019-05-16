@@ -34,6 +34,27 @@ import java.awt.event.ActionEvent;
 
 public class MainScreen {
 	
+	private final int WINDOW_X = 320;
+	private final int WINDOW_Y = 100;
+	private final int WINDOW_WIDTH = 767;
+	private final int WINDOW_HEIGHT = 832;
+	
+	private final float BG_IMAGE_SCALE_FACTOR = 0.5326f;
+	private final int BG_IMAGE_LABEL_X = 0;
+	private final int BG_IMAGE_LABEL_Y = -85;
+	private final int BG_IMAGE_LABEL_WIDTH = WINDOW_WIDTH;
+	private final int BG_IMAGE_LABEL_HEIGHT = 895;
+	
+	private final int VIEW_SCREEN_IMAGE_WIDTH = 575;
+	
+	private final int AVATAR_IMG_SIZE = 53;
+	
+	private final float GO_BUTTON_SCALE_FACTOR = 0.35f;
+	
+	private final Color BG_BLUE = new Color(17, 152, 234);
+	
+	
+	
 	// Variable environment can be used to get attributes to update labels and such
 	GameEnvironment environment;
 	JFrame frame;
@@ -43,6 +64,7 @@ public class MainScreen {
 	private JLabel lblShipParts = new JLabel("0/0");
 	private JLabel lblSheildLevel = new JLabel("100%");
 	private JProgressBar progressBarSheildLvl = new JProgressBar();
+	private JLabel viewScreenImageLabel = new JLabel("");
 	
 	// CrewMember1 Variables
 	private final int CREW_MEMBER_1_ID = 0;
@@ -99,6 +121,7 @@ public class MainScreen {
 	
 	public void update() {
 		updateShipAtributes();
+		updateViewScreen();
 		System.out.println("Updated Ship");
 		updateCrewMember1();
 		System.out.println("Updated CrewMember1");
@@ -116,6 +139,11 @@ public class MainScreen {
 		lblShipParts.setText(String.valueOf(environment.getShipPartsFound()) + "/" + String.valueOf(environment.getShipPartsTotalMissing()));
 		lblSheildLevel.setText(String.valueOf(environment.ship.getSheildLevel()) + "%");
 		progressBarSheildLvl.setValue(environment.ship.getSheildLevel());
+	}
+	private void updateViewScreen() {
+		ImageIcon unscaledViewScreenImage = new ImageIcon(MainScreen.class.getResource(environment.currentLocation.getImagePath()));
+		ImageIcon viewScreenImage = scaledImageIcon(unscaledViewScreenImage, VIEW_SCREEN_IMAGE_WIDTH, true);
+		viewScreenImageLabel.setIcon(viewScreenImage);
 	}
 	private void updateCrewMember1() {
 		crewMember1 = environment.crew.getCrewMember(CREW_MEMBER_1_ID);
@@ -163,25 +191,6 @@ public class MainScreen {
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
-		final int WINDOW_X = 320;
-		final int WINDOW_Y = 100;
-		final int WINDOW_WIDTH = 767;
-		final int WINDOW_HEIGHT = 832;
-		
-		final float BG_IMAGE_SCALE_FACTOR = 0.5326f;
-		final int BG_IMAGE_LABEL_X = 0;
-		final int BG_IMAGE_LABEL_Y = -85;
-		final int BG_IMAGE_LABEL_WIDTH = WINDOW_WIDTH;
-		final int BG_IMAGE_LABEL_HEIGHT = 895;
-		
-		final int AVATAR_IMG_SIZE = 53;
-		
-		final float GO_BUTTON_SCALE_FACTOR = 0.35f;
-		
-//		final int HEALTH_BAR_GREEN_LVL = (100 * 2/3);
-//		final int HEALTH_BAR_YELLOW_LVL = (100 * 1/3);
-		
-		final Color BG_BLUE = new Color(17, 152, 234);
 		
 		
 		update();
@@ -691,6 +700,10 @@ public class MainScreen {
 		frame.getContentPane().add(flashingLightsGIFLabel);
 		
 		
+		viewScreenImageLabel.setBounds(101, -15, VIEW_SCREEN_IMAGE_WIDTH, 283);
+		frame.getContentPane().add(viewScreenImageLabel);
+		
+		
 	}
 	
 	/**
@@ -702,6 +715,17 @@ public class MainScreen {
 	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, float percentSize) {
 		int width = Math.round(unscaledImageIcon.getIconWidth() * percentSize);
 		int height = Math.round(unscaledImageIcon.getIconHeight() * percentSize);
+		return scale(unscaledImageIcon, width, height);
+	}
+	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, int sideLength, boolean scaleByWidth) {
+		int width, height;
+		if (scaleByWidth) {
+			height = Math.round(((float) unscaledImageIcon.getIconHeight() / unscaledImageIcon.getIconWidth()) * sideLength);
+			width = sideLength;
+		} else {
+			width = Math.round(((float) unscaledImageIcon.getIconWidth() / unscaledImageIcon.getIconHeight()) * sideLength);
+			height = sideLength;
+		}
 		return scale(unscaledImageIcon, width, height);
 	}
 	private ImageIcon scale(ImageIcon unscaledImageIcon, int width, int height) {

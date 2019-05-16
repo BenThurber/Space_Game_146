@@ -4,6 +4,7 @@ public class Location {
 	
 	public final String type = "Empty Space";
 	protected String name = "Unknown";
+	protected final String imagePath = "/Images/Locations/EmptySpace.png";
 	
 	public Location() {
 	}
@@ -26,6 +27,10 @@ public class Location {
 	
 	public String getLocationFormatted() {
 		return name;
+	}
+
+	public String getImagePath() {
+		return imagePath;
 	}
 	
 }
