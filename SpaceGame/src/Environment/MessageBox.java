@@ -21,7 +21,7 @@ public class MessageBox extends JDialog {
 	private final String WHITESPACE = "            ";
 	
 	private final JPanel contentPanel = new JPanel();
-	public JPanel panel = new JPanel();
+	public JPanel messagepanel = new JPanel();
 	private String message;
 
 	/**
@@ -48,29 +48,29 @@ public class MessageBox extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
-			contentPanel.add(panel);
-			panel.setLayout(new GridLayout(0, 1, 0, 0));
+			contentPanel.add(messagepanel);
+			messagepanel.setLayout(new GridLayout(0, 1, 0, 0));
 			{
-				JLabel label = new JLabel(Misc.formatWithHTML(message, "center"));
-				panel.add(label);
-				label.setHorizontalAlignment(SwingConstants.CENTER);
+				JLabel lblMessage = new JLabel(Misc.formatWithHTML(message, "center"));
+				messagepanel.add(lblMessage);
+				lblMessage.setHorizontalAlignment(SwingConstants.CENTER);
 			}
 		}
 		{
-			JLabel label = new JLabel(WHITESPACE);
-			contentPanel.add(label, BorderLayout.WEST);
+			JLabel lblPaddingWest = new JLabel(WHITESPACE);
+			contentPanel.add(lblPaddingWest, BorderLayout.WEST);
 		}
 		{
-			JLabel label = new JLabel(WHITESPACE);
-			contentPanel.add(label, BorderLayout.EAST);
+			JLabel lblPaddingEast = new JLabel(WHITESPACE);
+			contentPanel.add(lblPaddingEast, BorderLayout.EAST);
 		}
 		{
-			JLabel lblNewLabel = new JLabel(WHITESPACE);
-			contentPanel.add(lblNewLabel, BorderLayout.SOUTH);
+			JLabel lblPaddingSouth = new JLabel(WHITESPACE);
+			contentPanel.add(lblPaddingSouth, BorderLayout.SOUTH);
 		}
 		{
-			JLabel lblNewLabel_1 = new JLabel(WHITESPACE);
-			contentPanel.add(lblNewLabel_1, BorderLayout.NORTH);
+			JLabel lblPaddingNorth = new JLabel(WHITESPACE);
+			contentPanel.add(lblPaddingNorth, BorderLayout.NORTH);
 		}
 		{
 			JPanel buttonPane = new JPanel();
