@@ -1,6 +1,7 @@
 package Environment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Environment.CrewMemberTypes.Captain;
 import Environment.CrewMemberTypes.Communicator;
@@ -12,13 +13,20 @@ import Environment.CrewMemberTypes.Scientist;
 import Environment.Locations.Location;
 import Environment.Locations.Planet;
 import Environment.Locations.SpaceOutpost;
+import Events.AlienPirates;
+import Events.AsteroidBelt;
+import Events.Event;
 import Events.RandomEventGenerator;
+import Events.SpacePlague;
 
 public class GameEnvironment {
 	
 	private final String NOT_ENOUGH_CREW_MEMBERS_MSG = "You don't have enough Crew Members to pilot the ship\n"
 			+ "(or they have no more actions).\n\nSelect \"Pilot Ship\" as an action for atleast %d crew members and try again.";
 	private final String NEXT_DAY_NESSAGE = "Day %d of %d\n\nA new day has begun.  Your Crew have new actions that they can perfom.";
+	private final String SHIP_DEAD_MESSAGE = "You have been hit an Asteroid, and your sheilds did not have enough energy to deflect it.  Your ship has been destroyed.";
+	private final String CREW_DEAD_MESSAGE = "All of your crew have perished.";
+	private final String GAME_OVER_MESSAGE = "GAME OVER";
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
 	
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
@@ -30,11 +38,17 @@ public class GameEnvironment {
 	private int shipPartsFound = 0;
 	private int shipPartsTotalMissing = 0;
 	
-	//private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(SpacePlague);
-	
 	public Ship ship = new Ship();
 	public Crew crew = new Crew(testMembers);
 	public Location currentLocation = new Location();
+	
+	private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(
+			new ArrayList<Event>(Arrays.asList(
+					new SpacePlague(this, crew), 
+					new AsteroidBelt(this, crew), 
+					new AlienPirates(this, crew)))
+			);
+	
 	
 	private MainScreen window;
 	
@@ -65,11 +79,12 @@ public class GameEnvironment {
 	public void startNextDay() {
 		System.out.println("Starting Next Day");
 		incrementCurrentDay();
-		MessageBox newDayMsg = new MessageBox(String.format(NEXT_DAY_NESSAGE, getCurrentDay(), getTotalDays()));
 		crew.resetCrewForNewDay();
-		// Implement random event here
+		nextDayRandomEvents.initiateRandomEvent();  // Random Event
+		MessageBox messageBoxNewDay = new MessageBox(String.format(NEXT_DAY_NESSAGE, getCurrentDay(), getTotalDays()));
 		window.clearComboBoxes();
 		window.update();
+		checkForGameOver();
 	}
 	public void viewInventory() {
 		System.out.println("Viewing Inventory");
@@ -218,5 +233,22 @@ public class GameEnvironment {
 	public void setShipParts(int shipPartsTotal) {
 		shipPartsTotalMissing = shipPartsTotal;
 		shipPartsFound = 0;
+	}
+	
+	public void checkForGameOver() {
+		if (!ship.isAlive()) {
+			initiateGameOver(SHIP_DEAD_MESSAGE);
+		}
+		if(!crew.isAlive()) {
+			initiateGameOver(CREW_DEAD_MESSAGE);
+		}
+	}
+	public void initiateGameOver(String message) {
+		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE);
+		window.frame.dispose();  // Make better
+	}
+	public void initiateGameOver() {
+		MessageBox messageBoxGameOver = new MessageBox(GAME_OVER_MESSAGE);
+		window.frame.dispose();  // Make better
 	}
 }

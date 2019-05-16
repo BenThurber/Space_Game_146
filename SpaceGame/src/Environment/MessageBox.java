@@ -21,7 +21,7 @@ public class MessageBox extends JDialog {
 	private final String WHITESPACE = "            ";
 	
 	private final JPanel contentPanel = new JPanel();
-	JPanel panel = new JPanel();
+	public JPanel panel = new JPanel();
 	private String message;
 
 	/**

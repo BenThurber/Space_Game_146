@@ -37,6 +37,7 @@ public class CrewMember {
 	private int hunger = 0;
 	private int stamina = 100;
 	private boolean isAlive = true;
+	private boolean hasSpacePlague = false;
 	private int numActions = MAX_ACTIONS;
 	// Integer to identify where CrewMember belongs in the array in Crew and where it goes in the GUI
 	private int crewMemberID;
@@ -165,6 +166,13 @@ public class CrewMember {
 		this.isAlive = false;
 	}
 
+	public boolean hasSpacePlague() {
+		return hasSpacePlague;
+	}
+	public void setHasSpacePlague(boolean hasSpacePlague) {
+		this.hasSpacePlague = hasSpacePlague;
+	}
+	
 	public String getSpecialization() {
 		return specialization;
 	}

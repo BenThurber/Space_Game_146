@@ -124,7 +124,6 @@ public class Crew {
 	
 	public void resetCrewForNewDay() {
 		for (CrewMember member: members) {
-			System.out.println(Misc.numberPlusMinusRandom(STAMINA_INCREASE_PER_DAY, RANDOM_RANGE));
 			// Reset Actions
 			member.setNumActionsReset();
 			// Add Hunger
@@ -134,9 +133,14 @@ public class Crew {
 			//Add space plague affects
 		}
 	}
-//	private ArrayList<CrewMember> filterCrewByString(String)
-//	
-//	public void killCrewMember(int cremMemberID) {
-//		
-//	}
+	
+	
+	public boolean isAlive() {
+		for (CrewMember member: members) {
+			if (member.isAlive()) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

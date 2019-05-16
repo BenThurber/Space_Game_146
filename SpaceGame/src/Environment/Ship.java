@@ -37,4 +37,8 @@ public class Ship {
 	public void setLocation(String location) {
 		this.location = new Location(location);
 	}
+	
+	public boolean isAlive() {
+		return sheildLevel >= 0;
+	}
 }
