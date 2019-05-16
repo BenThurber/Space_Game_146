@@ -121,7 +121,10 @@ public class Crew {
 		}
 		return matchingCrew;
 	}
-	
+
+	public CrewMember[] getCrewMemberArray() {
+		return members;
+	}
 	
 	public void resetCrewForNewDay() {
 		for (CrewMember member: members) {

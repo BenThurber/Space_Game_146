@@ -15,6 +15,7 @@ import Environment.Events.AsteroidBelt;
 import Environment.Events.Event;
 import Environment.Events.RandomEventGenerator;
 import Environment.Events.SpacePlague;
+import Environment.Exceptions.CrewMemberNotFoundException;
 import Environment.Locations.Location;
 import Environment.Locations.Planet;
 import Environment.Locations.SpaceOutpost;
@@ -69,7 +70,7 @@ public class GameEnvironment {
 		System.out.println("Moving to Next Planet");
 		for (CrewMember member: membersWithAction) {
 			member.pilotShip();
-			window.clearComboBoxes(member.getCrewMemberID());
+			window.clearComboBoxes(member);
 		}
 		currentLocation = new Planet();
 		ship.setLocation(currentLocation);
@@ -105,7 +106,7 @@ public class GameEnvironment {
 					ArrayList<CrewMember> membersToBeHealed = crewMembersWithAction(crew, window, "use medical item", MAX_NUM_PATIENTS_HEALED, new Doctor("blank"), false, false);
 					for (CrewMember healedMember: membersToBeHealed) {
 						healedMember.receiveHealingFromDoctor();
-						window.clearComboBoxes(healedMember.getCrewMemberID());
+						window.clearComboBoxes(healedMember);
 					}
 					member.decrementNumActions();
 				}
@@ -136,15 +137,21 @@ public class GameEnvironment {
 		//Build an ArrayList of all crew members that have action selected on their JComboBox
 		action = action.toLowerCase();
 		ArrayList<CrewMember> matchingCrewMembers = new ArrayList<CrewMember>(crew.MAX_CREW_MEMBERS);
-		for (int iD=0; iD < crew.MAX_CREW_MEMBERS; iD++) {
+		for (CrewMember member: crew.getCrewMemberArray()) {
 			// If CrewMember is alive, has an action, and has the correct JComboBox item selected
-			if (crew.getCrewMember(iD).isAlive() && (crew.getCrewMember(iD).getNumActions() > 0 || !needRemainingAction) && window.getSelectedNextAction(iD).equals(action)) {
-				matchingCrewMembers.add(crew.getCrewMember(iD));
+			try {
+				if (member.isAlive() && (member.getNumActions() > 0 || !needRemainingAction) && window.getSelectedNextAction(member).equals(action)) {
+					matchingCrewMembers.add(member);
+				}
+			}
+			catch (CrewMemberNotFoundException e) {
+				System.out.println("CrewMemberNotFoundException while filtering crew");
+				continue;
 			}
 		}
 		// If ArrayList not larger than numMembersRequired return.  Otherwise filter out until right size
 		if (matchingCrewMembers.size() <= numMembersRequired) return matchingCrewMembers;
-		
+
 		//Build a new ArrayList by adding just crew members that are (or NOT) of special type
 		ArrayList<CrewMember> filteredCrewMembers = new ArrayList<CrewMember>(numMembersRequired);
 		for (CrewMember member: matchingCrewMembers) {
@@ -155,7 +162,7 @@ public class GameEnvironment {
 		}
 		// If array list is full of special crew members return.  Otherwise start adding ones that are not special to fill the list.
 		if (filteredCrewMembers.size() >= numMembersRequired) return filteredCrewMembers;
-		
+
 		//Add crew members that are not special to fill the list then return
 		for (CrewMember member: matchingCrewMembers) {
 			// If member is NOT special type (or IS special type if NOT favorSpecialType)

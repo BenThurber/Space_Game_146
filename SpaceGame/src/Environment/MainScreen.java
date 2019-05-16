@@ -17,6 +17,7 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
 import Environment.CrewMemberTypes.CrewMember;
+import Environment.Exceptions.CrewMemberNotFoundException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ComboBoxModel;
@@ -762,7 +763,7 @@ public class MainScreen {
 		return comboBoxArray;
 	}
 	
-	public String getSelectedNextAction(int crewMemberID) {
+	public String getSelectedNextAction(int crewMemberID) throws CrewMemberNotFoundException {
 		JComboBox comboBox;
 		switch (crewMemberID) {
 		case 0:
@@ -778,34 +779,39 @@ public class MainScreen {
 			comboBox = comboBoxNextAction4;
 			break;
 		default:
-			comboBox = comboBoxNextAction1;
-			break;
+			throw new CrewMemberNotFoundException("The CrewMember with ID " + crewMemberID + " is not part of the crew.");
 		}
 		return comboBox.getSelectedItem().toString().toLowerCase();
 	}
-	public String getSelectedNextAction(CrewMember crewMember) {
-		return getSelectedNextAction(crewMember.getCrewMemberID());
+	public String getSelectedNextAction(CrewMember member) throws CrewMemberNotFoundException {
+		if (member.equals(environment.crew.getCrewMember(member.getCrewMemberID()))) {
+			return getSelectedNextAction(member.getCrewMemberID());
+		} else {
+			throw new CrewMemberNotFoundException("The CrewMember " + member.getName() + " is not part of the crew or has a crewMemberID mismatch");
+		}
 	}
 	public void clearComboBoxes(int crewMemberID) {
-		JComboBox comboBox;
 		switch (crewMemberID) {
 		case 0:
-			comboBox = comboBoxNextAction1;
+			comboBoxNextAction1.setSelectedIndex(0);
 			break;
 		case 1:
-			comboBox = comboBoxNextAction2;
+			comboBoxNextAction2.setSelectedIndex(0);
 			break;
 		case 2:
-			comboBox = comboBoxNextAction3;
+			comboBoxNextAction3.setSelectedIndex(0);
 			break;
 		case 3:
-			comboBox = comboBoxNextAction4;
+			comboBoxNextAction4.setSelectedIndex(0);
 			break;
 		default:
-			comboBox = comboBoxNextAction1;
 			break;
 		}
-		comboBox.setSelectedIndex(0);
+	}
+	public void clearComboBoxes(CrewMember member) {
+		if (member.equals(environment.crew.getCrewMember(member.getCrewMemberID()))) {
+			clearComboBoxes(member.getCrewMemberID());
+		}
 	}
 	public void clearComboBoxes() {
 		comboBoxNextAction1.setSelectedIndex(0);
