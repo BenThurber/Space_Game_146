@@ -33,7 +33,7 @@ public class GameEnvironment {
 	
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
-	private CrewMember[] testMembers = {new Scientist("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
+	private CrewMember[] testMembers = {new Captain("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
 	
 	private int totalDays = 0;
 	private int currentDay = 0;

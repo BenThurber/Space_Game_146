@@ -21,10 +21,10 @@ public class CrewMember {
 	public final int MAX_ACTIONS = 2;
 	
 	//Amounts by which stats increase with their respective actions
-	private final int HUNGER_LVL_INCREASE_EAT = -50;
-	private final int STANIMA_LVL_INCREASE_SLEEP = 50;
-	private final int HEALTH_LVL_INCREASE_MED_ITEM = 50;
-	private final int SHEILD_REPAIR_AMOUNT = 20;
+	protected final int HUNGER_LVL_INCREASE_EAT = -50;
+	protected final int STANIMA_LVL_INCREASE_SLEEP = 50;
+	protected final int HEALTH_LVL_INCREASE_MED_ITEM = 50;
+	protected final int SHEILD_REPAIR_AMOUNT = 20;
 	
 	// Percent chance of finding an item on a planet
 	private final int FIND_ITEM_SUCSESS_RATE = 50;
