@@ -45,5 +45,7 @@ public class Captain extends CrewMember {
 		super.receiveHealingFromDoctor(HEALTH_LVL_INCREASE_MED_ITEM);
 	}
 	
+	
+	
 
 }

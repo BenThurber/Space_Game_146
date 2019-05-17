@@ -94,7 +94,7 @@ public class CrewMember {
 	}
 	public void receiveHealingFromDoctor() {
 		//Implement remove space plague?
-		this.addHealth(HEALTH_LVL_INCREASE_MED_ITEM);
+		this.receiveHealingFromDoctor(HEALTH_LVL_INCREASE_MED_ITEM);
 	}
 	
 	protected void repairSheilds(Ship ship, int amount) {
