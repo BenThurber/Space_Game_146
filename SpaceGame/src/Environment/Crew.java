@@ -126,6 +126,28 @@ public class Crew {
 		return members;
 	}
 	
+	public int numLiveCrew() {
+		int numLive = 0;
+		for (int i=0; i < members.length; i++) {
+			if (members[i] != null && members[i].isAlive()) {
+				numLive++;
+			}
+		}
+		return numLive;
+	}
+	/**Returns an array of only CrewMembers that are alive*/
+	public CrewMember[] getLiveCrewMemberArray() {
+		CrewMember[] liveMembers = new CrewMember[this.numLiveCrew()];
+		int i = 0;
+		for (CrewMember member: members) {
+			if (member.isAlive()) {
+				liveMembers[i] = member;
+				i++;
+			}
+		}
+		return liveMembers;
+	}
+	
 	public void resetCrewForNewDay() {
 		for (CrewMember member: members) {
 			// Reset Actions

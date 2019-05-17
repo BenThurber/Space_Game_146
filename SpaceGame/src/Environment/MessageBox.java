@@ -15,8 +15,12 @@ import javax.swing.SwingConstants;
 
 public class MessageBox extends JDialog {
 	
-	private final int WINDOW_PADDING_X = 100;
-	private final int WINDOW_PADDING_Y = 80;
+	private static int lastWindowX = 500;
+	private static int lastWindowY = 200;
+	private static int lastWindowWidth = 500;
+	private static int lastWindowHeight = 200;
+	private final int WINDOW_PADDING_WIDTH = 100;
+	private final int WINDOW_PADDING_HEIGHT = 80;
 	private final int WINDOW_MAX_WIDTH = 400;
 	private final String WHITESPACE = "            ";
 	
@@ -40,7 +44,7 @@ public class MessageBox extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public MessageBox(String messageText) {
+	public MessageBox(String messageText, int parentX, int parentY, int parentWidth, int parentHeight) {
 		message = messageText;
 		setBounds(500, 200, 300, 250);
 		getContentPane().setLayout(new BorderLayout());
@@ -103,10 +107,23 @@ public class MessageBox extends JDialog {
 		this.pack();
 		int windowWidth = Math.min((int) this.getSize().getSize().getWidth(), WINDOW_MAX_WIDTH);
 		int windowHeight = (int) this.getSize().getSize().getHeight();
-		System.out.println(windowWidth +" "+ windowHeight);
-		this.setBounds(500, 200, windowWidth + WINDOW_PADDING_X, windowHeight + WINDOW_PADDING_Y);
+		int windowWidthPadded = windowWidth + WINDOW_PADDING_WIDTH;
+		int windowHeightPadded = windowHeight + WINDOW_PADDING_HEIGHT;
+		int windowX = parentX + parentWidth/2 - windowWidthPadded/2;
+		int windowY = parentY + parentHeight/2 - windowHeightPadded/2;
+		System.out.println(windowWidthPadded +" "+ windowWidthPadded);
+		this.setBounds(windowX, windowY, windowWidthPadded, windowHeightPadded);
 		this.setVisible(true);
-		
+		lastWindowX = parentX;
+		lastWindowY = parentY;
+		lastWindowWidth = parentWidth;
+		lastWindowHeight = parentHeight;
 	}
-
+	public MessageBox(String messageText) {
+		this(messageText, lastWindowX, lastWindowY, lastWindowWidth, lastWindowHeight);
+	}
+	public MessageBox(String messageText, MainScreen parent) {
+		this(messageText, parent.frame.getX(), parent.frame.getY(), parent.frame.getWidth(), parent.frame.getHeight());
+	}
+	
 }

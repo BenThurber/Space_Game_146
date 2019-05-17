@@ -20,5 +20,9 @@ public class Misc {
 		Random rand = new Random();
 		return num + rand.nextInt(range + 1 + range) - range;
 	}
+	public static int numberRandomMinMax(int min, int max) {
+		Random rand = new Random();
+		return rand.nextInt(max + 1 - min) + min;
+	}
 
 }

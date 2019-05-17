@@ -8,7 +8,7 @@ import Environment.Misc;
 public class AsteroidBelt extends Event {
 	
 	private final String MESSAGE_ASTEROID_COLLISION = "Your ship has passed through an Asteroid Belt!\nYour shields have taken %d%% damage.";
-	private final int SHIELD_DAMAGE = 30;
+	private final int SHIELD_DAMAGE = 50;
 	private final int SHIELD_DAMAGE_RANDOM_RANGE = 10;
 	
 	public AsteroidBelt(GameEnvironment environment, Crew crew) {

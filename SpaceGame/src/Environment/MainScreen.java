@@ -28,7 +28,6 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.awt.event.ActionEvent;
@@ -57,8 +56,8 @@ public class MainScreen {
 	
 	
 	// Variable environment can be used to get attributes to update labels and such
-	GameEnvironment environment;
-	JFrame frame;
+	private GameEnvironment environment;
+	protected JFrame frame;
 	
 	// Ship Related Variables
 	private JLabel lblLocation = new JLabel("Unknown");

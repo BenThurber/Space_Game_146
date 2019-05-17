@@ -24,15 +24,16 @@ public class GameEnvironment {
 	
 	private final String NOT_ENOUGH_CREW_MEMBERS_MSG = "You don't have enough Crew Members to pilot the ship\n"
 			+ "(or they have no more actions).\n\nSelect \"Pilot Ship\" as an action for atleast %d crew members and try again.";
-	private final String NEXT_DAY_NESSAGE = "Day %d of %d\n\nA new day has begun.  Your Crew have new actions that they can perfom.";
+	private final String FIRST_DAY_MESSAGE = "First Day message";
+	private final String NEXT_DAY_MESSAGE = "Day %d of %d\n\nA new day has begun.  Your Crew have new actions that they can perfom.";
 	private final String SHIP_DEAD_MESSAGE = "You have been hit an Asteroid, and your sheilds did not have enough energy to deflect it.  Your ship has been destroyed.";
-	private final String CREW_DEAD_MESSAGE = "All of your crew have perished.";
+	private final String CREW_DEAD_MESSAGE = "All of your crew have perished from either from lack of food, sleep or from plague.";
 	private final String GAME_OVER_MESSAGE = "GAME OVER";
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
 	
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
-	private CrewMember[] testMembers = {new Scientist("John"), new Doctor("Cortana"), new Doctor("Keys"), new Doctor("Arbiter")};
+	private CrewMember[] testMembers = {new Scientist("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
 	
 	private int totalDays = 0;
 	private int currentDay = 0;
@@ -40,14 +41,14 @@ public class GameEnvironment {
 	private int shipPartsTotalMissing = 0;
 	
 	public Ship ship = new Ship();
-	public Crew crew = new Crew(testMembers);
+	public Crew crew = new Crew();
 	public Location currentLocation = new Location();
 	
 	private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(
 			new ArrayList<Event>(Arrays.asList(
 					new SpacePlague(this, crew), 
-					new AsteroidBelt(this, crew), 
-					new AlienPirates(this, crew)))
+//					new AlienPirates(this, crew),
+					new AsteroidBelt(this, crew)))
 			);
 	
 	
@@ -63,7 +64,7 @@ public class GameEnvironment {
 	public void moveToNextPlanet() {
 		ArrayList<CrewMember> membersWithAction = crewMembersWithAction(crew, window, "pilot ship", MIN_CREW_TO_PILOT_SHIP, new Navigator("blank"));
 		if (membersWithAction.size() < MIN_CREW_TO_PILOT_SHIP) {
-			MessageBox newDayMsg = new MessageBox(String.format(NOT_ENOUGH_CREW_MEMBERS_MSG, MIN_CREW_TO_PILOT_SHIP));
+			MessageBox newDayMsg = new MessageBox(String.format(NOT_ENOUGH_CREW_MEMBERS_MSG, MIN_CREW_TO_PILOT_SHIP), window);
 			return;
 		}
 		System.out.println(membersWithAction);
@@ -82,13 +83,22 @@ public class GameEnvironment {
 		incrementCurrentDay();
 		crew.resetCrewForNewDay();
 		nextDayRandomEvents.initiateRandomEvent();  // Random Event
-		MessageBox messageBoxNewDay = new MessageBox(String.format(NEXT_DAY_NESSAGE, getCurrentDay(), getTotalDays()));
+		MessageBox messageBoxNewDay = new MessageBox(String.format(NEXT_DAY_MESSAGE, getCurrentDay(), getTotalDays()), window);
 		window.clearComboBoxes();
 		window.update();
 		checkForGameOver();
 	}
 	public void viewInventory() {
 		System.out.println("Viewing Inventory");
+	}
+	
+	
+	public void startFirstDay() {
+		System.out.println("Starting First Day");
+		MessageBox messageBoxNewDay = new MessageBox(String.format(FIRST_DAY_MESSAGE), window);
+		nextDayRandomEvents.initiateRandomEvent();  // Random Event
+		window.update();
+		messageBoxNewDay.setAlwaysOnTop(true);
 	}
 	
 	
@@ -182,6 +192,7 @@ public class GameEnvironment {
 		
 		window = new MainScreen(this);
 		window.frame.setVisible(true);
+		startFirstDay();
 	}
 	
 	
@@ -196,14 +207,15 @@ public class GameEnvironment {
 	private void runTestCode() {
 		// Test code
 		ship.setName("UNSC Dawn");
-		ship.addToSheildLevel(-32);
+		crew.addNewCrewMembers(testMembers);
+		//ship.addToSheildLevel(-32);
 		//ship.setLocation("Installation 04");
 		setDays(5);
 		
 		for (int i=0; i < 4; i++) {
-			testMembers[i].addHunger(+65);
-			testMembers[i].addHealth(-69);
-			testMembers[i].addStamina(-14);
+			//testMembers[i].addHunger(+65);
+			//testMembers[i].addHealth(-69);
+			//testMembers[i].addStamina(-14);
 		}
 	}
 	
@@ -251,11 +263,11 @@ public class GameEnvironment {
 		}
 	}
 	public void initiateGameOver(String message) {
-		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE);
+		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE, window);
 		window.frame.dispose();  // Make better
 	}
 	public void initiateGameOver() {
-		MessageBox messageBoxGameOver = new MessageBox(GAME_OVER_MESSAGE);
+		MessageBox messageBoxGameOver = new MessageBox(GAME_OVER_MESSAGE, window);
 		window.frame.dispose();  // Make better
 	}
 }
