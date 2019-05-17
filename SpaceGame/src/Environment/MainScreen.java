@@ -118,7 +118,7 @@ public class MainScreen {
 		initialize();
 	}
 	
-	
+	/**Update the widgets on the MainScreen*/
 	public void update() {
 		updateShipAtributes();
 		updateViewScreen();
@@ -133,18 +133,21 @@ public class MainScreen {
 		System.out.println("Updated CrewMember4\n");
 	}
 	
-	
+	/**Updates the widgets related to the ship*/
 	private void updateShipAtributes() {
 		lblLocation.setText(environment.ship.getLocation().getLocationFormatted());
 		lblShipParts.setText(String.valueOf(environment.getShipPartsFound()) + "/" + String.valueOf(environment.getShipPartsTotalMissing()));
 		lblSheildLevel.setText(String.valueOf(environment.ship.getSheildLevel()) + "%");
 		progressBarSheildLvl.setValue(environment.ship.getSheildLevel());
 	}
+	/**Updates the view screen image at the top of the GUI*/
 	private void updateViewScreen() {
 		ImageIcon unscaledViewScreenImage = new ImageIcon(MainScreen.class.getResource(environment.currentLocation.getImagePath()));
 		ImageIcon viewScreenImage = scaledImageIcon(unscaledViewScreenImage, VIEW_SCREEN_IMAGE_WIDTH, true);
+		
 		viewScreenImageLabel.setIcon(viewScreenImage);
 	}
+	/**Updates CrewMember1 (top left) to */
 	private void updateCrewMember1() {
 		crewMember1 = environment.crew.getCrewMember(CREW_MEMBER_1_ID);
 		panelCrewMember1.setVisible(crewMember1.isAlive());

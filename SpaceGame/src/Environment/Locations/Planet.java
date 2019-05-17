@@ -1,5 +1,8 @@
 package Environment.Locations;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 public class Planet extends Location {
@@ -15,6 +18,17 @@ public class Planet extends Location {
 	                                 "Vorth MHP", "Doria G", "Dodruapra", "Vuchuliv", 
 	                                 "Abbuna", "Yoborth", "Novis", "Zoitera", 
 	                                 "Ziaruta", "Gnoduthea", "Zeron 0Y0", "Coria GB"};
+	
+	// These 3 variables are static so that planetFileNames is shuffled once, then keeps its value.  
+	// Each time a planet is instantiated, the next planet image in the array is used, so duplicate images aren't displayed.
+	private static ArrayList<String> planetFileNames = new ArrayList<String>(Arrays.asList(
+			"mercury.jpg", "venus.jpg", "earth.jpg", "mars.jpg", "jupiter.jpg", 
+				"saturn.jpg", "neptune.jpg", "uranus.jpg", "pluto.jpg"
+	));
+	private static int planetIndex = 0;
+	private static boolean imagesShuffled = false;
+	
+	private final String directoryPrefix = "/Images/Locations/Planets/";
 	
 	public final String type = "Planet";
 	
@@ -33,6 +47,11 @@ public class Planet extends Location {
 		containsFood = rand.nextBoolean();
 		containsMedicalItem = rand.nextBoolean();
 		containsMoney = rand.nextBoolean();
+		
+		if (!imagesShuffled) {
+			Collections.shuffle(planetFileNames);
+		}
+		planetIndex = (planetIndex + 1) % planetFileNames.size();  // Increment Index and wrap
 	}
 	public Planet(String name) {
 		this();
@@ -61,6 +80,9 @@ public class Planet extends Location {
 		return containsMoney;
 	}
 	
-	
+	public String getImagePath() {
+		Random rand = new Random();
+		return directoryPrefix + planetFileNames.get(planetIndex);
+	}
 
 }
