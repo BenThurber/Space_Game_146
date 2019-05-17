@@ -26,7 +26,7 @@ public class GameEnvironment {
 			+ "(or they have no more actions).\n\nSelect \"Pilot Ship\" as an action for atleast %d crew members and try again.";
 	private final String FIRST_DAY_MESSAGE = "First Day message";
 	private final String NEXT_DAY_MESSAGE = "Day %d of %d\n\nA new day has begun.  Your Crew have new actions that they can perfom.";
-	private final String SHIP_DEAD_MESSAGE = "You have been hit an Asteroid, and your sheilds did not have enough energy to deflect it.  Your ship has been destroyed.";
+	private final String SHIP_DEAD_MESSAGE = "You've been hit by an Asteroid, and your sheilds did not have enough energy to deflect it.  Your ship has been destroyed.";
 	private final String CREW_DEAD_MESSAGE = "All of your crew have perished from either from lack of food, sleep or from plague.";
 	private final String GAME_OVER_MESSAGE = "GAME OVER";
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;

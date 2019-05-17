@@ -39,6 +39,6 @@ public class Ship {
 	}
 	
 	public boolean isAlive() {
-		return sheildLevel >= 0;
+		return sheildLevel > 0;
 	}
 }
