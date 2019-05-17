@@ -741,7 +741,7 @@ public class MainScreen {
 	private Color progressBarColor(int healthBarLevel, CrewMember member) {
 		Color barColor;
 		if (member.hasSpacePlague()) {
-			barColor = Color.MAGENTA;
+			barColor = new Color(186, 85, 211);  //Bright purple
 		} else if (healthBarLevel >= (100 * 2/3)) {
 			barColor = Color.GREEN;
 		} else if ((healthBarLevel >= (100 * 1/3) && healthBarLevel < (100 * 2/3))) {
