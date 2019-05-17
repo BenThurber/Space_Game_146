@@ -50,7 +50,9 @@ public class Planet extends Location {
 		
 		if (!imagesShuffled) {
 			Collections.shuffle(planetFileNames);
+			imagesShuffled = true;
 		}
+		System.out.println(planetIndex);
 		planetIndex = (planetIndex + 1) % planetFileNames.size();  // Increment Index and wrap
 	}
 	public Planet(String name) {

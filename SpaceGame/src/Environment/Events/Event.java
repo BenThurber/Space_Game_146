@@ -1,7 +1,10 @@
 package Environment.Events;
 
+import java.util.ArrayList;
+
 import Environment.Crew;
 import Environment.GameEnvironment;
+import Environment.CrewMemberTypes.CrewMember;
 
 public class Event {
 	
@@ -17,6 +20,9 @@ public class Event {
 	
 	public void initiate() {
 		System.out.println("Event Obj Initiated.  Nothing Happens");
+	}
+	public void initiate(ArrayList<CrewMember> crewDurringEvent) {
+		initiate();
 	}
 	
 }

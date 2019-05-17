@@ -101,7 +101,7 @@ public class Crew {
 		}
 	}
 	
-	/**Return an ArrayList of CrewMembers with a given name*/
+	/**Return an ArrayList of CrewMembers with a given name (don't need to be alive)*/
 	public ArrayList<CrewMember> getCrewMembersByName(String name) {
 		ArrayList<CrewMember> matchingCrew = new ArrayList<CrewMember>(MAX_CREW_MEMBERS);
 		for (CrewMember member: members) {
@@ -111,21 +111,27 @@ public class Crew {
 		}
 		return matchingCrew;
 	}
-	/**Return an ArrayList of CrewMembers with a given specialization*/
-	public ArrayList<CrewMember> getCrewMembersBySpecialization(String specialization) {
+	/**Return an ArrayList of CrewMembers with a given specialization with boolean deadOrAlive which includes dead crew if true*/
+	public ArrayList<CrewMember> getCrewMembersBySpecialization(String specialization, boolean deadOrAlive) {
 		ArrayList<CrewMember> matchingCrew = new ArrayList<CrewMember>(MAX_CREW_MEMBERS);
 		for (CrewMember member: members) {
-			if (member.getSpecialization().toLowerCase().matches(specialization.toLowerCase())) {
+			if (member.getSpecialization().toLowerCase().matches(specialization.toLowerCase()) && (member.isAlive() || deadOrAlive)) {
 				matchingCrew.add(member);
 			}
 		}
 		return matchingCrew;
 	}
-
+	/**Return an ArrayList of CrewMembers with a given specialization and are alive*/
+	public ArrayList<CrewMember> getCrewMembersBySpecialization(String specialization) {
+		return getCrewMembersBySpecialization(specialization, false);
+	}
+	
+	/**Returns the array of CrewMembers held in Crew*/
 	public CrewMember[] getCrewMemberArray() {
 		return members;
 	}
 	
+	/**Returns number of live CrewMembers in Crew*/
 	public int numLiveCrew() {
 		int numLive = 0;
 		for (int i=0; i < members.length; i++) {
@@ -135,7 +141,7 @@ public class Crew {
 		}
 		return numLive;
 	}
-	/**Returns an array of only CrewMembers that are alive*/
+	/**Returns an array of all CrewMembers that are alive*/
 	public CrewMember[] getLiveCrewMemberArray() {
 		CrewMember[] liveMembers = new CrewMember[this.numLiveCrew()];
 		int i = 0;
@@ -163,7 +169,7 @@ public class Crew {
 		}
 	}
 	
-	
+	/**Returns true if any of the crew are alive*/
 	public boolean isAlive() {
 		for (CrewMember member: members) {
 			if (member.isAlive()) {

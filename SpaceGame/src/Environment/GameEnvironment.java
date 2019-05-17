@@ -33,7 +33,7 @@ public class GameEnvironment {
 	
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
-	private CrewMember[] testMembers = {new Captain("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
+	private CrewMember[] testMembers = {new Navigator("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
 	
 	private int totalDays = 0;
 	private int currentDay = 0;
@@ -50,7 +50,10 @@ public class GameEnvironment {
 //					new AlienPirates(this, crew),
 					new AsteroidBelt(this, crew)))
 			);
-	
+	private RandomEventGenerator nextPlanetRandomEvents = new RandomEventGenerator(
+			new ArrayList<Event>(Arrays.asList(
+					new AsteroidBelt(this, crew)))
+			);
 	
 	private MainScreen window;
 	
@@ -75,7 +78,8 @@ public class GameEnvironment {
 		}
 		currentLocation = new Planet();
 		ship.setLocation(currentLocation);
-		// Do asteroid belt
+		AsteroidBelt nextPlanetAsteroids = new AsteroidBelt(this, crew);  // Asteroid Belt
+		nextPlanetAsteroids.initiate(membersWithAction);
 		window.update();
 	}
 	public void startNextDay() {
