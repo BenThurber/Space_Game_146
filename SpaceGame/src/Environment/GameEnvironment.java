@@ -49,10 +49,14 @@ public class GameEnvironment {
 	}
 	
 	public void closeIntroduction(Introduction introWindow) {
-		introWindow.closeWindow();
-	
+		introWindow.closeWindow();	
+		setDays(introWindow.getDaysToPlay());
 		launchTeamSelection();
-		System.out.println("calling launch team seleciton");
+	}
+	
+	public void closeTeamSelection(TeamSelection teamSelectionWindow ) {
+		teamSelectionWindow.closeWindow();
+		launchMainScreen();
 	}
 	
 	public void launchTeamSelection() {
@@ -62,6 +66,10 @@ public class GameEnvironment {
 	
 	public void launchIntroduction() {
 		Introduction introWindow = new Introduction(this);
+	}
+	
+	public void launchMainScreen() {
+		MainScreen mainWindow = new MainScreen(this);
 	}
 	
 	private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(

@@ -49,6 +49,10 @@ public class TeamSelection {
 	public void closeWindow() {
 		frmMeteorMadness.dispose();
 	}
+	
+	public void finishedWindow() {
+		environment.closeTeamSelection(this);
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -68,6 +72,11 @@ public class TeamSelection {
 		
 		
 		JButton btnConfirm = new JButton("CONFIRM");
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
 		btnConfirm.setBounds(624, 417, 114, 25);
 		frmMeteorMadness.getContentPane().add(btnConfirm);
 		

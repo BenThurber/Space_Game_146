@@ -24,6 +24,8 @@ public class Introduction {
 	private JButton btnConfirm;
 	
 	private GameEnvironment environment;
+	
+	public int daysToPlay;
 
 	/*public void closeWindow() {
 		frmMeteorMadness.dispose();

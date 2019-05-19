@@ -706,7 +706,7 @@ public class MainScreen {
 		viewScreenImageLabel.setBounds(101, -15, VIEW_SCREEN_IMAGE_WIDTH, 283);
 		frame.getContentPane().add(viewScreenImageLabel);
 		
-		
+		frame.setVisible(true);
 	}
 	
 	/**
