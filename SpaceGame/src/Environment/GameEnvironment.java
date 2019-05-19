@@ -22,6 +22,11 @@ import Environment.Locations.SpaceOutpost;
 
 public class GameEnvironment {
 	
+	
+	//----------------
+	// VARIABLES:
+	//----------------
+	
 	private final String NOT_ENOUGH_CREW_MEMBERS_MSG = "You don't have enough Crew Members to pilot the ship\n"
 			+ "(or they have no more actions).\n\nSelect \"Pilot Ship\" as an action for atleast %d crew members and try again.";
 	private final String FIRST_DAY_MESSAGE = "First Day message";
@@ -45,13 +50,32 @@ public class GameEnvironment {
 	public Crew crew = new Crew();
 	public Location currentLocation = new Location();
 	
+	
+	private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(
+			new ArrayList<Event>(Arrays.asList(
+					new SpacePlague(this, crew), 
+//					new AlienPirates(this, crew),
+					new AsteroidBelt(this, crew)))
+			);
+	private RandomEventGenerator nextPlanetRandomEvents = new RandomEventGenerator(
+			new ArrayList<Event>(Arrays.asList(
+					new AsteroidBelt(this, crew)))
+			);
+	
+	private MainScreen mainWindow;
+	
+	
+	//----------------
+	// METHODS:
+	//----------------
+	
 	public void closeMainScreen(MainScreen mainWindow) {
 		mainWindow.closeWindow();
 	}
 	
 	public void closeIntroduction(Introduction introWindow) {
 		introWindow.closeWindow();	
-		//setDays(introWindow.getDaysToPlay());
+		setDays(introWindow.getDaysToPlay());
 		launchTeamSelection();
 	}
 	
@@ -70,46 +94,34 @@ public class GameEnvironment {
 	}
 	
 	public void launchMainScreen() {
-		MainScreen mainWindow = new MainScreen(this);
+		mainWindow = new MainScreen(this);
 	}
 	
-	private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(
-			new ArrayList<Event>(Arrays.asList(
-					new SpacePlague(this, crew), 
-//					new AlienPirates(this, crew),
-					new AsteroidBelt(this, crew)))
-			);
-	private RandomEventGenerator nextPlanetRandomEvents = new RandomEventGenerator(
-			new ArrayList<Event>(Arrays.asList(
-					new AsteroidBelt(this, crew)))
-			);
-	
-	private MainScreen window;
 	
 	
 	public void visitSpaceOutpost() {
 		System.out.println("Visiting Space Outpost");
 		currentLocation = new SpaceOutpost();
 		ship.setLocation(currentLocation);
-		window.update();
+		mainWindow.update();
 	}
 	public void moveToNextPlanet() {
-		ArrayList<CrewMember> membersWithAction = crewMembersWithAction(crew, window, "pilot ship", MIN_CREW_TO_PILOT_SHIP, new Navigator("blank"));
+		ArrayList<CrewMember> membersWithAction = crewMembersWithAction(crew, mainWindow, "pilot ship", MIN_CREW_TO_PILOT_SHIP, new Navigator("blank"));
 		if (membersWithAction.size() < MIN_CREW_TO_PILOT_SHIP) {
-			MessageBox newDayMsg = new MessageBox(String.format(NOT_ENOUGH_CREW_MEMBERS_MSG, MIN_CREW_TO_PILOT_SHIP), window);
+			MessageBox newDayMsg = new MessageBox(String.format(NOT_ENOUGH_CREW_MEMBERS_MSG, MIN_CREW_TO_PILOT_SHIP), mainWindow);
 			return;
 		}
 		System.out.println(membersWithAction);
 		System.out.println("Moving to Next Planet");
 		for (CrewMember member: membersWithAction) {
 			member.pilotShip();
-			window.clearComboBoxes(member);
+			mainWindow.clearComboBoxes(member);
 		}
 		currentLocation = new Planet();
 		ship.setLocation(currentLocation);
 		AsteroidBelt nextPlanetAsteroids = new AsteroidBelt(this, crew);  // Asteroid Belt
 		nextPlanetAsteroids.initiate(membersWithAction);
-		window.update();
+		mainWindow.update();
 		checkForGameOver();
 	}
 	public void startNextDay() {
@@ -117,9 +129,9 @@ public class GameEnvironment {
 		incrementCurrentDay();
 		crew.resetCrewForNewDay();
 		nextDayRandomEvents.initiateRandomEvent();  // Random Event
-		MessageBox messageBoxNewDay = new MessageBox(String.format(NEXT_DAY_MESSAGE, getCurrentDay(), getTotalDays()), window);
-		window.clearComboBoxes();
-		window.update();
+		MessageBox messageBoxNewDay = new MessageBox(String.format(NEXT_DAY_MESSAGE, getCurrentDay(), getTotalDays()), mainWindow);
+		mainWindow.clearComboBoxes();
+		mainWindow.update();
 		checkForGameOver();
 	}
 	public void viewInventory() {
@@ -129,9 +141,9 @@ public class GameEnvironment {
 	
 	public void startFirstDay() {
 		System.out.println("Starting First Day");
-		MessageBox messageBoxNewDay = new MessageBox(String.format(FIRST_DAY_MESSAGE), window);
+		MessageBox messageBoxNewDay = new MessageBox(String.format(FIRST_DAY_MESSAGE), mainWindow);
 		nextDayRandomEvents.initiateRandomEvent();  // Random Event
-		window.update();
+		mainWindow.update();
 		messageBoxNewDay.setAlwaysOnTop(true);
 	}
 	
@@ -147,10 +159,10 @@ public class GameEnvironment {
 		case "use medical item":
 			if (member.getSpecialization().equals("doctor")) {
 				if(member.getNumActions() > 0) {
-					ArrayList<CrewMember> membersToBeHealed = crewMembersWithAction(crew, window, "use medical item", MAX_NUM_PATIENTS_HEALED, new Doctor("blank"), false, false);
+					ArrayList<CrewMember> membersToBeHealed = crewMembersWithAction(crew, mainWindow, "use medical item", MAX_NUM_PATIENTS_HEALED, new Doctor("blank"), false, false);
 					for (CrewMember healedMember: membersToBeHealed) {
 						healedMember.receiveHealingFromDoctor();
-						window.clearComboBoxes(healedMember);
+						mainWindow.clearComboBoxes(healedMember);
 					}
 					member.decrementNumActions();
 				}
@@ -165,14 +177,15 @@ public class GameEnvironment {
 			if (currentLocation instanceof Planet) {
 				member.searchPlanet((Planet) currentLocation, this);
 			} else {
-				MessageBox notAtPlanetMessage = new MessageBox(NOT_AT_A_PLANET_MESSAGE, window);
+				MessageBox notAtPlanetMessage = new MessageBox(NOT_AT_A_PLANET_MESSAGE, mainWindow);
 			}
+			//window.update();
 			break;
 		case "pilot ship":
 			moveToNextPlanet();
 			break;
 		}
-		window.update();  //Refresh the window?
+		mainWindow.update();  //Refresh the window?
 	}
 	/**Takes a Crew, MainScreen, Action string, numMembersRequired, and Subclass of CrewMember (to determine special type).  
 	 * Returns an ArrayList of CrewMembers (Captain, Scientist, Navigator, etc.) with a remaining action and who's action JComboBox 
@@ -186,6 +199,7 @@ public class GameEnvironment {
 		for (CrewMember member: crew.getCrewMemberArray()) {
 			// If CrewMember is alive, has an action, and has the correct JComboBox item selected
 			try {
+				System.out.println(window);
 				if (member.isAlive() && (member.getNumActions() > 0 || !needRemainingAction) && window.getSelectedNextAction(member).equals(action)) {
 					matchingCrewMembers.add(member);
 				}
@@ -226,8 +240,8 @@ public class GameEnvironment {
 	public void launchMainWindow() {
 		//Introduction introduction = new Introduction(this);
 		
-		window = new MainScreen(this);
-		window.frame.setVisible(true);
+		mainWindow = new MainScreen(this);
+		mainWindow.frame.setVisible(true);
 		startFirstDay();
 	}
 	
@@ -299,11 +313,11 @@ public class GameEnvironment {
 		}
 	}
 	public void initiateGameOver(String message) {
-		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE, window);
-		window.frame.dispose();  // Make better
+		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE, mainWindow);
+		mainWindow.frame.dispose();  // Make better
 	}
 	public void initiateGameOver() {
-		MessageBox messageBoxGameOver = new MessageBox(GAME_OVER_MESSAGE, window);
-		window.frame.dispose();  // Make better
+		MessageBox messageBoxGameOver = new MessageBox(GAME_OVER_MESSAGE, mainWindow);
+		mainWindow.frame.dispose();  // Make better
 	}
 }

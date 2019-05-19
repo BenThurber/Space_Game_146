@@ -102,4 +102,14 @@ public class Introduction {
 		
 		frmMeteorMadness.setVisible(true);
 	}
+
+	public int getDaysToPlay() {
+		return daysToPlay;
+	}
+
+	public void setDaysToPlay(int daysToPlay) {
+		this.daysToPlay = daysToPlay;
+	}
+	
+	
 }
