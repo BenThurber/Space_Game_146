@@ -51,7 +51,7 @@ public class GameEnvironment {
 	
 	public void closeIntroduction(Introduction introWindow) {
 		introWindow.closeWindow();	
-		setDays(introWindow.getDaysToPlay());
+		//setDays(introWindow.getDaysToPlay());
 		launchTeamSelection();
 	}
 	
