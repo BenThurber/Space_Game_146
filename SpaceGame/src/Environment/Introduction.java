@@ -94,6 +94,7 @@ public class Introduction {
 				String daysToPlay = comboBox.getSelectedItem().toString();
 				System.out.println("Confirm " + daysToPlay + " days to play.");
 				System.out.println("Change to TeamSelection window");
+				setDaysToPlay(Integer.valueOf(daysToPlay));    // Ben added this.  Sets object attribute daysToPlay to local String daysToPlay and converts to int
 				finishedWindow();
 			}
 		});

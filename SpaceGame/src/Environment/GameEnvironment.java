@@ -95,6 +95,8 @@ public class GameEnvironment {
 	
 	public void launchMainScreen() {
 		mainWindow = new MainScreen(this);
+		runTestCode();  // Just for testing
+		startFirstDay();
 	}
 	
 	
@@ -237,13 +239,6 @@ public class GameEnvironment {
 	}
 	
 	
-	public void launchMainWindow() {
-		//Introduction introduction = new Introduction(this);
-		
-		mainWindow = new MainScreen(this);
-		mainWindow.frame.setVisible(true);
-		startFirstDay();
-	}
 	
 	
 	
@@ -258,15 +253,6 @@ public class GameEnvironment {
 		// Test code
 		ship.setName("UNSC Dawn");
 		crew.addNewCrewMembers(testMembers);
-		//ship.addToSheildLevel(-32);
-		//ship.setLocation("Installation 04");
-		setDays(5);
-		
-		for (int i=0; i < 4; i++) {
-			//testMembers[i].addHunger(+65);
-			//testMembers[i].addHealth(-69);
-			//testMembers[i].addStamina(-14);
-		}
 	}
 	
 	
