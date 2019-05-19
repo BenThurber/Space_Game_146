@@ -71,6 +71,7 @@ public class GameEnvironment {
 	
 	public void closeMainScreen(MainScreen mainWindow) {
 		mainWindow.closeWindow();
+		// Open Score Board Here
 	}
 	
 	public void closeIntroduction(Introduction introWindow) {
@@ -304,10 +305,9 @@ public class GameEnvironment {
 	}
 	public void initiateGameOver(String message) {
 		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE, mainWindow);
-		mainWindow.frame.dispose();  // Make better
+		mainWindow.closeWindow();
 	}
 	public void initiateGameOver() {
-		MessageBox messageBoxGameOver = new MessageBox(GAME_OVER_MESSAGE, mainWindow);
-		mainWindow.frame.dispose();  // Make better
+		initiateGameOver("");
 	}
 }
