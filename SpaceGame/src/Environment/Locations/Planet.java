@@ -32,6 +32,8 @@ public class Planet extends Location {
 	
 	public final String type = "Planet";
 	
+	protected final int SHIP_PART_EXISTS_CHANCE = 75;
+	
 	private boolean containsShipPart = false;
 	private boolean containsFood = false;
 	private boolean containsMedicalItem = false;
@@ -43,7 +45,7 @@ public class Planet extends Location {
 	public Planet() {
 		Random rand = new Random();
 		this.name = names[rand.nextInt(names.length)];
-		containsShipPart = rand.nextBoolean();
+		containsShipPart = SHIP_PART_EXISTS_CHANCE > rand.nextInt(100);
 		containsFood = rand.nextBoolean();
 		containsMedicalItem = rand.nextBoolean();
 		containsMoney = rand.nextBoolean();
@@ -71,6 +73,9 @@ public class Planet extends Location {
 	
 	public boolean isContainsShipPart() {
 		return containsShipPart;
+	}
+	public void removeShipPart() {
+		containsShipPart = false;
 	}
 	public boolean isContainsFood() {
 		return containsFood;

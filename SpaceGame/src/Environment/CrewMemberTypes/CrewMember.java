@@ -2,6 +2,8 @@ package Environment.CrewMemberTypes;
 
 import java.util.Set;
 
+import Environment.GameEnvironment;
+import Environment.MessageBox;
 import Environment.Ship;
 import Environment.Locations.Planet;
 
@@ -27,7 +29,9 @@ public class CrewMember {
 	protected final int SHEILD_REPAIR_AMOUNT = 20;
 	
 	// Percent chance of finding an item on a planet
-	private final int FIND_ITEM_SUCSESS_RATE = 50;
+	protected final int FIND_SHIP_PART_SUCSESS_RATE = 75;
+	protected final String FOUND_PART_MESSAGE = "Your crew member has sucsessfully found a ship part on the planet's surface!";
+	protected final String COULDNT_FIND_PART_MESSAGE = "Your crew member was not able to find any ship parts (parts may or may not exist on this planet)";
 	
 	public final String specialization = "none";
 	private final String avatarImage = "/Images/Avatars/captain.png";  //Just use captain image...
@@ -111,12 +115,17 @@ public class CrewMember {
 		decrementNumActions();
 	}
 	
-	public void searchPlanet(Planet planet) {
+	public void searchPlanet(Planet planet, GameEnvironment environment) {
 		if (this.decrementNumActions()) {
 			Random rand = new Random();
-			System.out.println("Searching Planet: " + planet.getName());
-			if (planet.isContainsFood() && FIND_ITEM_SUCSESS_RATE > rand.nextInt(100)) {
-				System.out.println("Found Something");
+			System.out.println("Searching Planet: " + planet.getName() + "Has Part: " + planet.isContainsShipPart());
+			if (planet.isContainsShipPart() && FIND_SHIP_PART_SUCSESS_RATE > rand.nextInt(100)) {
+				System.out.println("Found a ship part");
+				environment.incrementShipPartsFound();
+				MessageBox foundPartMessage = new MessageBox(FOUND_PART_MESSAGE);
+			} else {
+				System.out.println("Could not find a ship part");
+				MessageBox foundPartMessage = new MessageBox(COULDNT_FIND_PART_MESSAGE);
 			}
 		}
 	}

@@ -29,6 +29,7 @@ public class GameEnvironment {
 	private final String SHIP_DEAD_MESSAGE = "You've been hit by an Asteroid, and your sheilds did not have enough energy to deflect it.  Your ship has been destroyed.";
 	private final String CREW_DEAD_MESSAGE = "All of your crew have perished from either from lack of food, sleep or from plague.";
 	private final String GAME_OVER_MESSAGE = "GAME OVER";
+	private final String NOT_AT_A_PLANET_MESSAGE = "Your ship is not currently at a planet.  Pilot to a planet to search for parts.";
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
 	
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
@@ -133,9 +134,10 @@ public class GameEnvironment {
 			member.repairSheilds(ship);
 			break;
 		case "search planet":
-			if (currentLocation.getType().equals("Planet")) {
-				member.searchPlanet((Planet) currentLocation);
-				
+			if (currentLocation instanceof Planet) {
+				member.searchPlanet((Planet) currentLocation, this);
+			} else {
+				MessageBox notAtPlanetMessage = new MessageBox(NOT_AT_A_PLANET_MESSAGE, window);
 			}
 			break;
 		case "pilot ship":

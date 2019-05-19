@@ -2,8 +2,8 @@ package Environment.Locations;
 
 public class Location {
 	
-	public final String type = "Empty Space";
-	protected String name = "Unknown";
+	public final String type = "Unknown";
+	protected String name = "Empty Space";
 	protected final String imagePath = "/Images/Locations/EmptySpace.png";
 	
 	public Location() {
