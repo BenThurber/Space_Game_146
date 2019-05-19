@@ -23,12 +23,25 @@ public class Introduction {
 	private JLabel lblHowManyDays;
 	private JButton btnConfirm;
 	
-	static GameEnvironment environment;
+	private GameEnvironment environment;
+	
+	public int daysToPlay;
 
+	/*public void closeWindow() {
+		frmMeteorMadness.dispose();
+	}
+	
+	public void finishedWindow() {
+		GameEnvironment.closeIntroduction(this);
+	}*/
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		GameEnvironment environment = new GameEnvironment();
 		Introduction window = new Introduction(environment);
 		window.frmMeteorMadness.setVisible(true);
 	}
@@ -39,6 +52,14 @@ public class Introduction {
 	public Introduction(GameEnvironment environment) {
 		this.environment = environment;
 		initialize();
+	}
+	
+	public void closeWindow() {
+		frmMeteorMadness.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeIntroduction(this);
 	}
 
 	/**
@@ -73,9 +94,12 @@ public class Introduction {
 				String daysToPlay = comboBox.getSelectedItem().toString();
 				System.out.println("Confirm " + daysToPlay + " days to play.");
 				System.out.println("Change to TeamSelection window");
+				finishedWindow();
 			}
 		});
 		btnConfirm.setBounds(333, 341, 114, 25);
 		frmMeteorMadness.getContentPane().add(btnConfirm);
+		
+		frmMeteorMadness.setVisible(true);
 	}
 }

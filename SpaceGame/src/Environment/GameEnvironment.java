@@ -45,6 +45,34 @@ public class GameEnvironment {
 	public Crew crew = new Crew();
 	public Location currentLocation = new Location();
 	
+	public void closeMainScreen(MainScreen mainWindow) {
+		mainWindow.closeWindow();
+	}
+	
+	public void closeIntroduction(Introduction introWindow) {
+		introWindow.closeWindow();	
+		setDays(introWindow.getDaysToPlay());
+		launchTeamSelection();
+	}
+	
+	public void closeTeamSelection(TeamSelection teamSelectionWindow ) {
+		teamSelectionWindow.closeWindow();
+		launchMainScreen();
+	}
+	
+	public void launchTeamSelection() {
+		TeamSelection teamSelectionWindow = new TeamSelection(this);
+		
+	}
+	
+	public void launchIntroduction() {
+		Introduction introWindow = new Introduction(this);
+	}
+	
+	public void launchMainScreen() {
+		MainScreen mainWindow = new MainScreen(this);
+	}
+	
 	private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(
 			new ArrayList<Event>(Arrays.asList(
 					new SpacePlague(this, crew), 
@@ -208,7 +236,7 @@ public class GameEnvironment {
 	public static void main(String[] args) {
 		GameEnvironment environment = new GameEnvironment();
 		environment.runTestCode();
-		environment.launchMainWindow();
+		environment.launchIntroduction();
 		
 	}
 	

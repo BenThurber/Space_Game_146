@@ -53,8 +53,6 @@ public class MainScreen {
 	
 	private final Color TOP_BAR_BLUE = new Color(17, 152, 234);
 	
-	
-	
 	// Variable environment can be used to get attributes to update labels and such
 	private GameEnvironment environment;
 	protected JFrame frame;
@@ -107,8 +105,6 @@ public class MainScreen {
 	private JComboBox comboBoxNextAction4 = new JComboBox();
 	
 	
-	
-	
 	/**
 	 * Create the application.
 	 * @wbp.parser.constructor
@@ -116,6 +112,10 @@ public class MainScreen {
 	public MainScreen(GameEnvironment environment) {
 		this.environment = environment;
 		initialize();
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
 	}
 	
 	/**Update the widgets on the MainScreen*/
@@ -706,7 +706,7 @@ public class MainScreen {
 		viewScreenImageLabel.setBounds(101, -15, VIEW_SCREEN_IMAGE_WIDTH, 283);
 		frame.getContentPane().add(viewScreenImageLabel);
 		
-		
+		frame.setVisible(true);
 	}
 	
 	/**

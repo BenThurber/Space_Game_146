@@ -19,6 +19,8 @@ public class TeamSelection {
 
 	private JFrame frmMeteorMadness;
 
+	private GameEnvironment environment;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -26,7 +28,8 @@ public class TeamSelection {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TeamSelection window = new TeamSelection();
+					GameEnvironment environment = new GameEnvironment();
+					TeamSelection window = new TeamSelection(environment);
 					window.frmMeteorMadness.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,8 +41,17 @@ public class TeamSelection {
 	/**
 	 * Create the application.
 	 */
-	public TeamSelection() {
+	public TeamSelection(GameEnvironment environment) {
+		this.environment = environment;
 		initialize();
+	}
+	
+	public void closeWindow() {
+		frmMeteorMadness.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeTeamSelection(this);
 	}
 
 	/**
@@ -60,6 +72,11 @@ public class TeamSelection {
 		
 		
 		JButton btnConfirm = new JButton("CONFIRM");
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
 		btnConfirm.setBounds(624, 417, 114, 25);
 		frmMeteorMadness.getContentPane().add(btnConfirm);
 		
@@ -114,6 +131,8 @@ public class TeamSelection {
 		lblSpaceCrew.setForeground(new Color(211, 211, 211));
 		lblSpaceCrew.setBounds(55, 208, 91, 15);
 		frmMeteorMadness.getContentPane().add(lblSpaceCrew);
+		
+		frmMeteorMadness.setVisible(true);
 		
 		/*JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 800, 472);
