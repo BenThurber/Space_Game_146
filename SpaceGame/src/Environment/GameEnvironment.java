@@ -35,6 +35,7 @@ public class GameEnvironment {
 	private final String CREW_DEAD_MESSAGE = "All of your crew have perished from either from lack of food, sleep or from plague.";
 	private final String GAME_OVER_MESSAGE = "GAME OVER";
 	private final String NOT_AT_A_PLANET_MESSAGE = "Your ship is not currently at a planet.  Pilot to a planet to search for parts.";
+	private final String YOU_WIN_MESSAGE = "All parts of your ship have been recovered!\n\nYou Win!";
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
@@ -293,8 +294,12 @@ public class GameEnvironment {
 		if (!ship.isAlive()) {
 			initiateGameOver(SHIP_DEAD_MESSAGE);
 		}
-		if(!crew.isAlive()) {
+		if (!crew.isAlive()) {
 			initiateGameOver(CREW_DEAD_MESSAGE);
+		}
+		if (shipPartsFound >= shipPartsTotalMissing) {
+			initiateGameOver(YOU_WIN_MESSAGE);
+			// Open Scoreboard window
 		}
 	}
 	public void initiateGameOver(String message) {
