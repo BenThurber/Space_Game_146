@@ -101,6 +101,7 @@ public class GameEnvironment {
 		AsteroidBelt nextPlanetAsteroids = new AsteroidBelt(this, crew);  // Asteroid Belt
 		nextPlanetAsteroids.initiate(membersWithAction);
 		window.update();
+		checkForGameOver();
 	}
 	public void startNextDay() {
 		System.out.println("Starting Next Day");
@@ -154,6 +155,7 @@ public class GameEnvironment {
 		case "search planet":
 			if (currentLocation.getType().equals("Planet")) {
 				member.searchPlanet((Planet) currentLocation);
+				
 			}
 			break;
 		case "pilot ship":
