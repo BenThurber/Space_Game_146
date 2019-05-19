@@ -36,10 +36,9 @@ public class GameEnvironment {
 	private final String GAME_OVER_MESSAGE = "GAME OVER";
 	private final String NOT_AT_A_PLANET_MESSAGE = "Your ship is not currently at a planet.  Pilot to a planet to search for parts.";
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
-	
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
-	private CrewMember[] testMembers = {new Navigator("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
+	private CrewMember[] testMembers = {new Scientist("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
 	
 	private int totalDays = 0;
 	private int currentDay = 0;

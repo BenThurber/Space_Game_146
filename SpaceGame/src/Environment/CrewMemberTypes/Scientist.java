@@ -2,6 +2,8 @@ package Environment.CrewMemberTypes;
 
 import java.util.Random;
 
+import Environment.GameEnvironment;
+import Environment.MessageBox;
 import Environment.Locations.Planet;
 
 public class Scientist extends CrewMember {
@@ -9,7 +11,10 @@ public class Scientist extends CrewMember {
 	public final String specialization = "scientist";
 	private final String avatarImage = "/Images/Avatars/scientist.png";
 	
-	private final int FIND_ITEM_SUCSESS_RATE = 85;
+	private final String FOUND_PART_MESSAGE = "Your Scientist has scanned the planet and sucsessfully found a ship part on the surface!";
+	private final String COULDNT_FIND_PART_MESSAGE = "Your Scientist was not able to find any ship parts, it is unlikley that any exist.";
+	
+	private final int FIND_SHIP_PART_SUCSESS_RATE = 100;
 	
 	public Scientist(String name, int cremMemberID) {
 		super(name, cremMemberID);
@@ -29,14 +34,7 @@ public class Scientist extends CrewMember {
 		return avatarImage;
 	}
 	
-	public void searchPlanet(Planet planet) {
-		if (this.decrementNumActions()) {
-			// Re-implement using items
-			Random rand = new Random();
-			System.out.println("Scientist Searching Planet: " + planet.getName());
-			if (planet.isContainsFood() && FIND_ITEM_SUCSESS_RATE > rand.nextInt(100)) {
-				System.out.println("Found Something");
-			}
-		}
+	public void searchPlanet(Planet planet, GameEnvironment environment) {
+		super.searchPlanet(planet, environment, FIND_SHIP_PART_SUCSESS_RATE, FOUND_PART_MESSAGE, COULDNT_FIND_PART_MESSAGE);
 	}
 }

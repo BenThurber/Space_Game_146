@@ -115,19 +115,23 @@ public class CrewMember {
 		decrementNumActions();
 	}
 	
-	public void searchPlanet(Planet planet, GameEnvironment environment) {
+	public void searchPlanet(Planet planet, GameEnvironment environment, int findShipPartSucsessRate, String foundPartMessage, String couldntFindPartMessage) {
 		if (this.decrementNumActions()) {
 			Random rand = new Random();
 			System.out.println("Searching Planet: " + planet.getName() + "Has Part: " + planet.isContainsShipPart());
-			if (planet.isContainsShipPart() && FIND_SHIP_PART_SUCSESS_RATE > rand.nextInt(100)) {
+			if (planet.isContainsShipPart() && findShipPartSucsessRate > rand.nextInt(100)) {
 				System.out.println("Found a ship part");
 				environment.incrementShipPartsFound();
-				MessageBox foundPartMessage = new MessageBox(FOUND_PART_MESSAGE);
+				MessageBox foundPartMessageBox = new MessageBox(foundPartMessage);
 			} else {
 				System.out.println("Could not find a ship part");
-				MessageBox foundPartMessage = new MessageBox(COULDNT_FIND_PART_MESSAGE);
+				MessageBox couldntFindPartMessageBox = new MessageBox(couldntFindPartMessage);
 			}
+			environment.checkForGameOver();
 		}
+	}
+	public void searchPlanet(Planet planet, GameEnvironment environment) {
+		searchPlanet(planet, environment, FIND_SHIP_PART_SUCSESS_RATE, FOUND_PART_MESSAGE, COULDNT_FIND_PART_MESSAGE);
 	}
 	
 	

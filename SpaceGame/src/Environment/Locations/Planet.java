@@ -32,7 +32,7 @@ public class Planet extends Location {
 	
 	public final String type = "Planet";
 	
-	protected final int SHIP_PART_EXISTS_CHANCE = 75;
+	protected final int SHIP_PART_EXISTS_CHANCE = 65;
 	
 	private boolean containsShipPart = false;
 	private boolean containsFood = false;
