@@ -9,7 +9,7 @@ import Environment.Locations.Planet;
 public class Scientist extends CrewMember {
 	
 	public final String specialization = "scientist";
-	private final String avatarImage = "/Images/Avatars/scientist.png";
+	public final static String avatarImage = "/Images/Avatars/scientist.png";
 	
 	private final String FOUND_PART_MESSAGE = "Your Scientist has scanned the planet and sucsessfully found a ship part on the surface!";
 	private final String COULDNT_FIND_PART_MESSAGE = "Your Scientist was not able to find any ship parts, it is unlikley that any exist.";

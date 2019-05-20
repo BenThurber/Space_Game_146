@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Introduction {
 
@@ -30,6 +32,7 @@ public class Introduction {
 	public String shipName;
 	private JLabel lblASpaceCrew;
 	private JTextField textField;
+	private JLabel lblNewLabel;
 
 	/*public void closeWindow() {
 		frmMeteorMadness.dispose();
@@ -76,10 +79,12 @@ public class Introduction {
 		frmMeteorMadness.getContentPane().setLayout(null);
 		
 		JLabel lblMeteorMadness = new JLabel("Meteor Madness");
+		lblMeteorMadness.setForeground(Color.LIGHT_GRAY);
 		lblMeteorMadness.setBounds(333, 33, 131, 15);
 		frmMeteorMadness.getContentPane().add(lblMeteorMadness);
 		
 		lblHowManyDays = new JLabel("<html><div style='text-align: center;'>Howdy Space Cadet!<br/> Your mission, if you choose to accept it, is to find all components to your ship to get back to earth. <br/> How many days will your mission last?</div></html>");
+		lblHowManyDays.setForeground(Color.LIGHT_GRAY);
 		lblHowManyDays.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHowManyDays.setBounds(87, 75, 614, 68);
 		frmMeteorMadness.getContentPane().add(lblHowManyDays);
@@ -109,6 +114,7 @@ public class Introduction {
 		frmMeteorMadness.getContentPane().add(btnConfirm);
 		
 		lblASpaceCrew = new JLabel("<html><div style='text-align: center;'>A space crew is nothing without their ship. What will you name yours?</div></html>");
+		lblASpaceCrew.setForeground(Color.LIGHT_GRAY);
 		lblASpaceCrew.setBounds(242, 201, 317, 80);
 		frmMeteorMadness.getContentPane().add(lblASpaceCrew);
 		
@@ -116,6 +122,11 @@ public class Introduction {
 		textField.setBounds(340, 293, 124, 19);
 		frmMeteorMadness.getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Introduction.class.getResource("/Images/Locations/EmptySpace.png")));
+		lblNewLabel.setBounds(0, 0, 800, 472);
+		frmMeteorMadness.getContentPane().add(lblNewLabel);
 		
 		frmMeteorMadness.setVisible(true);
 	}

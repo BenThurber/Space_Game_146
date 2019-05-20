@@ -35,6 +35,7 @@ public class TeamSelection {
 
 	private GameEnvironment environment;
 	private JTextField textField;
+	private JLabel lblAvatar;
 	
 	private ArrayList<CrewMember> crewList = new ArrayList<CrewMember>();
 	
@@ -88,6 +89,7 @@ public class TeamSelection {
 		frmMeteorMadness.getContentPane().add(lblAdvice);
 		
 		JLabel lblSpecial = new JLabel("");
+		lblSpecial.setForeground(Color.LIGHT_GRAY);
 		lblSpecial.setBounds(532, 49, 232, 110);
 		frmMeteorMadness.getContentPane().add(lblSpecial);
 		
@@ -112,6 +114,7 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Engineer.getDescription());
+					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Engineer.avatarImage)));
 			        System.out.println("Engineer is selected");
 			      } else if(e.getStateChange()==ItemEvent.DESELECTED){
 			        System.out.println("Engineer is not selected");
@@ -126,6 +129,7 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Scientist.getDescription());
+					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Scientist.avatarImage)));
 			        System.out.println("Scientist is selected");
 			      } else if(e.getStateChange()==ItemEvent.DESELECTED){
 			        System.out.println("Scientist is not selected");
@@ -140,6 +144,7 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Doctor.getDescription());
+					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Doctor.avatarImage)));
 			        System.out.println("Doctor is selected");
 			      } else if(e.getStateChange()==ItemEvent.DESELECTED){
 			        System.out.println("Doctor is not selected");
@@ -154,6 +159,7 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Navigator.getDescription());
+					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Navigator.avatarImage)));
 			        System.out.println("Navigator is selected");
 			      } else if(e.getStateChange()==ItemEvent.DESELECTED){
 			        System.out.println("Navigator is not selected");
@@ -168,6 +174,7 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Security.getDescription());
+					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Security.avatarImage)));
 			        System.out.println("Security is selected");
 			      } else if(e.getStateChange()==ItemEvent.DESELECTED){
 			        System.out.println("Security is not selected");
@@ -182,6 +189,7 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Captain.getDescription());
+					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Captain.avatarImage)));
 			        System.out.println("Captain is selected");
 			      } else if(e.getStateChange()==ItemEvent.DESELECTED){
 			        System.out.println("Captain is not selected");
@@ -200,8 +208,7 @@ public class TeamSelection {
 		classes.add(tglbtnCaptain);
 		
 		JLabel lblShowCurrentTeam = new JLabel("");
-		lblShowCurrentTeam.setText("hello");
-		lblShowCurrentTeam.setForeground(Color.BLACK);
+		lblShowCurrentTeam.setForeground(Color.WHITE);
 		lblShowCurrentTeam.setBackground(Color.WHITE);
 		lblShowCurrentTeam.setBounds(45, 289, 358, 153);
 		frmMeteorMadness.getContentPane().add(lblShowCurrentTeam);
@@ -299,8 +306,19 @@ public class TeamSelection {
 		textField.setColumns(10);
 		
 		JLabel lblName = new JLabel("Name");
+		lblName.setForeground(Color.LIGHT_GRAY);
 		lblName.setBounds(40, 134, 66, 15);
 		frmMeteorMadness.getContentPane().add(lblName);
+		
+		lblAvatar = new JLabel("");
+		lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource("/Images/Avatars/captain.png")));
+		lblAvatar.setBounds(598, 187, 166, 196);
+		frmMeteorMadness.getContentPane().add(lblAvatar);
+		
+		JLabel lblBackground = new JLabel("");
+		lblBackground.setIcon(new ImageIcon(TeamSelection.class.getResource("/Images/Locations/EmptySpace.png")));
+		lblBackground.setBounds(0, -3, 800, 475);
+		frmMeteorMadness.getContentPane().add(lblBackground);
 		
 		frmMeteorMadness.setVisible(true);
 		

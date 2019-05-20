@@ -3,7 +3,7 @@ package Environment.CrewMemberTypes;
 public class Navigator extends CrewMember {
 	
 	public final String specialization = "navigator";
-	private final String avatarImage = "/Images/Avatars/navigator.png";
+	public final static String avatarImage = "/Images/Avatars/navigator.png";
 	
 	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Navigators have a chance at avoiding asteroid damage, navigating the ship between planets. Having a Navigator in your crew reduces chance of over-night meteor damage. Navigators stack, up to two.</div></html>";
 	

@@ -34,7 +34,7 @@ public class CrewMember {
 	protected final String COULDNT_FIND_PART_MESSAGE = "Your crew member was not able to find any ship parts (parts may or may not exist on this planet)";
 	
 	public final String specialization = "none";
-	private final String avatarImage = "/Images/Avatars/captain.png";  //Just use captain image...
+	public final static String avatarImage = "/Images/Avatars/captain.png";  //Just use captain image...
 	
 	private String name;
 	private int health = 100;
