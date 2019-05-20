@@ -30,7 +30,7 @@ public class Crew {
 		addNewCrewMembers(members);
 	}
 	
-	/**Adds a List of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
+	/**Adds a primitive array of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
 	 * the array that its in.*/
 	public void addNewCrewMembers(CrewMember[] members) {
 		List<CrewMember> membersList = new ArrayList<CrewMember>(members.length);
@@ -39,7 +39,7 @@ public class Crew {
 		}
 		addNewCrewMembers(membersList);
 	}
-	/**Adds a primitive array of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
+	/**Adds a List of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
 	 * the array that its in.*/
 	public void addNewCrewMembers(List<CrewMember> members) {
 		CrewMember nextMember;
@@ -154,6 +154,7 @@ public class Crew {
 		return liveMembers;
 	}
 	
+	/**Sets the number of actions of each CrewMember to max.  Increases hunger, decreases stamina and decreases health if CrewMember has space plague.*/
 	public void resetCrewForNewDay() {
 		for (CrewMember member: members) {
 			// Reset Actions
