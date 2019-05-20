@@ -115,6 +115,8 @@ public class MainScreen {
 		this.environment = environment;
 		initialize();
 	}
+	
+	
 	/**Close the window*/
 	public void closeWindow() {
 		frame.dispose();
@@ -254,7 +256,7 @@ public class MainScreen {
 		btnNextPlanet.setOpaque(false);
 		btnNextPlanet.setContentAreaFilled(false);
 		btnNextPlanet.setBorderPainted(false);
-		btnNextPlanet.setBounds(385, 562, 186, 29);
+		btnNextPlanet.setBounds(250, 562, 186, 29);
 		frame.getContentPane().add(btnNextPlanet);
 		btnNextPlanet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -263,6 +265,7 @@ public class MainScreen {
 		});
 		
 		JButton btnViewInventory = new JButton("");
+		btnViewInventory.setEnabled(false);
 		btnViewInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				environment.viewInventory();
@@ -276,6 +279,7 @@ public class MainScreen {
 		
 		
 		JButton btnVisitOutpost = new JButton("");
+		btnVisitOutpost.setEnabled(false);
 		btnVisitOutpost.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				environment.visitSpaceOutpost();
@@ -296,7 +300,7 @@ public class MainScreen {
 		btnNextDay.setOpaque(false);
 		btnNextDay.setContentAreaFilled(false);
 		btnNextDay.setBorderPainted(false);
-		btnNextDay.setBounds(570, 562, 140, 29);
+		btnNextDay.setBounds(482, 562, 140, 29);
 		frame.getContentPane().add(btnNextDay);
 		
 		
