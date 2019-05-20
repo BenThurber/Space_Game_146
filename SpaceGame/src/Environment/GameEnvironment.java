@@ -111,7 +111,6 @@ public class GameEnvironment {
 	/**Opens Introduction window and starts first day*/
 	public void launchMainScreen() {
 		mainWindow = new MainScreen(this);
-		runTestCode();  // Just for testing
 		startFirstDay();
 	}
 	
@@ -162,7 +161,7 @@ public class GameEnvironment {
 	/**Starts the first day of the game.*/
 	public void startFirstDay() {
 		System.out.println("Starting First Day");
-		MessageBox messageBoxNewDay = new MessageBox(String.format(FIRST_DAY_MESSAGE), mainWindow);
+		MessageBox messageBoxNewDay = new MessageBox(String.format(FIRST_DAY_MESSAGE, ship.getName(), this.getTotalDays()), mainWindow);
 /*		nextDayRandomEvents.initiateRandomEvent();  // Random Event
 */		mainWindow.update();
 		messageBoxNewDay.setAlwaysOnTop(true);
@@ -266,7 +265,6 @@ public class GameEnvironment {
 	/**Main Function that runs the game.  Creates an object of GameEnvironment and launches the Introduction window.*/
 	public static void main(String[] args) {
 		GameEnvironment environment = new GameEnvironment();
-		environment.runTestCode();
 		environment.launchIntroduction();
 		
 	}
