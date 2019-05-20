@@ -9,6 +9,12 @@ public class Engineer extends CrewMember {
 	
 	private final int SHEILD_REPAIR_AMOUNT = 50;
 	
+	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Engineers are able to repair the ship's shield 30% more.</div></html>";
+	
+	public static String getDescription() {
+		return DESCRIPTION;
+	}
+	
 	public Engineer(String name, int cremMemberID) {
 		super(name, cremMemberID);
 		// TODO Auto-generated constructor stub

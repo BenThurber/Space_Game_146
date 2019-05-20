@@ -42,6 +42,7 @@ public class GameEnvironment {
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
 	private CrewMember[] testMembers = {new Scientist("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
+	//private CrewMember[] crewMembers = {};
 	
 	/**The total days of the mission*/
 	private int totalDays = 0;
@@ -272,7 +273,7 @@ public class GameEnvironment {
 	private void runTestCode() {
 		// Test code
 		ship.setName("UNSC Dawn");
-		crew.addNewCrewMembers(testMembers);
+		//crew.addNewCrewMembers(testMembers);
 	}
 	
 	/**Gets the total number of days remaining*/

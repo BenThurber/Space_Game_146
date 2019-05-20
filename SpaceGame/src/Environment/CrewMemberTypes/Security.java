@@ -5,6 +5,12 @@ public class Security extends CrewMember {
 	public final String specialization = "security";
 	private final String avatarImage = "/Images/Avatars/security.png";
 	
+	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Reduces damage of an alien attack to both crew members and the ship.</div></html>";
+
+	public static String getDescription() {
+		return DESCRIPTION;
+	}
+	
 	public Security(String name, int cremMemberID) {
 		super(name, cremMemberID);
 		// TODO Auto-generated constructor stub
