@@ -20,6 +20,7 @@ import Environment.Locations.Location;
 import Environment.Locations.Planet;
 import Environment.Locations.SpaceOutpost;
 
+/**The Class with the main method, that runs the game and calls the shots.*/
 public class GameEnvironment {
 	
 	
@@ -74,6 +75,7 @@ public class GameEnvironment {
 	
 	/**The MainScreen object*/
 	private MainScreen mainWindow;
+	
 	
 	
 	//----------------

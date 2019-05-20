@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Set;
 import java.awt.event.ActionEvent;
 
+/**The main window of the game where game-play happens*/
 public class MainScreen {
 	
 	private final int WINDOW_X = 320;
