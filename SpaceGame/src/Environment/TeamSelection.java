@@ -36,6 +36,8 @@ public class TeamSelection {
 	private GameEnvironment environment;
 	private JTextField textField;
 	private JLabel lblAvatar;
+	
+	private final int AVATAR_IMAGE_HEIGHT = 188;
 
 	private ArrayList<CrewMember> crewList = new ArrayList<CrewMember>();
 
@@ -118,7 +120,8 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Engineer.getDescription());
-					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Engineer.avatarImage)));
+					ImageIcon imgAvatar = ImageManipulation.scaledImageIcon(new ImageIcon(TeamSelection.class.getResource(Engineer.avatarImage)), AVATAR_IMAGE_HEIGHT, false);
+					lblAvatar.setIcon(imgAvatar);
 					System.out.println("Engineer is selected");
 				} else if(e.getStateChange()==ItemEvent.DESELECTED){
 					System.out.println("Engineer is not selected");
@@ -133,7 +136,8 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Scientist.getDescription());
-					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Scientist.avatarImage)));
+					ImageIcon imgAvatar = ImageManipulation.scaledImageIcon(new ImageIcon(TeamSelection.class.getResource(Scientist.avatarImage)), AVATAR_IMAGE_HEIGHT, false);
+					lblAvatar.setIcon(imgAvatar);
 					System.out.println("Scientist is selected");
 				} else if(e.getStateChange()==ItemEvent.DESELECTED){
 					System.out.println("Scientist is not selected");
@@ -148,7 +152,8 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Doctor.getDescription());
-					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Doctor.avatarImage)));
+					ImageIcon imgAvatar = ImageManipulation.scaledImageIcon(new ImageIcon(TeamSelection.class.getResource(Doctor.avatarImage)), AVATAR_IMAGE_HEIGHT, false);
+					lblAvatar.setIcon(imgAvatar);
 					System.out.println("Doctor is selected");
 				} else if(e.getStateChange()==ItemEvent.DESELECTED){
 					System.out.println("Doctor is not selected");
@@ -163,7 +168,8 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Navigator.getDescription());
-					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Navigator.avatarImage)));
+					ImageIcon imgAvatar = ImageManipulation.scaledImageIcon(new ImageIcon(TeamSelection.class.getResource(Navigator.avatarImage)), AVATAR_IMAGE_HEIGHT, false);
+					lblAvatar.setIcon(imgAvatar);
 					System.out.println("Navigator is selected");
 				} else if(e.getStateChange()==ItemEvent.DESELECTED){
 					System.out.println("Navigator is not selected");
@@ -178,7 +184,8 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Security.getDescription());
-					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Security.avatarImage)));
+					ImageIcon imgAvatar = ImageManipulation.scaledImageIcon(new ImageIcon(TeamSelection.class.getResource(Security.avatarImage)), AVATAR_IMAGE_HEIGHT, false);
+					lblAvatar.setIcon(imgAvatar);
 					System.out.println("Security is selected");
 				} else if(e.getStateChange()==ItemEvent.DESELECTED){
 					System.out.println("Security is not selected");
@@ -193,7 +200,8 @@ public class TeamSelection {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED){
 					lblSpecial.setText(Captain.getDescription());
-					lblAvatar.setIcon(new ImageIcon(TeamSelection.class.getResource(Captain.avatarImage)));
+					ImageIcon imgAvatar = ImageManipulation.scaledImageIcon(new ImageIcon(TeamSelection.class.getResource(Captain.avatarImage)), AVATAR_IMAGE_HEIGHT, false);
+					lblAvatar.setIcon(imgAvatar);
 					System.out.println("Captain is selected");
 				} else if(e.getStateChange()==ItemEvent.DESELECTED){
 					System.out.println("Captain is not selected");
