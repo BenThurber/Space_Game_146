@@ -162,8 +162,8 @@ public class GameEnvironment {
 	public void startFirstDay() {
 		System.out.println("Starting First Day");
 		MessageBox messageBoxNewDay = new MessageBox(String.format(FIRST_DAY_MESSAGE), mainWindow);
-		nextDayRandomEvents.initiateRandomEvent();  // Random Event
-		mainWindow.update();
+/*		nextDayRandomEvents.initiateRandomEvent();  // Random Event
+*/		mainWindow.update();
 		messageBoxNewDay.setAlwaysOnTop(true);
 	}
 	
