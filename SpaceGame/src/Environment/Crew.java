@@ -139,7 +139,7 @@ public class Crew {
 	}
 	
 	/**Returns number of live CrewMembers in Crew*/
-	public int numLiveCrew() {
+	public int getNumLiveCrew() {
 		int numLive = 0;
 		for (int i=0; i < members.length; i++) {
 			if (members[i] != null && members[i].isAlive()) {
@@ -150,7 +150,7 @@ public class Crew {
 	}
 	/**Returns an array of all CrewMembers that are alive*/
 	public CrewMember[] getLiveCrewMemberArray() {
-		CrewMember[] liveMembers = new CrewMember[this.numLiveCrew()];
+		CrewMember[] liveMembers = new CrewMember[this.getNumLiveCrew()];
 		int i = 0;
 		for (CrewMember member: members) {
 			if (member.isAlive()) {

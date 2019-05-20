@@ -172,7 +172,7 @@ public class GameEnvironment {
 	/**Starts the first day of the game.*/
 	public void startFirstDay() {
 		System.out.println("Starting First Day");
-		MessageBox messageBoxNewDay = new MessageBox(String.format(FIRST_DAY_MESSAGE, ship.getName(), this.getTotalDays()), mainWindow);
+		MessageBox messageBoxNewDay = new MessageBox(String.format(FIRST_DAY_MESSAGE, ship.getName(), this.getShipPartsTotalMissing()), mainWindow);
 /*		nextDayRandomEvents.initiateRandomEvent();  // Random Event
 */		mainWindow.update();
 		messageBoxNewDay.setAlwaysOnTop(true);

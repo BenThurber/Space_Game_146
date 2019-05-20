@@ -17,7 +17,7 @@ public class SpacePlague extends Event {
 	private final String MESSAGE_GOT_PLAGUE = "%d of your crew members have come down with Space Plague.\n\nThose affected have a purple health bar and will loose health with each day.\n\nHeal the plague on affected crew members by using a medical item.";
 	
 	private final int MIN_CREW_AFFECTED = 1;
-	private final int NUM_LESS_THAN_MAX_CREW_AFFECTED = 1;
+	private final int NUM_LESS_THAN_MAX_CREW = 1;
 	
 	public SpacePlague(GameEnvironment environment, Crew crew) {
 		super(environment, crew);
@@ -25,9 +25,12 @@ public class SpacePlague extends Event {
 	}
 	
 	public void initiate() {
-		ArrayList<CrewMember> liveCrew = new ArrayList<CrewMember>(Arrays.asList(crew.getCrewMemberArray()));
+		ArrayList<CrewMember> liveCrew = new ArrayList<CrewMember>(Arrays.asList(crew.getLiveCrewMemberArray()));
 		Collections.shuffle(liveCrew);
-		int numCrewAffected = Misc.numberRandomMinMax(Math.min(liveCrew.size(), MIN_CREW_AFFECTED), Math.max(1, liveCrew.size()-NUM_LESS_THAN_MAX_CREW_AFFECTED));
+		System.out.println("Size of live crew: " + liveCrew.size());
+		int minNumCrewAffected = Math.min(liveCrew.size(), MIN_CREW_AFFECTED);
+		int maxNumCrewAffected = Math.max(1, liveCrew.size()-NUM_LESS_THAN_MAX_CREW);
+		int numCrewAffected = Misc.numberRandomMinMax(minNumCrewAffected, Math.max(1, liveCrew.size()-NUM_LESS_THAN_MAX_CREW));
 		for (int i=0; i < numCrewAffected; i++) {
 			liveCrew.get(i).setHasSpacePlague(true);
 		}
