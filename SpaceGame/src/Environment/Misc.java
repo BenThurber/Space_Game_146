@@ -24,5 +24,7 @@ public class Misc {
 		Random rand = new Random();
 		return rand.nextInt(max + 1 - min) + min;
 	}
+	
+	
 
 }

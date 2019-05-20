@@ -151,7 +151,7 @@ public class MainScreen {
 	/**Updates the view screen image at the top of the GUI*/
 	private void updateViewScreen() {
 		ImageIcon unscaledViewScreenImage = new ImageIcon(MainScreen.class.getResource(environment.currentLocation.getImagePath()));
-		ImageIcon viewScreenImage = scaledImageIcon(unscaledViewScreenImage, VIEW_SCREEN_IMAGE_WIDTH, true);
+		ImageIcon viewScreenImage = ImageManipulation.scaledImageIcon(unscaledViewScreenImage, VIEW_SCREEN_IMAGE_WIDTH, true);
 		
 		viewScreenImageLabel.setIcon(viewScreenImage);
 	}
@@ -218,10 +218,10 @@ public class MainScreen {
 		
 		JLabel backgroundImageLabel = new JLabel("");
 		ImageIcon unscaledBackgroundImage = new ImageIcon(MainScreen.class.getResource("/Images/Main_Screen_Background.png"));
-		ImageIcon backgroundImage = scaledImageIcon(unscaledBackgroundImage, BG_IMAGE_SCALE_FACTOR);
+		ImageIcon backgroundImage = ImageManipulation.scaledImageIcon(unscaledBackgroundImage, BG_IMAGE_SCALE_FACTOR);
 		
 		ImageIcon unscaledimgExecuteNextAction = new ImageIcon(MainScreen.class.getResource("/Images/Go.png"));
-		ImageIcon imgExecuteNextAction = scaledImageIcon(unscaledimgExecuteNextAction, GO_BUTTON_SCALE_FACTOR);
+		ImageIcon imgExecuteNextAction = ImageManipulation.scaledImageIcon(unscaledimgExecuteNextAction, GO_BUTTON_SCALE_FACTOR);
 		
 		JLabel lblShipName = new JLabel(environment.ship.getName());
 		lblShipName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -347,7 +347,7 @@ public class MainScreen {
 		
 		JLabel lblCrewAvatarImage1 = new JLabel("");
 		ImageIcon unscaledAvatarImg1 = new ImageIcon(MainScreen.class.getResource(crewMember1.getAvatarImage()));
-		ImageIcon avatarImg1 = scaledImageIcon(unscaledAvatarImg1, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
+		ImageIcon avatarImg1 = ImageManipulation.scaledImageIcon(unscaledAvatarImg1, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
 		lblCrewAvatarImage1.setIcon(avatarImg1);
 		lblCrewAvatarImage1.setForeground(Color.BLACK);
 		lblCrewAvatarImage1.setBounds(6, 27, 53, 53);
@@ -446,7 +446,7 @@ public class MainScreen {
 		
 		JLabel lblCrewAvatarImage2 = new JLabel("");
 		ImageIcon unscaledAvatarImg2 = new ImageIcon(MainScreen.class.getResource(crewMember2.getAvatarImage()));
-		ImageIcon avatarImg2 = scaledImageIcon(unscaledAvatarImg2, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
+		ImageIcon avatarImg2 = ImageManipulation.scaledImageIcon(unscaledAvatarImg2, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
 		lblCrewAvatarImage2.setIcon(avatarImg2);
 		lblCrewAvatarImage2.setForeground(Color.BLACK);
 		lblCrewAvatarImage2.setBounds(6, 27, 53, 53);
@@ -544,7 +544,7 @@ public class MainScreen {
 		
 		JLabel lblCrewAvatarImage3 = new JLabel("");
 		ImageIcon unscaledAvatarImg3 = new ImageIcon(MainScreen.class.getResource(crewMember3.getAvatarImage()));
-		ImageIcon avatarImg3 = scaledImageIcon(unscaledAvatarImg3, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
+		ImageIcon avatarImg3 = ImageManipulation.scaledImageIcon(unscaledAvatarImg3, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
 		lblCrewAvatarImage3.setIcon(avatarImg3);
 		lblCrewAvatarImage3.setForeground(Color.BLACK);
 		lblCrewAvatarImage3.setBounds(6, 27, 53, 53);
@@ -643,7 +643,7 @@ public class MainScreen {
 		
 		JLabel lblCrewAvatarImage4 = new JLabel("");
 		ImageIcon unscaledAvatarImg4 = new ImageIcon(MainScreen.class.getResource(crewMember4.getAvatarImage()));
-		ImageIcon avatarImg4 = scaledImageIcon(unscaledAvatarImg4, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
+		ImageIcon avatarImg4 = ImageManipulation.scaledImageIcon(unscaledAvatarImg4, AVATAR_IMG_SIZE, AVATAR_IMG_SIZE);
 		lblCrewAvatarImage4.setIcon(avatarImg4);
 		lblCrewAvatarImage4.setForeground(Color.BLACK);
 		lblCrewAvatarImage4.setBounds(6, 27, 53, 53);
@@ -722,38 +722,7 @@ public class MainScreen {
 		frame.setVisible(true);
 	}
 	
-
-	/**Takes an ImageIcon and desired width and height and returns a scaled ImageIcon.*/
-	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, int width, int height) {
-		return scale(unscaledImageIcon, width, height);
-	}
-	/**Takes an ImageIcon and desired percent scale factor and returns a scaled ImageIcon.*/
-	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, float percentSize) {
-		int width = Math.round(unscaledImageIcon.getIconWidth() * percentSize);
-		int height = Math.round(unscaledImageIcon.getIconHeight() * percentSize);
-		return scale(unscaledImageIcon, width, height);
-	}
-	/**Takes an ImageIcon, desired side length and a boolean scaleByWidth.  If true it fixes the sideLength to 
-	 * the width and scales the height proportionally.  If false, fixes the sideLength to the height.  
-	 * Returns a scaled ImageIcon.*/
-	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, int sideLength, boolean scaleByWidth) {
-		int width, height;
-		if (scaleByWidth) {
-			height = Math.round(((float) unscaledImageIcon.getIconHeight() / unscaledImageIcon.getIconWidth()) * sideLength);
-			width = sideLength;
-		} else {
-			width = Math.round(((float) unscaledImageIcon.getIconWidth() / unscaledImageIcon.getIconHeight()) * sideLength);
-			height = sideLength;
-		}
-		return scale(unscaledImageIcon, width, height);
-	}
-	/**Helper method for scaledImageIcon to do the scaling.*/
-	private ImageIcon scale(ImageIcon unscaledImageIcon, int width, int height) {
-		Image image = unscaledImageIcon.getImage();
-		Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
-		unscaledImageIcon = new ImageIcon(newimg);
-		return unscaledImageIcon;
-	}
+	
 	
 	/**Takes the level of health of a crew member and a crew member and changes the color of the 
 	 * health bar based on the level of health.  Divisions are green, yellow, red for each 1/3rd 
