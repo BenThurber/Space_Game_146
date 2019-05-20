@@ -80,7 +80,7 @@ public class TeamSelection {
 	private void initialize() {
 		frmMeteorMadness = new JFrame();
 		frmMeteorMadness.setTitle("Meteor Madness");
-		frmMeteorMadness.setBounds(GameEnvironment.WINDOW_INIT_X, GameEnvironment.WINDOW_INIT_Y, 800, 500);
+		frmMeteorMadness.setBounds(GameEnvironment.WINDOW_INIT_X, GameEnvironment.WINDOW_INIT_Y, 800, 493);
 		frmMeteorMadness.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMeteorMadness.getContentPane().setLayout(null);
 
