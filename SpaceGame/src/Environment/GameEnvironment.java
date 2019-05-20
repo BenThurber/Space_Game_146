@@ -31,7 +31,7 @@ public class GameEnvironment {
 	private final String NOT_ENOUGH_CREW_MEMBERS_MSG = "You don't have enough Crew Members to pilot the ship\n"
 			+ "(or they have no more actions).\n\nSelect \"Pilot Ship\" as an action for atleast %d crew members and try again.";
 	private final String FIRST_DAY_MESSAGE = "Welcome aboard %s.  Your objective is to find %d parts to your space ship.\n\n"
-			+ "Maintain the health of your crew by having them eat, sleep and get healed when they're sick.\n\nGood Luck.";
+			+ "Maintain the sheilds of your ship as well as the health of your crew by having them eat, sleep and get healed when they're sick.\n\nGood Luck.";
 	private final String NEXT_DAY_MESSAGE = "Day %d of %d\n\nA new day has begun.  Your Crew have new actions that they can perfom.";
 	private final String SHIP_DEAD_MESSAGE = "You've been hit by an Asteroid, and your sheilds did not have enough energy to deflect it.  Your ship has been destroyed.";
 	private final String CREW_DEAD_MESSAGE = "All of your crew have perished from either from lack of food, sleep or from plague.";
@@ -104,13 +104,18 @@ public class GameEnvironment {
 	public void launchTeamSelection() {
 		TeamSelection teamSelectionWindow = new TeamSelection(this);
 	}
-	/**Opens Introduction window*/
+	/**Opens Introduction window and starts first day*/
 	public void launchIntroduction() {
 		Introduction introWindow = new Introduction(this);
 	}
-	/**Opens Introduction window and starts first day*/
+	/**Opens MainScreen window and starts first day*/
 	public void launchMainScreen() {
 		mainWindow = new MainScreen(this);
+		startFirstDay();
+	}
+	/**Opens ScoreBoard window and starts first day*/
+	public void launchScoreBoard() {
+		ScoreBoard scoreBoard = new ScoreBoard(this);
 		startFirstDay();
 	}
 	

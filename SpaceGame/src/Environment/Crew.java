@@ -19,14 +19,21 @@ public class Crew {
 	private CrewMember[] members = new CrewMember[MAX_CREW_MEMBERS];
 	//private List<CrewMember> members = Arrays.asList(new CrewMember[MAX_CREW_MEMBERS]);
 	
+	/**Initializes a Crew with blank (dead) crew members*/
 	public Crew() {
+		for (int i=0; i < members.length; i++) {
+			members[i] = new CrewMember("Dead Crew Member");
+			members[i].kill();
+		}
 	}
 	/**Construct new Crew from List (ArrayList)*/
 	public Crew(List<CrewMember> members) {
+		this();
 		addNewCrewMembers(members);
 	}
 	/**Construct new Crew from primitive array*/
 	public Crew(CrewMember[] members) {
+		this();
 		addNewCrewMembers(members);
 	}
 	

@@ -27,8 +27,8 @@ public class ScoreBoard {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ScoreBoard window = new ScoreBoard();
-					window.frame.setVisible(true);
+					GameEnvironment environment = new GameEnvironment();
+					ScoreBoard window = new ScoreBoard(environment);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -105,5 +105,7 @@ public class ScoreBoard {
 		JButton btnQuit = new JButton("Exit");
 		btnQuit.setBounds(59, 230, 117, 29);
 		frame.getContentPane().add(btnQuit);
+		
+		frame.setVisible(true);
 	}
 }
