@@ -3,7 +3,7 @@ package Environment.CrewMemberTypes;
 public class Security extends CrewMember {
 	
 	public final String specialization = "security";
-	private final String avatarImage = "/Images/Avatars/security.png";
+	public final static String avatarImage = "/Images/Avatars/security.png";
 	
 	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Reduces damage of an alien attack to both crew members and the ship.</div></html>";
 

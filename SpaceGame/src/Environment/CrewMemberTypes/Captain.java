@@ -3,7 +3,7 @@ package Environment.CrewMemberTypes;
 public class Captain extends CrewMember {
 	
 	public final String specialization = "captain";
-	private final String avatarImage = "/Images/Avatars/captain.png";
+	public final static String avatarImage = "/Images/Avatars/captain.png";
 	
 	// Captain heals physical stats to full
 	private final int HUNGER_LVL_INCREASE_EAT = -100;

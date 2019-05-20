@@ -3,7 +3,7 @@ package Environment.CrewMemberTypes;
 public class Communicator extends CrewMember {
 	
 	public final String specialization = "communications";
-	private final String avatarImage = "/Images/Avatars/communications.png";
+	public final static String avatarImage = "/Images/Avatars/communications.png";
 	
 	public Communicator(String name, int cremMemberID) {
 		super(name, cremMemberID);

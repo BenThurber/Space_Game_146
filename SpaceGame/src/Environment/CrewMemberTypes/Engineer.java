@@ -5,7 +5,7 @@ import Environment.Ship;
 public class Engineer extends CrewMember {
 	
 	public final String specialization = "engineer";
-	private final String avatarImage = "/Images/Avatars/engineer.png";
+	public final static String avatarImage = "/Images/Avatars/engineer.png";
 	
 	private final int SHEILD_REPAIR_AMOUNT = 50;
 	
