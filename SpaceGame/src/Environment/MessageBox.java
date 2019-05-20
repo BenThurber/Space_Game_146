@@ -42,7 +42,7 @@ public class MessageBox extends JDialog {
 		}
 	}
 
-	/**Create the dialog.  Takes X, Y, Width and Height parameteres.*/
+	/**Create the dialog.  Takes X, Y, Width and Height parameters.*/
 	public MessageBox(String messageText, int parentX, int parentY, int parentWidth, int parentHeight) {
 		message = messageText;
 		setBounds(500, 200, 300, 250);

@@ -87,7 +87,7 @@ public class GameEnvironment {
 	/**Closes MainScreen window*/
 	public void closeMainScreen(MainScreen mainWindow) {
 		mainWindow.closeWindow();
-		// Open Score Board Here
+		launchScoreBoard();
 	}
 	/**Closes Introduction window and calls launchTeamSelection()*/
 	public void closeIntroduction(Introduction introWindow) {
@@ -99,6 +99,10 @@ public class GameEnvironment {
 	public void closeTeamSelection(TeamSelection teamSelectionWindow ) {
 		teamSelectionWindow.closeWindow();
 		launchMainScreen();
+	}
+	/**Closes ScoreBoard window*/
+	public void closeScoreBoard(ScoreBoard scoreBoard) {
+		scoreBoard.closeWindow();
 	}
 	/**Opens TeamSelection window*/
 	public void launchTeamSelection() {
@@ -116,7 +120,6 @@ public class GameEnvironment {
 	/**Opens ScoreBoard window and starts first day*/
 	public void launchScoreBoard() {
 		ScoreBoard scoreBoard = new ScoreBoard(this);
-		startFirstDay();
 	}
 	
 	
@@ -340,7 +343,7 @@ public class GameEnvironment {
 	/**Opens a new MessageBox with a message string (argument) followed by a blank line and the words "GAME OVER" (from variable GAME_OVER_MESSAGE)*/
 	public void initiateGameOver(String message) {
 		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE, mainWindow);
-		mainWindow.closeWindow();
+		closeMainScreen(mainWindow);
 	}
 	/**Calls initiateGameOver with no message*/
 	public void initiateGameOver() {

@@ -14,6 +14,8 @@ import javax.swing.SwingConstants;
 import java.awt.Insets;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ScoreBoard {
 
@@ -42,6 +44,21 @@ public class ScoreBoard {
 	public ScoreBoard(GameEnvironment environment) {
 		this.environment = environment;
 		initialize();
+	}
+	
+	
+	/**Closes the ScoreBoard window variable*/
+	public void closeWindow() {
+		frame.dispose();
+	}
+	/**Closes ScoreBoard and exits*/
+	public void finishedWindow() {
+		environment.closeScoreBoard(this);
+	}
+	/**Closes ScoreBoard and restarts the game.*/
+	public void finishedWindowAndRestartGame() {
+		environment.closeScoreBoard(this);
+		environment.launchIntroduction();
 	}
 
 	/**
@@ -99,10 +116,20 @@ public class ScoreBoard {
 		frame.getContentPane().add(label);
 		
 		JButton btnPlayAgain = new JButton("Play Again");
+		btnPlayAgain.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindowAndRestartGame();
+			}
+		});
 		btnPlayAgain.setBounds(281, 230, 117, 29);
 		frame.getContentPane().add(btnPlayAgain);
 		
 		JButton btnQuit = new JButton("Exit");
+		btnQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
 		btnQuit.setBounds(59, 230, 117, 29);
 		frame.getContentPane().add(btnQuit);
 		
