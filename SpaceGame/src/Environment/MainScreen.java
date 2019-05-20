@@ -53,8 +53,9 @@ public class MainScreen {
 	
 	private final Color TOP_BAR_BLUE = new Color(17, 152, 234);
 	
-	// Variable environment can be used to get attributes to update labels and such
+	/**Variable environment can be used to get attributes of Crew and Ship to update labels and such*/
 	private GameEnvironment environment;
+	/**Main Screen window*/
 	protected JFrame frame;
 	
 	// Ship Related Variables
@@ -106,14 +107,14 @@ public class MainScreen {
 	
 	
 	/**
-	 * Create the application.
+	 * Open the window.
 	 * @wbp.parser.constructor
 	 */
 	public MainScreen(GameEnvironment environment) {
 		this.environment = environment;
 		initialize();
 	}
-	
+	/**Close the window*/
 	public void closeWindow() {
 		frame.dispose();
 	}
@@ -147,7 +148,7 @@ public class MainScreen {
 		
 		viewScreenImageLabel.setIcon(viewScreenImage);
 	}
-	/**Updates CrewMember1 (top left) to */
+	/**Updates CrewMember1 (top left) to the values stored in CrewMember object with CREW_MEMBER_1_ID*/
 	private void updateCrewMember1() {
 		crewMember1 = environment.crew.getCrewMember(CREW_MEMBER_1_ID);
 		panelCrewMember1.setVisible(crewMember1.isAlive());
@@ -158,6 +159,7 @@ public class MainScreen {
 		lblStanimaLevel1.setText(String.valueOf(crewMember1.getStamina()) + "%");
 		lblHungerLevel1.setText(String.valueOf(crewMember1.getHunger()) + "%");
 	}
+	/**Updates CrewMember2 (top left) to the values stored in CrewMember object with CREW_MEMBER_2_ID*/
 	private void updateCrewMember2() {
 		crewMember2 = environment.crew.getCrewMember(CREW_MEMBER_2_ID);
 		panelCrewMember2.setVisible(crewMember2.isAlive());
@@ -168,6 +170,7 @@ public class MainScreen {
 		lblStanimaLevel2.setText(String.valueOf(crewMember2.getStamina()) + "%");
 		lblHungerLevel2.setText(String.valueOf(crewMember2.getHunger()) + "%");
 	}
+	/**Updates CrewMember3 (top left) to the values stored in CrewMember object with CREW_MEMBER_3_ID*/
 	private void updateCrewMember3() {
 		crewMember3 = environment.crew.getCrewMember(CREW_MEMBER_3_ID);
 		panelCrewMember3.setVisible(crewMember3.isAlive());
@@ -178,6 +181,7 @@ public class MainScreen {
 		lblStanimaLevel3.setText(String.valueOf(crewMember3.getStamina()) + "%");
 		lblHungerLevel3.setText(String.valueOf(crewMember3.getHunger()) + "%");
 	}
+	/**Updates CrewMember4 (top left) to the values stored in CrewMember object with CREW_MEMBER_4_ID*/
 	private void updateCrewMember4() {
 		crewMember4 = environment.crew.getCrewMember(CREW_MEMBER_4_ID);
 		panelCrewMember4.setVisible(crewMember4.isAlive());
@@ -709,17 +713,20 @@ public class MainScreen {
 		frame.setVisible(true);
 	}
 	
-	/**
-	 * Takes an ImageIcon and width and height or percent scale and scales the image.
-	 */
+
+	/**Takes an ImageIcon and desired width and height and returns a scaled ImageIcon.*/
 	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, int width, int height) {
 		return scale(unscaledImageIcon, width, height);
 	}
+	/**Takes an ImageIcon and desired percent scale factor and returns a scaled ImageIcon.*/
 	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, float percentSize) {
 		int width = Math.round(unscaledImageIcon.getIconWidth() * percentSize);
 		int height = Math.round(unscaledImageIcon.getIconHeight() * percentSize);
 		return scale(unscaledImageIcon, width, height);
 	}
+	/**Takes an ImageIcon, desired side length and a boolean scaleByWidth.  If true it fixes the sideLength to 
+	 * the width and scales the height proportionally.  If false, fixes the sideLength to the height.  
+	 * Returns a scaled ImageIcon.*/
 	private ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, int sideLength, boolean scaleByWidth) {
 		int width, height;
 		if (scaleByWidth) {
@@ -731,6 +738,7 @@ public class MainScreen {
 		}
 		return scale(unscaledImageIcon, width, height);
 	}
+	/**Helper method for scaledImageIcon to do the scaling.*/
 	private ImageIcon scale(ImageIcon unscaledImageIcon, int width, int height) {
 		Image image = unscaledImageIcon.getImage();
 		Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
@@ -738,6 +746,9 @@ public class MainScreen {
 		return unscaledImageIcon;
 	}
 	
+	/**Takes the level of health of a crew member and a crew member and changes the color of the 
+	 * health bar based on the level of health.  Divisions are green, yellow, red for each 1/3rd 
+	 * of health.  Health bar turns purple if CrewMember has space plague.*/
 	private Color progressBarColor(int healthBarLevel, CrewMember member) {
 		Color barColor;
 		if (member.hasSpacePlague()) {
@@ -752,7 +763,7 @@ public class MainScreen {
 		return barColor;
 	}
 
-	/** Converts a set into a primitive array that can be used by a comboBox.  Boolean capitalize capitalized the first letter of each word.*/
+	/** Converts a set into a primitive array that can be used by a comboBox.  Boolean capitalize capitalizes the first letter of each word.*/
 	private String[] convertCollectionForComboBox(Set<String> set, boolean capitalize) {
 		String[] comboBoxArray = new String[set.size() + 1];
 		comboBoxArray[0] = "";
@@ -764,7 +775,8 @@ public class MainScreen {
 		}
 		return comboBoxArray;
 	}
-	
+	/**Takes a crew member ID and returns the currently selected item in the ComboBox associated with that member.  
+	 * Throws CrewMemberNotFoundException if invalid crewMemberID.*/
 	public String getSelectedNextAction(int crewMemberID) throws CrewMemberNotFoundException {
 		JComboBox comboBox;
 		switch (crewMemberID) {
@@ -785,6 +797,9 @@ public class MainScreen {
 		}
 		return comboBox.getSelectedItem().toString().toLowerCase();
 	}
+	
+	/**Takes a CrewMember and returns the currently selected item in the ComboBox associated with that member.  
+	 * Throws CrewMemberNotFoundException if member is not part of Crew.*/
 	public String getSelectedNextAction(CrewMember member) throws CrewMemberNotFoundException {
 		if (member.equals(environment.crew.getCrewMember(member.getCrewMemberID()))) {
 			return getSelectedNextAction(member.getCrewMemberID());
@@ -792,6 +807,7 @@ public class MainScreen {
 			throw new CrewMemberNotFoundException("The CrewMember " + member.getName() + " is not part of the crew or has a crewMemberID mismatch");
 		}
 	}
+	/**Sets ComboBox of crewMemberID to the first entry (should clear it)*/
 	public void clearComboBoxes(int crewMemberID) {
 		switch (crewMemberID) {
 		case 0:
@@ -810,11 +826,13 @@ public class MainScreen {
 			break;
 		}
 	}
+	/**Sets ComboBox of CrewMember to the first entry (should clear it)*/
 	public void clearComboBoxes(CrewMember member) {
 		if (member.equals(environment.crew.getCrewMember(member.getCrewMemberID()))) {
 			clearComboBoxes(member.getCrewMemberID());
 		}
 	}
+	/**Sets all ComboBoxes to their first entry (which should clear them)*/
 	public void clearComboBoxes() {
 		comboBoxNextAction1.setSelectedIndex(0);
 		comboBoxNextAction2.setSelectedIndex(0);
@@ -826,12 +844,3 @@ public class MainScreen {
 
 
 
-
-///**
-// * Launch the application.
-// */
-//public static void main(String[] args) {
-//	MainScreen window = new MainScreen();
-//	window.frame.setVisible(true);
-//	
-//}
