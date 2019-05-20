@@ -30,7 +30,8 @@ public class GameEnvironment {
 	
 	private final String NOT_ENOUGH_CREW_MEMBERS_MSG = "You don't have enough Crew Members to pilot the ship\n"
 			+ "(or they have no more actions).\n\nSelect \"Pilot Ship\" as an action for atleast %d crew members and try again.";
-	private final String FIRST_DAY_MESSAGE = "First Day message";
+	private final String FIRST_DAY_MESSAGE = "Welcome aboard %s.  Your objective is to find %d parts to your space ship.\n\n"
+			+ "Maintain the health of your crew by having them eat, sleep and get healed when they're sick.\n\nGood Luck.";
 	private final String NEXT_DAY_MESSAGE = "Day %d of %d\n\nA new day has begun.  Your Crew have new actions that they can perfom.";
 	private final String SHIP_DEAD_MESSAGE = "You've been hit by an Asteroid, and your sheilds did not have enough energy to deflect it.  Your ship has been destroyed.";
 	private final String CREW_DEAD_MESSAGE = "All of your crew have perished from either from lack of food, sleep or from plague.";

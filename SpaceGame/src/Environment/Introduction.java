@@ -26,14 +26,6 @@ public class Introduction {
 	private GameEnvironment environment;
 	
 	public int daysToPlay;
-
-	/*public void closeWindow() {
-		frmMeteorMadness.dispose();
-	}
-	
-	public void finishedWindow() {
-		GameEnvironment.closeIntroduction(this);
-	}*/
 	
 	
 	

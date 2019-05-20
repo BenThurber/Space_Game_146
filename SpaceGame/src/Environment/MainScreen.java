@@ -122,6 +122,10 @@ public class MainScreen {
 		frame.dispose();
 	}
 	
+	public void finishedWindow() {
+		environment.closeMainScreen(this);
+	}
+	
 	/**Update the widgets on the MainScreen*/
 	public void update() {
 		updateShipAtributes();

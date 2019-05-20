@@ -80,10 +80,14 @@ public class CrewMember {
 		eat(HUNGER_LVL_INCREASE_EAT);
 	}
 	
-	/**Crew member eats and regains some amount of health.*/
+	/**Crew member eats and regains some amount of health.  If they have space plague then cures that.*/
 	protected void useMedicalItem(int healthIncrease) {
 		if (this.decrementNumActions()) {
-			this.addHealth(healthIncrease);
+			if (this.hasSpacePlague()) {
+				this.setHasSpacePlague(false);
+			} else {
+				this.addHealth(healthIncrease);
+			}
 		}
 	}
 	public void useMedicalItem() {
