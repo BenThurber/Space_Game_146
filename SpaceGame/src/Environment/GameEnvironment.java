@@ -42,6 +42,9 @@ public class GameEnvironment {
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
+	public final static int WINDOW_INIT_X = 320;
+	public final static int WINDOW_INIT_Y = 100;
+	
 	private CrewMember[] testMembers = {new Scientist("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
 	//private CrewMember[] crewMembers = {};
 	
@@ -303,7 +306,7 @@ public class GameEnvironment {
 	}
 	/**Increments currentDay variable*/
 	public void incrementCurrentDay() {
-		currentDay = Math.min(currentDay+1, totalDays);
+		currentDay++;  // DON'T use min/max.  Needs to be greater than total days to trigger game over
 	}
 	
 	public int getShipPartsFound() {

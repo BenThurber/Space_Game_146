@@ -94,7 +94,7 @@ public class Introduction {
 		JComboBox comboBox = new JComboBox(days);
 		comboBox.setBounds(351, 155, 96, 24);
 		frmMeteorMadness.getContentPane().add(comboBox);
-		frmMeteorMadness.setBounds(100, 100, 800, 500);
+		frmMeteorMadness.setBounds(GameEnvironment.WINDOW_INIT_X, GameEnvironment.WINDOW_INIT_Y, 800, 500);
 		frmMeteorMadness.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		btnConfirm = new JButton("CONFIRM");

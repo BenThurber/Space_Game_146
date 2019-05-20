@@ -35,8 +35,8 @@ import java.awt.event.ActionEvent;
 /**The main window of the game where game-play happens*/
 public class MainScreen {
 	
-	private final int WINDOW_X = 320;
-	private final int WINDOW_Y = 100;
+	//private final int WINDOW_X = 320;
+	//private final int WINDOW_Y = 100;
 	private final int WINDOW_WIDTH = 767;
 	private final int WINDOW_HEIGHT = 832;
 	
@@ -212,7 +212,7 @@ public class MainScreen {
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.BLACK);
-		frame.setBounds(WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
+		frame.setBounds(GameEnvironment.WINDOW_INIT_X, GameEnvironment.WINDOW_INIT_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
