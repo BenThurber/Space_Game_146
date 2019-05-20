@@ -25,6 +25,7 @@ public class MessageBox extends JDialog {
 	private final String WHITESPACE = "            ";
 	
 	private final JPanel contentPanel = new JPanel();
+	
 	public JPanel messagepanel = new JPanel();
 	private String message;
 
@@ -41,9 +42,7 @@ public class MessageBox extends JDialog {
 		}
 	}
 
-	/**
-	 * Create the dialog.
-	 */
+	/**Create the dialog.  Takes X, Y, Width and Height parameteres.*/
 	public MessageBox(String messageText, int parentX, int parentY, int parentWidth, int parentHeight) {
 		message = messageText;
 		setBounds(500, 200, 300, 250);

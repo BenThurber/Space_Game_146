@@ -21,7 +21,7 @@ public class CrewMember {
 			new String[] {"eat", "pilot ship", "repair sheilds", "search planet", "sleep", "use medical item"}));
 	
 	public final int MAX_ACTIONS = 2;
-	
+	 
 	//Amounts by which stats increase with their respective actions
 	protected final int HUNGER_LVL_INCREASE_EAT = -50;
 	protected final int STANIMA_LVL_INCREASE_SLEEP = 50;
