@@ -11,7 +11,7 @@ public class Crew {
 	
 	final int MAX_CREW_MEMBERS = 4;
 	final int HUNGER_INCREASE_PER_DAY = 20;
-	final int STAMINA_INCREASE_PER_DAY = 20;
+	final int EXHAUSTION_INCREASE_PER_DAY = 20;
 	final int PLAGUE_HEALTH_INCREASE_PER_DAY = -50;
 	final int RANDOM_RANGE = 5;
 	
@@ -161,15 +161,15 @@ public class Crew {
 		return liveMembers;
 	}
 	
-	/**Sets the number of actions of each CrewMember to max.  Increases hunger, decreases stamina and decreases health if CrewMember has space plague.*/
+	/**Sets the number of actions of each CrewMember to max.  Increases hunger, decreases exhaustion and decreases health if CrewMember has space plague.*/
 	public void resetCrewForNewDay() {
 		for (CrewMember member: members) {
 			// Reset Actions
 			member.setNumActionsReset();
 			// Add Hunger
 			member.addHunger(Misc.numberPlusMinusRandom(HUNGER_INCREASE_PER_DAY, RANDOM_RANGE));
-			// Decrease Stamina
-			member.addStamina(Misc.numberPlusMinusRandom(STAMINA_INCREASE_PER_DAY, RANDOM_RANGE));
+			// Decrease Exhaustion
+			member.addExhaustion(Misc.numberPlusMinusRandom(EXHAUSTION_INCREASE_PER_DAY, RANDOM_RANGE));
 			//Add space plague affects
 			if (member.hasSpacePlague()) {
 				member.addHealth(Misc.numberPlusMinusRandom(PLAGUE_HEALTH_INCREASE_PER_DAY, RANDOM_RANGE));

@@ -7,11 +7,11 @@ public class Captain extends CrewMember {
 	
 	// Captain heals physical stats to full
 	private final int HUNGER_LVL_INCREASE_EAT = -100;
-	private final int STANIMA_LVL_INCREASE_SLEEP = -100;
+	private final int EXHAUSTION_LVL_INCREASE_SLEEP = -100;
 	private final int HEALTH_LVL_INCREASE_MED_ITEM = 100;
 	
 	// Captain takes off this amount from physical stats lost before applying it to them.  AKA damage reduction.
-	private final int CAPTAIN_STANIMA_DAMAGE_REDUCTION = 10;
+	private final int CAPTAIN_EXHAUSTION_DAMAGE_REDUCTION = 10;
 	private final int CAPTAIN_HUNGER_DAMAGE_REDUCTION = 10;
 	private final int CAPTAIN_HEALTH_DAMAGE_REDUCTION = 20;
 	
@@ -41,7 +41,7 @@ public class Captain extends CrewMember {
 	
 	// Override physical stats
 	public void sleep() {
-		super.sleep(STANIMA_LVL_INCREASE_SLEEP);
+		super.sleep(EXHAUSTION_LVL_INCREASE_SLEEP);
 	}
 	
 	public void eat() {
@@ -68,14 +68,14 @@ public class Captain extends CrewMember {
 		}
 	}
 	//Low is good
-	/**Adds or subtracts Stamina from crew member.  If removing Stamina, auto restores to zero.  
-	 * If taking adding Stamina, subtracts CAPTAIN_PHYSICAL_STAT_DAMAGE_REDUCTION from the 
+	/**Adds or subtracts Exhaustion from crew member.  If removing Exhaustion, auto restores to zero.  
+	 * If taking adding Exhaustion, subtracts CAPTAIN_PHYSICAL_STAT_DAMAGE_REDUCTION from the 
 	 * increase before applying it.*/
-	public void addStamina(int addedStamina) {
-		if (addedStamina <= 0) {
-			super.addStamina(-100);
+	public void addExhaustion(int addedExhaustion) {
+		if (addedExhaustion <= 0) {
+			super.addExhaustion(-100);
 		} else {
-			super.addStamina(Math.max(0, addedStamina - CAPTAIN_STANIMA_DAMAGE_REDUCTION));
+			super.addExhaustion(Math.max(0, addedExhaustion - CAPTAIN_EXHAUSTION_DAMAGE_REDUCTION));
 		}
 	}
 	//Low is good

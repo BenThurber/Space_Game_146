@@ -24,7 +24,7 @@ public class CrewMember {
 	 
 	//Amounts by which stats increase with their respective actions
 	protected final int HUNGER_LVL_INCREASE_EAT = -50;
-	protected final int STANIMA_LVL_INCREASE_SLEEP = -50;
+	protected final int EXHAUSTION_LVL_INCREASE_SLEEP = -50;
 	protected final int HEALTH_LVL_INCREASE_MED_ITEM = 50;
 	protected final int SHEILD_REPAIR_AMOUNT = 20;
 	
@@ -61,13 +61,13 @@ public class CrewMember {
 	
 	
 	/**Crew member sleeps and regains some amount of stamina (health?)*/
-	protected void sleep(int stanimaIncrease) {
+	protected void sleep(int exhaustionIncrease) {
 		if (this.decrementNumActions()) {
-			this.addStamina(stanimaIncrease);
+			this.addExhaustion(exhaustionIncrease);
 		}
 	}
 	public void sleep() {
-		sleep(STANIMA_LVL_INCREASE_SLEEP);
+		sleep(EXHAUSTION_LVL_INCREASE_SLEEP);
 	}
 	
 	/**Crew member eats and increases some amount of stamina and health.*/
@@ -162,12 +162,12 @@ public class CrewMember {
 		}
 	}
 	
-	public int getStamina() {
+	public int getExhaustion() {
 		return stamina;
 	}
 	/**Adds/subtracts stamina.  If raised to 100 CrewMember dies.*/
-	public void addStamina(int addedStamina) {
-		this.stamina = Math.max(Math.min(this.stamina + addedStamina, 100), 0);
+	public void addExhaustion(int addedExhaustion) {
+		this.stamina = Math.max(Math.min(this.stamina + addedExhaustion, 100), 0);
 		if (this.stamina >= 100) {
 			this.kill();
 		}
