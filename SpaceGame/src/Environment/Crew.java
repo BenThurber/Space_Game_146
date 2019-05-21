@@ -11,9 +11,9 @@ public class Crew {
 	
 	final int MAX_CREW_MEMBERS = 4;
 	final int HUNGER_INCREASE_PER_DAY = 20;
-	final int STAMINA_INCREASE_PER_DAY = -20;
+	final int STAMINA_INCREASE_PER_DAY = 20;
 	final int PLAGUE_HEALTH_INCREASE_PER_DAY = -50;
-	final int RANDOM_RANGE = 3;
+	final int RANDOM_RANGE = 5;
 	
 	// Fixed length list to store crew members
 	private CrewMember[] members = new CrewMember[MAX_CREW_MEMBERS];

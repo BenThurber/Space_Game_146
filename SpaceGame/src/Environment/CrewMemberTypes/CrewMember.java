@@ -24,7 +24,7 @@ public class CrewMember {
 	 
 	//Amounts by which stats increase with their respective actions
 	protected final int HUNGER_LVL_INCREASE_EAT = -50;
-	protected final int STANIMA_LVL_INCREASE_SLEEP = 50;
+	protected final int STANIMA_LVL_INCREASE_SLEEP = -50;
 	protected final int HEALTH_LVL_INCREASE_MED_ITEM = 50;
 	protected final int SHEILD_REPAIR_AMOUNT = 20;
 	
@@ -39,7 +39,7 @@ public class CrewMember {
 	private String name;
 	private int health = 100;
 	private int hunger = 0;
-	private int stamina = 100;
+	private int stamina = 0;
 	private boolean isAlive = true;
 	private boolean hasSpacePlague = false;
 	private int numActions = MAX_ACTIONS;
@@ -165,10 +165,10 @@ public class CrewMember {
 	public int getStamina() {
 		return stamina;
 	}
-	/**Adds/subtracts stamina.  If dropped to 0 CrewMember dies.*/
+	/**Adds/subtracts stamina.  If raised to 100 CrewMember dies.*/
 	public void addStamina(int addedStamina) {
 		this.stamina = Math.max(Math.min(this.stamina + addedStamina, 100), 0);
-		if (this.stamina <= 0) {
+		if (this.stamina >= 100) {
 			this.kill();
 		}
 	}
