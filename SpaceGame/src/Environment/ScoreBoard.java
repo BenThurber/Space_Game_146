@@ -58,7 +58,8 @@ public class ScoreBoard {
 	/**Closes ScoreBoard and restarts the game.*/
 	public void finishedWindowAndRestartGame() {
 		environment.closeScoreBoard(this);
-		environment.launchIntroduction();
+		GameEnvironment newEnvironment = new GameEnvironment();
+		newEnvironment.launchIntroduction();
 	}
 
 	/**

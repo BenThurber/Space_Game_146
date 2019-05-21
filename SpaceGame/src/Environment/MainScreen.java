@@ -72,7 +72,7 @@ public class MainScreen {
 	private JPanel panelCrewMember1 = new JPanel();
 	private JProgressBar progressBarHealth1 = new JProgressBar();
 	private JLabel lblRemainingActions1 = new JLabel("0/0");
-	private JLabel lblEXHAUSTIONLevel1 = new JLabel("0%");
+	private JLabel lblExhaustionLevel1 = new JLabel("0%");
 	private JLabel lblHungerLevel1 = new JLabel("0%");
 	private JComboBox comboBoxNextAction1 = new JComboBox();
 	
@@ -82,7 +82,7 @@ public class MainScreen {
 	private JPanel panelCrewMember2 = new JPanel();
 	private JProgressBar progressBarHealth2 = new JProgressBar();
 	private JLabel lblRemainingActions2 = new JLabel("0/0");
-	private JLabel lblEXHAUSTIONLevel2 = new JLabel("0%");
+	private JLabel lblExhaustionLevel2 = new JLabel("0%");
 	private JLabel lblHungerLevel2 = new JLabel("0%");
 	private JComboBox comboBoxNextAction2 = new JComboBox();
 	
@@ -92,7 +92,7 @@ public class MainScreen {
 	private JPanel panelCrewMember3 = new JPanel();
 	private JProgressBar progressBarHealth3 = new JProgressBar();
 	private JLabel lblRemainingActions3 = new JLabel("0/0");
-	private JLabel lblEXHAUSTIONLevel3 = new JLabel("0%");
+	private JLabel lblExhaustionLevel3 = new JLabel("0%");
 	private JLabel lblHungerLevel3 = new JLabel("0%");
 	private JComboBox comboBoxNextAction3 = new JComboBox();
 	
@@ -102,7 +102,7 @@ public class MainScreen {
 	private JPanel panelCrewMember4 = new JPanel();
 	private JProgressBar progressBarHealth4 = new JProgressBar();
 	private JLabel lblRemainingActions4 = new JLabel("0/0");
-	private JLabel lblEXHAUSTIONLevel4 = new JLabel("0%");
+	private JLabel lblExhaustionLevel4 = new JLabel("0%");
 	private JLabel lblHungerLevel4 = new JLabel("0%");
 	private JComboBox comboBoxNextAction4 = new JComboBox();
 	
@@ -163,7 +163,7 @@ public class MainScreen {
 		progressBarHealth1.setValue(crewMember1.getHealth());
 		progressBarHealth1.setForeground(progressBarColor(progressBarHealth1.getValue(), crewMember1));
 		lblRemainingActions1.setText(String.valueOf((crewMember1.getNumActions()) + "/" + crewMember1.MAX_ACTIONS));
-		lblEXHAUSTIONLevel1.setText(String.valueOf(crewMember1.getExhaustion()) + "%");
+		lblExhaustionLevel1.setText(String.valueOf(crewMember1.getExhaustion()) + "%");
 		lblHungerLevel1.setText(String.valueOf(crewMember1.getHunger()) + "%");
 	}
 	/**Updates CrewMember2 (top left) to the values stored in CrewMember object with CREW_MEMBER_2_ID*/
@@ -174,7 +174,7 @@ public class MainScreen {
 		progressBarHealth2.setValue(crewMember2.getHealth());
 		progressBarHealth2.setForeground(progressBarColor(progressBarHealth2.getValue(), crewMember2));
 		lblRemainingActions2.setText(String.valueOf((crewMember2.getNumActions()) + "/" + crewMember2.MAX_ACTIONS));
-		lblEXHAUSTIONLevel2.setText(String.valueOf(crewMember2.getExhaustion()) + "%");
+		lblExhaustionLevel2.setText(String.valueOf(crewMember2.getExhaustion()) + "%");
 		lblHungerLevel2.setText(String.valueOf(crewMember2.getHunger()) + "%");
 	}
 	/**Updates CrewMember3 (top left) to the values stored in CrewMember object with CREW_MEMBER_3_ID*/
@@ -185,7 +185,7 @@ public class MainScreen {
 		progressBarHealth3.setValue(crewMember3.getHealth());
 		progressBarHealth3.setForeground(progressBarColor(progressBarHealth3.getValue(), crewMember3));
 		lblRemainingActions3.setText(String.valueOf((crewMember3.getNumActions()) + "/" + crewMember3.MAX_ACTIONS));
-		lblEXHAUSTIONLevel3.setText(String.valueOf(crewMember3.getExhaustion()) + "%");
+		lblExhaustionLevel3.setText(String.valueOf(crewMember3.getExhaustion()) + "%");
 		lblHungerLevel3.setText(String.valueOf(crewMember3.getHunger()) + "%");
 	}
 	/**Updates CrewMember4 (top left) to the values stored in CrewMember object with CREW_MEMBER_4_ID*/
@@ -196,7 +196,7 @@ public class MainScreen {
 		progressBarHealth4.setValue(crewMember4.getHealth());
 		progressBarHealth4.setForeground(progressBarColor(progressBarHealth4.getValue(), crewMember4));
 		lblRemainingActions4.setText(String.valueOf((crewMember4.getNumActions()) + "/" + crewMember4.MAX_ACTIONS));
-		lblEXHAUSTIONLevel4.setText(String.valueOf(crewMember4.getExhaustion()) + "%");
+		lblExhaustionLevel4.setText(String.valueOf(crewMember4.getExhaustion()) + "%");
 		lblHungerLevel4.setText(String.valueOf(crewMember4.getHunger()) + "%");
 	}
 	
@@ -370,21 +370,21 @@ public class MainScreen {
 		panelCrewMember1.add(lblRemainingActions1);
 		
 		
-		lblEXHAUSTIONLevel1.setForeground(Color.BLACK);
-		lblEXHAUSTIONLevel1.setBounds(332, 6, 36, 16);
-		panelCrewMember1.add(lblEXHAUSTIONLevel1);
+		lblExhaustionLevel1.setForeground(Color.BLACK);
+		lblExhaustionLevel1.setBounds(332, 6, 36, 16);
+		panelCrewMember1.add(lblExhaustionLevel1);
 		
 		
 		lblHungerLevel1.setForeground(Color.BLACK);
 		lblHungerLevel1.setBounds(332, 27, 36, 16);
 		panelCrewMember1.add(lblHungerLevel1);
 		
-		JLabel lblEXHAUSTIONHeading1 = new JLabel("EXHAUSTION:");
-		lblEXHAUSTIONHeading1.setForeground(Color.BLACK);
-		lblEXHAUSTIONHeading1.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblEXHAUSTIONHeading1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEXHAUSTIONHeading1.setBounds(259, 6, 64, 16);
-		panelCrewMember1.add(lblEXHAUSTIONHeading1);
+		JLabel lblExhaustionHeading1 = new JLabel("Exhaustion:");
+		lblExhaustionHeading1.setForeground(Color.BLACK);
+		lblExhaustionHeading1.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblExhaustionHeading1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblExhaustionHeading1.setBounds(259, 6, 64, 16);
+		panelCrewMember1.add(lblExhaustionHeading1);
 		
 		JButton btnExecuteNextAction1 = new JButton("");
 		btnExecuteNextAction1.setIcon(imgExecuteNextAction);
@@ -469,21 +469,21 @@ public class MainScreen {
 		panelCrewMember2.add(lblRemainingActions2);
 		
 		
-		lblEXHAUSTIONLevel2.setForeground(Color.BLACK);
-		lblEXHAUSTIONLevel2.setBounds(332, 6, 36, 16);
-		panelCrewMember2.add(lblEXHAUSTIONLevel2);
+		lblExhaustionLevel2.setForeground(Color.BLACK);
+		lblExhaustionLevel2.setBounds(332, 6, 36, 16);
+		panelCrewMember2.add(lblExhaustionLevel2);
 		
 		
 		lblHungerLevel2.setForeground(Color.BLACK);
 		lblHungerLevel2.setBounds(332, 27, 36, 16);
 		panelCrewMember2.add(lblHungerLevel2);
 		
-		JLabel lblEXHAUSTIONHeading2 = new JLabel("EXHAUSTION:");
-		lblEXHAUSTIONHeading2.setForeground(Color.BLACK);
-		lblEXHAUSTIONHeading2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEXHAUSTIONHeading2.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblEXHAUSTIONHeading2.setBounds(259, 6, 64, 16);
-		panelCrewMember2.add(lblEXHAUSTIONHeading2);
+		JLabel lblExhaustionHeading2 = new JLabel("Exhaustion:");
+		lblExhaustionHeading2.setForeground(Color.BLACK);
+		lblExhaustionHeading2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblExhaustionHeading2.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblExhaustionHeading2.setBounds(259, 6, 64, 16);
+		panelCrewMember2.add(lblExhaustionHeading2);
 		
 		JLabel lblHealthHeading2 = new JLabel("Hunger:");
 		lblHealthHeading2.setForeground(Color.BLACK);
@@ -567,21 +567,21 @@ public class MainScreen {
 		panelCrewMember3.add(lblRemainingActions3);
 		
 		
-		lblEXHAUSTIONLevel3.setForeground(Color.BLACK);
-		lblEXHAUSTIONLevel3.setBounds(332, 6, 36, 16);
-		panelCrewMember3.add(lblEXHAUSTIONLevel3);
+		lblExhaustionLevel3.setForeground(Color.BLACK);
+		lblExhaustionLevel3.setBounds(332, 6, 36, 16);
+		panelCrewMember3.add(lblExhaustionLevel3);
 		
 		
 		lblHungerLevel3.setForeground(Color.BLACK);
 		lblHungerLevel3.setBounds(332, 27, 36, 16);
 		panelCrewMember3.add(lblHungerLevel3);
 		
-		JLabel lblEXHAUSTIONHeading3 = new JLabel("EXHAUSTION:");
-		lblEXHAUSTIONHeading3.setForeground(Color.BLACK);
-		lblEXHAUSTIONHeading3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEXHAUSTIONHeading3.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblEXHAUSTIONHeading3.setBounds(259, 6, 64, 16);
-		panelCrewMember3.add(lblEXHAUSTIONHeading3);
+		JLabel lblExhaustionHeading3 = new JLabel("Exhaustion:");
+		lblExhaustionHeading3.setForeground(Color.BLACK);
+		lblExhaustionHeading3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblExhaustionHeading3.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblExhaustionHeading3.setBounds(259, 6, 64, 16);
+		panelCrewMember3.add(lblExhaustionHeading3);
 		
 		JLabel lblHealthHeading3 = new JLabel("Hunger:");
 		lblHealthHeading3.setForeground(Color.BLACK);
@@ -665,21 +665,21 @@ public class MainScreen {
 		panelCrewMember4.add(lblRemainingActions4);
 		
 		
-		lblEXHAUSTIONLevel4.setForeground(Color.BLACK);
-		lblEXHAUSTIONLevel4.setBounds(332, 6, 36, 16);
-		panelCrewMember4.add(lblEXHAUSTIONLevel4);
+		lblExhaustionLevel4.setForeground(Color.BLACK);
+		lblExhaustionLevel4.setBounds(332, 6, 36, 16);
+		panelCrewMember4.add(lblExhaustionLevel4);
 		
 		
 		lblHungerLevel4.setForeground(Color.BLACK);
 		lblHungerLevel4.setBounds(332, 27, 36, 16);
 		panelCrewMember4.add(lblHungerLevel4);
 		
-		JLabel lblEXHAUSTIONHeading4 = new JLabel("EXHAUSTION:");
-		lblEXHAUSTIONHeading4.setForeground(Color.BLACK);
-		lblEXHAUSTIONHeading4.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEXHAUSTIONHeading4.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblEXHAUSTIONHeading4.setBounds(259, 6, 64, 16);
-		panelCrewMember4.add(lblEXHAUSTIONHeading4);
+		JLabel lblExhaustionHeading4 = new JLabel("Exhaustion:");
+		lblExhaustionHeading4.setForeground(Color.BLACK);
+		lblExhaustionHeading4.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblExhaustionHeading4.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblExhaustionHeading4.setBounds(259, 6, 64, 16);
+		panelCrewMember4.add(lblExhaustionHeading4);
 		
 		JLabel lblHealthHeading4 = new JLabel("Hunger:");
 		lblHealthHeading4.setForeground(Color.BLACK);

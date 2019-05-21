@@ -33,4 +33,21 @@ public class Location {
 		return imagePath;
 	}
 	
+	
+	
+	public boolean isContainsShipPart() {
+		return false;
+	}
+	public void removeShipPart() {
+	}
+	public boolean isContainsFood() {
+		return false;
+	}
+	public boolean isContainsMedicalItem() {
+		return false;
+	}
+	public boolean isContainsMoney() {
+		return false;
+	}
+	
 }

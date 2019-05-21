@@ -35,6 +35,9 @@ public class GameEnvironment {
 	private final String NEXT_DAY_MESSAGE = "Day %d of %d\n\nA new day has begun.  Your Crew have new actions that they can perfom.";
 	private final String SHIP_DEAD_MESSAGE = "You've been hit by an Asteroid, and your sheilds did not have enough energy to deflect it.  Your ship has been destroyed.";
 	private final String CREW_DEAD_MESSAGE = "All of your crew have perished from either from lack of food, sleep or from plague.";
+	private final String NOT_ENOUGH_CREW_PILOT_SHIP_MESSAGE = "You no longer have enough Crew Members to pilot your ship.  "
+			+ "They have perished from either from lack of food, sleep or from plague.  You cannot find enough parts on the "
+			+ "current planet to win the game, and you can't move to a new one.  Your situation is bleak.";
 	private final String GAME_OVER_MESSAGE = "GAME OVER";
 	private final String OUT_OF_DAYS_MESSAGE = "You have ran out of days to find the parts to your ship.";
 	private final String YOU_WIN_MESSAGE = "All parts of your ship have been recovered!\n\nYou Win!";
@@ -340,7 +343,11 @@ public class GameEnvironment {
 		}
 		if (shipPartsFound >= shipPartsTotalMissing) {
 			initiateGameOver(YOU_WIN_MESSAGE);
-			// Open Scoreboard window
+		}
+		// If there is only one crew member left alive, and there are no parts on the current planet that will finish the game, 
+		// GameOver because player will not be able to find remaining parts.
+		if (crew.getNumLiveCrew() < 2 && ((getShipPartsFound() < getShipPartsTotalMissing() - 1) || !currentLocation.isContainsShipPart())) {
+			initiateGameOver(NOT_ENOUGH_CREW_PILOT_SHIP_MESSAGE);
 		}
 	}
 	/**Opens a new MessageBox with a message string (argument) followed by a blank line and the words "GAME OVER" (from variable GAME_OVER_MESSAGE)*/

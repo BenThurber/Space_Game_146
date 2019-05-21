@@ -45,7 +45,7 @@ public class Planet extends Location {
 	public Planet() {
 		Random rand = new Random();
 		this.name = names[rand.nextInt(names.length)];
-		containsShipPart = SHIP_PART_EXISTS_CHANCE > rand.nextInt(100);
+		containsShipPart = SHIP_PART_EXISTS_CHANCE >= rand.nextInt(100);
 		containsFood = rand.nextBoolean();
 		containsMedicalItem = rand.nextBoolean();
 		containsMoney = rand.nextBoolean();
