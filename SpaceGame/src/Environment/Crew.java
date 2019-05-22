@@ -15,6 +15,7 @@ public class Crew {
 	final int PLAGUE_HEALTH_INCREASE_PER_DAY = -50;
 	final int RANDOM_RANGE = 5;
 	
+	
 	// Fixed length list to store crew members
 	private CrewMember[] members = new CrewMember[MAX_CREW_MEMBERS];
 	//private List<CrewMember> members = Arrays.asList(new CrewMember[MAX_CREW_MEMBERS]);

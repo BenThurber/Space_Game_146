@@ -333,16 +333,16 @@ public class GameEnvironment {
 	 * as well as a lose.*/
 	public void checkForGameOver() {
 		if (!ship.isAlive()) {
-			initiateGameOver(SHIP_DEAD_MESSAGE);
+			gameOver(SHIP_DEAD_MESSAGE);
 		}
 		if (!crew.isAlive()) {
-			initiateGameOver(CREW_DEAD_MESSAGE);
+			gameOver(CREW_DEAD_MESSAGE);
 		}
 		if (currentDay > totalDays) {
-			initiateGameOver(OUT_OF_DAYS_MESSAGE);
+			gameOver(OUT_OF_DAYS_MESSAGE);
 		}
 		if (shipPartsFound >= shipPartsTotalMissing) {
-			initiateGameOver(YOU_WIN_MESSAGE);
+			gameOver(YOU_WIN_MESSAGE);
 		}
 		// If there is only one crew member left alive, and there are no parts on the current planet that will finish the game, 
 		// GameOver because player will not be able to find remaining parts.
@@ -351,12 +351,12 @@ public class GameEnvironment {
 //		}
 	}
 	/**Opens a new MessageBox with a message string (argument) followed by a blank line and the words "GAME OVER" (from variable GAME_OVER_MESSAGE)*/
-	public void initiateGameOver(String message) {
+	public void gameOver(String message) {
 		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE, mainWindow);
 		closeMainScreen(mainWindow);
 	}
 	/**Calls initiateGameOver with no message*/
-	public void initiateGameOver() {
-		initiateGameOver("");
+	public void gameOver() {
+		gameOver("");
 	}
 }

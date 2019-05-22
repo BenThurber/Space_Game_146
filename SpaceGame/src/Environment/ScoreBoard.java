@@ -82,39 +82,41 @@ public class ScoreBoard {
 		lblDaysTaken.setBounds(144, 53, 100, 16);
 		frame.getContentPane().add(lblDaysTaken);
 		
-		JLabel lblNewLabel = new JLabel("0/0");
-		lblNewLabel.setBounds(256, 53, 77, 16);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblDaysTakenFraction = new JLabel(String.valueOf(environment.getCurrentDay()) + "/" + environment.getTotalDays());
+		lblDaysTakenFraction.setBounds(256, 53, 77, 16);
+		frame.getContentPane().add(lblDaysTakenFraction);
 		
 		JLabel lblPartsFound = new JLabel("Parts Found:");
 		lblPartsFound.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPartsFound.setBounds(144, 81, 100, 16);
 		frame.getContentPane().add(lblPartsFound);
 		
-		JLabel label_1 = new JLabel("0/0");
-		label_1.setBounds(256, 81, 77, 16);
-		frame.getContentPane().add(label_1);
+		JLabel lblPartsFoundFraction = new JLabel(String.valueOf(environment.getShipPartsFound()) + "/" + environment.getShipPartsTotalMissing());
+		lblPartsFoundFraction.setBounds(256, 81, 77, 16);
+		frame.getContentPane().add(lblPartsFoundFraction);
 		
 		JLabel lblCrewKilled = new JLabel("Crew Killed:");
 		lblCrewKilled.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCrewKilled.setBounds(144, 109, 100, 16);
 		frame.getContentPane().add(lblCrewKilled);
 		
-		JLabel label_2 = new JLabel("0/0");
-		label_2.setBounds(256, 109, 77, 16);
-		frame.getContentPane().add(label_2);
+		System.out.println("Live Crew After Game: " + environment.crew.getNumLiveCrew());
+		int numKilledCrew = environment.crew.getNumCrewMembers() - environment.crew.getNumLiveCrew();
+		JLabel lblCrewKilledFraction = new JLabel(String.valueOf(numKilledCrew) + "/" + environment.crew.getNumCrewMembers());
+		lblCrewKilledFraction.setBounds(256, 109, 77, 16);
+		frame.getContentPane().add(lblCrewKilledFraction);
 		
-		JLabel lblNewLabel_1 = new JLabel("Final Score");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(166, 142, 118, 41);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblFinalScoreHeading = new JLabel("Final Score");
+		lblFinalScoreHeading.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFinalScoreHeading.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblFinalScoreHeading.setBounds(166, 142, 118, 41);
+		frame.getContentPane().add(lblFinalScoreHeading);
 		
-		JLabel label = new JLabel("<Score>");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		label.setBounds(176, 184, 93, 26);
-		frame.getContentPane().add(label);
+		JLabel finalScore = new JLabel("<Score>");
+		finalScore.setHorizontalAlignment(SwingConstants.CENTER);
+		finalScore.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		finalScore.setBounds(176, 184, 93, 26);
+		frame.getContentPane().add(finalScore);
 		
 		JButton btnPlayAgain = new JButton("Play Again");
 		btnPlayAgain.addActionListener(new ActionListener() {
