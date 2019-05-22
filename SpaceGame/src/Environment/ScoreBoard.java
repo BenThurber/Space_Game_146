@@ -83,31 +83,31 @@ public class ScoreBoard {
 		
 		JLabel lblDaysTaken = new JLabel("Days Taken:");
 		lblDaysTaken.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDaysTaken.setBounds(144, 53, 100, 16);
+		lblDaysTaken.setBounds(47, 63, 100, 16);
 		frame.getContentPane().add(lblDaysTaken);
 		
-		JLabel lblDaysTakenFraction = new JLabel(String.valueOf(environment.getCurrentDay()) + "/" + environment.getTotalDays());
-		lblDaysTakenFraction.setBounds(256, 53, 77, 16);
+		JLabel lblDaysTakenFraction = new JLabel(String.valueOf(Math.min(environment.getCurrentDay(), environment.getTotalDays()) + "/" + environment.getTotalDays()));
+		lblDaysTakenFraction.setBounds(159, 63, 77, 16);
 		frame.getContentPane().add(lblDaysTakenFraction);
 		
 		JLabel lblPartsFound = new JLabel("Parts Found:");
 		lblPartsFound.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPartsFound.setBounds(144, 81, 100, 16);
+		lblPartsFound.setBounds(238, 63, 100, 16);
 		frame.getContentPane().add(lblPartsFound);
 		
 		JLabel lblPartsFoundFraction = new JLabel(String.valueOf(environment.getShipPartsFound()) + "/" + environment.getShipPartsTotalMissing());
-		lblPartsFoundFraction.setBounds(256, 81, 77, 16);
+		lblPartsFoundFraction.setBounds(350, 63, 77, 16);
 		frame.getContentPane().add(lblPartsFoundFraction);
 		
 		JLabel lblCrewKilled = new JLabel("Crew Killed:");
 		lblCrewKilled.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCrewKilled.setBounds(144, 109, 100, 16);
+		lblCrewKilled.setBounds(47, 103, 100, 16);
 		frame.getContentPane().add(lblCrewKilled);
 		
 		System.out.println("Live Crew After Game: " + environment.crew.getNumLiveCrew());
 		int numKilledCrew = environment.crew.getNumCrewMembers() - environment.crew.getNumLiveCrew();
 		JLabel lblCrewKilledFraction = new JLabel(String.valueOf(numKilledCrew) + "/" + environment.crew.getNumCrewMembers());
-		lblCrewKilledFraction.setBounds(256, 109, 77, 16);
+		lblCrewKilledFraction.setBounds(159, 103, 77, 16);
 		frame.getContentPane().add(lblCrewKilledFraction);
 		
 		JLabel lblFinalScoreHeading = new JLabel("Final Score");
@@ -139,6 +139,15 @@ public class ScoreBoard {
 		});
 		btnQuit.setBounds(59, 230, 117, 29);
 		frame.getContentPane().add(btnQuit);
+		
+		JLabel lblSheildLevelHeading = new JLabel("Remaining Sheilds:");
+		lblSheildLevelHeading.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSheildLevelHeading.setBounds(206, 103, 132, 16);
+		frame.getContentPane().add(lblSheildLevelHeading);
+		
+		JLabel lblSheildLevel = new JLabel(String.valueOf(environment.ship.getSheildLevel()) + "%");
+		lblSheildLevel.setBounds(350, 103, 77, 16);
+		frame.getContentPane().add(lblSheildLevel);
 		
 		frame.setVisible(true);
 	}
