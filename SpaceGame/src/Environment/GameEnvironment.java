@@ -71,9 +71,10 @@ public class GameEnvironment {
 	/**Object that generates a random event at the start of each day.*/
 	private RandomEventGenerator nextDayRandomEvents = new RandomEventGenerator(
 			new ArrayList<Event>(Arrays.asList(
-					new SpacePlague(this, crew), 
-//					new AlienPirates(this, crew),
-					new AsteroidBelt(this, crew)))
+					new AsteroidBelt(this, crew),
+					new SpacePlague(this, crew),
+					new AlienPirates(this, crew)
+					))
 			);
 	/**Object that generates a random event when moving to a new planet.*/
 	private RandomEventGenerator nextPlanetRandomEvents = new RandomEventGenerator(
@@ -138,6 +139,11 @@ public class GameEnvironment {
 	}
 	/**Called when "Warp to next planet" is clicked.  Changes location to a new Planet*/
 	public void moveToNextPlanet() {
+		// If there is only one crew member left alive, and there are no parts on the current planet that will finish the game, 
+		// GameOver because player will not be able to pilot and find remaining parts.
+		if (crew.getNumLiveCrew() < 2 && ((getShipPartsFound() < getShipPartsTotalMissing() - 1) || !currentLocation.isContainsShipPart())) {
+			initiateGameOver(NOT_ENOUGH_CREW_PILOT_SHIP_MESSAGE);
+		}
 		ArrayList<CrewMember> membersWithAction = crewMembersWithAction(crew, mainWindow, "pilot ship", MIN_CREW_TO_PILOT_SHIP, new Navigator("blank"));
 		if (membersWithAction.size() < MIN_CREW_TO_PILOT_SHIP) {
 			MessageBox newDayMsg = new MessageBox(String.format(NOT_ENOUGH_CREW_MEMBERS_MSG, MIN_CREW_TO_PILOT_SHIP), mainWindow);
@@ -344,11 +350,7 @@ public class GameEnvironment {
 		if (shipPartsFound >= shipPartsTotalMissing) {
 			initiateGameOver(YOU_WIN_MESSAGE);
 		}
-		// If there is only one crew member left alive, and there are no parts on the current planet that will finish the game, 
-		// GameOver because player will not be able to find remaining parts.
-//		if (crew.getNumLiveCrew() < 2 && ((getShipPartsFound() < getShipPartsTotalMissing() - 1) || !currentLocation.isContainsShipPart())) {
-//			initiateGameOver(NOT_ENOUGH_CREW_PILOT_SHIP_MESSAGE);
-//		}
+		
 	}
 	/**Opens a new MessageBox with a message string (argument) followed by a blank line and the words "GAME OVER" (from variable GAME_OVER_MESSAGE)*/
 	public void initiateGameOver(String message) {
