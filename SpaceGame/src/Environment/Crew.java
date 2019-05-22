@@ -69,13 +69,7 @@ public class Crew {
 	}
 	
 	public int getNumCrewMembers() {
-		int num = 0;
-		for (CrewMember member: members) {
-			if (member != null || member.isAlive()) {
-				num++;
-			}
-		}
-		return num;
+		return members.size();
 	}
 	
 	/**Helper method that finds the next empty array slot that is either null or contains a dead CrewMember.*/
