@@ -21,6 +21,10 @@ public class ScoreBoard {
 
 	private JFrame frame;
 	private GameEnvironment environment;
+	private final int SPACE_PART_MULTIPLIER = 100;
+	private final int NUM_DAYS_TAKEN_MULTIPLIER = 80;
+	private final int CREW_ALIVE_MULTIPLIER = 60;
+	private final int SHIP_SHIELD_LOST_MULTIPLIER = 40;
 
 	/**
 	 * Launch the application.
@@ -112,7 +116,7 @@ public class ScoreBoard {
 		lblFinalScoreHeading.setBounds(166, 142, 118, 41);
 		frame.getContentPane().add(lblFinalScoreHeading);
 		
-		JLabel finalScore = new JLabel("<Score>");
+		JLabel finalScore = new JLabel(String.valueOf(getFinalScore()));
 		finalScore.setHorizontalAlignment(SwingConstants.CENTER);
 		finalScore.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		finalScore.setBounds(176, 184, 93, 26);
@@ -137,5 +141,14 @@ public class ScoreBoard {
 		frame.getContentPane().add(btnQuit);
 		
 		frame.setVisible(true);
+	}
+	
+	public int getFinalScore() {
+		double percCrewAlive = environment.crew.getNumLiveCrew() / environment.crew.getNumCrewMembers();
+		double percShipShieldLost = Math.abs(environment.ship.getTotalLostEnergy());
+		double percPartsFound = environment.getShipPartsFound() / environment.getShipPartsTotalMissing();
+		double percDaysLeft = environment.getCurrentDay() / environment.getTotalDays();
+		double finalScore = (SPACE_PART_MULTIPLIER * percPartsFound) + (NUM_DAYS_TAKEN_MULTIPLIER * percDaysLeft) + (CREW_ALIVE_MULTIPLIER * percCrewAlive) - (SHIP_SHIELD_LOST_MULTIPLIER * percShipShieldLost);
+		return Math.round((float)finalScore);
 	}
 }

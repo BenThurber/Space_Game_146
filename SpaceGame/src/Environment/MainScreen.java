@@ -383,7 +383,7 @@ public class MainScreen {
 		lblExhaustionHeading1.setForeground(Color.BLACK);
 		lblExhaustionHeading1.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblExhaustionHeading1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblExhaustionHeading1.setBounds(259, 6, 64, 16);
+		lblExhaustionHeading1.setBounds(229, 6, 94, 16);
 		panelCrewMember1.add(lblExhaustionHeading1);
 		
 		JButton btnExecuteNextAction1 = new JButton("");
@@ -482,7 +482,7 @@ public class MainScreen {
 		lblExhaustionHeading2.setForeground(Color.BLACK);
 		lblExhaustionHeading2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblExhaustionHeading2.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblExhaustionHeading2.setBounds(259, 6, 64, 16);
+		lblExhaustionHeading2.setBounds(235, 6, 88, 16);
 		panelCrewMember2.add(lblExhaustionHeading2);
 		
 		JLabel lblHealthHeading2 = new JLabel("Hunger:");
@@ -580,7 +580,7 @@ public class MainScreen {
 		lblExhaustionHeading3.setForeground(Color.BLACK);
 		lblExhaustionHeading3.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblExhaustionHeading3.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblExhaustionHeading3.setBounds(259, 6, 64, 16);
+		lblExhaustionHeading3.setBounds(235, 6, 88, 16);
 		panelCrewMember3.add(lblExhaustionHeading3);
 		
 		JLabel lblHealthHeading3 = new JLabel("Hunger:");
@@ -678,7 +678,7 @@ public class MainScreen {
 		lblExhaustionHeading4.setForeground(Color.BLACK);
 		lblExhaustionHeading4.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblExhaustionHeading4.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblExhaustionHeading4.setBounds(259, 6, 64, 16);
+		lblExhaustionHeading4.setBounds(227, 6, 96, 16);
 		panelCrewMember4.add(lblExhaustionHeading4);
 		
 		JLabel lblHealthHeading4 = new JLabel("Hunger:");

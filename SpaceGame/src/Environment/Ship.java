@@ -7,8 +7,9 @@ public class Ship {
 	private String name = "";
 	private Location location = new Location();
 	private int sheildLevel = 100;
-	
-	
+	private int totalLostEnergy = 0;
+
+
 	public Ship() {
 		
 	}
@@ -25,6 +26,9 @@ public class Ship {
 		return sheildLevel;
 	}
 	public void addToSheildLevel(int addedSheildEnergy) {
+		if(addedSheildEnergy < 0) {
+			totalLostEnergy += addedSheildEnergy;
+		}
 		this.sheildLevel = Math.max(Math.min(this.sheildLevel + addedSheildEnergy, 100), 0);
 	}
 	
@@ -40,5 +44,9 @@ public class Ship {
 	
 	public boolean isAlive() {
 		return sheildLevel > 0;
+	}
+	
+	public int getTotalLostEnergy() {
+		return totalLostEnergy;
 	}
 }
