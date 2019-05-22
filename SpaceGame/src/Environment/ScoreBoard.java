@@ -21,10 +21,11 @@ public class ScoreBoard {
 
 	private JFrame frame;
 	private GameEnvironment environment;
-	private final int SPACE_PART_MULTIPLIER = 100;
-	private final int NUM_DAYS_TAKEN_MULTIPLIER = 80;
-	private final int CREW_ALIVE_MULTIPLIER = 60;
-	private final int SHIP_SHIELD_LOST_MULTIPLIER = 40;
+	private final int SPACE_PART_MULTIPLIER = 1000;
+	private final int NUM_DAYS_TAKEN_MULTIPLIER = 800;
+	private final int CREW_ALIVE_MULTIPLIER = 600;
+	private final int SHIP_SHIELD_LOST_MULTIPLIER = 1;
+	private final int WORST_CASE_SHIELD_LOSS = 150;
 
 	/**
 	 * Launch the application.
@@ -140,12 +141,12 @@ public class ScoreBoard {
 		btnQuit.setBounds(59, 230, 117, 29);
 		frame.getContentPane().add(btnQuit);
 		
-		JLabel lblSheildLevelHeading = new JLabel("Remaining Sheilds:");
+		JLabel lblSheildLevelHeading = new JLabel("Total Shield Lost:");
 		lblSheildLevelHeading.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSheildLevelHeading.setBounds(206, 103, 132, 16);
 		frame.getContentPane().add(lblSheildLevelHeading);
 		
-		JLabel lblSheildLevel = new JLabel(String.valueOf(environment.ship.getSheildLevel()) + "%");
+		JLabel lblSheildLevel = new JLabel(String.valueOf(Math.abs(environment.ship.getTotalLostEnergy())) + "%");
 		lblSheildLevel.setBounds(350, 103, 77, 16);
 		frame.getContentPane().add(lblSheildLevel);
 		
@@ -156,8 +157,8 @@ public class ScoreBoard {
 		double percCrewAlive = environment.crew.getNumLiveCrew() / environment.crew.getNumCrewMembers();
 		double percShipShieldLost = Math.abs(environment.ship.getTotalLostEnergy());
 		double percPartsFound = environment.getShipPartsFound() / environment.getShipPartsTotalMissing();
-		double percDaysLeft = environment.getCurrentDay() / environment.getTotalDays();
-		double finalScore = (SPACE_PART_MULTIPLIER * percPartsFound) + (NUM_DAYS_TAKEN_MULTIPLIER * percDaysLeft) + (CREW_ALIVE_MULTIPLIER * percCrewAlive) - (SHIP_SHIELD_LOST_MULTIPLIER * percShipShieldLost);
+		double percDaysLeft = 1 - (environment.getCurrentDay() / environment.getTotalDays());
+		double finalScore = Math.max(0, (SPACE_PART_MULTIPLIER * percPartsFound) + (NUM_DAYS_TAKEN_MULTIPLIER * percDaysLeft) + (CREW_ALIVE_MULTIPLIER * percCrewAlive) - (SHIP_SHIELD_LOST_MULTIPLIER * percShipShieldLost) + WORST_CASE_SHIELD_LOSS);
 		return Math.round((float)finalScore);
 	}
 }

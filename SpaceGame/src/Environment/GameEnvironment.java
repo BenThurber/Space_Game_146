@@ -205,6 +205,8 @@ public class GameEnvironment {
 						mainWindow.clearComboBoxes(healedMember);
 					}
 					member.decrementNumActions();
+				} else {
+					member.decrementNumActions();  //Calls this method to open a message box error
 				}
 			} else {
 				member.useMedicalItem();
@@ -349,8 +351,7 @@ public class GameEnvironment {
 		}
 		if (shipPartsFound >= shipPartsTotalMissing) {
 			gameOver(YOU_WIN_MESSAGE);
-		}
-		
+		}		
 	}
 	/**Opens a new MessageBox with a message string (argument) followed by a blank line and the words "GAME OVER" (from variable GAME_OVER_MESSAGE)*/
 	public void gameOver(String message) {

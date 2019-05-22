@@ -57,7 +57,7 @@ public class MainScreen {
 	/**Variable environment can be used to get attributes of Crew and Ship to update labels and such*/
 	private GameEnvironment environment;
 	/**Main Screen window*/
-	protected JFrame frame;
+	protected JFrame frmMeteorMadness;
 	
 	// Ship Related Variables
 	private JLabel lblLocation = new JLabel("Unknown");
@@ -119,7 +119,7 @@ public class MainScreen {
 	
 	/**Close the window*/
 	public void closeWindow() {
-		frame.dispose();
+		frmMeteorMadness.dispose();
 	}
 	
 	public void finishedWindow() {
@@ -210,11 +210,12 @@ public class MainScreen {
 		update();
 		
 		
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.BLACK);
-		frame.setBounds(GameEnvironment.WINDOW_INIT_X, GameEnvironment.WINDOW_INIT_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmMeteorMadness = new JFrame();
+		frmMeteorMadness.setTitle("Meteor Madness");
+		frmMeteorMadness.getContentPane().setBackground(Color.BLACK);
+		frmMeteorMadness.setBounds(GameEnvironment.WINDOW_INIT_X, GameEnvironment.WINDOW_INIT_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
+		frmMeteorMadness.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMeteorMadness.getContentPane().setLayout(null);
 		
 		JLabel backgroundImageLabel = new JLabel("");
 		ImageIcon unscaledBackgroundImage = new ImageIcon(MainScreen.class.getResource("/Images/Main_Screen_Background.png"));
@@ -230,38 +231,38 @@ public class MainScreen {
 		lblShipName.setFont(new Font("Dialog", Font.BOLD, shipNameFontSize));
 		lblShipName.setForeground(TOP_BAR_BLUE);
 		lblShipName.setBounds(286, 365, 194, 39);
-		frame.getContentPane().add(lblShipName);
+		frmMeteorMadness.getContentPane().add(lblShipName);
 		
 		
 		
 		lblLocation.setForeground(Color.BLACK);
 		lblLocation.setFont(new Font("Dialog", Font.PLAIN, 18));
 		lblLocation.setBounds(103, 446, 124, 47);
-		frame.getContentPane().add(lblLocation);
+		frmMeteorMadness.getContentPane().add(lblLocation);
 		
 		
 		lblShipParts.setForeground(Color.BLACK);
 		lblShipParts.setFont(new Font("Dialog", Font.PLAIN, 30));
 		lblShipParts.setBounds(642, 448, 68, 34);
-		frame.getContentPane().add(lblShipParts);
+		frmMeteorMadness.getContentPane().add(lblShipParts);
 		
 		
 		lblSheildLevel.setForeground(Color.BLACK);
 		lblSheildLevel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		lblSheildLevel.setBounds(549, 520, 49, 16);
-		frame.getContentPane().add(lblSheildLevel);
+		frmMeteorMadness.getContentPane().add(lblSheildLevel);
 		
 		
 		progressBarSheildLvl.setForeground(new Color(0, 191, 255));
 		progressBarSheildLvl.setBounds(603, 518, 146, 20);
-		frame.getContentPane().add(progressBarSheildLvl);
+		frmMeteorMadness.getContentPane().add(progressBarSheildLvl);
 		
 		JButton btnNextPlanet = new JButton("");
 		btnNextPlanet.setOpaque(false);
 		btnNextPlanet.setContentAreaFilled(false);
 		btnNextPlanet.setBorderPainted(false);
 		btnNextPlanet.setBounds(250, 562, 186, 29);
-		frame.getContentPane().add(btnNextPlanet);
+		frmMeteorMadness.getContentPane().add(btnNextPlanet);
 		btnNextPlanet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				environment.moveToNextPlanet();
@@ -279,7 +280,7 @@ public class MainScreen {
 		btnViewInventory.setContentAreaFilled(false);
 		btnViewInventory.setBorderPainted(false);
 		btnViewInventory.setBounds(294, 492, 175, 29);
-		frame.getContentPane().add(btnViewInventory);
+		frmMeteorMadness.getContentPane().add(btnViewInventory);
 		
 		
 		JButton btnVisitOutpost = new JButton("");
@@ -293,7 +294,7 @@ public class MainScreen {
 		btnVisitOutpost.setContentAreaFilled(false);
 		btnVisitOutpost.setBorderPainted(false);
 		btnVisitOutpost.setBounds(210, 562, 175, 29);
-		frame.getContentPane().add(btnVisitOutpost);
+		frmMeteorMadness.getContentPane().add(btnVisitOutpost);
 		
 		JButton btnNextDay = new JButton("");
 		btnNextDay.addActionListener(new ActionListener() {
@@ -305,13 +306,13 @@ public class MainScreen {
 		btnNextDay.setContentAreaFilled(false);
 		btnNextDay.setBorderPainted(false);
 		btnNextDay.setBounds(482, 562, 140, 29);
-		frame.getContentPane().add(btnNextDay);
+		frmMeteorMadness.getContentPane().add(btnNextDay);
 		
 		
 		
 		panelCrewMember1.setBackground(new Color(74, 170, 1));
 		panelCrewMember1.setBounds(0, 604, 374, 86);
-		frame.getContentPane().add(panelCrewMember1);
+		frmMeteorMadness.getContentPane().add(panelCrewMember1);
 		panelCrewMember1.setLayout(null);
 		
 		
@@ -410,7 +411,7 @@ public class MainScreen {
 		panelCrewMember2.setLayout(null);
 		panelCrewMember2.setBackground(new Color(74, 170, 1));
 		panelCrewMember2.setBounds(390, 604, 374, 86);
-		frame.getContentPane().add(panelCrewMember2);
+		frmMeteorMadness.getContentPane().add(panelCrewMember2);
 		
 		
 		progressBarHealth2.setToolTipText("Health Level");
@@ -509,7 +510,7 @@ public class MainScreen {
 		panelCrewMember3.setLayout(null);
 		panelCrewMember3.setBackground(new Color(74, 170, 1));
 		panelCrewMember3.setBounds(0, 705, 374, 86);
-		frame.getContentPane().add(panelCrewMember3);
+		frmMeteorMadness.getContentPane().add(panelCrewMember3);
 		
 		progressBarHealth3.setToolTipText("Health Level");
 		progressBarHealth3.setBackground(Color.BLACK);
@@ -606,7 +607,7 @@ public class MainScreen {
 		panelCrewMember4.setLayout(null);
 		panelCrewMember4.setBackground(new Color(74, 170, 1));
 		panelCrewMember4.setBounds(390, 705, 374, 86);
-		frame.getContentPane().add(panelCrewMember4);
+		frmMeteorMadness.getContentPane().add(panelCrewMember4);
 		
 		
 		progressBarHealth4.setToolTipText("Health Level");
@@ -706,20 +707,20 @@ public class MainScreen {
 		// Label should be 22 shorter than window to fit perfectly in it
 		//lblNewLabel.setBounds(0, -85, 767, 895);
 		backgroundImageLabel.setBounds(BG_IMAGE_LABEL_X, BG_IMAGE_LABEL_Y, BG_IMAGE_LABEL_WIDTH, BG_IMAGE_LABEL_HEIGHT);
-		frame.getContentPane().add(backgroundImageLabel);
+		frmMeteorMadness.getContentPane().add(backgroundImageLabel);
 		
 		JLabel flashingLightsGIFLabel = new JLabel("");
 		ImageIcon unscaledLightsGIF = new ImageIcon(MainScreen.class.getResource("/Images/Centre-Light-scaled_slightly_larger.gif"));
 		flashingLightsGIFLabel.setIcon(unscaledLightsGIF);
 		//flashingLightsGIFLabel.setBounds(326, 240, 124, 39);
 		flashingLightsGIFLabel.setBounds(326, 240, 124, 39);
-		frame.getContentPane().add(flashingLightsGIFLabel);
+		frmMeteorMadness.getContentPane().add(flashingLightsGIFLabel);
 		
 		
 		viewScreenImageLabel.setBounds(101, -15, VIEW_SCREEN_IMAGE_WIDTH, 283);
-		frame.getContentPane().add(viewScreenImageLabel);
+		frmMeteorMadness.getContentPane().add(viewScreenImageLabel);
 		
-		frame.setVisible(true);
+		frmMeteorMadness.setVisible(true);
 	}
 	
 	

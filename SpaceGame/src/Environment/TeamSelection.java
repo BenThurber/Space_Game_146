@@ -28,6 +28,8 @@ import java.awt.Color;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.awt.event.ItemEvent;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class TeamSelection {
 
@@ -91,7 +93,7 @@ public class TeamSelection {
 		frmMeteorMadness.getContentPane().add(lblAdvice);
 
 		JLabel lblSpecial = new JLabel("");
-		lblSpecial.setForeground(Color.LIGHT_GRAY);
+		lblSpecial.setForeground(SystemColor.controlHighlight);
 		lblSpecial.setBounds(532, 49, 232, 110);
 		frmMeteorMadness.getContentPane().add(lblSpecial);
 
@@ -111,8 +113,9 @@ public class TeamSelection {
 		frmMeteorMadness.getContentPane().add(btnConfirm);
 
 		JLabel lblNewLabel = new JLabel("<html><div style='text-align: center;'>Specialization</div></html>");
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblNewLabel.setForeground(new Color(211, 211, 211));
-		lblNewLabel.setBounds(598, 12, 103, 25);
+		lblNewLabel.setBounds(579, 12, 124, 25);
 		frmMeteorMadness.getContentPane().add(lblNewLabel);
 
 		JToggleButton tglbtnEngineer = new JToggleButton("Engineer");
@@ -308,8 +311,9 @@ public class TeamSelection {
 		frmMeteorMadness.getContentPane().add(btnRemove);
 
 		JLabel lblSpaceCrew = new JLabel("Space Crew");
+		lblSpaceCrew.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblSpaceCrew.setForeground(new Color(211, 211, 211));
-		lblSpaceCrew.setBounds(45, 262, 91, 15);
+		lblSpaceCrew.setBounds(45, 262, 129, 15);
 		frmMeteorMadness.getContentPane().add(lblSpaceCrew);
 
 		textField = new JTextField();

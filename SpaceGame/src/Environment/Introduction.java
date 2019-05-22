@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 public class Introduction {
 
@@ -79,8 +81,10 @@ public class Introduction {
 		frmMeteorMadness.getContentPane().setLayout(null);
 		
 		JLabel lblMeteorMadness = new JLabel("Meteor Madness");
-		lblMeteorMadness.setForeground(Color.LIGHT_GRAY);
-		lblMeteorMadness.setBounds(333, 33, 131, 15);
+		lblMeteorMadness.setFont(new Font("L M Mono Caps10", Font.BOLD, 26));
+		lblMeteorMadness.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMeteorMadness.setForeground(Color.YELLOW);
+		lblMeteorMadness.setBounds(264, 22, 252, 41);
 		frmMeteorMadness.getContentPane().add(lblMeteorMadness);
 		
 		lblHowManyDays = new JLabel("<html><div style='text-align: center;'>Howdy Space Cadet!<br/> Your mission, if you choose to accept it, is to find all components to your ship to get back to earth. <br/> How many days will your mission last?</div></html>");
@@ -110,7 +114,7 @@ public class Introduction {
 				finishedWindow();
 			}
 		});
-		btnConfirm.setBounds(351, 356, 114, 25);
+		btnConfirm.setBounds(347, 356, 114, 25);
 		frmMeteorMadness.getContentPane().add(btnConfirm);
 		
 		lblASpaceCrew = new JLabel("<html><div style='text-align: center;'>A space crew is nothing without their ship. What will you name yours?</div></html>");

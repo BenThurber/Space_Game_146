@@ -32,6 +32,7 @@ public class CrewMember {
 	protected final int FIND_SHIP_PART_SUCSESS_RATE = 75;
 	protected final String FOUND_PART_MESSAGE = "Your crew member has sucsessfully found a ship part on the planet's surface!";
 	protected final String COULDNT_FIND_PART_MESSAGE = "Your crew member was not able to find any ship parts (parts may or may not exist on this planet)";
+	protected final String NO_ACTIONS_LEFT_MESSAGE = "%s has no actions left!  Start next day to rest your members.";
 	
 	public final String specialization = "none";
 	public final static String avatarImage = "/Images/Avatars/captain.png";  //Just use captain image...
@@ -225,6 +226,7 @@ public class CrewMember {
 			this.numActions = Math.max(this.numActions-1, 0);
 		} else {
 			actionsRemaining = false;
+			MessageBox noActionsLeft = new MessageBox(String.format(NO_ACTIONS_LEFT_MESSAGE, this.getName()));
 		}
 		return actionsRemaining;
 	}
