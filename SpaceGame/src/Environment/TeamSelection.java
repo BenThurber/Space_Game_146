@@ -93,7 +93,7 @@ public class TeamSelection {
 		frmMeteorMadness.getContentPane().add(lblAdvice);
 
 		JLabel lblSpecial = new JLabel("");
-		lblSpecial.setForeground(SystemColor.controlHighlight);
+		lblSpecial.setForeground(new Color(230, 230, 230));
 		lblSpecial.setBounds(532, 49, 232, 110);
 		frmMeteorMadness.getContentPane().add(lblSpecial);
 
