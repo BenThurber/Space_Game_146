@@ -142,7 +142,7 @@ public class GameEnvironment {
 		// If there is only one crew member left alive, and there are no parts on the current planet that will finish the game, 
 		// GameOver because player will not be able to pilot and find remaining parts.
 		if (crew.getNumLiveCrew() < 2 && ((getShipPartsFound() < getShipPartsTotalMissing() - 1) || !currentLocation.isContainsShipPart())) {
-			initiateGameOver(NOT_ENOUGH_CREW_PILOT_SHIP_MESSAGE);
+			gameOver(NOT_ENOUGH_CREW_PILOT_SHIP_MESSAGE);
 		}
 		ArrayList<CrewMember> membersWithAction = crewMembersWithAction(crew, mainWindow, "pilot ship", MIN_CREW_TO_PILOT_SHIP, new Navigator("blank"));
 		if (membersWithAction.size() < MIN_CREW_TO_PILOT_SHIP) {
