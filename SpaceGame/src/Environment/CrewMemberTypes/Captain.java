@@ -1,5 +1,11 @@
 package Environment.CrewMemberTypes;
 
+/**
+ * 
+ * The Captain restores his respective stats FULLY from sleeping, eating and healing. Damage taken is reduced by 10%.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class Captain extends CrewMember {
 	
 	public final String specialization = "captain";

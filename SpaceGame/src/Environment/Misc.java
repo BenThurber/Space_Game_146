@@ -2,6 +2,12 @@ package Environment;
 
 import java.util.Random;
 
+/**
+ * 
+ * Miscellaneous static methods
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class Misc {
 	
 	public static String capitalize(String s) {

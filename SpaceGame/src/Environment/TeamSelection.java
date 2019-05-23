@@ -31,6 +31,11 @@ import java.awt.event.ItemEvent;
 import java.awt.SystemColor;
 import java.awt.Font;
 
+/**
+ * The window to choose the types of your crew members and size of crew.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class TeamSelection {
 
 	private JFrame frmMeteorMadness;

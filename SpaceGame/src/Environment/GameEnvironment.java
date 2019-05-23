@@ -20,7 +20,10 @@ import Environment.Locations.Location;
 import Environment.Locations.Planet;
 import Environment.Locations.SpaceOutpost;
 
-/**The Class with the main method, that runs the game and calls the shots.*/
+/**The Class with the main method, that runs the game and calls the shots.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ * */
 public class GameEnvironment {
 	
 	

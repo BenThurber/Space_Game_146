@@ -1,5 +1,14 @@
 package Environment.CrewMemberTypes;
 
+/**
+ * 
+ * Navigators have a chance at avoiding asteroid damage, 
+ * navigating the ship between planets. Having a Navigator 
+ * in your crew reduces chance of over-night meteor damage. 
+ * Navigators stack, up to two.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class Navigator extends CrewMember {
 	
 	public final String specialization = "navigator";

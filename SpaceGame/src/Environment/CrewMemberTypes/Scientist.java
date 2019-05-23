@@ -6,6 +6,12 @@ import Environment.GameEnvironment;
 import Environment.MessageBox;
 import Environment.Locations.Planet;
 
+/**
+ * 
+ * Scientists have a higher chance at finding spare parts on foreign planets.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class Scientist extends CrewMember {
 	
 	public final String specialization = "scientist";

@@ -1,5 +1,11 @@
 package Environment.CrewMemberTypes;
 
+/**
+ * 
+ * Reduces damage of an alien attack to both crew members and the ship.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class Security extends CrewMember {
 	
 	public final String specialization = "security";

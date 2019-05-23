@@ -2,6 +2,12 @@ package Environment.CrewMemberTypes;
 
 import Environment.Ship;
 
+/**
+ * Engineers are able to repair the ship's shield by 50%.
+ * 
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class Engineer extends CrewMember {
 	
 	public final String specialization = "engineer";
@@ -9,7 +15,7 @@ public class Engineer extends CrewMember {
 	
 	private final int SHEILD_REPAIR_AMOUNT = 50;
 	
-	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Engineers are able to repair the ship's shield 30% more.</div></html>";
+	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Engineers are able to repair the ship's shield by 50%.</div></html>";
 	
 	public static String getDescription() {
 		return DESCRIPTION;

@@ -4,6 +4,12 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+/**
+ * 
+ * Static methods to manipulate the the size of ImageIcons
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class ImageManipulation {
 
 	/**Takes an ImageIcon and desired width and height and returns a scaled ImageIcon.*/

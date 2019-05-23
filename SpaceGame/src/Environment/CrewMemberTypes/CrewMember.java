@@ -12,6 +12,12 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 
+/**
+ * Super Class of crew members.  Performs the general actions of the crew members like sleep eat etc.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class CrewMember {
 	
 //	public final Set<String> SPECIALIZATIONS = new HashSet<String>(Arrays.asList(
@@ -106,12 +112,21 @@ public class CrewMember {
 		this.receiveHealingFromDoctor(HEALTH_LVL_INCREASE_MED_ITEM);
 	}
 	
+	
+	/**
+	 * @param ship the ship to repair the shields of
+	 * @param amount integer about from 0 to 100
+	 */
 	protected void repairSheilds(Ship ship, int amount) {
 		if (this.decrementNumActions()) {
 			ship.addToSheildLevel(amount);
 			System.out.println(ship.getSheildLevel());
 		}
 	}
+	
+	/**
+	 * @param ship the ship to repair the shields of
+	 */
 	public void repairSheilds(Ship ship) {
 		repairSheilds(ship, SHEILD_REPAIR_AMOUNT);
 	}

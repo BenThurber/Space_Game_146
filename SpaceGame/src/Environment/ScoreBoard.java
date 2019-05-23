@@ -17,6 +17,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * The Window at the end of the game to show your final score.
+ * 
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class ScoreBoard {
 
 	private JFrame frame;

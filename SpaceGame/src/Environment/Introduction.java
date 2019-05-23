@@ -21,6 +21,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
 
+/**
+ * 
+ * The Introduction window where you choose the number of days to play and the name of your ship.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class Introduction {
 
 	private JFrame frmMeteorMadness;

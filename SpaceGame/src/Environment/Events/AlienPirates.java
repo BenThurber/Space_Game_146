@@ -11,6 +11,15 @@ import Environment.MessageBox;
 import Environment.Misc;
 import Environment.CrewMemberTypes.CrewMember;
 
+/**
+ * An Event that causes alien pirates to attack the ship.  
+ * A certain about of shield is lost and some crew members 
+ * may lose health from attacks.  Can be reduced or 
+ * negated with a security CrewMember.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class AlienPirates extends Event {
 
 	private final String MESSAGE_FULL_ALIEN_INVASION = "Your ship has been attacked by aliens! Your shields have taken %d%% and %d crew member(s) have taken serious damage. Fix them up before the aliens attack again!";

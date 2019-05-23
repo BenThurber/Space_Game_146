@@ -9,6 +9,14 @@ import Environment.MessageBox;
 import Environment.Misc;
 import Environment.CrewMemberTypes.CrewMember;
 
+
+/**
+ * An Event that causes the ship to pass through an asteroid belt and lose shield energy.  
+ * Can be reduced or negated with one or two Navigators (effect stacks)
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class AsteroidBelt extends Event {
 	
 	private final String MESSAGE_ASTEROID_FULL_COLLISION = "Your ship has passed through an Asteroid Belt!\n\nYour shields have taken %d%% damage.";

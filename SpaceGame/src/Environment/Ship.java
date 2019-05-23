@@ -2,6 +2,11 @@ package Environment;
 
 import Environment.Locations.Location;
 
+/**
+ * Ship Class hold information like shield level and ship name and location
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class Ship {
 	
 	private String name = "";

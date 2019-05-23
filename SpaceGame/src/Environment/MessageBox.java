@@ -13,6 +13,12 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+/**
+ * 
+ * A popup window to show a message.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ */
 public class MessageBox extends JDialog {
 	
 	private static int lastWindowX = 500;

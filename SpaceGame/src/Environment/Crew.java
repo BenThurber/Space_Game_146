@@ -6,7 +6,10 @@ import java.util.Random;
 
 import Environment.CrewMemberTypes.CrewMember;
 
-/**Container class for CrewMember objects.*/
+/**Container class for CrewMember objects.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ * */
 public class Crew {
 	
 	final int MAX_CREW_MEMBERS = 4;
