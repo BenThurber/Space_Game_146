@@ -46,7 +46,7 @@ public class CrewMember {
 	private String name;
 	private int health = 100;
 	private int hunger = 0;
-	private int stamina = 0;
+	private int exhaustion = 0;
 	private boolean isAlive = true;
 	private boolean hasSpacePlague = false;
 	private int numActions = MAX_ACTIONS;
@@ -54,10 +54,17 @@ public class CrewMember {
 	private int crewMemberID;
 	
 	
+	/**
+	 * @param name String of the CrewMember's name
+	 * @param cremMemberID where the crew member belongs in the GUI (typically 0 to 3)
+	 */
 	public CrewMember(String name, int cremMemberID) {
 		this.setName(name);
 		this.setCrewMemberID(cremMemberID);
 	}
+	/**
+	 * @param name String of the CrewMember's name
+	 */
 	public CrewMember(String name) {
 		this.setName(name);
 		this.setCrewMemberID(0);
@@ -67,27 +74,35 @@ public class CrewMember {
 	
 	
 	
-	/**Crew member sleeps and regains some amount of stamina (health?)*/
+	/**Crew member sleeps and decreases some amount of exhaustion
+	 * @param exhaustionIncrease integer amount of exhaustion to add (positive or negative)
+	 */
 	protected void sleep(int exhaustionIncrease) {
 		if (this.decrementNumActions()) {
 			this.addExhaustion(exhaustionIncrease);
 		}
 	}
+	/**Crew member sleeps and decreases default amount of exhaustion*/
 	public void sleep() {
 		sleep(EXHAUSTION_LVL_INCREASE_SLEEP);
 	}
 	
-	/**Crew member eats and increases some amount of stamina and health.*/
+	/**Crew member eats and increases some amount of exhaustion and health.
+	 * @param hungerIncrease integer amount of hunger to add (positive or negative)
+	 */
 	protected void eat(int hungerIncrease) {
 		if (this.decrementNumActions()) {
 			this.addHunger(hungerIncrease);
 		}
 	}
+	/**Crew member eats and decreases default amount of hunger.*/
 	public void eat() {
 		eat(HUNGER_LVL_INCREASE_EAT);
 	}
 	
-	/**Crew member eats and regains some amount of health.  If they have space plague then cures that.*/
+	/**Crew member uses medical item and regains some amount of health.  If they have space plague then cures that.
+	 * @param healthIncrease integer amount of health to increase (positinve or negative)
+	 */
 	protected void useMedicalItem(int healthIncrease) {
 		if (this.decrementNumActions()) {
 			if (this.hasSpacePlague()) {
@@ -97,9 +112,17 @@ public class CrewMember {
 			}
 		}
 	}
+	/**
+	 * Crew member uses medical item and regains some amount of health.  If they have space plague then cures that.
+	 */
 	public void useMedicalItem() {
 		useMedicalItem(HEALTH_LVL_INCREASE_MED_ITEM);
 	}
+	
+	/**
+	 * Called when a CrewMember is healed from a doctor and not by himself using a medical item
+	 * @param healthIncrease integer amount to increase health by
+	 */
 	protected void receiveHealingFromDoctor(int healthIncrease) {
 		if (this.hasSpacePlague()) {
 			this.setHasSpacePlague(false);
@@ -107,6 +130,9 @@ public class CrewMember {
 			this.addHealth(healthIncrease);
 		}
 	}
+	/**
+	 * Called when a CrewMember is healed from a doctor and not by himself using a medical item
+	 */
 	public void receiveHealingFromDoctor() {
 		//Implement remove space plague?
 		this.receiveHealingFromDoctor(HEALTH_LVL_INCREASE_MED_ITEM);
@@ -131,10 +157,20 @@ public class CrewMember {
 		repairSheilds(ship, SHEILD_REPAIR_AMOUNT);
 	}
 	
+	/**Called when a crew member pilots the ship.  Decrements an action*/
 	public void pilotShip() {
 		decrementNumActions();
 	}
 	
+	
+	/**
+	 * Called when a CrewMember searches a planet
+	 * @param planet the Planet object to be searched
+	 * @param environment the current GameEnvironment object
+	 * @param findShipPartSucsessRate integer 0 to 100 representing the percent chance of crew member finding a space ship part if its there
+	 * @param foundPartMessage String the message displayed when a CrewMember finds a part
+	 * @param couldntFindPartMessage String the message displayed when a CrewMember DOESEN'T finds a part
+	 */
 	public void searchPlanet(Planet planet, GameEnvironment environment, int findShipPartSucsessRate, String foundPartMessage, String couldntFindPartMessage) {
 		if (this.decrementNumActions()) {
 			Random rand = new Random();
@@ -156,21 +192,30 @@ public class CrewMember {
 	
 	
 	
+	/**
+	 * @return current health int
+	 */
 	public int getHealth() {
 		return health;
 	}
-	/**Adds/subtracts health.  If dropped to 0 CrewMember dies.*/
+	/**Adds/subtracts health.  If dropped to 0 CrewMember dies.
+	 * @param addedHealth int health increase (positive or negative)
+	 */
 	public void addHealth(int addedHealth) {
 		this.health = Math.max(Math.min(this.health + addedHealth, 100), 0);
 		if (this.health <= 0) {
 			this.kill();
 		}
 	}
-	
+	/**
+	 * @return current hunger int
+	 */
 	public int getHunger() {
 		return hunger;
 	}
-	/**Adds/subtracts hunger.  If raised to 100 CrewMember dies.*/
+	/**Adds/subtracts hunger.  If raised to 100 CrewMember dies.
+	 * @param addedHunger int hunger increase (positive or negative)
+	 */
 	public void addHunger(int addedHunger) {
 		this.hunger = Math.max(Math.min(this.hunger + addedHunger, 100), 0);
 		if (this.hunger >= 100) {
@@ -178,38 +223,62 @@ public class CrewMember {
 		}
 	}
 	
+	/**
+	 * @return exhaustion level int
+	 */
 	public int getExhaustion() {
-		return stamina;
+		return exhaustion;
 	}
-	/**Adds/subtracts stamina.  If raised to 100 CrewMember dies.*/
+	/**Adds/subtracts exhaustion.  If raised to 100 CrewMember dies.
+	 * @param addedExhaustion int exhaustion increase (positive or negative)
+	 */
 	public void addExhaustion(int addedExhaustion) {
-		this.stamina = Math.max(Math.min(this.stamina + addedExhaustion, 100), 0);
-		if (this.stamina >= 100) {
+		this.exhaustion = Math.max(Math.min(this.exhaustion + addedExhaustion, 100), 0);
+		if (this.exhaustion >= 100) {
 			this.kill();
 		}
 	}
 
+	/**
+	 * @return string CrewMember's assigned name
+	 */
 	public String getName() {
 		return name;
 	}
+	/**
+	 * @param name CrewMember's new name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return boolean, true is CrewMember is alive
+	 */
 	public boolean isAlive() {
 		return isAlive;
 	}
+	
 	public void kill() {
 		this.isAlive = false;
 	}
 
+	/**
+	 * @return boolean, true if the crew member has space plague
+	 */
 	public boolean hasSpacePlague() {
 		return hasSpacePlague;
 	}
+	/**
+	 * @param hasSpacePlague true if the crew member has just contracted space plague
+	 */
 	public void setHasSpacePlague(boolean hasSpacePlague) {
 		this.hasSpacePlague = hasSpacePlague;
 	}
 	
+	/**
+	 * @return String of the CrewMembers's specialization as given in each Subclass of CrewMember
+	 */
 	public String getSpecialization() {
 		return specialization;
 	}
@@ -222,10 +291,16 @@ public class CrewMember {
 //		}
 //	}
 	
+	/**
+	 * @return String of the path of CrewMembers's avatar image as given in each Subclass of CrewMember i.e. {@literal "/Images/Avatars/<specialization>.png"}
+	 */
 	public String getAvatarImage() {
 		return avatarImage;
 	}
 	
+	/**
+	 * @return int number of actions the CrewMember has remaining
+	 */
 	public int getNumActions() {
 		return numActions;
 	}
@@ -233,7 +308,9 @@ public class CrewMember {
 	public void setNumActionsReset() {
 		this.numActions = MAX_ACTIONS;
 	}
-	/**Remove one Action (min 0)  Returns true if there was an action remaining when the method was called.*/
+	/**Remove one Action (min 0)  Returns true if there was an action remaining when the method was called.
+	 * @return boolean which is true if the crew member had any actions remaining when the method was called.
+	 */
 	public boolean decrementNumActions() {
 		boolean actionsRemaining;
 		if (this.numActions > 0) {
@@ -246,27 +323,20 @@ public class CrewMember {
 		return actionsRemaining;
 	}
 	
+	/**
+	 * @return the ID number (typically 0 - 3) if where the CrewMember belongs in the GUI
+	 */
 	public int getCrewMemberID() {
 		return crewMemberID;
 	}
+	/**
+	 * @param crewMemberID the ID number (typically 0 - 3) if where the CrewMember belongs in the GUI
+	 */
 	public void setCrewMemberID(int crewMemberID) {
 		this.crewMemberID = crewMemberID;
 	}
 
 	
-	
-	
-	
-	
-//	public String[] getActions() {
-//		
-//		String[] actions = new String[ACTIONS.length + 1];
-//		actions[0] = "";
-//		for (int i=0; i < ACTIONS.length; i++) {
-//			actions[i+1] = Misc.capitalize(ACTIONS[i]);
-//		}
-//		return actions;
-//	}
 	
 	
 	

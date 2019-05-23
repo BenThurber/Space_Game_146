@@ -23,15 +23,27 @@ public class Captain extends CrewMember {
 	
 	private final static String DESCRIPTION = "<html><div style='text-align: center;'>The Captain restores his respective stats FULLY from sleeping, eating and healing. Damage taken is reduced by 10%.</div></html>";
 	
+	
+	/**
+	 * @return a String of the description of what the type of CrewMember does.  Formatted with HTML.
+	 */
 	public static String getDescription() {
 		return DESCRIPTION;
 	}
-
+	
+	
+	/**
+	 * @param name String of the CrewMember's name
+	 * @param cremMemberID where the crew member belongs in the GUI (typically 0 to 3)
+	 */
 	public Captain(String name, int cremMemberID) {
 		super(name, cremMemberID);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * @param name String of the CrewMember's name
+	 */
 	public Captain(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
