@@ -18,13 +18,9 @@ public class RandomEventGenerator {
 	private int chanceOfEventOccurance;
 	private ArrayList<Event> possibleEvents;
 	
-	public RandomEventGenerator(int chanceOfEventOccurance, ArrayList<Event> possibleEvents) {
-		this.chanceOfEventOccurance = chanceOfEventOccurance;
-		this.possibleEvents = possibleEvents;
-		
-	}
+
 	public RandomEventGenerator(ArrayList<Event> possibleEvents) {
-		this(100, possibleEvents);
+		this.possibleEvents = possibleEvents;
 	}
 	
 	public void initiateRandomEvent() {
