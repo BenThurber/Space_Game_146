@@ -114,8 +114,9 @@ public class MainScreen {
 	
 	/**
 	 * Open the window.
-	 * @wbp.parser.constructor
+	 * @param environment the environment object controlling the game
 	 */
+	// If Design tab doesent work try inserting this above: @wbp.parser.constructor
 	public MainScreen(GameEnvironment environment) {
 		this.environment = environment;
 		initialize();
@@ -127,6 +128,7 @@ public class MainScreen {
 		frame.dispose();
 	}
 	
+	/**Method called when window needs to be closed, and the next window needs to open.*/
 	public void finishedWindow() {
 		environment.closeMainScreen(this);
 	}
@@ -732,7 +734,11 @@ public class MainScreen {
 	
 	/**Takes the level of health of a crew member and a crew member and changes the color of the 
 	 * health bar based on the level of health.  Divisions are green, yellow, red for each 1/3rd 
-	 * of health.  Health bar turns purple if CrewMember has space plague.*/
+	 * of health.  Health bar turns purple if CrewMember has space plague.
+	 * @param healthBarLevel the current level of the health bar in question
+	 * @param member the crew member associated with the health bar to determine if space plague
+	 * @return a swing Color
+	 */
 	private Color progressBarColor(int healthBarLevel, CrewMember member) {
 		Color barColor;
 		if (member.hasSpacePlague()) {
@@ -747,7 +753,11 @@ public class MainScreen {
 		return barColor;
 	}
 
-	/** Converts a set into a primitive array that can be used by a comboBox.  Boolean capitalize capitalizes the first letter of each word.*/
+	/** Converts a set into a primitive array that can be used by a comboBox.  Boolean capitalize capitalizes the first letter of each word.
+	 * @param set a Set object containing strings of the actions the crew member can take
+	 * @param capitalize boolean if to capitalize the name of the actions in the ComboBox
+	 * @return a primitive array of Strings that are the actions in the ComboBox
+	 */
 	private String[] convertCollectionForComboBox(Set<String> set, boolean capitalize) {
 		String[] comboBoxArray = new String[set.size() + 1];
 		comboBoxArray[0] = "";
@@ -760,7 +770,11 @@ public class MainScreen {
 		return comboBoxArray;
 	}
 	/**Takes a crew member ID and returns the currently selected item in the ComboBox associated with that member.  
-	 * Throws CrewMemberNotFoundException if invalid crewMemberID.*/
+	 * Throws CrewMemberNotFoundException if invalid crewMemberID.
+	 * @param crewMemberID integer of the ID or location or position of the crew member in the GUI (typically 0 to 3)
+	 * @return string of the action thats selected
+	 * @throws CrewMemberNotFoundException if the crew member is not in the crew
+	 */
 	public String getSelectedNextAction(int crewMemberID) throws CrewMemberNotFoundException {
 		JComboBox comboBox;
 		switch (crewMemberID) {
@@ -783,7 +797,11 @@ public class MainScreen {
 	}
 	
 	/**Takes a CrewMember and returns the currently selected item in the ComboBox associated with that member.  
-	 * Throws CrewMemberNotFoundException if member is not part of Crew.*/
+	 * Throws CrewMemberNotFoundException if member is not part of Crew.
+	 * @param member the CrewMember object that has the desired ComboBox selected
+	 * @return string of the action thats selected
+	 * @throws CrewMemberNotFoundException if the crew member is not in the crew
+	 */
 	public String getSelectedNextAction(CrewMember member) throws CrewMemberNotFoundException {
 		if (member.equals(environment.crew.getCrewMember(member.getCrewMemberID()))) {
 			return getSelectedNextAction(member.getCrewMemberID());
@@ -791,7 +809,9 @@ public class MainScreen {
 			throw new CrewMemberNotFoundException("The CrewMember " + member.getName() + " is not part of the crew or has a crewMemberID mismatch");
 		}
 	}
-	/**Sets ComboBox of crewMemberID to the first entry (should clear it)*/
+	/**Sets ComboBox of crewMemberID to the first entry (should clear it)
+	 * @param crewMemberID the crew member ID of the CrewMember who's JComboBox is to be cleared
+	 */
 	public void clearComboBoxes(int crewMemberID) {
 		switch (crewMemberID) {
 		case 0:
@@ -810,7 +830,9 @@ public class MainScreen {
 			break;
 		}
 	}
-	/**Sets ComboBox of CrewMember to the first entry (should clear it)*/
+	/**Sets ComboBox of CrewMember to the first entry (should clear it)
+	 * @param member the CrewMember who's JComboBox is to be cleared
+	 */
 	public void clearComboBoxes(CrewMember member) {
 		if (member.equals(environment.crew.getCrewMember(member.getCrewMemberID()))) {
 			clearComboBoxes(member.getCrewMemberID());

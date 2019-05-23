@@ -35,6 +35,7 @@ public class Introduction {
 	
 	private GameEnvironment environment;
 	
+	/**The number of days to play the game*/
 	public int daysToPlay;
 	
 	public String shipName;
@@ -53,7 +54,8 @@ public class Introduction {
 	
 	
 	/**
-	 * Launch the application.
+	 * Launch the introduction window
+	 * @param args runtime arguments
 	 */
 	public static void main(String[] args) {
 		GameEnvironment environment = new GameEnvironment();
@@ -63,6 +65,7 @@ public class Introduction {
 
 	/**
 	 * Create the application.
+	 * @param environment the environment object controlling the game
 	 */
 	public Introduction(GameEnvironment environment) {
 		this.environment = environment;
@@ -73,6 +76,7 @@ public class Introduction {
 		frmMeteorMadness.dispose();
 	}
 	
+	/**Method called when window needs to be closed, and the next window needs to open.*/
 	public void finishedWindow() {
 		environment.closeIntroduction(this);
 	}
@@ -140,19 +144,32 @@ public class Introduction {
 		
 		frmMeteorMadness.setVisible(true);
 	}
-
+	
+	
+	/**
+	 * @return string name of the ship name that was entered in the window
+	 */
 	public String getShipName() {
 		return shipName;
 	}
-
+	
+	/**
+	 * @param shipName new name of the ship
+	 */
 	public void setShipName(String shipName) {
 		this.shipName = shipName;
 	}
-
+	
+	/**
+	 * @return the number of days to play entered in the window
+	 */
 	public int getDaysToPlay() {
 		return daysToPlay;
 	}
-
+	
+	/**
+	 * @param daysToPlay new number of days to play
+	 */
 	public void setDaysToPlay(int daysToPlay) {
 		this.daysToPlay = daysToPlay;
 	}

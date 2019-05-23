@@ -76,7 +76,8 @@ public class TeamSelection {
 	public void closeWindow() {
 		frmMeteorMadness.dispose();
 	}
-
+	
+	/**Method called when window needs to be closed, and the next window needs to open.*/
 	public void finishedWindow() {
 		environment.closeTeamSelection(this);
 	}

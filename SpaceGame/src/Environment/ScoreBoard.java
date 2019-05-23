@@ -63,7 +63,7 @@ public class ScoreBoard {
 	public void closeWindow() {
 		frame.dispose();
 	}
-	/**Closes ScoreBoard and exits*/
+	/**Closes ScoreBoard and exits.  Method called when window needs to be closed, and the next window needs to open.*/
 	public void finishedWindow() {
 		environment.closeScoreBoard(this);
 	}
