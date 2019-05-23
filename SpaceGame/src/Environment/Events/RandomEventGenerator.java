@@ -6,6 +6,12 @@ import Environment.GameEnvironment;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * A class to handle which random event is executed randomly.  Takes an ArrayList of Events and spits one out when wanted.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class RandomEventGenerator {
 	
 	private static Random rand = new Random();

@@ -12,6 +12,12 @@ import Environment.MessageBox;
 import Environment.Misc;
 import Environment.CrewMemberTypes.CrewMember;
 
+/**
+ * An Event that causes some amount of crew members to come down with space plague.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class SpacePlague extends Event {
 	
 	private final String MESSAGE_GOT_PLAGUE = "%d of your crew members have come down with Space Plague.\n\nThose affected have a purple health bar and will loose health with each day.\n\nHeal the plague on affected crew members by using a medical item.";

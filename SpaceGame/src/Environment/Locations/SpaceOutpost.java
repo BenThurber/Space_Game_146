@@ -2,6 +2,13 @@ package Environment.Locations;
 
 import java.util.Random;
 
+/**
+ * Framework for a space outpost location.  Creates a random number for the outpost when instantiated.  
+ * Not currently in the game.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class SpaceOutpost extends Location {
 	
 	public final String type = "Outpost";

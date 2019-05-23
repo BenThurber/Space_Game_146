@@ -1,5 +1,12 @@
 package Environment.Locations;
 
+/**
+ * A super class that defines where the ship is.  Holds an image location of what the 
+ * location looks like.  This class is just empty space.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class Location {
 	
 	public final String type = "Unknown";

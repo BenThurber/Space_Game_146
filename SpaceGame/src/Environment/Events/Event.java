@@ -6,6 +6,12 @@ import Environment.Crew;
 import Environment.GameEnvironment;
 import Environment.CrewMemberTypes.CrewMember;
 
+/**
+ * Super Class event object which has method initiate.  Inherited by SpacePlague, AsteroidBelt, AlienPirates.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class Event {
 	
 	protected GameEnvironment environment;

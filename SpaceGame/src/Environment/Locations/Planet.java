@@ -5,6 +5,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
+/**
+ * Planet location.  Each time a new planet object is created, contains a 
+ * random name and random image (not repeating until all images are created)
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class Planet extends Location {
 	
 	// Credit for names: https://www.fantasynamegenerators.com/planet_names.php

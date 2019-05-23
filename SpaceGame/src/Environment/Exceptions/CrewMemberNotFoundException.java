@@ -1,5 +1,11 @@
 package Environment.Exceptions;
 
+/**
+ * Exception when a CrewMember object doesen't exist when searched for.
+ * @author Benjamin Thurber
+ * @author Blake Kayser
+ *
+ */
 public class CrewMemberNotFoundException extends Exception {
 
 	public CrewMemberNotFoundException() {
