@@ -36,6 +36,7 @@ public class ScoreBoard {
 
 	/**
 	 * Launch the application.
+	 * @param args runtime arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -52,6 +53,7 @@ public class ScoreBoard {
 
 	/**
 	 * Create the application.
+	 * @param environment the current GameEnvironment
 	 */
 	public ScoreBoard(GameEnvironment environment) {
 		this.environment = environment;
@@ -63,11 +65,11 @@ public class ScoreBoard {
 	public void closeWindow() {
 		frame.dispose();
 	}
-	/**Closes ScoreBoard and exits.  Method called when window needs to be closed, and the next window needs to open.*/
+	/**Closes ScoreBoard and exits.  Method called when window needs to be closed, and the game quits*/
 	public void finishedWindow() {
 		environment.closeScoreBoard(this);
 	}
-	/**Closes ScoreBoard and restarts the game.*/
+	/**Closes ScoreBoard and restarts the game.  Method called when window needs to be closed, and game restarted*/
 	public void finishedWindowAndRestartGame() {
 		environment.closeScoreBoard(this);
 		GameEnvironment newEnvironment = new GameEnvironment();
@@ -160,6 +162,12 @@ public class ScoreBoard {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Returns the final score from playing the game.  To calculate the score, uses the percent number of crew alive of total, 
+	 * the total amount of shield lost for the while game, the percent number of parts found of total, 
+	 * the percent number of days left of total.
+	 * @return an integer the final score (a somewhat arbitrary number representing the score)
+	 */
 	public int getFinalScore() {
 		double percCrewAlive = environment.crew.getNumLiveCrew() / environment.crew.getNumCrewMembers();
 		double percShipShieldLost = Math.abs(environment.ship.getTotalLostEnergy());

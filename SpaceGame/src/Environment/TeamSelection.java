@@ -50,6 +50,7 @@ public class TeamSelection {
 
 	/**
 	 * Launch the application.
+	 * @param args runtime arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -67,12 +68,16 @@ public class TeamSelection {
 
 	/**
 	 * Create the application.
+	 * @param environment the current GameEnvironment
 	 */
 	public TeamSelection(GameEnvironment environment) {
 		this.environment = environment;
 		initialize();
 	}
-
+	
+	/**
+	 * Closes the window.  Called by GameEnvironment
+	 */
 	public void closeWindow() {
 		frmMeteorMadness.dispose();
 	}
@@ -356,6 +361,11 @@ public class TeamSelection {
 
 	}
 
+	/**
+	 * Creates a string representing an ArrayList of CrewMembers for use in the GUI
+	 * @param crewList An ArrayList of crew members
+	 * @return a string with each crew member in crewList as "Specialization, Name" and then 2 new lines
+	 */
 	private String ArrayToString(ArrayList<CrewMember> crewList) {
 		String teamArray = "";
 		for(int i=0; i < crewList.size(); i++) {

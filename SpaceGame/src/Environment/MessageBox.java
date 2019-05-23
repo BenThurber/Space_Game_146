@@ -37,6 +37,7 @@ public class MessageBox extends JDialog {
 
 	/**
 	 * Launch the application.
+	 * @param args runtime arguments
 	 */
 	public static void main(String[] args) {
 		try {
@@ -48,7 +49,13 @@ public class MessageBox extends JDialog {
 		}
 	}
 
-	/**Create the dialog.  Takes X, Y, Width and Height parameters.*/
+	/**Create the dialog.  Takes X, Y, Width and Height parameters.
+	 * @param messageText Text of the message to display
+	 * @param parentX the X position of the parent window
+	 * @param parentY the Y position of the parent window
+	 * @param parentWidth the width of the parent window
+	 * @param parentHeight the height of the parent window
+	 */
 	public MessageBox(String messageText, int parentX, int parentY, int parentWidth, int parentHeight) {
 		message = messageText;
 		setBounds(500, 200, 300, 250);
@@ -109,6 +116,7 @@ public class MessageBox extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		// Sizes the window correctly and puts in in the right place.
 		this.pack();
 		int windowWidth = Math.min((int) this.getSize().getSize().getWidth(), WINDOW_MAX_WIDTH);
 		int windowHeight = (int) this.getSize().getSize().getHeight();
@@ -124,9 +132,20 @@ public class MessageBox extends JDialog {
 		lastWindowWidth = parentWidth;
 		lastWindowHeight = parentHeight;
 	}
+	
+	/**
+	 * Opens a new Message dialogue and uses the last values of lastWindowX, lastWindowY, lastWindowWidth, lastWindowHeight
+	 * @param messageText Text of the message to display
+	 */
 	public MessageBox(String messageText) {
 		this(messageText, lastWindowX, lastWindowY, lastWindowWidth, lastWindowHeight);
 	}
+	
+	/**
+	 * Opens a new Message dialogue and uses the X, Y, width, height from a MainScreen object
+	 * @param messageText Text of the message to display
+	 * @param parent a MainScreen object (from where the MessageBox is instantiated)
+	 */
 	public MessageBox(String messageText, MainScreen parent) {
 		this(messageText, parent.frame.getX(), parent.frame.getY(), parent.frame.getWidth(), parent.frame.getHeight());
 	}
