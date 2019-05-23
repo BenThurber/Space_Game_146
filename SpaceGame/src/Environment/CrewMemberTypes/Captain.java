@@ -17,9 +17,9 @@ public class Captain extends CrewMember {
 	private final int HEALTH_LVL_INCREASE_MED_ITEM = 100;
 	
 	// Captain takes off this amount from physical stats lost before applying it to them.  AKA damage reduction.
-	private final int CAPTAIN_EXHAUSTION_DAMAGE_REDUCTION = 10;
-	private final int CAPTAIN_HUNGER_DAMAGE_REDUCTION = 10;
-	private final int CAPTAIN_HEALTH_DAMAGE_REDUCTION = 20;
+	protected final int CAPTAIN_EXHAUSTION_DAMAGE_REDUCTION = 10;
+	protected final int CAPTAIN_HUNGER_DAMAGE_REDUCTION = 10;
+	protected final int CAPTAIN_HEALTH_DAMAGE_REDUCTION = 20;
 	
 	private final static String DESCRIPTION = "<html><div style='text-align: center;'>The Captain restores his respective stats FULLY from sleeping, eating and healing. Damage taken is reduced by 10%.</div></html>";
 	
