@@ -81,14 +81,14 @@ public class AlienPirates extends Event {
 		System.out.println("Avoided all collisions");
 		MessageBox messageBoxAvoidedAlienInvasion = new MessageBox(MESSAGE_AVOIDED_ALIEN_INVASION);
 	}
-	/**Case when some alien damage is taked*/
+	/**Case when some alien damage is taken*/
 	private void avoidedSomeAliens() {
 		int shieldDamageTaken = Misc.numberPlusMinusRandom(SHIELD_PARTIAL_DAMAGE, SHIELD_DAMAGE_RANDOM_RANGE);
 		this.environment.ship.addToSheildLevel(shieldDamageTaken);
 		int numHurtMembers = hurtMembersAttacked(MEMBER_PARTIAL_DAMAGE);
 		MessageBox messageBoxFullAlienInvasion = new MessageBox(String.format(MESSAGE_PARTIAL_ALIEN_INVASION, Math.abs(shieldDamageTaken), numHurtMembers));
 	}
-	/**Case when full alien damage is takes*/
+	/**Case when full alien damage is taken*/
 	private void didNotAvoidAliens() {
 		int shieldDamageTaken = Misc.numberPlusMinusRandom(SHIELD_FULL_DAMAGE, SHIELD_DAMAGE_RANDOM_RANGE);
 		this.environment.ship.addToSheildLevel(shieldDamageTaken);

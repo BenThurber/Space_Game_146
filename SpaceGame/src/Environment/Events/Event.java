@@ -20,8 +20,8 @@ public class Event {
 	
 	/**
 	 * Instantiate an Event, but don't initiate
-	 * @param environment
-	 * @param crew
+	 * @param environment the current GameEnvironemnt
+	 * @param crew the current Crew
 	 */
 	public Event(GameEnvironment environment, Crew crew) {
 		this.environment = environment;
@@ -37,7 +37,7 @@ public class Event {
 	}
 	/**
 	 * Calls initiate() with no arguments. Doesen't do anything for this Class
-	 * @param an ArrayList of CrewMembers
+	 * @param crewDurringEvent an ArrayList of CrewMembers
 	 */
 	public void initiate(ArrayList<CrewMember> crewDurringEvent) {
 		initiate();

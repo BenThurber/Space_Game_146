@@ -30,8 +30,8 @@ public class AsteroidBelt extends Event {
 	
 	/**
 	 * Instantiate an Event, but don't initiate
-	 * @param environment
-	 * @param crew
+	 * @param environment the current GameEnvironment
+	 * @param crew the current Crew
 	 */
 	public AsteroidBelt(GameEnvironment environment, Crew crew) {
 		super(environment, crew);
@@ -60,7 +60,7 @@ public class AsteroidBelt extends Event {
 		}
 	}
 	/**Takes a list of crew members piloting the ship and determines how many are navigators
-	 * @param an ArrayList of CrewMembers piloting the ship
+	 * @param crewPiloting an ArrayList of CrewMembers piloting the ship
 	 */
 	public void initiate(ArrayList<CrewMember> crewPiloting) {
 		int numNavigators = 0;

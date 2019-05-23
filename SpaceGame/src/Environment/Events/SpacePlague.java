@@ -27,8 +27,8 @@ public class SpacePlague extends Event {
 	
 	/**
 	 * Instantiate an Event, but don't initiate
-	 * @param environment
-	 * @param crew
+	 * @param environment the current GameEnvironment
+	 * @param crew the current Crew
 	 */
 	public SpacePlague(GameEnvironment environment, Crew crew) {
 		super(environment, crew);
