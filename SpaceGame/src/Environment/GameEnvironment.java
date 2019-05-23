@@ -48,11 +48,14 @@ public class GameEnvironment {
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
 	
+	
+	/**Window X initial position used by all windows*/
 	public final static int WINDOW_INIT_X = 320;
+	/**Window Y initial position used by all windows*/
 	public final static int WINDOW_INIT_Y = 100;
 	
+	// Just for testing
 	private CrewMember[] testMembers = {new Scientist("John"), new Navigator("Cortana"), new Doctor("Keys"), new Engineer("Arbiter")};
-	//private CrewMember[] crewMembers = {};
 	
 	/**The total days of the mission*/
 	private int totalDays = 0;
@@ -94,23 +97,31 @@ public class GameEnvironment {
 	// METHODS:
 	//----------------
 	
-	/**Closes MainScreen window*/
+	/**Closes MainScreen window
+	 * @param mainWindow instance of mainWindow typically passed from itself.
+	 */
 	public void closeMainScreen(MainScreen mainWindow) {
 		mainWindow.closeWindow();
 		launchScoreBoard();
 	}
-	/**Closes Introduction window and calls launchTeamSelection()*/
+	/**Closes Introduction window and calls launchTeamSelection()
+	 * @param introWindow instance of introWindow typically passed from itself.
+	 */
 	public void closeIntroduction(Introduction introWindow) {
 		introWindow.closeWindow();	
 		setDays(introWindow.getDaysToPlay());
 		launchTeamSelection();
 	}
-	/**Closes TeamSelection window and calls launchMainScreen()*/
+	/**Closes TeamSelection window and calls launchMainScreen()
+	 * @param teamSelectionWindow instance of teamSelectionWindow typically passed from itself.
+	 */
 	public void closeTeamSelection(TeamSelection teamSelectionWindow ) {
 		teamSelectionWindow.closeWindow();
 		launchMainScreen();
 	}
-	/**Closes ScoreBoard window*/
+	/**Closes ScoreBoard window
+	 * @param scoreBoard instance of scoreBoard typically passed from itself.
+	 */
 	public void closeScoreBoard(ScoreBoard scoreBoard) {
 		scoreBoard.closeWindow();
 	}
@@ -176,7 +187,7 @@ public class GameEnvironment {
 		mainWindow.update();
 		checkForGameOver();
 	}
-	/**View item inventory (Currently not working)*/
+	/**View item inventory (Currently not working, not part of the game presently)*/
 	public void viewInventory() {
 		System.out.println("Viewing Inventory");
 	}
@@ -190,7 +201,10 @@ public class GameEnvironment {
 		messageBoxNewDay.setAlwaysOnTop(true);
 	}
 	
-	/**Takes a CrewMember and a task (a String) and makes the crew member perform that task.  Called when go button is pressed.*/
+	/**Takes a CrewMember and a task (a String) and makes the crew member perform that task.  Called when go button is pressed.
+	 * @param member the CrewMember to execute the action on
+	 * @param task String that is the action
+	 */
 	public void executeCrewMemberAction(CrewMember member, String task) {
 		switch (task.toLowerCase()) {
 		case "sleep":
@@ -238,7 +252,18 @@ public class GameEnvironment {
 	 * less than or equal in size to numMembersRequired. If favorSpecialType is true and there are more CrewMembers than fit, 
 	 * it chooses the special type of crew member first, otherwise it it chooses CrewMembers NOT of the special type first.
 	 * 
-	 * This method is used to choose CrewMembers to pilot the ship and to choose CrewMembers to be healed by a doctor.*/
+	 * This method is used to choose CrewMembers to pilot the ship and to choose CrewMembers to be healed by a doctor.
+	 * 
+	 * @param crew the crew
+	 * @param window a MainScreen object with associated JComboBoxes
+	 * @param action a String of the action in question
+	 * @param numMembersRequired integer number of CrewMembers used by the action
+	 * @param specialMemberType an object of the type of crew member desired (subclass of CrewMember)
+	 * @param favorSpecialType boolean if true, and there are more CrewMembers than fit, 
+	 * it chooses the special type of crew member first, otherwise it it chooses CrewMembers NOT of the special type first
+	 * @param needRemainingAction boolean, if true CrewMembers need an action remaining to be added to the list
+	 * @return an ArrayList of CrewMembers that meet the criteria
+	 */
 	private ArrayList<CrewMember> crewMembersWithAction(Crew crew, MainScreen window, String action, int numMembersRequired, CrewMember specialMemberType, boolean favorSpecialType, boolean needRemainingAction) {
 		//Build an ArrayList of all crew members that have action selected on their JComboBox
 		action = action.toLowerCase();
@@ -279,7 +304,14 @@ public class GameEnvironment {
 		}
 		return filteredCrewMembers;
 	}
-	/**Calls crewMembersWithAction with boolean favorSpecialType and boolean needRemainingAction set to true.*/
+	/**Calls crewMembersWithAction with boolean favorSpecialType and boolean needRemainingAction set to true.
+	 * @param crew the crew
+	 * @param window a MainScreen object with associated JComboBoxes
+	 * @param action a String of the action in question
+	 * @param numMembersRequired integer number of CrewMembers used by the action
+	 * @param specialMemberType an object of the type of crew member desired (subclass of CrewMember)
+	 * @return an ArrayList of CrewMembers that meet the criteria
+	 */
 	private ArrayList<CrewMember> crewMembersWithAction(Crew crew, MainScreen window, String action, int numMembersRequired, CrewMember specialMemberType) {
 		return crewMembersWithAction(crew, window, action, numMembersRequired, specialMemberType, true, true);
 	}
@@ -287,7 +319,9 @@ public class GameEnvironment {
 	
 	
 	
-	/**Main Function that runs the game.  Creates an object of GameEnvironment and launches the Introduction window.*/
+	/**Main Function that runs the game.  Creates an object of GameEnvironment and launches the Introduction window.
+	 * @param args runtime args
+	 */
 	public static void main(String[] args) {
 		GameEnvironment environment = new GameEnvironment();
 		environment.launchIntroduction();
@@ -300,21 +334,30 @@ public class GameEnvironment {
 		//crew.addNewCrewMembers(testMembers);
 	}
 	
-	/**Gets the total number of days remaining*/
+	/**Gets the total number of days remaining
+	 * @return int number of days
+	 */
 	public int getTotalDays() {
 		return totalDays;
 	}
-	/**Sets total and remaining days and the number of ship parts to be found (2/3 * Days)*/
+	/**Sets total and remaining days and the number of ship parts to be found (2/3 * Days)
+	 * @param days input days to set
+	 */
 	public void setDays(int days) {
 		totalDays = days;
 		currentDay = 1;
 		setShipParts(2*days/3);
 	}
 	
+	/**
+	 * @return the current day
+	 */
 	public int getCurrentDay() {
 		return currentDay;
 	}
-	/**Sets the current day*/
+	/**Sets the current day
+	 * @param numDays the number of days to set to.
+	 */
 	public void setCurrentDay(int numDays) {
 		this.currentDay = Math.max(numDays, 0);
 	}
@@ -323,6 +366,9 @@ public class GameEnvironment {
 		currentDay++;  // DON'T use min/max.  Needs to be greater than total days to trigger game over
 	}
 	
+	/**
+	 * @return number of ship parts found
+	 */
 	public int getShipPartsFound() {
 		return shipPartsFound;
 	}
@@ -331,10 +377,16 @@ public class GameEnvironment {
 		this.shipPartsFound = Math.min(shipPartsFound+1, shipPartsTotalMissing);;
 	}
 	
+	/**
+	 * @return total number of ship parts missing
+	 */
 	public int getShipPartsTotalMissing() {
 		return shipPartsTotalMissing;
 	}
 	/**Sets the total number of ship parts to be found and resets shipPartsFound to zero*/
+	/**
+	 * @param shipPartsTotal the total number of parts
+	 */
 	public void setShipParts(int shipPartsTotal) {
 		shipPartsTotalMissing = shipPartsTotal;
 		shipPartsFound = 0;
@@ -356,7 +408,9 @@ public class GameEnvironment {
 			gameOver(YOU_WIN_MESSAGE);
 		}		
 	}
-	/**Opens a new MessageBox with a message string (argument) followed by a blank line and the words "GAME OVER" (from variable GAME_OVER_MESSAGE)*/
+	/**Opens a new MessageBox with a message string (argument) followed by a blank line and the words "GAME OVER" (from variable GAME_OVER_MESSAGE)
+	 * @param message String of the message to display on the message box
+	 */
 	public void gameOver(String message) {
 		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE, mainWindow);
 		closeMainScreen(mainWindow);

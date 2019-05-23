@@ -25,17 +25,23 @@ public class Crew {
 	/**Initializes a Crew with blank (dead) crew members*/
 	public Crew() {
 	}
-	/**Construct new Crew from List (ArrayList)*/
+	/**Construct new Crew from List (ArrayList)
+	 * @param members List object of crew members to initialize with
+	 */
 	public Crew(List<CrewMember> members) {
 		addNewCrewMembers(members);
 	}
-	/**Construct new Crew from primitive array*/
+	/**Construct new Crew from primitive array
+	 * @param members primitive array to initialize with
+	 */
 	public Crew(CrewMember[] members) {
 		addNewCrewMembers(members);
 	}
 	
 	/**Adds a primitive array of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
-	 * the array that its in.*/
+	 * the array that its in.
+	 * @param newMembers primitive array to initialize with
+	 */
 	public void addNewCrewMembers(CrewMember[] newMembers) {
 		List<CrewMember> membersList = new ArrayList<CrewMember>(newMembers.length);
 		for (CrewMember member: newMembers) {
@@ -47,7 +53,9 @@ public class Crew {
 		addNewCrewMembers(membersList);
 	}
 	/**Adds a List of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
-	 * the array that its in.*/
+	 * the array that its in.
+	 * @param members List object of crew members to initialize with
+	 */
 	public void addNewCrewMembers(List<CrewMember> members) {
 		this.members.clear();
 		CrewMember nextMember;
@@ -63,7 +71,9 @@ public class Crew {
 	}
 
 	/**Adds a CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
-	 * the array that its in.*/
+	 * the array that its in.
+	 * @param newCrewMember single CrewMember object to add
+	 */
 	public void addCrewMember(CrewMember newCrewMember) {
 		if (members.size() < MAX_CREW_MEMBERS) {
 			members.add(newCrewMember);
@@ -75,7 +85,10 @@ public class Crew {
 		return members.size();
 	}
 	
-	/**Helper method that finds the next empty array slot that is either null or contains a dead CrewMember.*/
+	/**Helper method that finds the next empty array slot that is either null or contains a dead CrewMember.
+	 * @param members the crew member array or another array
+	 * @return an index of the next place to put a crew member in the array
+	 */
 	private int nextCrewMemberArrayIndex(CrewMember[] members) {
 		for (int crewListPosition=0; crewListPosition < MAX_CREW_MEMBERS; crewListPosition++) {
 			if (members[crewListPosition] == null || !members[crewListPosition].isAlive()) {
@@ -87,7 +100,10 @@ public class Crew {
 	
 	
 	
-	/**Gets a crew member by crewMemberID.  If array is null or array out of bounds, returns a dead crew member*/
+	/**Gets a crew member by crewMemberID.  If array is null or array out of bounds, returns a dead crew member
+	 * @param crewMemberID an index (typically 0 to 3) of the position of the desired crew member in the array
+	 * @return the Desired CrewMember object
+	 */
 	public CrewMember getCrewMember(int crewMemberID) {
 		try {
 			if (members.get(crewMemberID) == null) {
@@ -104,7 +120,10 @@ public class Crew {
 		}
 	}
 	
-	/**Return an ArrayList of CrewMembers with a given name (don't need to be alive)*/
+	/**Return an ArrayList of CrewMembers with a given name (don't need to be alive)
+	 * @param name string of the name of the CrewMember you'd like the method to return
+	 * @return desired CrewMember object
+	 */
 	public ArrayList<CrewMember> getCrewMembersByName(String name) {
 		ArrayList<CrewMember> matchingCrew = new ArrayList<CrewMember>(MAX_CREW_MEMBERS);
 		for (CrewMember member: members) {
@@ -114,7 +133,11 @@ public class Crew {
 		}
 		return matchingCrew;
 	}
-	/**Return an ArrayList of CrewMembers with a given specialization with boolean deadOrAlive which includes dead crew if true*/
+	/**Return an ArrayList of CrewMembers with a given specialization with boolean deadOrAlive which includes dead crew if true
+	 * @param specialization a string of the desired specialization you want the CrewMember to have. 
+	 * @param deadOrAlive if true includes dead crew members in the search.
+	 * @return desired CrewMember object
+	 */
 	public ArrayList<CrewMember> getCrewMembersBySpecialization(String specialization, boolean deadOrAlive) {
 		ArrayList<CrewMember> matchingCrew = new ArrayList<CrewMember>(MAX_CREW_MEMBERS);
 		for (CrewMember member: members) {
@@ -124,17 +147,24 @@ public class Crew {
 		}
 		return matchingCrew;
 	}
-	/**Return an ArrayList of CrewMembers with a given specialization and are alive*/
+	/**Return an ArrayList of CrewMembers with a given specialization and are alive
+	 * @param specialization a string of the desired specialization you want the CrewMember to have.  
+	 * @return desired CrewMember object
+	 */
 	public ArrayList<CrewMember> getCrewMembersBySpecialization(String specialization) {
 		return getCrewMembersBySpecialization(specialization, false);
 	}
 	
-	/**Returns the array of CrewMembers held in Crew*/
+	/**Returns the array of CrewMembers held in Crew
+	 * @return the array of CrewMembers held in Crew
+	 */
 	public ArrayList<CrewMember> getCrewMemberArray() {
 		return members;
 	}
 	
-	/**Returns number of live CrewMembers in Crew*/
+	/**Returns number of live CrewMembers in Crew
+	 * @return integer of number of crew members
+	 */
 	public int getNumLiveCrew() {
 		int numLive = 0;
 		for (int i=0; i < members.size(); i++) {
@@ -144,7 +174,9 @@ public class Crew {
 		}
 		return numLive;
 	}
-	/**Returns an array of all CrewMembers that are alive*/
+	/**Returns an array of all CrewMembers that are alive
+	 * @return primitive array holding all crew members that are alive
+	 */
 	public CrewMember[] getLiveCrewMemberArray() {
 		CrewMember[] liveMembers = new CrewMember[this.getNumLiveCrew()];
 		int i = 0;
@@ -173,7 +205,9 @@ public class Crew {
 		}
 	}
 	
-	/**Returns true if any of the crew are alive*/
+	/**Returns true if any of the crew are alive
+	 * @return true if all CrewMembers are alive
+	 */
 	public boolean isAlive() {
 		for (CrewMember member: members) {
 			if (member.isAlive()) {
