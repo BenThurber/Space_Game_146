@@ -1,61 +1,57 @@
 package Environment;
 
-import Environment.CrewMemberTypes.CrewMember;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import Environment.CrewMemberTypes.CrewMember;
+import Environment.CrewMemberTypes.Engineer;
+import Environment.CrewMemberTypes.Navigator;
+import Environment.CrewMemberTypes.Scientist;
 
 public class CrewTest {
-
-    private Crew crewUnderTest;
+	
+	private CrewMember crewMemberUnderTest;
+	private CrewMember[] testMembers;
+	private GameEnvironment environment;
+	private Crew crewUnderTest;
 
     @Before
     public void setUp() {
-        crewUnderTest = new Crew(Arrays.asList());
+    		testMembers = new CrewMember[4];
+    		testMembers[0] = new Scientist("John");
+    		testMembers[1]= new Navigator("Tester");
+    		testMembers[2] = new Engineer("Arbiter");
+    		crewMemberUnderTest = testMembers[1];
+    		environment = new GameEnvironment();
+    		environment.crew.addNewCrewMembers(testMembers);
+    		environment.setDays(5);
+    		crewUnderTest = new Crew();
     }
-
-    @Test
-    public void testAddNewCrewMembers() {
-        // Setup
-        final CrewMember[] newMembers = new CrewMember[]{};
-
-        // Run the test
-        crewUnderTest.addNewCrewMembers(newMembers);
-
-        // Verify the results
-    }
-
-    @Test
-    public void testAddNewCrewMembers1() {
-        // Setup
-        final List<CrewMember> members = Arrays.asList();
-
-        // Run the test
-        crewUnderTest.addNewCrewMembers(members);
-
-        // Verify the results
-    }
-
-    @Test
-    public void testAddCrewMember() {
-        // Setup
-        final CrewMember newCrewMember = null;
-
-        // Run the test
-        crewUnderTest.addCrewMember(newCrewMember);
-
-        // Verify the results
-    }
-
+	
+//	@Test
+//    public void testAddNewCrewMembers() {
+//        // Setup
+//        
+//        // Run the test
+//		ArrayList arrayListTestMembers = new ArrayList(Arrays.asList(testMembers));
+//        crewUnderTest.addNewCrewMembers(testMembers);
+//        //new ArrayList(Arrays.asList(testMembers)))
+//        // Verify the results
+//        assertEquals(crewUnderTest.getCrewMemberArray(), arrayListTestMembers);
+//        
+//    }
+	
+	
     @Test
     public void testGetNumCrewMembers() {
         // Setup
-        final int expectedResult = 0;
+        final int expectedResult = 3;
+        crewUnderTest.addNewCrewMembers(testMembers);
 
         // Run the test
         final int result = crewUnderTest.getNumCrewMembers();
@@ -67,8 +63,9 @@ public class CrewTest {
     @Test
     public void testGetCrewMember() {
         // Setup
-        final int crewMemberID = 0;
-        final CrewMember expectedResult = null;
+        final int crewMemberID = testMembers[1].getCrewMemberID();
+        final CrewMember expectedResult = testMembers[1];
+        crewUnderTest.addNewCrewMembers(testMembers);
 
         // Run the test
         final CrewMember result = crewUnderTest.getCrewMember(crewMemberID);
@@ -103,7 +100,7 @@ public class CrewTest {
         // Verify the results
         assertEquals(expectedResult, result);
     }
-
+	
     @Test
     public void testGetCrewMembersBySpecialization1() {
         // Setup
@@ -154,11 +151,13 @@ public class CrewTest {
     @Test
     public void testIsAlive() {
         // Setup
-
+    		crewUnderTest.addNewCrewMembers(testMembers);
+    	
         // Run the test
         final boolean result = crewUnderTest.isAlive();
 
         // Verify the results
         assertTrue(result);
     }
+
 }

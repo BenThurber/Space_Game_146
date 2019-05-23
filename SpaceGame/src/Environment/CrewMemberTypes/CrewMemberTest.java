@@ -1,89 +1,81 @@
 package Environment.CrewMemberTypes;
 
-import Environment.GameEnvironment;
-import Environment.Locations.Planet;
-import Environment.Ship;
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import Environment.GameEnvironment;
+import Environment.Ship;
+import Environment.Locations.Planet;
 
 public class CrewMemberTest {
-
-    private CrewMember crewMemberUnderTest;
+	
+	private CrewMember crewMemberUnderTest;
+	private CrewMember[] testMembers;
+	private GameEnvironment environment;
+	//private Ship testShip;
 
     @Before
     public void setUp() {
-        crewMemberUnderTest = new CrewMember("name", 0);
+    		testMembers = new CrewMember[4];
+    		testMembers[0] = new Scientist("John");
+    		testMembers[1]= new Navigator("Tester");
+    		testMembers[2] = new Engineer("Arbiter");
+    		crewMemberUnderTest = testMembers[1];
+    		environment = new GameEnvironment();
+    		environment.crew.addNewCrewMembers(testMembers);
+    		environment.setDays(5);
     }
+	
+	@Test
+	public void testSleep() {
+		crewMemberUnderTest = new CrewMember("Tester");
+		crewMemberUnderTest.addExhaustion(95);
+		crewMemberUnderTest.sleep();
+		assertEquals(95 + crewMemberUnderTest.EXHAUSTION_LVL_INCREASE_SLEEP, crewMemberUnderTest.getExhaustion());
+	}
 
-    @Test
-    public void testSleep1() {
-        // Setup
+	@Test
+	public void testEat() {
+		crewMemberUnderTest = new CrewMember("Tester");
+		crewMemberUnderTest.addHunger(54);
+		crewMemberUnderTest.eat();
+		assertEquals(54 + crewMemberUnderTest.HUNGER_LVL_INCREASE_EAT, crewMemberUnderTest.getHunger());
+	}
 
-        // Run the test
-        crewMemberUnderTest.sleep();
+	@Test
+	public void testUseMedicalItem() {
+		crewMemberUnderTest = new CrewMember("Tester");
+		crewMemberUnderTest.addHealth(-77);
+		crewMemberUnderTest.useMedicalItem();
+		assertEquals(100-77 + crewMemberUnderTest.HEALTH_LVL_INCREASE_MED_ITEM, crewMemberUnderTest.getHealth());
+		assertEquals(crewMemberUnderTest.MAX_ACTIONS-1, crewMemberUnderTest.getNumActions());
+	}
 
-        // Verify the results
-    }
+	@Test
+	public void testReceiveHealingFromDoctor() {
+		crewMemberUnderTest = new CrewMember("Tester");
+		crewMemberUnderTest.addHealth(-94);
+		crewMemberUnderTest.receiveHealingFromDoctor();
+		assertEquals(100-94 + crewMemberUnderTest.HEALTH_LVL_INCREASE_MED_ITEM, crewMemberUnderTest.getHealth());
+		assertEquals(crewMemberUnderTest.MAX_ACTIONS, crewMemberUnderTest.getNumActions());
+	}
 
-    @Test
-    public void testEat1() {
-        // Setup
+	@Test
+	public void testRepairSheildsShip() {
+		crewMemberUnderTest = new CrewMember("Tester");
+		Ship ship = new Ship();
+		ship.addToSheildLevel(-43);
+		crewMemberUnderTest.repairSheilds(ship);
+		assertEquals(100-43 + crewMemberUnderTest.SHEILD_REPAIR_AMOUNT, ship.getSheildLevel());
+	}
 
-        // Run the test
-        crewMemberUnderTest.eat();
-
-        // Verify the results
-    }
-
-    @Test
-    public void testUseMedicalItem1() {
-        // Setup
-
-        // Run the test
-        crewMemberUnderTest.useMedicalItem();
-
-        // Verify the results
-    }
-
-    @Test
-    public void testReceiveHealingFromDoctor1() {
-        // Setup
-
-        // Run the test
-        crewMemberUnderTest.receiveHealingFromDoctor();
-
-        // Verify the results
-    }
-
-    @Test
-    public void testRepairSheilds1() {
-        // Setup
-        final Ship ship = null;
-
-        // Run the test
-        crewMemberUnderTest.repairSheilds(ship);
-
-        // Verify the results
-    }
-
-    @Test
-    public void testPilotShip() {
-        // Setup
-
-        // Run the test
-        crewMemberUnderTest.pilotShip();
-
-        // Verify the results
-    }
-
-    @Test
+	@Test
     public void testSearchPlanet() {
         // Setup
-        final Planet planet = null;
-        final GameEnvironment environment = null;
-        final int findShipPartSucsessRate = 0;
+        final Planet planet = new Planet();
+        final int findShipPartSucsessRate = 75;
         final String foundPartMessage = "foundPartMessage";
         final String couldntFindPartMessage = "couldntFindPartMessage";
 
@@ -91,54 +83,10 @@ public class CrewMemberTest {
         crewMemberUnderTest.searchPlanet(planet, environment, findShipPartSucsessRate, foundPartMessage, couldntFindPartMessage);
 
         // Verify the results
+        assertTrue(environment.getShipPartsFound() == 1 || environment.getShipPartsFound() == 0);
     }
-
-    @Test
-    public void testSearchPlanet1() {
-        // Setup
-        final Planet planet = null;
-        final GameEnvironment environment = null;
-
-        // Run the test
-        crewMemberUnderTest.searchPlanet(planet, environment);
-
-        // Verify the results
-    }
-
-    @Test
-    public void testAddHealth() {
-        // Setup
-        final int addedHealth = 0;
-
-        // Run the test
-        crewMemberUnderTest.addHealth(addedHealth);
-
-        // Verify the results
-    }
-
-    @Test
-    public void testAddHunger() {
-        // Setup
-        final int addedHunger = 0;
-
-        // Run the test
-        crewMemberUnderTest.addHunger(addedHunger);
-
-        // Verify the results
-    }
-
-    @Test
-    public void testAddExhaustion() {
-        // Setup
-        final int addedExhaustion = 0;
-
-        // Run the test
-        crewMemberUnderTest.addExhaustion(addedExhaustion);
-
-        // Verify the results
-    }
-
-    @Test
+	
+	@Test
     public void testKill() {
         // Setup
 
@@ -146,37 +94,6 @@ public class CrewMemberTest {
         crewMemberUnderTest.kill();
 
         // Verify the results
-    }
-
-    @Test
-    public void testHasSpacePlague() {
-        // Setup
-
-        // Run the test
-        final boolean result = crewMemberUnderTest.hasSpacePlague();
-
-        // Verify the results
-        assertTrue(result);
-    }
-
-    @Test
-    public void testSetNumActionsReset() {
-        // Setup
-
-        // Run the test
-        crewMemberUnderTest.setNumActionsReset();
-
-        // Verify the results
-    }
-
-    @Test
-    public void testDecrementNumActions() {
-        // Setup
-
-        // Run the test
-        final boolean result = crewMemberUnderTest.decrementNumActions();
-
-        // Verify the results
-        assertTrue(result);
+        assertTrue(!crewMemberUnderTest.isAlive());
     }
 }
