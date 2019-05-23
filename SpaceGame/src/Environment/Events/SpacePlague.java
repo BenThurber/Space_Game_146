@@ -25,6 +25,11 @@ public class SpacePlague extends Event {
 	private final int MIN_CREW_AFFECTED = 1;
 	private final int NUM_LESS_THAN_MAX_CREW = 1;
 	
+	/**
+	 * Instantiate an Event, but don't initiate
+	 * @param environment
+	 * @param crew
+	 */
 	public SpacePlague(GameEnvironment environment, Crew crew) {
 		super(environment, crew);
 		// TODO Auto-generated constructor stub

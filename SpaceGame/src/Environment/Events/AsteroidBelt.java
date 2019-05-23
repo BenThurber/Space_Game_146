@@ -28,11 +28,20 @@ public class AsteroidBelt extends Event {
 	private final int MAX_NAVIGATORS = 2;
 	private final int HIGHEST_DIE_THAT_AVIODs = 25;
 	
+	/**
+	 * Instantiate an Event, but don't initiate
+	 * @param environment
+	 * @param crew
+	 */
 	public AsteroidBelt(GameEnvironment environment, Crew crew) {
 		super(environment, crew);
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Instantiate an Event, but don't initiate
+	 * @param numNavigators the number of navigators in the Crew
+	 */
 	private void initiate(int numNavigators) {
 		Random rand = new Random();
 		if (numNavigators == 0) {
@@ -50,7 +59,9 @@ public class AsteroidBelt extends Event {
 			avoidedAllAsteroids();
 		}
 	}
-	/**Takes a list of crew members piloting the ship and determines how many are navigators*/
+	/**Takes a list of crew members piloting the ship and determines how many are navigators
+	 * @param an ArrayList of CrewMembers piloting the ship
+	 */
 	public void initiate(ArrayList<CrewMember> crewPiloting) {
 		int numNavigators = 0;
 		for (CrewMember member: crewPiloting) {
@@ -66,16 +77,18 @@ public class AsteroidBelt extends Event {
 		initiate(allNavigators.size());
 	}
 	
-	
+	/**Case when all asteroids are avoided and no damage taken to ship shields*/
 	private void avoidedAllAsteroids() {
 		System.out.println("Avoided all collisions");
 		MessageBox messageBoxAvoidedAsteroidCollision = new MessageBox(MESSAGE_ASTEROID_AVOIDED_COLLISION);
 	}
+	/**Case when some asteroids are avoided and some damage taken to ship shields*/
 	private void avoidedSomeAsteroids() {
 		int shieldDamageTaken = Misc.numberPlusMinusRandom(SHIELD_PARTIAL_DAMAGE, SHIELD_DAMAGE_RANDOM_RANGE);
 		this.environment.ship.addToSheildLevel(-shieldDamageTaken);
 		MessageBox messageBoxPartialAsteroidCollision = new MessageBox(String.format(MESSAGE_ASTEROID_PARTIAL_COLLISION, shieldDamageTaken));
 	}
+	/**Case when no asteroids are avoided and full damage taken to ship shields*/
 	private void didNotAvoidAsteroids() {
 		int shieldDamageTaken = Misc.numberPlusMinusRandom(SHIELD_FULL_DAMAGE, SHIELD_DAMAGE_RANDOM_RANGE);
 		this.environment.ship.addToSheildLevel(-shieldDamageTaken);

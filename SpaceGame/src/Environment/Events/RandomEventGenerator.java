@@ -19,14 +19,23 @@ public class RandomEventGenerator {
 	private ArrayList<Event> possibleEvents;
 	
 
+	/**
+	 * Create the RandomEventGenerator with Event objects
+	 * @param possibleEvents ArrayList of Event objects which could occur
+	 */
 	public RandomEventGenerator(ArrayList<Event> possibleEvents) {
 		this.possibleEvents = possibleEvents;
 	}
 	
+	/**Call initiate() on a random Event object*/
 	public void initiateRandomEvent() {
 		this.getRandomEvent().initiate();
 	}
 	
+	
+	/** Return a random Event object
+	 * @return a random Event object
+	 */
 	public Event getRandomEvent() {
 		int eventIndex = rand.nextInt(possibleEvents.size());
 		return possibleEvents.get(eventIndex);
