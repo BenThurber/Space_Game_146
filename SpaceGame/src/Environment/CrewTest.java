@@ -33,18 +33,6 @@ public class CrewTest {
     		crewUnderTest = new Crew();
     }
 	
-//	@Test
-//    public void testAddNewCrewMembers() {
-//        // Setup
-//        
-//        // Run the test
-//		ArrayList arrayListTestMembers = new ArrayList(Arrays.asList(testMembers));
-//        crewUnderTest.addNewCrewMembers(testMembers);
-//        //new ArrayList(Arrays.asList(testMembers)))
-//        // Verify the results
-//        assertEquals(crewUnderTest.getCrewMemberArray(), arrayListTestMembers);
-//        
-//    }
 	
 	
     @Test

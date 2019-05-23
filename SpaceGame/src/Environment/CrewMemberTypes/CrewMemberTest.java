@@ -96,4 +96,26 @@ public class CrewMemberTest {
         // Verify the results
         assertTrue(!crewMemberUnderTest.isAlive());
     }
+	
+    @Test
+    public void testHasSpacePlague() {
+        // Setup
+    		crewMemberUnderTest.setHasSpacePlague(true);
+        // Run the test
+        final boolean result = crewMemberUnderTest.hasSpacePlague();
+
+        // Verify the results
+        assertTrue(result);
+    }
+
+    @Test
+    public void testDecrementNumActions() {
+        // Setup
+
+        // Run the test
+        final boolean result = crewMemberUnderTest.decrementNumActions();
+
+        // Verify the results
+        assertTrue(result && crewMemberUnderTest.getNumActions() == crewMemberUnderTest.MAX_ACTIONS - 1);
+    }
 }
