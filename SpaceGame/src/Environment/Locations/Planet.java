@@ -49,6 +49,11 @@ public class Planet extends Location {
 	
 	
 	// When a new planet is instantiated, it generates random attributes; name, image, etc.
+	/**
+	 * Creates a new Planet object.  Randomly sets the name, and the image associated 
+	 * with the planet.  Uses a static variable to choose a unique image each time an 
+	 * object is created or until all images are exhausted.
+	 */
 	public Planet() {
 		Random rand = new Random();
 		this.name = names[rand.nextInt(names.length)];
@@ -64,6 +69,13 @@ public class Planet extends Location {
 		System.out.println(planetIndex);
 		planetIndex = (planetIndex + 1) % planetFileNames.size();  // Increment Index and wrap
 	}
+	/**
+	 * Creates a new Planet object.  Randomly sets the image associated 
+	 * with the planet.  Uses a static variable to choose a unique image each time an 
+	 * object is created or until all images are exhausted.
+	 * 
+	 * @param name the name of the new Planet
+	 */
 	public Planet(String name) {
 		this();
 		this.name = name;
