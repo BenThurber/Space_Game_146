@@ -10,7 +10,6 @@ package Environment.CrewMemberTypes;
  * @author Blake Kayser
  */
 public class Navigator extends CrewMember {
-	
 	public final String specialization = "navigator";
 	public final static String avatarImage = "/Images/Avatars/navigator.png";
 	
