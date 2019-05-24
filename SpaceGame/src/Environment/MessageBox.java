@@ -20,7 +20,6 @@ import javax.swing.SwingConstants;
  * @author Blake Kayser
  */
 public class MessageBox extends JDialog {
-	
 	private static int lastWindowX = 500;
 	private static int lastWindowY = 200;
 	private static int lastWindowWidth = 500;
@@ -148,6 +147,5 @@ public class MessageBox extends JDialog {
 	 */
 	public MessageBox(String messageText, MainScreen parent) {
 		this(messageText, parent.frame.getX(), parent.frame.getY(), parent.frame.getWidth(), parent.frame.getHeight());
-	}
-	
+	}	
 }

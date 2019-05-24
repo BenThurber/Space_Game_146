@@ -11,15 +11,13 @@ import Environment.CrewMemberTypes.Navigator;
 import Environment.CrewMemberTypes.Scientist;
 
 public class GameEnvironmentTest {
-
 	private CrewMember crewMemberUnderTest;
 	private CrewMember[] testMembers;
 	private GameEnvironment environment;
 	private Crew crewUnderTest;
 	private GameEnvironment gameEnvironmentUnderTest;
 
-
-    @Before
+	@Before
     public void setUp() {
     		testMembers = new CrewMember[4];
     		testMembers[0] = new Scientist("John");
@@ -33,8 +31,7 @@ public class GameEnvironmentTest {
     		gameEnvironmentUnderTest = new GameEnvironment();
     }
 	
-
-    @Test
+	@Test
     public void testSetDays() {
         // Setup
         final int days = 7;

@@ -10,7 +10,6 @@ import Environment.Ship;
 import Environment.Locations.Planet;
 
 public class CrewMemberTest {
-	
 	private CrewMember crewMemberUnderTest;
 	private CrewMember[] testMembers;
 	private GameEnvironment environment;

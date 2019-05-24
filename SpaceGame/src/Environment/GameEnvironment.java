@@ -25,7 +25,6 @@ import Environment.Locations.SpaceOutpost;
  * @author Blake Kayser
  * */
 public class GameEnvironment {
-	
 	//----------------
 	// VARIABLES:
 	//----------------
@@ -46,7 +45,6 @@ public class GameEnvironment {
 	private final String NOT_AT_A_PLANET_MESSAGE = "Your ship is not currently at a planet.  Pilot to a planet to search for parts.";
 	private final int MIN_CREW_TO_PILOT_SHIP = 2;
 	private final int MAX_NUM_PATIENTS_HEALED = 2;
-	
 	
 	/**Window X initial position used by all windows*/
 	public final static int WINDOW_INIT_X = 320;

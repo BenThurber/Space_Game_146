@@ -51,5 +51,4 @@ public class ShipTest {
         // Verify the results
         assertTrue(result);
     }
-
 }

@@ -11,13 +11,11 @@ import Environment.CrewMemberTypes.CrewMember;
  * @author Blake Kayser
  * */
 public class Crew {
-	
 	final int MAX_CREW_MEMBERS = 4;
 	final int HUNGER_INCREASE_PER_DAY = 20;
 	final int EXHAUSTION_INCREASE_PER_DAY = 20;
 	final int PLAGUE_HEALTH_INCREASE_PER_DAY = -50;
 	final int RANDOM_RANGE = 5;
-	
 	
 	// ArrayList to store crew members
 	private ArrayList<CrewMember> members = new ArrayList<CrewMember>(MAX_CREW_MEMBERS);

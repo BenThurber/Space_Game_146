@@ -7,10 +7,8 @@ package Environment.CrewMemberTypes;
  * @author Blake Kayser
  */
 public class Doctor extends CrewMember {
-	
 	public final String specialization = "doctor";
 	public final static String avatarImage = "/Images/Avatars/doctor.png";
-	
 	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Doctors can heal up to two other crew members with one action, either including or not including themselves.</div></html>";
 	
 	/**
