@@ -8,7 +8,6 @@ import org.junit.Test;
 import Environment.Ship;
 
 public class EngineerTest {
-
 	private Engineer engineerUnderTest;
 
     @Before

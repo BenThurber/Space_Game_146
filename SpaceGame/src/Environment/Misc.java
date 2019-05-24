@@ -9,7 +9,6 @@ import java.util.Random;
  * @author Blake Kayser
  */
 public class Misc {
-	
 	/**
 	 * @param s any string
 	 * @return the input string s with the first character capitalized, and the rest lower case
@@ -52,7 +51,4 @@ public class Misc {
 		Random rand = new Random();
 		return rand.nextInt(max + 1 - min) + min;
 	}
-	
-	
-
 }

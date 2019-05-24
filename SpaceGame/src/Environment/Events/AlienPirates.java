@@ -21,7 +21,6 @@ import Environment.CrewMemberTypes.CrewMember;
  *
  */
 public class AlienPirates extends Event {
-
 	private final String MESSAGE_FULL_ALIEN_INVASION = "Your ship has been attacked by aliens! Your shields have taken %d%% and %d crew member(s) have taken serious damage. Fix them up before the aliens attack again!";
 	private final String MESSAGE_PARTIAL_ALIEN_INVASION = "Your ship has been attacked by aliens! Thankfully your Security fended the cretins off, shields taking %d%% and %d crew member(s) mildly hurt.";
 	private final String MESSAGE_AVOIDED_ALIEN_INVASION = "Aliens tried to attack your ship! Skillfully, your security fought them off, protecting the vessel.";
@@ -35,7 +34,6 @@ public class AlienPirates extends Event {
 	private final int MEMBER_DAMAGE_RANDOM_RANGE = 10;
 	private final int MIN_CREW_AFFECTED = 1;
 	private final int NUM_LESS_THAN_MAX_CREW = 1;
-	
 	
 	/**
 	 * Instantiate an Event, but don't initiate
@@ -69,18 +67,17 @@ public class AlienPirates extends Event {
 		}
 	}
 
-	
 	/**If no arguments are given, uses the number of Navigators in the Crew (piloting or not)*/
 	public void initiate() {		
 		initiate(crew.getCrewMembersBySpecialization("security").size());
 	}
-	
 	
 	/**Case when all alien damage is avoided*/
 	private void avoidedAllAliens() {
 		System.out.println("Avoided all collisions");
 		MessageBox messageBoxAvoidedAlienInvasion = new MessageBox(MESSAGE_AVOIDED_ALIEN_INVASION);
 	}
+	
 	/**Case when some alien damage is taken*/
 	private void avoidedSomeAliens() {
 		int shieldDamageTaken = Misc.numberPlusMinusRandom(SHIELD_PARTIAL_DAMAGE, SHIELD_DAMAGE_RANDOM_RANGE);
@@ -88,6 +85,7 @@ public class AlienPirates extends Event {
 		int numHurtMembers = hurtMembersAttacked(MEMBER_PARTIAL_DAMAGE);
 		MessageBox messageBoxFullAlienInvasion = new MessageBox(String.format(MESSAGE_PARTIAL_ALIEN_INVASION, Math.abs(shieldDamageTaken), numHurtMembers));
 	}
+	
 	/**Case when full alien damage is taken*/
 	private void didNotAvoidAliens() {
 		int shieldDamageTaken = Misc.numberPlusMinusRandom(SHIELD_FULL_DAMAGE, SHIELD_DAMAGE_RANDOM_RANGE);
@@ -95,6 +93,7 @@ public class AlienPirates extends Event {
 		int numHurtMembers = hurtMembersAttacked(MEMBER_FULL_DAMAGE);
 		MessageBox messageBoxFullAlienInvasion = new MessageBox(String.format(MESSAGE_FULL_ALIEN_INVASION, Math.abs(shieldDamageTaken), numHurtMembers));
 	}
+	
 	/**
 	 * Applies attacks to CrewMembers.  Gets the crew members from randomCrewList()
 	 * @param hurtMembersDamage the amount of damage to take per crew member
@@ -110,6 +109,7 @@ public class AlienPirates extends Event {
 		}
 		return(numCrewAffected);
 	}
+	
 	/**Returns a random ArrayList of Crew Members with Security at the begginging of the ArrayList*
 	 * @return ArrayList of CrewMembers
 	 */

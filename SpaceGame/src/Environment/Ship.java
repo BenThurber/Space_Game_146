@@ -8,12 +8,10 @@ import Environment.Locations.Location;
  * @author Blake Kayser
  */
 public class Ship {
-	
 	private String name = "";
 	private Location location = new Location();
 	private int sheildLevel = 100;
 	private int totalLostEnergy = 0;
-	
 	
 	/**
 	 * Creates new empty ship object
@@ -22,13 +20,13 @@ public class Ship {
 		
 	}
 	
-	
 	/**
 	 * @return the ships name
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
 	 * @param newshipName a new ship name
 	 */
@@ -42,6 +40,7 @@ public class Ship {
 	public int getSheildLevel() {
 		return sheildLevel;
 	}
+	
 	/**
 	 * @param addedSheildEnergy amount of energy (positive or negative) to add the the ships shields
 	 */
@@ -59,6 +58,7 @@ public class Ship {
 	public Location getLocation() {
 		return location;
 	}
+	
 	/**
 	 * Move the ship to new location
 	 * @param location a new location the ship is now at
@@ -66,6 +66,7 @@ public class Ship {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
+	
 	/**
 	 * Moves the shiop to a new Location object of the given name
 	 * @param location a String of the name of the new Location

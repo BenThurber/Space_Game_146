@@ -9,13 +9,11 @@ import Environment.Ship;
  * @author Blake Kayser
  */
 public class Engineer extends CrewMember {
-	
 	public final String specialization = "engineer";
 	public final static String avatarImage = "/Images/Avatars/engineer.png";
+	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Engineers are able to repair the ship's shield by 50%.</div></html>";
 	
 	protected final int SHEILD_REPAIR_AMOUNT = 50;
-	
-	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Engineers are able to repair the ship's shield by 50%.</div></html>";
 	
 	/**
 	 * @return a String of the description of what the type of CrewMember does.  Formatted with HTML.
@@ -52,5 +50,4 @@ public class Engineer extends CrewMember {
 	public void repairSheilds(Ship ship) {
 		super.repairSheilds(ship, SHEILD_REPAIR_AMOUNT);
 	}
-
 }

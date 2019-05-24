@@ -19,9 +19,8 @@ import java.util.Random;
  *
  */
 public class CrewMember {
-	
-//	public final Set<String> SPECIALIZATIONS = new HashSet<String>(Arrays.asList(
-//		     new String[] {"engineer", "scientist", "doctor", "navigator", "captain", "communications", "security"}));
+	//	public final Set<String> SPECIALIZATIONS = new HashSet<String>(Arrays.asList(
+	//	new String[] {"engineer", "scientist", "doctor", "navigator", "captain", "communications", "security"}));
 	
 	public final Set<String> ACTIONS = new HashSet<String>(Arrays.asList(
 			new String[] {"eat", "pilot ship", "repair sheilds", "search planet", "sleep", "use medical item"}));
@@ -50,9 +49,9 @@ public class CrewMember {
 	private boolean isAlive = true;
 	private boolean hasSpacePlague = false;
 	private int numActions = MAX_ACTIONS;
+	
 	// Integer to identify where CrewMember belongs in the array in Crew and where it goes in the GUI
 	private int crewMemberID;
-	
 	
 	/**
 	 * @param name String of the CrewMember's name
@@ -62,6 +61,7 @@ public class CrewMember {
 		this.setName(name);
 		this.setCrewMemberID(cremMemberID);
 	}
+	
 	/**
 	 * @param name String of the CrewMember's name
 	 */
@@ -69,10 +69,6 @@ public class CrewMember {
 		this.setName(name);
 		this.setCrewMemberID(0);
 	}
-	
-	
-	
-	
 	
 	/**Crew member sleeps and decreases some amount of exhaustion
 	 * @param exhaustionIncrease integer amount of exhaustion to add (positive or negative)
@@ -82,6 +78,7 @@ public class CrewMember {
 			this.addExhaustion(exhaustionIncrease);
 		}
 	}
+	
 	/**Crew member sleeps and decreases default amount of exhaustion*/
 	public void sleep() {
 		sleep(EXHAUSTION_LVL_INCREASE_SLEEP);
@@ -95,6 +92,7 @@ public class CrewMember {
 			this.addHunger(hungerIncrease);
 		}
 	}
+	
 	/**Crew member eats and decreases default amount of hunger.*/
 	public void eat() {
 		eat(HUNGER_LVL_INCREASE_EAT);
@@ -112,6 +110,7 @@ public class CrewMember {
 			}
 		}
 	}
+	
 	/**
 	 * Crew member uses medical item and regains some amount of health.  If they have space plague then cures that.
 	 */
@@ -130,6 +129,7 @@ public class CrewMember {
 			this.addHealth(healthIncrease);
 		}
 	}
+	
 	/**
 	 * Called when a CrewMember is healed from a doctor and not by himself using a medical item
 	 */
@@ -137,7 +137,6 @@ public class CrewMember {
 		//Implement remove space plague?
 		this.receiveHealingFromDoctor(HEALTH_LVL_INCREASE_MED_ITEM);
 	}
-	
 	
 	/**
 	 * @param ship the ship to repair the shields of
@@ -161,7 +160,6 @@ public class CrewMember {
 	public void pilotShip() {
 		decrementNumActions();
 	}
-	
 	
 	/**
 	 * Called when a CrewMember searches a planet
@@ -190,14 +188,13 @@ public class CrewMember {
 		searchPlanet(planet, environment, FIND_SHIP_PART_SUCSESS_RATE, FOUND_PART_MESSAGE, COULDNT_FIND_PART_MESSAGE);
 	}
 	
-	
-	
 	/**
 	 * @return current health int
 	 */
 	public int getHealth() {
 		return health;
 	}
+	
 	/**Adds/subtracts health.  If dropped to 0 CrewMember dies.
 	 * @param addedHealth int health increase (positive or negative)
 	 */
@@ -207,12 +204,14 @@ public class CrewMember {
 			this.kill();
 		}
 	}
+	
 	/**
 	 * @return current hunger int
 	 */
 	public int getHunger() {
 		return hunger;
 	}
+	
 	/**Adds/subtracts hunger.  If raised to 100 CrewMember dies.
 	 * @param addedHunger int hunger increase (positive or negative)
 	 */
@@ -229,6 +228,7 @@ public class CrewMember {
 	public int getExhaustion() {
 		return exhaustion;
 	}
+	
 	/**Adds/subtracts exhaustion.  If raised to 100 CrewMember dies.
 	 * @param addedExhaustion int exhaustion increase (positive or negative)
 	 */
@@ -245,6 +245,7 @@ public class CrewMember {
 	public String getName() {
 		return name;
 	}
+	
 	/**
 	 * @param name CrewMember's new name
 	 */
@@ -269,6 +270,7 @@ public class CrewMember {
 	public boolean hasSpacePlague() {
 		return hasSpacePlague;
 	}
+	
 	/**
 	 * @param hasSpacePlague true if the crew member has just contracted space plague
 	 */
@@ -282,14 +284,6 @@ public class CrewMember {
 	public String getSpecialization() {
 		return specialization;
 	}
-//	public void setSpecialization(String specialization) {
-//		if (SPECIALIZATIONS.contains(specialization.toLowerCase())) {
-//			this.specialization = Misc.capitalize(specialization);
-//			setAvatarImage(this.specialization);
-//		} else {
-//			throw new IllegalArgumentException("CrewMember has an invalid specialization.");
-//		}
-//	}
 	
 	/**
 	 * @return String of the path of CrewMembers's avatar image as given in each Subclass of CrewMember i.e. {@literal "/Images/Avatars/<specialization>.png"}
@@ -304,10 +298,12 @@ public class CrewMember {
 	public int getNumActions() {
 		return numActions;
 	}
+	
 	/**Resets number of actions to MAX_ACTIONS*/
 	public void setNumActionsReset() {
 		this.numActions = MAX_ACTIONS;
 	}
+	
 	/**Remove one Action (min 0)  Returns true if there was an action remaining when the method was called.
 	 * @return boolean which is true if the crew member had any actions remaining when the method was called.
 	 */
@@ -329,15 +325,11 @@ public class CrewMember {
 	public int getCrewMemberID() {
 		return crewMemberID;
 	}
+	
 	/**
 	 * @param crewMemberID the ID number (typically 0 - 3) if where the CrewMember belongs in the GUI
 	 */
 	public void setCrewMemberID(int crewMemberID) {
 		this.crewMemberID = crewMemberID;
-	}
-
-	
-	
-	
-	
+	}	
 }

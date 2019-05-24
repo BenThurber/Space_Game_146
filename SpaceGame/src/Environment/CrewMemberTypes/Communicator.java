@@ -7,10 +7,8 @@ package Environment.CrewMemberTypes;
  * @author Blake Kayser
  */
 public class Communicator extends CrewMember {
-	
 	public final String specialization = "communications";
 	public final static String avatarImage = "/Images/Avatars/communications.png";
-	
 	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Nothing yet.  Communicator is not yet implemented in the game.</div></html>";
 	
 	/**
@@ -36,13 +34,12 @@ public class Communicator extends CrewMember {
 		super(name);
 		// TODO Auto-generated constructor stub
 	}
+	
 	public String getSpecialization() {
 		return specialization;
 	}
 	
 	public String getAvatarImage() {
 		return avatarImage;
-	}
-	
-	
+	}	
 }

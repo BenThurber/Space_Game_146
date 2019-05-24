@@ -37,11 +37,10 @@ import java.awt.Font;
  * @author Blake Kayser
  */
 public class TeamSelection {
-
 	private JFrame frmMeteorMadness;
 
 	private GameEnvironment environment;
-	private JTextField textField;
+	private JTextField textFieldEnterName;
 	private JLabel lblAvatar;
 	
 	private final int AVATAR_IMAGE_HEIGHT = 188;
@@ -244,7 +243,7 @@ public class TeamSelection {
 			public void actionPerformed(ActionEvent e) {
 				if (crewList.size() < 4) {
 					if(tglbtnEngineer.isSelected()) {
-						String name = textField.getText();
+						String name = textFieldEnterName.getText();
 						crewList.add(new Engineer(name));
 						System.out.println("Engineer added to array");
 						System.out.println(crewList);
@@ -252,7 +251,7 @@ public class TeamSelection {
 					}	
 
 					if(tglbtnScientist.isSelected()) {
-						String name = textField.getText();
+						String name = textFieldEnterName.getText();
 						crewList.add(new Scientist(name));
 						System.out.println("Scientist added to array");
 						System.out.println(crewList);
@@ -260,7 +259,7 @@ public class TeamSelection {
 					}
 
 					if(tglbtnDoctor.isSelected()) {
-						String name = textField.getText();
+						String name = textFieldEnterName.getText();
 						crewList.add(new Doctor(name));
 						System.out.println("Doctor added to array");
 						System.out.println(crewList);
@@ -268,7 +267,7 @@ public class TeamSelection {
 					}
 
 					if(tglbtnNavigator.isSelected()) {
-						String name = textField.getText();
+						String name = textFieldEnterName.getText();
 						crewList.add(new Navigator(name));
 						System.out.println("Navigator added to array");
 						System.out.println(crewList);
@@ -276,7 +275,7 @@ public class TeamSelection {
 					}
 
 					if(tglbtnSecurity.isSelected()) {
-						String name = textField.getText();
+						String name = textFieldEnterName.getText();
 						crewList.add(new Security(name));
 						System.out.println("Security added to array");
 						System.out.println(crewList);
@@ -284,7 +283,7 @@ public class TeamSelection {
 					}
 
 					if(tglbtnCaptain.isSelected()) {
-						String name = textField.getText();
+						String name = textFieldEnterName.getText();
 						crewList.add(new Captain(name));
 						System.out.println("Captain added to array");
 						System.out.println(crewList);
@@ -307,7 +306,6 @@ public class TeamSelection {
 					lblAdvice.setText("<html><div style='text-align: center;'>Select Heroes to view their traits!<br/><br/>Name your crew member and press 'Add' to add them to your team.<br/><br/>Press 'Remove' to remove a Hero.<br/><br/> Your crew can have up to four members!<br/><br/> Press confirm when you are happy with your team :)</div></html>");
 					System.out.println(crewList.size());
 				}
-
 				if (crewList.size() > 0) {
 					crewList.remove(crewList.size() -1);
 					System.out.println(crewList);
@@ -327,10 +325,10 @@ public class TeamSelection {
 		lblSpaceCrew.setBounds(45, 262, 129, 15);
 		frmMeteorMadness.getContentPane().add(lblSpaceCrew);
 
-		textField = new JTextField();
-		textField.setBounds(30, 174, 315, 25);
-		frmMeteorMadness.getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldEnterName = new JTextField();
+		textFieldEnterName.setBounds(30, 174, 315, 25);
+		frmMeteorMadness.getContentPane().add(textFieldEnterName);
+		textFieldEnterName.setColumns(10);
 
 		JLabel lblName = new JLabel("Name");
 		lblName.setForeground(Color.LIGHT_GRAY);

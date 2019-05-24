@@ -7,7 +7,6 @@ package Environment.CrewMemberTypes;
  * @author Blake Kayser
  */
 public class Captain extends CrewMember {
-	
 	public final String specialization = "captain";
 	public final static String avatarImage = "/Images/Avatars/captain.png";
 	
@@ -23,14 +22,12 @@ public class Captain extends CrewMember {
 	
 	private final static String DESCRIPTION = "<html><div style='text-align: center;'>The Captain restores his respective stats FULLY from sleeping, eating and healing. Damage taken is reduced by 10%.</div></html>";
 	
-	
 	/**
 	 * @return a String of the description of what the type of CrewMember does.  Formatted with HTML.
 	 */
 	public static String getDescription() {
 		return DESCRIPTION;
 	}
-	
 	
 	/**
 	 * @param name String of the CrewMember's name
@@ -85,6 +82,7 @@ public class Captain extends CrewMember {
 			super.addHealth(Math.min(0, addedHealth + CAPTAIN_HEALTH_DAMAGE_REDUCTION));
 		}
 	}
+	
 	//Low is good
 	/**Adds or subtracts Exhaustion from crew member.  If removing Exhaustion, auto restores to zero.  
 	 * If taking adding Exhaustion, subtracts CAPTAIN_PHYSICAL_STAT_DAMAGE_REDUCTION from the 
@@ -96,6 +94,7 @@ public class Captain extends CrewMember {
 			super.addExhaustion(Math.max(0, addedExhaustion - CAPTAIN_EXHAUSTION_DAMAGE_REDUCTION));
 		}
 	}
+	
 	//Low is good
 	/**Adds or subtracts Hunger from crew member.  If removing Hunger, auto restores to zero.  
 	 * If taking adding Hunger, subtracts CAPTAIN_PHYSICAL_STAT_DAMAGE_REDUCTION from the 
@@ -107,5 +106,4 @@ public class Captain extends CrewMember {
 			super.addHunger(Math.max(0, addedHunger - CAPTAIN_HUNGER_DAMAGE_REDUCTION));
 		}
 	}
-
 }

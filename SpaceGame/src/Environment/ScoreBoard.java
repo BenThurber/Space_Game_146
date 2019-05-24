@@ -25,7 +25,6 @@ import java.awt.event.ActionEvent;
  * @author Blake Kayser
  */
 public class ScoreBoard {
-
 	private JFrame frame;
 	private GameEnvironment environment;
 	private final int SPACE_PART_MULTIPLIER = 1000;
@@ -60,15 +59,16 @@ public class ScoreBoard {
 		initialize();
 	}
 	
-	
 	/**Closes the ScoreBoard window variable*/
 	public void closeWindow() {
 		frame.dispose();
 	}
+	
 	/**Closes ScoreBoard and exits.  Method called when window needs to be closed, and the game quits*/
 	public void finishedWindow() {
 		environment.closeScoreBoard(this);
 	}
+	
 	/**Closes ScoreBoard and restarts the game.  Method called when window needs to be closed, and game restarted*/
 	public void finishedWindowAndRestartGame() {
 		environment.closeScoreBoard(this);

@@ -18,7 +18,6 @@ import Environment.CrewMemberTypes.CrewMember;
  *
  */
 public class AsteroidBelt extends Event {
-	
 	private final String MESSAGE_ASTEROID_FULL_COLLISION = "Your ship has passed through an Asteroid Belt!\n\nYour shields have taken %d%% damage.";
 	private final String MESSAGE_ASTEROID_PARTIAL_COLLISION = "Your ship has passed through an Asteroid Belt, but your Navigator(s) were able to avoid most of the damage.\n\nYour shields have taken %d%% damage.";
 	private final String MESSAGE_ASTEROID_AVOIDED_COLLISION = "Your ship has passed through an Asteroid Belt, but your Navigator(s) skillfuly piloted your ship through it, and avoided damage";
@@ -59,6 +58,7 @@ public class AsteroidBelt extends Event {
 			avoidedAllAsteroids();
 		}
 	}
+	
 	/**Takes a list of crew members piloting the ship and determines how many are navigators
 	 * @param crewPiloting an ArrayList of CrewMembers piloting the ship
 	 */
@@ -71,6 +71,7 @@ public class AsteroidBelt extends Event {
 		}
 		initiate(numNavigators);
 	}
+	
 	/**If no arguments are given, uses the number of Navigators in the Crew (piloting or not)*/
 	public void initiate() {
 		ArrayList<CrewMember> allNavigators = crew.getCrewMembersBySpecialization("navigator");
@@ -82,12 +83,14 @@ public class AsteroidBelt extends Event {
 		System.out.println("Avoided all collisions");
 		MessageBox messageBoxAvoidedAsteroidCollision = new MessageBox(MESSAGE_ASTEROID_AVOIDED_COLLISION);
 	}
+	
 	/**Case when some asteroids are avoided and some damage taken to ship shields*/
 	private void avoidedSomeAsteroids() {
 		int shieldDamageTaken = Misc.numberPlusMinusRandom(SHIELD_PARTIAL_DAMAGE, SHIELD_DAMAGE_RANDOM_RANGE);
 		this.environment.ship.addToSheildLevel(-shieldDamageTaken);
 		MessageBox messageBoxPartialAsteroidCollision = new MessageBox(String.format(MESSAGE_ASTEROID_PARTIAL_COLLISION, shieldDamageTaken));
 	}
+	
 	/**Case when no asteroids are avoided and full damage taken to ship shields*/
 	private void didNotAvoidAsteroids() {
 		int shieldDamageTaken = Misc.numberPlusMinusRandom(SHIELD_FULL_DAMAGE, SHIELD_DAMAGE_RANDOM_RANGE);

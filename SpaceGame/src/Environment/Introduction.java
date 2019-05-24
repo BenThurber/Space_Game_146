@@ -28,7 +28,6 @@ import java.awt.SystemColor;
  * @author Blake Kayser
  */
 public class Introduction {
-
 	private JFrame frmMeteorMadness;
 	private JLabel lblHowManyDays;
 	private JButton btnConfirm;
