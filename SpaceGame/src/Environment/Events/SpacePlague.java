@@ -19,9 +19,8 @@ import Environment.CrewMemberTypes.CrewMember;
  *
  */
 public class SpacePlague extends Event {
-	
-	private final String MESSAGE_GOT_PLAGUE = "%d of your crew members have come down with Space Plague.\n\nThose affected have a purple health bar and will loose health with each day.\n\nHeal the plague on affected crew members by using a medical item.";
-	
+	private final String MESSAGE_GOT_PLAGUE = "%d of your crew members have come down with Space Plague.\n\nThose affected have a purple "
+			+ "health bar and will loose health with each day.\n\nHeal the plague on affected crew members by using a medical item.";
 	private final int MIN_CREW_AFFECTED = 1;
 	private final int NUM_LESS_THAN_MAX_CREW = 1;
 	
@@ -45,7 +44,6 @@ public class SpacePlague extends Event {
 		for (int i=0; i < numCrewAffected; i++) {
 			liveCrew.get(i).setHasSpacePlague(true);
 		}
-		
 		MessageBox messageBoxAsteroidCollision = new MessageBox(String.format(MESSAGE_GOT_PLAGUE, numCrewAffected));
 	}
 	

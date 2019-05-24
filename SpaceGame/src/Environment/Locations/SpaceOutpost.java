@@ -10,7 +10,6 @@ import java.util.Random;
  *
  */
 public class SpaceOutpost extends Location {
-	
 	public final String type = "Outpost";
 	
 	/**

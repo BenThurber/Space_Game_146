@@ -7,7 +7,6 @@ package Environment.Exceptions;
  *
  */
 public class CrewMemberNotFoundException extends Exception {
-
 	public CrewMemberNotFoundException() {
 		// TODO Auto-generated constructor stub
 	}
