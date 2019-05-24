@@ -16,6 +16,8 @@ public class GameEnvironmentTest {
 	private CrewMember[] testMembers;
 	private GameEnvironment environment;
 	private Crew crewUnderTest;
+	private GameEnvironment gameEnvironmentUnderTest;
+
 
     @Before
     public void setUp() {
@@ -28,19 +30,20 @@ public class GameEnvironmentTest {
     		environment.crew.addNewCrewMembers(testMembers);
     		environment.setDays(5);
     		crewUnderTest = new Crew();
+    		gameEnvironmentUnderTest = new GameEnvironment();
     }
 	
 	
-	@Test
-    public void testExecuteCrewMemberAction() {
+    @Test
+    public void testSetDays() {
         // Setup
-        final CrewMember member = null;
-        final String task = "task";
+        final int days = 7;
 
         // Run the test
-        environment.executeCrewMemberAction(member, task);
+        gameEnvironmentUnderTest.setDays(days);
 
         // Verify the results
+        assertTrue(gameEnvironmentUnderTest.getTotalDays() == days && gameEnvironmentUnderTest.getShipPartsTotalMissing() == 2*days/3);
     }
 
 }
