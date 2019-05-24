@@ -13,11 +13,9 @@ import java.util.Random;
  *
  */
 public class RandomEventGenerator {
-	
 	private static Random rand = new Random();
 	private int chanceOfEventOccurance;
 	private ArrayList<Event> possibleEvents;
-	
 
 	/**
 	 * Create the RandomEventGenerator with Event objects
@@ -32,7 +30,6 @@ public class RandomEventGenerator {
 		this.getRandomEvent().initiate();
 	}
 	
-	
 	/** Return a random Event object
 	 * @return a random Event object
 	 */
@@ -40,5 +37,4 @@ public class RandomEventGenerator {
 		int eventIndex = rand.nextInt(possibleEvents.size());
 		return possibleEvents.get(eventIndex);
 	}
-
 }

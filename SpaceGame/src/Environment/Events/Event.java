@@ -13,7 +13,6 @@ import Environment.CrewMemberTypes.CrewMember;
  *
  */
 public class Event {
-	
 	protected GameEnvironment environment;
 	protected Crew crew;
 	private boolean active;

@@ -10,9 +10,7 @@ import Environment.CrewMemberTypes.CrewMember;
 import Environment.CrewMemberTypes.Scientist;
 
 public class SpacePlagueTest {
-	
 	private SpacePlague spacePlagueUnderTest;
-	
 	private CrewMember crewMemberUnderTest;
 	private CrewMember[] testMembers;
 	private GameEnvironment environment;
@@ -27,7 +25,6 @@ public class SpacePlagueTest {
     		environment = new GameEnvironment();
     		environment.crew.addNewCrewMembers(testMembers);
     		environment.setDays(5);
-    	
         spacePlagueUnderTest = new SpacePlague(environment, environment.crew);
         
     }
@@ -49,5 +46,4 @@ public class SpacePlagueTest {
         }
         assertTrue(anyHavePlague);
     }
-
 }

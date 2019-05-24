@@ -13,7 +13,6 @@ import java.util.Random;
  *
  */
 public class Planet extends Location {
-	
 	// Credit for names: https://www.fantasynamegenerators.com/planet_names.php
 	private static final String[] names = {"Bucater", "Hubraorilia", "Kizinda", "Hotrolla", 
 	                                 "Xehiri", "Umia", "Struropra", "Thoaliv", 
@@ -34,19 +33,13 @@ public class Planet extends Location {
 	));
 	private static int planetIndex = 0;
 	private static boolean imagesShuffled = false;
-	
 	private final String directoryPrefix = "/Images/Locations/Planets/";
-	
 	public final String type = "Planet";
-	
 	protected final int SHIP_PART_EXISTS_CHANCE = 65;
-	
 	private boolean containsShipPart = false;
 	private boolean containsFood = false;
 	private boolean containsMedicalItem = false;
 	private boolean containsMoney = false;
-	
-	
 	
 	// When a new planet is instantiated, it generates random attributes; name, image, etc.
 	/**

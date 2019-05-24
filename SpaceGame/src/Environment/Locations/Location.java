@@ -12,7 +12,6 @@ package Environment.Locations;
  *
  */
 public class Location {
-	
 	public final String type = "Unknown";
 	protected String name = "Empty Space";
 	protected final String imagePath = "/Images/Locations/EmptySpace.png";
@@ -49,7 +48,6 @@ public class Location {
 		return type;
 	}
 	
-	
 	/**
 	 * @return String the name of the location but formatted using HTML
 	 */
@@ -65,8 +63,6 @@ public class Location {
 	public String getImagePath() {
 		return imagePath;
 	}
-	
-	
 	
 	/**
 	 * @return boolean true if this Location contains a ship part
