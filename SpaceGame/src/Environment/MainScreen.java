@@ -39,9 +39,6 @@ import java.awt.event.ActionEvent;
  *
  */
 public class MainScreen {
-	
-	//private final int WINDOW_X = 320;
-	//private final int WINDOW_Y = 100;
 	private final int WINDOW_WIDTH = 767;
 	private final int WINDOW_HEIGHT = 832;
 	
@@ -50,13 +47,9 @@ public class MainScreen {
 	private final int BG_IMAGE_LABEL_Y = -85;
 	private final int BG_IMAGE_LABEL_WIDTH = WINDOW_WIDTH;
 	private final int BG_IMAGE_LABEL_HEIGHT = 895;
-	
 	private final int VIEW_SCREEN_IMAGE_WIDTH = 575;
-	
 	private final int AVATAR_IMG_SIZE = 53;
-	
 	private final float GO_BUTTON_SCALE_FACTOR = 0.35f;
-	
 	private final Color TOP_BAR_BLUE = new Color(17, 152, 234);
 	
 	/**Variable environment can be used to get attributes of Crew and Ship to update labels and such*/
@@ -111,7 +104,6 @@ public class MainScreen {
 	private JLabel lblHungerLevel4 = new JLabel("0%");
 	private JComboBox comboBoxNextAction4 = new JComboBox();
 	
-	
 	/**
 	 * Open the window.
 	 * @param environment the environment object controlling the game
@@ -121,7 +113,6 @@ public class MainScreen {
 		this.environment = environment;
 		initialize();
 	}
-	
 	
 	/**Close the window*/
 	public void closeWindow() {
@@ -223,6 +214,7 @@ public class MainScreen {
 		frame.setBounds(GameEnvironment.WINDOW_INIT_X, GameEnvironment.WINDOW_INIT_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JLabel backgroundImageLabel = new JLabel("");
 		ImageIcon unscaledBackgroundImage = new ImageIcon(MainScreen.class.getResource("/Images/Main_Screen_Background.png"));

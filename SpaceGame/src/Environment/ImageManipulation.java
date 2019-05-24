@@ -21,6 +21,7 @@ public class ImageManipulation {
 	public static ImageIcon scaledImageIcon(ImageIcon unscaledImageIcon, int width, int height) {
 		return scale(unscaledImageIcon, width, height);
 	}
+	
 	/**Takes an ImageIcon and desired percent scale factor and returns a scaled ImageIcon.
 	 * @param unscaledImageIcon swing ImageIcon to be scaled
 	 * @param percentSize float of the amount to scale by
@@ -31,6 +32,7 @@ public class ImageManipulation {
 		int height = Math.round(unscaledImageIcon.getIconHeight() * percentSize);
 		return scale(unscaledImageIcon, width, height);
 	}
+	
 	/**Takes an ImageIcon, desired side length and a boolean scaleByWidth.  If true it fixes the sideLength to 
 	 * the width and scales the height proportionally.  If false, fixes the sideLength to the height.  
 	 * Returns a scaled ImageIcon.
@@ -51,6 +53,7 @@ public class ImageManipulation {
 		}
 		return scale(unscaledImageIcon, width, height);
 	}
+	
 	/**Helper method for scaledImageIcon to do the scaling.
 	 * @param unscaledImageIcon swing ImageIcon to be scaled
 	 * @param width int desired width

@@ -96,7 +96,7 @@ public class TeamSelection {
 		frmMeteorMadness.setBounds(GameEnvironment.WINDOW_INIT_X, GameEnvironment.WINDOW_INIT_Y, 800, 493);
 		frmMeteorMadness.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMeteorMadness.getContentPane().setLayout(null);
-
+		frmMeteorMadness.setResizable(false);
 
 		JLabel lblAdvice = new JLabel("<html><div style='text-align: center;'>Select Heroes to view their traits!<br/><br/>Name your crew member and press 'Add' to add them to your team.<br/><br/>Press 'Remove' to remove a Hero.<br/><br/> Your crew can have up to four members!<br/><br/> Press confirm when you are happy with your team :)</div></html>");
 		lblAdvice.setForeground(new Color(211, 211, 211));
@@ -348,17 +348,6 @@ public class TeamSelection {
 		frmMeteorMadness.getContentPane().add(lblBackground);
 
 		frmMeteorMadness.setVisible(true);
-
-		/*JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 800, 472);
-		frmMeteorMadness.getContentPane().add(panel);
-		panel.setLayout(null);
-
-		JLabel backgroundLabel = new JLabel("");
-		backgroundLabel.setIcon(new ImageIcon(TeamSelection.class.getResource("/Images/space background_updated.gif")));
-		backgroundLabel.setBounds(0, 0, 800, 472);
-		panel.add(backgroundLabel);*/
-
 	}
 
 	/**

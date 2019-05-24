@@ -25,12 +25,14 @@ public class Crew {
 	/**Initializes a Crew with blank (dead) crew members*/
 	public Crew() {
 	}
+	
 	/**Construct new Crew from List (ArrayList)
 	 * @param members List object of crew members to initialize with
 	 */
 	public Crew(List<CrewMember> members) {
 		addNewCrewMembers(members);
 	}
+	
 	/**Construct new Crew from primitive array
 	 * @param members primitive array to initialize with
 	 */
@@ -47,11 +49,11 @@ public class Crew {
 		for (CrewMember member: newMembers) {
 			if (member != null) {
 				membersList.add(member);
-			}
-			
+			}			
 		}
 		addNewCrewMembers(membersList);
 	}
+	
 	/**Adds a List of CrewMember to the members array.  Sets the CrewMember crewMemberID to the index in 
 	 * the array that its in.
 	 * @param members List object of crew members to initialize with
@@ -97,8 +99,6 @@ public class Crew {
 		}
 		throw new IndexOutOfBoundsException("Ship is at capacity.  Max Capacity: " + MAX_CREW_MEMBERS);
 	}
-	
-	
 	
 	/**Gets a crew member by crewMemberID.  If array is null or array out of bounds, returns a dead crew member
 	 * @param crewMemberID an index (typically 0 to 3) of the position of the desired crew member in the array
@@ -174,6 +174,7 @@ public class Crew {
 		}
 		return numLive;
 	}
+	
 	/**Returns an array of all CrewMembers that are alive
 	 * @return primitive array holding all crew members that are alive
 	 */

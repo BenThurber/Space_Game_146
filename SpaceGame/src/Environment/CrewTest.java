@@ -33,9 +33,7 @@ public class CrewTest {
     		crewUnderTest = new Crew();
     }
 	
-	
-	
-    @Test
+	@Test
     public void testGetNumCrewMembers() {
         // Setup
         final int expectedResult = 3;

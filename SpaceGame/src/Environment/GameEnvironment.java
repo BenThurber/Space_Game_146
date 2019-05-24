@@ -26,7 +26,6 @@ import Environment.Locations.SpaceOutpost;
  * */
 public class GameEnvironment {
 	
-	
 	//----------------
 	// VARIABLES:
 	//----------------
@@ -91,8 +90,6 @@ public class GameEnvironment {
 	/**The MainScreen object*/
 	private MainScreen mainWindow;
 	
-	
-	
 	//----------------
 	// METHODS:
 	//----------------
@@ -104,6 +101,7 @@ public class GameEnvironment {
 		mainWindow.closeWindow();
 		launchScoreBoard();
 	}
+	
 	/**Closes Introduction window and calls launchTeamSelection()
 	 * @param introWindow instance of introWindow typically passed from itself.
 	 */
@@ -112,6 +110,7 @@ public class GameEnvironment {
 		setDays(introWindow.getDaysToPlay());
 		launchTeamSelection();
 	}
+	
 	/**Closes TeamSelection window and calls launchMainScreen()
 	 * @param teamSelectionWindow instance of teamSelectionWindow typically passed from itself.
 	 */
@@ -119,30 +118,34 @@ public class GameEnvironment {
 		teamSelectionWindow.closeWindow();
 		launchMainScreen();
 	}
+	
 	/**Closes ScoreBoard window
 	 * @param scoreBoard instance of scoreBoard typically passed from itself.
 	 */
 	public void closeScoreBoard(ScoreBoard scoreBoard) {
 		scoreBoard.closeWindow();
 	}
+
 	/**Opens TeamSelection window*/
 	public void launchTeamSelection() {
 		TeamSelection teamSelectionWindow = new TeamSelection(this);
 	}
+	
 	/**Opens Introduction window and starts first day*/
 	public void launchIntroduction() {
 		Introduction introWindow = new Introduction(this);
 	}
+	
 	/**Opens MainScreen window and starts first day*/
 	public void launchMainScreen() {
 		mainWindow = new MainScreen(this);
 		startFirstDay();
 	}
+	
 	/**Opens ScoreBoard window and starts first day*/
 	public void launchScoreBoard() {
 		ScoreBoard scoreBoard = new ScoreBoard(this);
 	}
-	
 	
 	/**Called when "Visit space outpost" is clicked.  Changes location to a new SpaceOutpost*/
 	public void visitSpaceOutpost() {
@@ -151,6 +154,7 @@ public class GameEnvironment {
 		ship.setLocation(currentLocation);
 		mainWindow.update();
 	}
+	
 	/**Called when "Warp to next planet" is clicked.  Changes location to a new Planet*/
 	public void moveToNextPlanet() {
 		// If there is only one crew member left alive, and there are no parts on the current planet that will finish the game, 
@@ -176,6 +180,7 @@ public class GameEnvironment {
 		mainWindow.update();
 		checkForGameOver();
 	}
+	
 	/**Called when "Start Next Day" is clicked.  Begins a new day*/
 	public void startNextDay() {
 		System.out.println("Starting Next Day");
@@ -246,6 +251,7 @@ public class GameEnvironment {
 		}
 		mainWindow.update();  //Refresh the window?
 	}
+	
 	/**Takes a Crew, MainScreen, Action string, numMembersRequired, and Subclass of CrewMember (to determine special type).  
 	 * Returns an ArrayList of CrewMembers (Captain, Scientist, Navigator, etc.) with a remaining action 
 	 * (if needRemainingAction is true) and who's action JComboBox has the desired action selected. The ArrayList will be 
@@ -304,6 +310,7 @@ public class GameEnvironment {
 		}
 		return filteredCrewMembers;
 	}
+	
 	/**Calls crewMembersWithAction with boolean favorSpecialType and boolean needRemainingAction set to true.
 	 * @param crew the crew
 	 * @param window a MainScreen object with associated JComboBoxes
@@ -316,9 +323,6 @@ public class GameEnvironment {
 		return crewMembersWithAction(crew, window, action, numMembersRequired, specialMemberType, true, true);
 	}
 	
-	
-	
-	
 	/**Main Function that runs the game.  Creates an object of GameEnvironment and launches the Introduction window.
 	 * @param args runtime args
 	 */
@@ -327,6 +331,7 @@ public class GameEnvironment {
 		environment.launchIntroduction();
 		
 	}
+	
 	/**Tests features before the initial screens are implemented*/
 	private void runTestCode() {
 		// Test code
@@ -340,6 +345,7 @@ public class GameEnvironment {
 	public int getTotalDays() {
 		return totalDays;
 	}
+	
 	/**Sets total and remaining days and the number of ship parts to be found (2/3 * Days)
 	 * @param days input days to set
 	 */
@@ -355,12 +361,14 @@ public class GameEnvironment {
 	public int getCurrentDay() {
 		return currentDay;
 	}
+	
 	/**Sets the current day
 	 * @param numDays the number of days to set to.
 	 */
 	public void setCurrentDay(int numDays) {
 		this.currentDay = Math.max(numDays, 0);
 	}
+	
 	/**Increments currentDay variable*/
 	public void incrementCurrentDay() {
 		currentDay++;  // DON'T use min/max.  Needs to be greater than total days to trigger game over
@@ -372,6 +380,7 @@ public class GameEnvironment {
 	public int getShipPartsFound() {
 		return shipPartsFound;
 	}
+	
 	/**Increments shipPartsFound variable (when a new part is found)*/
 	public void incrementShipPartsFound() {
 		this.shipPartsFound = Math.min(shipPartsFound+1, shipPartsTotalMissing);;
@@ -383,6 +392,7 @@ public class GameEnvironment {
 	public int getShipPartsTotalMissing() {
 		return shipPartsTotalMissing;
 	}
+
 	/**Sets the total number of ship parts to be found and resets shipPartsFound to zero*/
 	/**
 	 * @param shipPartsTotal the total number of parts
@@ -391,6 +401,7 @@ public class GameEnvironment {
 		shipPartsTotalMissing = shipPartsTotal;
 		shipPartsFound = 0;
 	}
+	
 	/**Checks if a condition is met to finish the game, either: All the crew are dead, the ship has been destroyed, 
 	 * the player has run out of days, or all the ship parts have been found.  A game over could constitute a win 
 	 * as well as a lose.*/
@@ -408,6 +419,7 @@ public class GameEnvironment {
 			gameOver(YOU_WIN_MESSAGE);
 		}		
 	}
+	
 	/**Opens a new MessageBox with a message string (argument) followed by a blank line and the words "GAME OVER" (from variable GAME_OVER_MESSAGE)
 	 * @param message String of the message to display on the message box
 	 */
@@ -415,6 +427,7 @@ public class GameEnvironment {
 		MessageBox messageBoxGameOver = new MessageBox(message + "\n\n" + GAME_OVER_MESSAGE, mainWindow);
 		closeMainScreen(mainWindow);
 	}
+	
 	/**Calls initiateGameOver with no message*/
 	public void gameOver() {
 		gameOver("");

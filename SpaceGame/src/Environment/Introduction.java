@@ -42,16 +42,6 @@ public class Introduction {
 	private JLabel lblASpaceCrew;
 	private JTextField textField;
 	private JLabel lblNewLabel;
-
-	/*public void closeWindow() {
-		frmMeteorMadness.dispose();
-	}
-	
-	public void finishedWindow() {
-		GameEnvironment.closeIntroduction(this);
-	}*/
-	
-	
 	
 	/**
 	 * Launch the introduction window
@@ -89,6 +79,7 @@ public class Introduction {
 		frmMeteorMadness.setTitle("Meteor Madness");
 		frmMeteorMadness.getContentPane().setEnabled(true);
 		frmMeteorMadness.getContentPane().setLayout(null);
+		frmMeteorMadness.setResizable(false);
 		
 		JLabel lblMeteorMadness = new JLabel("Meteor Madness");
 		lblMeteorMadness.setFont(new Font("L M Mono Caps10", Font.BOLD, 26));
@@ -145,7 +136,6 @@ public class Introduction {
 		frmMeteorMadness.setVisible(true);
 	}
 	
-	
 	/**
 	 * @return string name of the ship name that was entered in the window
 	 */
@@ -172,7 +162,5 @@ public class Introduction {
 	 */
 	public void setDaysToPlay(int daysToPlay) {
 		this.daysToPlay = daysToPlay;
-	}
-	
-	
+	}	
 }

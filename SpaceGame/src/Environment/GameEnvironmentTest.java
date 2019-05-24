@@ -30,7 +30,6 @@ public class GameEnvironmentTest {
     		crewUnderTest = new Crew();
     }
 	
-	
 	@Test
     public void testExecuteCrewMemberAction() {
         // Setup
@@ -42,5 +41,4 @@ public class GameEnvironmentTest {
 
         // Verify the results
     }
-
 }
