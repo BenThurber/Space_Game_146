@@ -13,7 +13,7 @@ public class Engineer extends CrewMember {
 	public final String specialization = "engineer";
 	public final static String avatarImage = "/Images/Avatars/engineer.png";
 	
-	private final int SHEILD_REPAIR_AMOUNT = 50;
+	protected final int SHEILD_REPAIR_AMOUNT = 50;
 	
 	private final static String DESCRIPTION = "<html><div style='text-align: center;'>Engineers are able to repair the ship's shield by 50%.</div></html>";
 	
