@@ -1,3 +1,5 @@
+![Cover_Image](https://raw.githubusercontent.com/BenThurber/Space_Game_146/master/animated_screenshot.gif)
+
 # Meteor Madness - Space Game
 
 Benjamin Thurber's and Blake Kayser's Space Explorer Game
