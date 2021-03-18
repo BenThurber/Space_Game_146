@@ -1,0 +1,3 @@
+# Ignore Generated JavaDoc files
+*.html linguist-detectable=false
+
